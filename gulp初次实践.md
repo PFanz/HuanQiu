@@ -42,13 +42,9 @@ gulp基础语法比较简单，管道方式也很容易理解。
 ├── node_modules
 │   ├── eruda
 │   ├── gulp
-│   ├── gulp-clean
 │   ├── gulp-clean-css
-│   ├── gulp-htmlmin
-│   ├── gulp-minify-css
 │   ├── gulp-sass
 │   ├── gulp-uglify
-│   └── gulp-watch
 ├── package.json
 └── src
     ├── css
