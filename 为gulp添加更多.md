@@ -1,3 +1,12 @@
+---
+title: 为gulp添加更多
+date: 2016-07-23
+tags: javascript 构建工具 gulp
+categories: 
+- javascript
+comments: true
+---
+
 有了之前的gulp经验，使用其他gulp工具就是很简单的工作了。
 
 > ps:	以下代码前均包含`var gulp = require('gulp')`
