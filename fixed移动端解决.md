@@ -1,3 +1,12 @@
+---
+title: fixed移动端解决
+date: 2016-07-29
+tags: javascript 移动Web
+categories: 
+- javascript
+comments: true
+---
+
 From [here](http://efe.baidu.com/blog/mobile-fixed-layout/)
 
 ### fixed移动端解决
