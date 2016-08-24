@@ -3,6 +3,8 @@
 
 模块化方案：browserify、webpack、seajs、requirejs
 
+css: normalize.css(取代css reset)
+
 测试工具: browser-sync,Fiddler,weinre,微信调试工具
 
 ### 提高开发效率
