@@ -7,6 +7,10 @@ categories:
 comments: true
 ---
 
+### 0. 路由
+
+路由也就是地址，就是定义不同url访问不同页面的功能，可以实现导航、页面切换/跳转等功能。
+
 ### 1. 引入
 ```javascript 
 import { Router, Route, hashHistory } from 'react-router'
