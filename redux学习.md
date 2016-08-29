@@ -1,6 +1,6 @@
-action
-reducer
-store
+action: 规定动作以及数据
+reducer: 如何更新action中的数据。接受旧的action、state,返回新的。(state)
+store: 调用reducer更改action中的数据
 
 定义action
 action一般形式：
