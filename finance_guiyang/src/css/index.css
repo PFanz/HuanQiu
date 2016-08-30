@@ -52,7 +52,7 @@ body {
   background: #fef7eb url(../images/header_banner.jpg) top center no-repeat; }
 
 .container_con {
-  height: 4760px;
+  height: 4930px;
   background: url(../images/footer_banner.jpg) bottom center no-repeat; }
 
 .mod-block {
@@ -196,7 +196,7 @@ body {
 .dot.active {
   width: 29px;
   height: 29px;
-  background: url(../images/dot_active.png);
+  background: url(../images/dot_active.png?r=1);
   background-repeat: no-repeat;
   background-size: cover; }
 
@@ -695,7 +695,7 @@ body {
 
 .mod-weibo {
   position: relative;
-  height: 877px;
+  height: 923px;
   margin-bottom: 35px;
   padding: 90px 20px 20px 20px;
   background: #fff;

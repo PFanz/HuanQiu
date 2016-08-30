@@ -21,7 +21,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 
 .container { background: #fef7eb url(../images/header_banner.jpg) top center no-repeat; }
-.container_con { height: 4760px; background: url(../images/footer_banner.jpg) bottom center no-repeat; }
+.container_con { height: 4930px; background: url(../images/footer_banner.jpg) bottom center no-repeat; }
 
 .mod-block {*zoom:1;}
 .mod-block:after{display:table; content:''; clear:both; }
@@ -119,7 +119,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 .dot.active {
 		width: 29px;
 		height: 29px;
-		background: url(../images/dot_active.png);
+		background: url(../images/dot_active.png?r=1);
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
@@ -766,7 +766,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 // 第三块 微博
 .mod-weibo {
 	position: relative;
-	height: 877px;
+	height: 923px;
 	margin-bottom: 35px;
 	padding: 90px 20px 20px 20px;
 	background: #fff;
