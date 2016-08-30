@@ -9,6 +9,7 @@
 * { padding: 0; margin: 0; }
 ul,li,ol { list-style-type: none;} img { vertical-align: top; border-style:none; }  /* reset img vertical align */
 a,a:visited { color: #333; text-decoration: none;} a:hover { color: #d00005; text-decoration: none;}
+a:focus {outline:none;}
 /*body { font:12px/1.5 Tahoma,Helvetica,Arial,"\5B8B\4F53","\5FAE\8F6F\96C5\9ED1",sans-serif; }*/
 body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 .topIndex .hdTopCon { width: 1000px;}  /* reset top header */
