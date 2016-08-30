@@ -25,6 +25,9 @@ a:hover {
   color: #d00005;
   text-decoration: none; }
 
+a:focus {
+  outline: none; }
+
 /*body { font:12px/1.5 Tahoma,Helvetica,Arial,"\5B8B\4F53","\5FAE\8F6F\96C5\9ED1",sans-serif; }*/
 body {
   font: 12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
@@ -262,7 +265,7 @@ body {
   z-index: 111; }
   .route-add-more .add-more-title {
     font-size: 18px;
-    line-height: 35px;
+    line-height: 30px;
     color: #ee1f0a;
     font-weight: normal; }
   .route-add-more .add-more-info {
@@ -434,6 +437,7 @@ body {
   margin-bottom: 35px;
   padding-top: 100px;
   height: 1696px;
+  background: #fff;
   border: 1px solid #ee1e0a; }
 
 .mod-riding-more {
@@ -496,7 +500,7 @@ body {
 .riding-block-7,
 .riding-block-8 {
   font-size: 14px;
-  line-height: 25px;
+  line-height: 29px;
   overflow: hidden; }
 
 .riding-block-link {
@@ -524,9 +528,10 @@ body {
     width: 370px; }
   .riding-block-1 .riding-link-title {
     top: 235px;
+    left: 0;
     width: 370px; }
   .riding-block-1 .riding-link-info {
-    margin-top: 20px; }
+    margin-top: 40px; }
 
 .riding-block-2 {
   float: right;
@@ -536,9 +541,11 @@ body {
   padding-bottom: 20px;
   border-bottom: 1px solid #e6e6e6; }
   .riding-block-2 img {
+    float: left;
     width: 280px;
     height: 200px; }
   .riding-block-2 .riding-link-title {
+    left: 0;
     top: 180px;
     width: 280px; }
   .riding-block-2 .riding-link-info {
@@ -546,23 +553,6 @@ body {
     height: 200px;
     width: 247px;
     overflow: hidden; }
-
-.riding-block-2 {
-  float: right;
-  width: 547px;
-  height: 250px;
-  margin-left: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e6e6e6; }
-  .riding-block-2 img {
-    width: 280px;
-    height: 200px; }
-  .riding-block-2 .riding-link-title {
-    top: 180px;
-    width: 280px; }
-  .riding-block-2 .riding-link-info {
-    float: right;
-    width: 247px; }
 
 .riding-block-3 {
   float: right;
@@ -599,6 +589,7 @@ body {
     height: 250px;
     width: 380px; }
   .riding-block-4 .riding-link-title {
+    left: 0;
     top: 230px;
     width: 380px; }
   .riding-block-4 .riding-link-info {
@@ -607,8 +598,8 @@ body {
 .riding-block-5 {
   float: right;
   width: 435px;
-  height: 405px;
-  margin: 20px 0; }
+  height: 415px;
+  margin: 20px 0 10px; }
   .riding-block-5 .riding-block-link {
     width: 380px; }
   .riding-block-5 img {
@@ -617,7 +608,7 @@ body {
   .riding-block-5 .riding-title-col {
     float: right; }
   .riding-block-5 .riding-link-title {
-    float: right;
+    left: 0;
     top: 230px;
     width: 380px; }
   .riding-block-5 .riding-link-info {
@@ -632,12 +623,13 @@ body {
   .riding-block-6 .riding-block-link {
     width: 550px; }
   .riding-block-6 img {
+    float: left;
     height: 200px;
     width: 280px; }
   .riding-block-6 .riding-title-col {
     float: right; }
   .riding-block-6 .riding-link-title {
-    float: right;
+    left: 0;
     top: 180px;
     width: 280px; }
   .riding-block-6 .riding-link-info {
@@ -660,7 +652,7 @@ body {
     height: 200px;
     width: 280px; }
   .riding-block-7 .riding-link-title {
-    float: right;
+    right: 0;
     top: 180px;
     right: 0;
     width: 280px; }
@@ -684,11 +676,11 @@ body {
     height: 255px;
     width: 370px; }
   .riding-block-8 .riding-link-title {
-    float: right;
+    left: 0;
     top: 235px;
     width: 370px; }
   .riding-block-8 .riding-link-info {
-    margin-top: 20px;
+    margin-top: 40px;
     overflow: hidden; }
 
 .mod-weibo {
@@ -716,7 +708,7 @@ body {
     margin-top: 50px;
     line-height: 160px;
     text-align: center;
-    font-size: 30px; }
+    font-size: 18px; }
   .mod-block-company a {
     display: inline-block;
     padding: 0 50px; }

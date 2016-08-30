@@ -200,7 +200,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 	.add-more-title {
 		font-size: 18px;
-		line-height: 35px;
+		line-height: 30px;
 		color: #ee1f0a;
 		font-weight: normal;
 	}
@@ -403,6 +403,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 	margin-bottom: 35px;
 	padding-top: 100px;
 	height: 1696px;
+	background: #fff;
 	border: 1px solid #ee1e0a;
 }
 
@@ -478,7 +479,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 .riding-block-7,
 .riding-block-8 {
 	font-size: 14px;
-	line-height: 25px;
+	line-height: 29px;
 	overflow: hidden;
 }
 
@@ -502,7 +503,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 .riding-block-1 {
 	float: left;
 	height: 540px;
-	width:370px;
+	width: 370px;
 	padding-right: 20px;
 	border-right: 1px solid #e6e6e6;
 
@@ -513,11 +514,12 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 	.riding-link-title {
 		top: 255px - 20px;
+		left: 0;
 		width: 370px;
 	}
 
 	.riding-link-info {
-		margin-top: 20px;
+		margin-top: 40px;
 	}
 }
 
@@ -530,11 +532,13 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 	border-bottom: 1px solid #e6e6e6;
 
 	img {
+		float: left;
 		width: 280px;
 		height: 200px;
 	}
 
 	.riding-link-title {
+		left: 0;
 		top: 200px-20px;
 		width: 280px;
 	}
@@ -544,30 +548,6 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 		height: 200px;
 		width: 547px - 280px - 20px;
 		overflow: hidden;
-	}
-}
-
-.riding-block-2 {
-	float: right;
-	width: 547px;
-	height: 250px;
-	margin-left: 20px;
-	padding-bottom: 20px;
-	border-bottom: 1px solid #e6e6e6;
-
-	img {
-		width: 280px;
-		height: 200px;
-	}
-
-	.riding-link-title {
-		top: 200px-20px;
-		width: 280px;
-	}
-
-	.riding-link-info {
-		float: right;
-		width: 547px - 280px - 20px;
 	}
 }
 
@@ -621,6 +601,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 	}
 
 	.riding-link-title {
+		left: 0;
 		top: 250px - 20px;
 		width: 380px;
 	}
@@ -633,8 +614,8 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 .riding-block-5 {
 	float: right;
 	width: 435px;
-	height: 405px;
-	margin: 20px 0;
+	height: 415px;
+	margin: 20px 0 10px;
 
 	.riding-block-link {
 		width: 380px;
@@ -650,7 +631,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 	}
 
 	.riding-link-title {
-		float: right;
+		left: 0;
 		top: 250px - 20px;
 		width: 380px;
 	}
@@ -673,6 +654,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 	}
 
 	img {
+		float: left;
 		height: 200px;
 		width: 280px;
 	}
@@ -682,7 +664,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 	}
 
 	.riding-link-title {
-		float: right;
+		left: 0;
 		top: 200px - 20px;
 		width: 280px;
 	}
@@ -716,7 +698,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 	}
 
 	.riding-link-title {
-		float: right;
+		right: 0;
 		top: 200px - 20px;
 		right: 0;
 		width: 280px;
@@ -751,13 +733,13 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 	}
 
 	.riding-link-title {
-		float: right;
+		left: 0;
 		top: 255px - 20px;
 		width: 370px;
 	}
 
 	.riding-link-info {
-		margin-top: 20px;
+		margin-top: 40px;
 		overflow: hidden;
 	}
 }
@@ -792,7 +774,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 		margin-top: 50px;
 		line-height: 160px;
 		text-align: center;
-		font-size: 30px;
+		font-size: 18px;
 	}
 
 	a {
