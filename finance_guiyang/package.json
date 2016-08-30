@@ -1,7 +1,7 @@
 {
-  "name": "穿越贵阳",
+  "name": "name",
   "version": "1.0.0",
-  "description": "红军足迹 穿越贵阳",
+  "description": "description",
   "main": "gulpfile.js",
   "dependencies": {
     "gulp": "^3.9.1"
