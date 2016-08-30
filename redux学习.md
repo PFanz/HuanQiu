@@ -86,3 +86,84 @@ var thunkMiddleware = function ({ dispatch, getState }) {
 调用中间件
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 const finalCreateStore = applyMiddleware(thunkMiddleware)(createStore)
+
+###
+
+From [Here](http://div.io/topic/1309?utm_source=tuicool&utm_medium=referral)
+首先，设计state
+```javascript
+let state = {
+  todos: [{
+    id: 123,
+    text: 'todo item',
+    status: false
+  }],
+  activeFilter: SHOW_ALL
+}
+```
+设计action常量
+```javascript
+//ActionTypes.js 真正改动了数据的 actionType 在这里
+export const ADD_ITEM = 'ADD_ITEM'
+export const DELETE_ITEM = 'DELETE_ITEM'
+export const DELETE_ITEMS = 'DELETE_ITEMS'
+export const UPDATE_ITEM = 'UPDATE_ITEM'
+export const UPDATE_ITEMS = 'UPDATE_ITEMS'
+
+//API.js 服务端接口统一放这里
+export const API_TODOS = '/todos'
+
+//SocketTypes.js websocket 也触发了某个 action 改变了 state，单独放这里
+export const SERVER_UPDATE = 'SERVER_UPDATE'
+
+//KeyCode.js 键盘的回车键与取消键对应的编码
+export const ENTER_KEY = 13
+export const ESCAPE_KEY = 27
+
+//FilterTypes.js 只是筛选数据，没有改变 state 的过滤 action 的常量
+export const FILTER_ITEMS = 'FILTER_ITEMS'
+export const SHOW_ALL = 'SHOW_ALL'
+export const SHOW_ACTIVE = 'SHOW_ACTIVE'
+export const SHOW_COMPLETED = 'SHOW_COMPLETED'
+```
+开始写actionCreaetor
+```javascript
+//index.js
+import * as types from '../constants/ActionTypes'
+export function addItem(text) {
+  return { type: types.ADD_ITEM, text }
+}
+export function deleteItem(id) {
+  return { type: types.DELETE_ITEM, id }
+}
+export function updateItem(data) {
+  return { type: types.UPDATE_ITEM, data }
+}
+export function deleteItems(query) {
+  return { type: types.DELETE_ITEMS, query }
+}
+export function updateItems(data) {
+  return { type: types.UPDATE_ITEMS, data }
+}
+```
+reducer
+```javacript
+//index.js
+import * as types from '../constants/ActionTypes'
+export function addItem(text) {
+  return { type: types.ADD_ITEM, text }
+}
+export function deleteItem(id) {
+  return { type: types.DELETE_ITEM, id }
+}
+export function updateItem(data) {
+  return { type: types.UPDATE_ITEM, data }
+}
+export function deleteItems(query) {
+  return { type: types.DELETE_ITEMS, query }
+}
+export function updateItems(data) {
+  return { type: types.UPDATE_ITEMS, data }
+}
+
+```

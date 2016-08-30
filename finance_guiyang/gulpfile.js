@@ -16,7 +16,7 @@ gulp.task('sass', function() {
 	return gulp.src('src/sass/*.scss')
 					.pipe(sass())
 					.pipe(autoprefixer({
-						browsers: ['last 2 versions', 'ios 6', 'android >= 4.0'],
+						browsers: ['last 2 versions', 'ios 6', 'android >= 4.0', 'IE 8'],
 						remove: false
 					}))
 					.pipe(gulp.dest('src/css'))
