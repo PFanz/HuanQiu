@@ -141,11 +141,9 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 .mod-route {
 	position: relative;
 	margin-bottom: 35px;
-	padding-bottom: 20px;
-	height: 576px;
+	height: 596px;
 	background: #fffae6 url(../images/map.png) no-repeat;
 	background-position: center bottom;
-	background-origin: content-box;
 	border: 1px solid #ee1e0a;
 }
 
@@ -232,7 +230,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 .chishui {
 	top: 140px;
-	left: 360px;
+	left: 350px;
 }
 
 .chishui:hover::after {
@@ -253,7 +251,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 .xishui {
 	top: 180px;
-	left: 400px;
+	left: 385px;
 }
 
 .xishui:hover::after {
@@ -274,7 +272,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 .tongzi {
 	top: 190px;
-	left: 520px;
+	left: 505px;
 }
 
 .tongzi:hover::after {
@@ -295,7 +293,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 .zunyi {
 	top: 240px;
-	left: 450px;
+	left: 435px;
 }
 
 .zunyi:hover::after {
@@ -316,7 +314,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 .wengan {
 	top: 325px;
-	left: 530px;
+	left: 515px;
 }
 
 .wengan:hover::after {
@@ -337,7 +335,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 .yuqing {
 	top: 275px;
-	left: 610px;
+	left: 595px;
 }
 
 .yuqing:hover::after {
@@ -358,7 +356,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 .zhenyuan {
 	top: 310px;
-	left: 655px;
+	left: 640px;
 }
 
 .zhenyuan:hover::after {
@@ -379,7 +377,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 .liping {
 	top: 415px;
-	left: 690px;
+	left: 680px;
 }
 
 .liping:hover::after {
@@ -465,7 +463,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 	overflow: hidden;
 }
 
-.riding-block-row:last-child {
+.riding-block-row.last-block-row {
 	border-bottom: none;
 	border-bottom: 0;
 }
@@ -784,8 +782,9 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 // 第四块 合作伙伴
 .mod-block-company {
+	position: relative;
 	height: 209px;
-	background: #fff url(../images/title_bg_company.png) top 20px left 0 no-repeat;
+	background: #fff;
 	border: 1px solid #ee1e0a;
 
 	p {
@@ -799,4 +798,13 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 		display: inline-block;
 		padding: 0 50px;
 	}
+}
+
+.mod-company-title {
+	position: absolute;
+	top: 20px;
+	width: 100%;
+	height: 30px;
+	background: url(../images/title_bg_company.png) no-repeat;
+
 }
