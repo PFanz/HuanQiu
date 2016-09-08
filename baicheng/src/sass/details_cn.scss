@@ -1,0 +1,395 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Teng (tengxumin@huanqiu.com)
+ * @date    2016-08-26 09:25:59
+ * @version $Id$  // 沿着红军足迹 穿越多彩贵州
+ */
+
+* { padding: 0; margin: 0; }
+ul,li,ol { list-style-type: none;} img { vertical-align: top; }  /* reset img vertical align */
+a,a:visited { color: #333; text-decoration: none;} a:hover { color: #d00005; text-decoration: none;}
+/*body { font:12px/1.5 Tahoma,Helvetica,Arial,"\5B8B\4F53","\5FAE\8F6F\96C5\9ED1",sans-serif; }*/
+body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
+.topIndex .hdTopCon { width: 1000px;}  /* reset top header */
+
+/* 清除浮动 */
+.clearfix{*zoom:1;}
+.clearfix:after{display:table; content:''; clear:both; }
+/* 单行文字溢出虚点显示 */
+.ellipsis{text-overflow:ellipsis; white-space:nowrap; overflow:hidden; } 
+
+/* 公共底部 */
+.mod-footer {font-family: "\5B8B\4F53"; line-height: 24px; background-color: #fff; font-size: 12px; } 
+.mod-footer .main { width: 1000px; margin: 0 auto;}
+.mod-footer .f_products {color: #fff; padding: 10px 0; background-color: #0a70b1; border-bottom: 3px solid #e6e5e6; overflow: hidden; } 
+.mod-footer .f_products a {display: inline-block; *display: inline; *zoom: 1;color: #89c3eb; padding-left: 12px;  text-decoration: none;
+	background: url(//r1.huanqiu.cn/?app=huanqiu.com&mime=image/png&path=_controls/common/images/footer_icon.png) -6px 2px no-repeat; 
+}
+.mod-footer .f_products a:hover {color: #fff; text-decoration: none; }
+.mod-footer .f_products li { float: left; display: inline; border-left: 1px solid #3288bf; padding: 0 30px 0 40px; } 
+.mod-footer .f_products li.col_1 {width: 120px; }
+.mod-footer .f_products li.col_1 a {display: block; }
+.mod-footer .f_products li.col_2 {width: 240px; padding-right: 20px; }
+.mod-footer .f_products li h3 { font-weight: bolder; font-size: 14px; text-indent: 12px; font-family: "\5FAE\8F6F\96C5\9ED1";}
+.mod-footer .f_products li.col_2 a {width: 102px; }
+.mod-footer .f_products li.col_3 {width: 465px; padding-right: 0; border-right: 1px solid #3288bf; }
+.mod-footer .f_products li.col_3 a {margin-right: 18px; min-width: 72px; }
+.mod-footer .f_links {padding: 20px 0; text-align: center; }
+.mod-footer .f_links a:hover {color: #cd0200;text-decoration: underline;}
+.mod-footer .f_links i {color: #e5e5e5; margin: 0 5px; font-style: normal; }
+
+
+body {
+	background: #f2f2f2;
+}
+
+.container {
+	overflow: hidden;
+
+	.main { 
+		width: 1000px; 
+		margin: 0 auto;
+	}
+}
+
+// 第一块
+.block-intro {
+	margin-bottom: 30px;
+	height: 412px;
+}
+
+.mod-lb {
+	position: relative;
+	float: left;
+	width: 590px;
+
+	.focus-dots-content {
+		position: absolute;
+		bottom: -82px;
+
+		.dot {
+			position: relative;
+			display: inline-block;
+			width: 140px;
+			height: 74px;
+			margin-top: 8px;
+			margin-left: 10px;
+			margin: 8px 10px 0 0;
+		}
+
+		.dot:last-child {
+			margin: 8px 0 0 0;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
+
+		.dot::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(255, 255, 255, 0.5);
+		}
+
+		.dot.active::after {
+			background: transparent;
+		}
+	}
+}
+
+// 轮播图
+.mod-focus {
+	position: relative;
+	float: left;
+	width: 590px;
+	height: 330px;
+	overflow: hidden;
+}
+
+.focus_thumbs {
+	position: absolute;
+	left: 0;
+	height: 330px;
+
+	img {
+		width: 100%;
+		height: 100%;
+	}
+
+	li,
+	.items {
+		float: left;
+		width: 590px;
+		height: 330px;
+	}
+
+	.title {
+		position: absolute;
+		bottom: 0;
+		width: 590px;
+		line-height: 50px;
+		font-size: 30px;
+		text-align: center;
+		background: rgba(0, 0, 0, .4);
+	}
+}
+
+.focus_pagination {
+	.dot {
+		position: relative;
+		display: inline-block;
+		width: 140px;
+		height: 74px;
+		margin-top: 8px;
+		margin-left: 10px;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+	}
+
+	.dot::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0.5);
+	}
+
+	.dot.active::after {
+		background: transparent;
+	}
+}
+
+// 地方简介
+.mod-intro {
+	float: right;
+	width: 370px;
+
+	.intro-title {
+		font-size: 22px;
+		line-height: 30px;
+		color: #0c8ad8;
+	}
+
+	.intro-text {
+		margin-top: 9px;
+		padding-top: 9px;
+		font-size: 16px;
+		white-space: pre-wrap;
+		line-height: 30px;
+		color: rgba(0, 0, 0, .63);
+		border-top: 1px solid rgba(0, 0, 0, .4);
+	}
+
+	.intro-detail {
+		float: right;
+		padding: 0 6px;
+		line-height: 20px;
+		font-size: 14px;
+		color: #0c8ad8;
+	}
+}
+
+// 地方动态
+.block-dynamic {
+	float: left;
+	width: 660px;
+}
+
+.block-dynamic-title {
+	padding-left: 20px;
+	line-height: 60px;
+	font-size: 24px;
+	color: #0c8ad8;
+	border-left: 8px solid #0c8ad8;
+	background: #fff;
+}
+
+.block-dynamic-content {
+	margin-top: 20px;
+}
+
+.dynamic-news {
+	margin-bottom: 30px;
+	overflow: hidden;
+}
+
+.dynamic-news-img {
+	float: left;
+	width: 200px;
+	height: 112px;
+	margin-right: 20px;
+}
+
+.dynamic-news-title {
+	float: right;
+	width: 440px;
+	line-height: 30px;
+	font-size: 18px;
+	font-weight: bolder;
+	color: rgba(0, 0, 0, .87);
+}
+
+.dynamic-news-text {
+	float: right;
+	margin-top: 10px;
+	width: 440px;
+	height: 70px;
+	line-height: 24px;
+	font-size: 14px;
+	color: rgba(0, 0, 0, .63);
+}
+
+a.block-dynamic-more {
+	float: left;
+	width: 660px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 16px;
+	color: #0c8ad8;
+	background: #fff;
+	border: 1px solid #eee;
+	border-radius: 4px;
+}
+
+// ad 
+.block-ad {
+	float: right;
+	width: 320px;
+	height: 180px;
+	margin-bottom: 20px;
+	background: #e2e2e2;
+}
+
+// 旅游、领导、图说公用
+.block-title {
+	padding-left: 10px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 18px;
+	color: #0c8ad8;
+	border-bottom: 1px solid #0c8ad8;
+	background: #fff;
+}
+
+
+.block-travel,
+.block-leader,
+.block-image {
+	float: right;
+	width: 320px;
+}
+
+// 旅游推荐
+.travel-img-main {
+	width: 320px;
+	height: 180px;
+	margin-bottom: 20px;
+}
+
+.travel-img-left,
+.travel-img-right {
+	width: 155px;
+	height: 87px;
+	margin-bottom: 20px;
+}
+
+.travel-img-left {
+	float: left;
+}
+
+.travel-img-right {
+	float: right;
+}
+
+.travel-publicity {
+	float: right;
+	margin-bottom: 20px;
+	width: 320px;
+	height: 180px;
+	background: #e2e2e2;
+}
+
+// 领导谈话
+.leader-title {
+	padding: 10px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.leader-main {
+	padding: 10px;
+	overflow: hidden;
+	background: #e2e2e2;
+}
+
+.leader-main-img {
+	float: left;
+	width: 160px;
+	height: 90px;
+}
+
+.leader-main-text {
+	float: left;
+	margin-left: 10px;
+	width: 130px;
+	height: 90px;
+}
+
+.leader-news {
+	margin-bottom: 20px;
+}
+
+.leader-news-title {
+	padding: 10px;
+	line-height: 30px;
+	font-size: 18px;
+	color: rgba(0, 0, 0, .87);
+	border-bottom: 1px solid #f2f2f2;
+	background: #fff;
+}
+
+// block image
+.block-image-focus-content {
+	position: relative;
+	height: 180px;
+	width: 320px;
+
+	.block-image-focus {
+	float: right;
+	width: 100%;
+	height: 100%;
+}
+
+.focus-dots-content {
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+	text-align: center;
+
+	.dot {
+		margin: 0 5px;
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		background: #fff;
+		border-radius: 50%;
+	}
+
+	.dot.active {
+		background: #0c8ad8;
+	}
+}
+}
+
