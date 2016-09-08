@@ -206,7 +206,8 @@ body {
   background: url(../images/column_title_01.png) no-repeat;
   background-position: top right;
   font-size: 14px;
-  line-height: 30px; }
+  line-height: 30px;
+  color: #717070; }
 
 .mod-reports {
   position: relative;
@@ -560,11 +561,12 @@ body {
   line-height: 30px;
   overflow: hidden; }
 
-.riding-block-link {
+a.riding-block-link {
   position: relative;
   float: left;
   width: 100%;
-  padding-top: 15px; }
+  padding-top: 15px;
+  color: #959595; }
 
 .riding-link-title {
   position: absolute;
