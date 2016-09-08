@@ -167,3 +167,11 @@ export function updateItems(data) {
 }
 
 ```
+
+###
+
+From [Here](https://github.com/kenberkeley/redux-simple-tutorial)
+state是应用的状态，store是state的管理器,唯一的 (state == store.getState())
+strore包括getState()、 dispatch(action)、 subscribe(listener)、 replaceReducer(nextReducer)
+action就是普通对象，用于规定数据格式。
+reducer用来更新state,根据action type修改state，返回新的state。
