@@ -1,4 +1,4 @@
-## 轮播图
+# 轮播图
 #### 0. 使用方法
 按外容器div > 内容器div > ul > (li > img)来编写HTML，按照图片宽高为内容器设置宽高。  
 <small>只需要引入`/dist/js/lunbo.js/`</small>
