@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>七夕节好消息，织女来帮你找对象</title>
+
+	<meta name="format-detection" content="telephone=no">
+	<!-- 强制竖屏 -->
+	<meta name="screen-orientation" content="portrait">
+	<meta name=”x5-orientation” content=”portrait”>
+	<meta name="description" itemprop="description" content="七夕，送你个对象！">
+	<link rel="stylesheet" href="dist/libs/swiper/swiper-3.3.1.min.css">
+	<link rel="stylesheet" href="dist/css/index.css">
+	<script type="text/javascript" src="http://himg2.huanqiu.com/statics/www/hqspecial/dist/js/lib/zepto.min.js"></script>
+	<script>
+function oChage(num1,num2)
+   {
+   	if(num1>num2)
+   	{
+   		return num2;
+   	}
+   	else
+   	{
+   		return num1;
+   	}
+   }
+
+   	if(screen.width<1000)
+   	{
+
+    	$("body").css("width",oChage(screen.width,screen.height));
+   	}
+   	else
+   	{
+   		$("body").css("width","640");
+   	}
+   	</script>
+	<script>
+		!function(a,b){function c(){var b=f.getBoundingClientRect().width;b/i>540&&(b=540*i);var c=b/10;f.style.fontSize=c+"px",k.rem=a.rem=c}var d,e=a.document,f=e.documentElement,g=e.querySelector('meta[name="viewport"]'),h=e.querySelector('meta[name="flexible"]'),i=0,j=0,k=b.flexible||(b.flexible={});if(g){console.warn("将根据已有的meta标签来设置缩放比例");var l=g.getAttribute("content").match(/initial\-scale=([\d\.]+)/);l&&(j=parseFloat(l[1]),i=parseInt(1/j))}else if(h){var m=h.getAttribute("content");if(m){var n=m.match(/initial\-dpr=([\d\.]+)/),o=m.match(/maximum\-dpr=([\d\.]+)/);n&&(i=parseFloat(n[1]),j=parseFloat((1/i).toFixed(2))),o&&(i=parseFloat(o[1]),j=parseFloat((1/i).toFixed(2)))}}if(!i&&!j){var p=a.navigator.userAgent,q=(!!p.match(/android/gi),!!p.match(/iphone/gi)),r=q&&!!p.match(/OS 9_3/),s=a.devicePixelRatio;i=q&&!r?s>=3&&(!i||i>=3)?3:s>=2&&(!i||i>=2)?2:1:1,j=1/i}if(f.setAttribute("data-dpr",i),!g)if(g=e.createElement("meta"),g.setAttribute("name","viewport"),g.setAttribute("content","initial-scale="+j+", maximum-scale="+j+", minimum-scale="+j+", user-scalable=no"),f.firstElementChild)f.firstElementChild.appendChild(g);else{var t=e.createElement("div");t.appendChild(g),e.write(t.innerHTML)}a.addEventListener("resize",function(){clearTimeout(d),d=setTimeout(c,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(d),d=setTimeout(c,300))},!1),"complete"===e.readyState?e.body.style.fontSize=12*i+"px":e.addEventListener("DOMContentLoaded",function(){e.body.style.fontSize=12*i+"px"},!1),c(),k.dpr=a.dpr=i,k.refreshRem=c,k.rem2px=function(a){var b=parseFloat(a)*this.rem;return"string"==typeof a&&a.match(/rem$/)&&(b+="px"),b},k.px2rem=function(a){var b=parseFloat(a)/this.rem;return"string"==typeof a&&a.match(/px$/)&&(b+="rem"),b}}(window,window.lib||(window.lib={}));
+	</script>
+</head>
+<body>
+<div id='wx_pic' style='margin:0 auto;display:none;'>
+	<img src='dist/imgs/share.png' />
+</div>
+
+<div id="musicBtn">
+    <audio id="audio" src="http://a4-peoplecdn.oss-cn-qingdao.aliyuncs.com/9a3de1534880b9ff9bcb90911f7dbf1b./tmp/1470390413_567" loop="loop" autoplay="autoplay"> 
+</div>
+
+	<div class="swiper-container">
+	  <div class="swiper-wrapper">
+	    <div class="swiper-slide bg-1">
+		    <div class="poetrys">
+		    	<p class="poetry-0">七夕就要来</p>
+		    	<p class="poetry-1">人人秀恩爱</p>
+		    	<p class="poetry-2">你在声声叹</p>
+		    	<p class="poetry-3">对象哪里来</p>
+		    	<p class="poetry-4">神仙下凡间</p>
+		    	<p class="poetry-5">为你牵红线</p>
+	    	</div>
+	    </div>
+	    <div class="swiper-slide bg-2">
+	    	<p id="dialogue1"><span></span></p>
+	    	<p id="dialogue2"><span></span></p>
+	    	<div class="you"></div>
+	    </div>
+
+  		<div class="swiper-slide bg-3-parent">
+  			<div class="bg-3">
+	  			<div class="describe">
+			    	<p>我谁都不要，</p>
+			    	<p>就要牛郎/织女。</p>
+		    	</div>
+	    	</div>
+	    	<div class="btns result-btn">
+		    	<button class="choose" data="2">选择</button>
+		    	<button class="pass">跳过</button>
+	    	</div>
+	    </div>
+
+	    <div class="swiper-slide bg-3-parent">
+  			<div class="bg-3">
+	  			<div class="describe">
+			    	<p>能有多傻就多傻，</p>
+			    	<p>让ta干啥就干啥。</p>
+		    	</div>
+	    	</div>
+	    	<div class="btns result-btn">
+		    	<button class="choose"  data="3">选择</button>
+		    	<button class="pass">跳过</button>
+	    	</div>
+	    </div>
+
+	    <div class="swiper-slide bg-3-parent">
+  			<div class="bg-3">
+	  			<div class="describe">
+			    	<p>大小事都能拿主意，</p>
+			    	<p>替我做主替我分忧。</p>
+		    	</div>
+	    	</div>
+	    	<div class="btns result-btn">
+		    	<button class="choose"  data="4">选择</button>
+		    	<button class="pass">跳过</button>
+	    	</div>
+	    </div>
+
+	    <div class="swiper-slide bg-3-parent">
+  			<div class="bg-3">
+	  			<div class="describe">
+			    	<p>强势一点，</p>
+			    	<p>霸道一点，</p>
+			    	<p>对我狠一点。</p>
+		    	</div>
+	    	</div>
+	    	<div class="btns result-btn">
+		    	<button class="choose"  data="5">选择</button>
+		    	<button class="pass">跳过</button>
+	    	</div>
+	    </div>
+
+	    <div class="swiper-slide bg-3-parent">
+  			<div class="bg-3">
+	  			<div class="describe">
+			    	<p>天荒地老单身就好</p>
+		    	</div>
+	    	</div>
+	    	<div class="btns result-btn">
+		    	<button class="choose"  data="6">选择</button>
+		    	<button class="pass">跳过</button>
+	    	</div>
+	    </div>
+
+	    <div class="swiper-slide bg-3-parent">
+  			<div class="bg-3">
+	  			<div class="describe">
+			    	<p>希望我的另一半懂我，</p>
+			    	<p>在我需要的时候出现，</p>
+			    	<p>给我向上的力量，</p>
+			    	<p>陪我见证世界的精彩，</p>
+			    	<p>永不分离。</p>
+		    	</div>
+	    	</div>
+	    	<div class="btns result-btn">
+		    	<button class="choose single-btn"  data="7">选择</button>
+	    	</div>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="button-next"></div>
+	<div class="cover">
+		<div class="share">
+			<p>点击这里</p>
+			<p>分享到朋友圈</p>
+		</div>
+	</div>
+
+	<script src="dist/js/index.js"></script>
+	<script src="dist/libs/swiper/swiper-3.3.1.min.js"></script>
+	<script>
+		// 存放对话对象，用于之后的destory
+		var dialogue = null;
+
+		// 存放测试结果
+		var results = [
+			'<div class="swiper-slide result swiper-no-swiping"> '+
+				'<div class="niulang"></div>'+
+				'<div class="zhinv"></div>'+
+				'<div class="btns result-btn fadeInLater"><button class="back-btn" onclick="swiperBack(3)">再选选</button><button class="share-btn" onclick="share()">我要分享</button></div>'+
+				'<div class="logo">环球网出品</div>'+
+			'</div>',
+
+			'<div class="swiper-slide result swiper-no-swiping"> '+
+				'<div class="xique"></div>'+
+				'<div class="btns result-btn"><button class="back-btn" onclick="swiperBack(4)">再选选</button><button class="share-btn" onclick="share()">我要分享</button></div>'+
+				'<div class="logo">环球网出品</div>'+
+			'</div>',
+
+			'<div class="swiper-slide result swiper-no-swiping"> '+
+				'<div class="niu"></div>'+
+				'<div class="btns result-btn"><button class="back-btn" onclick="swiperBack(5)">再选选</button><button class="share-btn" onclick="share()">我要分享</button></div>'+
+				'<div class="logo">环球网出品</div>'+
+			'</div>',
+
+			'<div class="swiper-slide result swiper-no-swiping"> '+
+				'<div class="wangmu"></div>'+
+				'<div class="btns result-btn"><button class="back-btn" onclick="swiperBack(6)">再选选</button><button class="share-btn" onclick="share()">我要分享</button></div>'+
+				'<div class="logo">环球网出品</div>'+
+			'</div>',
+
+			'<div class="swiper-slide result swiper-no-swiping"> '+
+				'<div class="niulangzhinv"></div>'+
+				'<div class="btns result-btn"><button class="back-btn" onclick="swiperBack(7)">再选选</button><button class="share-btn" onclick="share()">我要分享</button></div>'+
+				'<div class="logo">环球网出品</div>'+
+			'</div>',
+
+			'<div class="swiper-slide result swiper-no-swiping"> '+
+				'<div class="huanqiuTime"></div>'+
+				'<img class="erweima" src="dist/imgs/erweima.png" alt="环球TIME"/>'+
+				'<div class="btns result-btn  fadeInLater"><button class="share-btn single-btn" onclick="share()">我要分享</button></div>'+
+				'<div class="logo">环球网出品</div>'+
+			'</div>'
+		];
+
+		var mySwiper = new Swiper('.swiper-container', {
+			direction: 'vertical',
+			nextButton: '.button-next',
+
+			onSlideChangeStart: function(swiper) {
+				 // 第二屏对话功能
+			  if(swiper.activeIndex == 1) {
+			  	// 清空对话
+			  	document.querySelector('#dialogue1 span').innerHTML = '';
+			  	document.querySelector('#dialogue2 span').innerHTML = '';
+			  	dialogue = new Dialogue({
+			  		dialogue1: ['大妈，<br>你是？', '好的，织女大人，咱牛郎叔叔呢？', '... ...'],
+			  		dialogue2: ['叫我织女大人！', '在家带孩子呢。', '今天是七夕，反正闲着也是闲着，我帮你找对象吧!']
+			  	});
+			  }
+			  if(swiper.previousIndex == 1) {
+			  	if(dialogue) {
+			  		dialogue.destory();
+			  	}
+			  }
+			},
+
+			onSlideChangeEnd: function(swiper) {
+			  // 显示/隐藏next button
+			  if(swiper.activeIndex >= 7) {
+			  	document.querySelector('.button-next').style.display = 'none';
+			  } else {
+			  	document.querySelector('.button-next').style.display = 'block';
+			  }
+			} 
+		});
+		// 返回以及分享
+		function swiperBack(index) {
+			mySwiper.slideTo(index, 0, true);
+			mySwiper.removeSlide(8);
+		}
+
+		var coverElement = document.querySelector('.cover');
+
+		function share() {
+			coverElement.style.display = 'block';
+		}
+
+		coverElement.addEventListener('click', function() {
+			coverElement.style.display = 'none';
+		})
+
+	</script>
+
+<script>
+$(function(){
+	// 微信分享
+    var imgUrl = "http://toys.m.people.cn/apps/weixin_share/tpl/20160707/dist/imgs/forShare.png";
+    var lineLink = "http://toys.m.people.cn/apps/weixin_share/tpl/20160707/index.php";
+    var appid = 'wx133b04ad9003db0a';
+ 
+    function shareFriend(shareTitle, descContent) {
+        WeixinJSBridge.invoke('sendAppMessage',{
+            "appid": appid,
+            "img_url": imgUrl,
+            "img_width": "200",
+            "img_height": "200",
+            "link": lineLink,
+            "desc": descContent,
+            "title": shareTitle
+        }, function(res) {
+            //_report('send_msg', res.err_msg);
+        })
+    }
+    function shareTimeline(shareTitle, descContent) {
+        WeixinJSBridge.invoke('shareTimeline',{
+            "img_url": imgUrl,
+            "img_width": "200",
+            "img_height": "200",
+            "link": lineLink,
+            "desc": descContent,
+            "title": shareTitle
+        }, function(res) {
+               //_report('timeline', res.err_msg);
+        });
+    }
+    function shareWeibo(shareTitle, descContent) {
+        WeixinJSBridge.invoke('shareWeibo',{
+            "content": descContent,
+            "url": lineLink,
+        }, function(res) {
+            //_report('weibo', res.err_msg);
+        });
+    }
+    // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+
+    var descContent="全世界都在过七夕，你还在略过七夕？没关系，今天就是你的单身终结日。";
+    var shareTitle = "七夕节好消息，织女来帮你找对象"; 
+
+
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {				
+        // 发送给好友
+        WeixinJSBridge.on('menu:share:appmessage', function(argv){
+            shareFriend(shareTitle, descContent);
+        });
+        // 分享到朋友圈
+        WeixinJSBridge.on('menu:share:timeline', function(argv){
+        	var descContent="七夕节好消息，织女来帮你找对象";
+            shareTimeline(descContent,descContent);
+        });
+        // 分享到微博
+        WeixinJSBridge.on('menu:share:weibo', function(argv){
+            shareWeibo(shareTitle, descContent);
+        });
+    }, false);
+
+     if (typeof(mqq) != "undefined") {
+	    mqq.data.setShareInfo({
+	        title: '七夕节好消息，织女来帮你找对象',
+	        desc: '全世界都在过七夕，你还在略过七夕？没关系，今天就是你的单身终结日。',
+	        image_url: 'http://toys.m.people.cn/apps/weixin_share/tpl/20160707/dist/imgs/forShare.png'
+	    }, function(r) {});
+	  }
+});
+</script>
+
+</body>
+</html>

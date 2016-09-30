@@ -1,0 +1,527 @@
+html,
+body {
+	position: relative;
+
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+p {
+	margin: 0;
+}
+
+.swiper-container {
+	height: 100%;
+}
+
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+@-moz-keyframes animation-musicBtn {
+  0% {
+   -moz-transform:rotate(0deg);
+  }
+  100%{
+ 	-moz-transform:rotate(360deg);
+  }
+}
+@-webkit-keyframes animation-musicBtn {
+  0% {
+   -webkit-transform:rotate(0deg);
+  }
+  100%{
+ 	-webkit-transform:rotate(360deg);
+  }
+}
+@keyframes animation-musicBtn {
+  0% {
+   transform:rotate(0deg);
+  }
+  100%{
+ 	transform:rotate(360deg);
+  }
+}
+
+#musicBtn { width:1.5rem; height:1.5rem; background:url(../imgs/music.png) no-repeat center center; background-size:cover; position:fixed; right:0rem; top:0rem; z-index:10; -webkit-animation:animation-musicBtn 3s linear infinite; -moz-animation:animation-musicBtn 3s linear infinite; animation:animation-musicBtn 3s linear infinite;}
+#musicBtn.paused { width:1.5rem; height:1.5rem; background:url(../imgs/music-pause.png) no-repeat center center; background-size:cover; -webkit-animation-play-state:paused; -moz-animation-play-state:paused; animation-play-state:paused;}
+
+
+// 背景
+@for $i from 1 to 9 {
+	.bg-#{$i} {
+		background: url(../imgs/bg-#{$i}.png);
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+	}
+}
+
+.bg-1 {
+	background-size: cover;
+}
+
+.bg-2 {
+	background-color: #f5cd16;
+}
+
+.bg-3-parent {
+	background: linear-gradient(top, #b05ba5, #b05ba5 50%, #1f8dcd 50%,#1f8dcd);
+	background: -webkit-linear-gradient(top, #b05ba5, #b05ba5 50%, #1f8dcd 50%, #1f8dcd);
+}
+
+.bg-3 {
+	background-size: 100%;
+	width: 100%;
+	height: 100%;
+}
+
+// 第一页 诗的样式
+.poetrys {
+	position: absolute;
+	top: 22.8%;
+	left: 0;
+	right: 0;
+
+	color: #fff;
+	font-size: .5625rem;
+
+	text-align: center;
+
+	p {
+		line-height: 1rem;
+	}
+}
+
+
+// 诗句动画
+@for $i from 0 to 6 {
+	.poetry-#{$i} {
+		position: relative;
+		opacity: 0;
+		top: 1000px;
+		text-shadow: .05rem .05rem .05rem #333;
+		letter-spacing: .1rem;
+		-webkit-animation: fadeInUp 2s linear 1 1+1s * $i;
+		animation: fadeInUp 2s linear 1  1+1s * $i;
+		-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+	}
+}
+
+@-webkit-keyframes fadeInUp {
+	from {
+		opacity: 0;
+		top: 1000px;
+	}
+	to {
+		opacity: 1;
+		top: 0;
+	}
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		top: 1000px;
+	}
+	to {
+		opacity: 1;
+		top: 0;
+	}
+}
+
+// 第二页 对话
+#dialogue1,
+#dialogue2 {
+	font-size: .5rem;
+	line-height: .6rem;
+	letter-spacing: 0.01rem;
+}
+
+#dialogue1 {
+	position: absolute;
+	bottom: 4.5rem;
+	left: .5rem;
+
+	box-sizing: border-box;
+	width: 5rem;
+	height: 4rem;
+	padding: 15% 10%;
+
+	text-align: center;
+}
+
+#dialogue2 {
+	position: absolute;
+	top: 2rem;
+	right: .5rem;
+
+	box-sizing: border-box;
+	width: 5rem;
+	height: 4rem;
+	padding: 15% 10%;
+
+	text-align: center;
+}
+
+.you {
+	position: absolute;
+	bottom: 3.5rem;
+	right: 1rem;
+
+	width: 3.45rem;
+	height: 5rem;
+
+	background: url(../imgs/you.png) no-repeat center/contain;
+}
+
+.heart:after {
+	content: '';
+
+	position: absolute;
+	top: 10%;
+
+	width: 100%;
+	height: 100%;
+
+	background: url(../imgs/arrow.png) no-repeat center/contain;
+}
+
+// 第三页 描述
+.describe {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-45%, -45%);
+
+	font-size: .5rem;
+	color: #fff;
+	word-break: keep-all;
+
+	line-height: 1rem;
+	text-align: center;
+}
+
+// 翻页按钮样式
+.button-next {
+	position: fixed;
+	left: 50%;
+	bottom: .5rem;
+	margin-left: -.42187rem;
+
+	width: .84375rem;
+	height: .84375rem;
+
+	background: url(../imgs/next-btn.png);
+	background-size: cover;
+
+	z-index: 101;
+
+	animation: pulse 2s ease infinite;
+	-webkit-animation: pulse 2s ease infinite;
+}
+
+@-webkit-keyframes pulse {
+	from {
+		transform: scale(1, 1);
+	}
+
+	to {
+		transform: scale(1.1, 1.1);
+	}
+}
+
+@keyframes pulse {
+	from {
+		transform: scale(1, 1);
+	}
+
+	to {
+		transform: scale(1.1, 1.1);
+	}
+}
+
+// 结果页
+.result {
+	background: url(../imgs/bg-4.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-color: #f5cd16;
+}
+// 结果一
+.niulang {
+	margin: 0 .8rem;
+	margin-top: 2.5rem;
+	height: 4.75rem;
+	background: url(../imgs/niulang.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	opacity: 0;
+	animation: fadeIn 1s ease 1 .5s;
+	-webkit-animation: fadeIn 1s ease 1 .5s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+.zhinv {
+	margin: 0 .8rem;
+
+	margin-top: -.5rem;
+	height: 5.1875rem;
+	background: url(../imgs/zhinv.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	opacity: 0;
+	animation: fadeIn 1s ease 1 1.5s;
+	-webkit-animation: fadeIn 1s ease 1 1.5s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.xique {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -4.7rem;
+	margin-left: -4.14rem;
+
+	width: 8.28rem;
+	height: 9.4rem;
+
+	background: url(../imgs/xique.png) no-repeat center/contain;
+
+	opacity: 0;
+	animation: fadeIn 1s ease 1 .5s;
+	-webkit-animation: fadeIn 1s ease 1 .5s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.niu {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -5rem;
+	margin-left: -3.36rem;
+
+	width: 6.72rem;
+	height: 10rem;
+
+	background: url(../imgs/niu.png) no-repeat center/contain;
+
+	opacity: 0;
+	animation: fadeIn 1s ease 1 .5s;
+	-webkit-animation: fadeIn 1s ease 1 .5s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.wangmu {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -5rem;
+	margin-left: -3.19rem;
+
+	width: 6.38rem;
+	height: 10rem;
+
+	background: url(../imgs/wangmu.png) no-repeat center/contain;
+
+	opacity: 0;
+	animation: fadeIn 1s ease 1 .5s;
+	-webkit-animation: fadeIn 1s ease 1 .5s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.niulangzhinv {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -5.1rem;
+	margin-left: -3.71rem;
+
+	width: 7.42rem;
+	height: 10.2rem;
+
+	background: url(../imgs/niulangzhinv.png) no-repeat center/contain;
+
+	opacity: 0;
+	animation: fadeIn 1s ease 1 .5s;
+	-webkit-animation: fadeIn 1s ease 1 .5s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.huanqiuTime {
+	margin-top: 3rem;
+
+	height: 4.5rem;
+	background: url(../imgs/huanqiuTime.png) no-repeat center/contain;
+
+	opacity: 0;
+	animation: fadeIn 1s ease 1 .5s;
+	-webkit-animation: fadeIn 1s ease 1 .5s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.erweima {
+	margin-top: .5rem;
+
+	height: 4.5rem;
+	width: 100%;
+
+	opacity: 0;
+	animation: fadeIn 1s ease 1 1.5s;
+	-webkit-animation: fadeIn 1s ease 1 1.5s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+// logo
+.logo {
+	position: absolute;
+	bottom: .5rem;
+
+	width: 100%;
+
+	font-size: 15px;
+	color: #fff;
+	text-align: center;
+}
+
+[data-dpr='2'] .logo {
+	font-size: 30px;
+}
+
+[data-dpr='3'] .logo {
+	font-size: 45px;
+}
+
+// 结果按钮
+// 单选样式
+[type=radio] {
+	display: none;
+}
+
+.btns {
+	position: absolute;
+	bottom: 1.5rem;
+
+	width: 100%;
+	height: 1.25rem;
+
+	padding: 0 10%;
+	box-sizing: border-box;
+}
+
+.choose,
+.pass {
+	position: absolute;
+
+	display: inline-block;
+	width: 40%;
+	height: 1.25rem;
+
+	font-size: 0;
+}
+
+.choose {
+	background: url(../imgs/choose-btn.png) no-repeat center/contain;
+	border: 0;
+	border: none;
+}
+
+.pass {
+	left: 50%;
+	background: url(../imgs/pass-btn.png) no-repeat center/contain;
+	border: 0;
+	border: none;
+}
+
+.single-btn {
+	@extend .choose;
+	width: 80%;
+	left: initial;
+}
+
+.result-btn {
+
+	opacity: 0;
+	animation: fadeIn 1s ease 1 1.5s;
+	-webkit-animation: fadeIn 1s ease 1 1.5s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.fadeInLater {
+	opacity: 0;
+	animation: fadeIn 1s ease 1 2.5s;
+	-webkit-animation: fadeIn 1s ease 1 2.5s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.back-btn {
+	@extend .choose;
+	background-image: url(../imgs/back-btn.png);
+}
+
+.share-btn {
+	@extend .pass;
+	background-image: url(../imgs/share-btn.png);
+}
+
+// share
+.cover {
+	display: none;
+
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	background: rgba(0, 0, 0, 0.7);
+
+	z-index: 111;
+}
+
+.share {
+	margin: .5rem;
+	padding-top: 1.5rem;
+	height: .7rem;
+
+	color: #fff;
+	font-size: 0.48rem;
+
+	text-indent: 1rem;
+	line-height: .7rem;
+	text-align: center;
+
+	background: url(../imgs/share.png) no-repeat right/contain border-box;
+}
