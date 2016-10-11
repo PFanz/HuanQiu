@@ -1,0 +1,510 @@
+@charset "utf-8";
+
+@import  "../../../../../sassCore/base";
+
+// 默认变量
+$baseUrl:  	"../../../images/"; //http://himg2.huanqiu.com/statics/www/hqnet/dist/images/
+$curUrl:   	"../images/";		//http://himg2.huanqiu.com/statics/www/hqnet/dist/channel/lvyou/images/
+$channelName: 	"city"; 		//频道名称
+$name: 			"city"; 		//icon图片背景后缀
+$cNavDefault: #2b2b2b;   		//默认 a 文字颜色
+$cNavArrow: #b91d15;			//导航箭头
+$cPrimary: #b91d15;   			//主色调--导航背景颜色，a选中颜色
+
+// 载入自定义公用碎片  src/import文件夹
+//-----------------------------------------------------
+@import "../../../../import/layout";     		//基础框架
+@import "../../../../import/icon";     		//全站icon
+@import "../../../../import/mod-focus"; 		//焦点图模块
+@import "../../../../import/mod-footer"; 		//公共底部模块
+@import "../../../../import/mod-channelNav"; 	//频道导航模块
+
+body {
+	background: #f5f5f5;
+}
+
+.container .row {
+	a:hover {
+		text-decoration: underline;
+		color: #b91d15;
+	}
+}
+
+i.icon-camera {
+	@extend %inline-block;
+	position: relative;
+	margin-right: 5px;
+	margin-bottom: 3px;
+	height: 8px;
+	width: 10px;
+	vertical-align: middle;
+	background: #c81f17;
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: -1.25px;
+		right: -5px;
+		width: 0;
+		height: 0;
+		border: 5px solid transparent;
+		border-right: 5px solid #c81f17;
+	}
+}
+
+// 所有的更多按钮
+.city-more {
+	@include float(right);
+	padding-right: 12px;
+	font-size: 12px;
+	color: #1f64b9;
+}
+
+a.city-more:hover {
+	color: #1f64b9!important;
+}
+
+// 所有新闻标题样式
+.news-small {
+	padding: 8px 0;
+	font-size: 14px;
+	margin-left: 5px;
+}
+// 所有大标题
+.city-title-comm {
+	height: 50px;
+	line-height: 50px;
+	font-weight: bolder;
+	font-size: 16px;
+	color: #c81f17;
+	background: url(../images/btn_more.png) center right no-repeat;
+	border-bottom: 2px solid #c81f17;
+}
+
+// 所有新闻块样式  需要设置高度
+.block-first {
+	@extend %inline-block;
+	position: relative;
+	margin-bottom: 10px;
+	width: 100%;
+
+	img {
+		width: 100%;
+		height: 100%;
+	}
+
+	.block-first-title {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		padding: 5px 0;
+		text-align: center;
+		font-size: 14px;
+		@extend %bgcolor-alpha;
+	}
+}
+
+// 左右栏
+.m_l {
+	width: 660px;
+}
+
+.m_r {
+	width: 320px;
+}
+
+.main .row {
+	margin: 20px auto;
+}
+
+// 广告
+.ad-content {
+	margin: 20px auto;
+	height: auto;
+
+	img {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+// 频道图标 iconGo iconGo-arrow
+.iconGo {
+	@extend %inline-block;
+	vertical-align: middle;
+	text-indent: -999em;
+	width: 20px;
+	height: 20px;
+	background-image: url(#{$curUrl}/#{$channelName}_icon.png);
+	background-repeat: no-repeat;
+}
+// 频道导航
+.main ul.navMenu {
+	margin: 20px 0 0 180px;
+}
+
+// ********* 焦点图 *********//
+.mod-focus {
+	width: 528px;
+	height: 297px;
+	margin-right: 0;
+	margin-bottom: 0;
+	.focus_list {
+		li {
+			width: 528px;
+			height: 297px;
+		}
+	}
+	.focus-title {
+		@extend %bgcolor-alpha;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		font-size: 22px;
+		text-indent: 5px;
+		line-height: 40px;
+	}
+	.focus_page {
+		right: 10px;
+		height: 28px;
+		text-align: right;
+		a {
+			height: 10px;
+			width: 10px;
+			&.selected {
+				background-color: red;
+			}
+			span {
+				display: none;
+			}
+		}
+	}
+}
+
+
+
+// ********* 快讯 *********//
+.mod-news {
+	float: right;
+	width: 455px;
+	height: 297px;
+	border-top: 2px solid #c81f17;
+
+	.mod-news-block {
+		height: 146.5px;
+		border-bottom: 1px dotted $cNavDefault;
+		overflow: hidden;
+
+		.news-small {
+			padding: 5px 0;
+		}
+	}
+
+	a {
+		@extend %inline-block;
+	}
+
+	.mod-news-main {
+		padding-top: 5px;
+		line-height: 40px;
+		font-size: 20px;
+		color: #000;
+	}
+}
+
+// 亮点城市 滚动资讯 城市要闻
+.light-block,
+.scroll-block,
+.city-block {
+	width: 320px;
+	float: left;
+	margin-right: 20px;
+
+	.block-first {
+		height: 180px;
+	}
+}
+
+.city-block {
+	margin-right: 0;
+}
+
+// 美丽乡村
+.mod-country {
+	width: 660px;
+
+	.m_l,
+	.m_r{
+		width: 320px;
+	}
+
+	.ad-content {
+		height: auto;
+		margin-bottom: 0;
+	}
+
+	.ad-content.m_l {
+		margin-right: 20px;
+	}
+}
+
+.mod-country-focus {
+	width: 660px;
+	height: 373px;
+	margin-right: 0;
+	margin-bottom: 18px;
+	.focus_list {
+		li {
+			width: 660px;
+			height: 373px;
+		}
+	}
+	.country-focus-title {
+		@extend %bgcolor-alpha;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 46px;
+		line-height: 46px;
+		font-size: 22px;
+		text-indent: 10px;
+	}
+	.focus_country_page {
+		position: absolute;
+		bottom: 0;
+		right: 20px;
+		height: 28px;
+		text-align: right;
+		a {
+			display: inline-block;
+			text-indent: -99em;
+			width: 10px;
+			height: 10px;
+			margin: 0 2px;
+			border-radius: 50%;
+			background-color: #fff;
+			span {
+				display: none;
+			}
+			&.selected {
+				background-color: red;
+			}
+		}
+	}
+}
+
+// 城市形象
+.mod-image {
+	width: 320px;
+
+	.block-first {
+		height: 180px;
+	}
+
+	.ad-content {
+		width: 300px;
+		height: auto;
+		margin: 24px auto 0;
+	}
+}
+
+// 精准扶贫
+.mod-poor-content {
+	margin-left: -20px;
+}
+
+.mod-poor-block {
+	margin: 20px 0 0 20px;
+	float: left;
+	height: 235px;
+	width: 320px;
+
+	a {
+		@extend %inline-block;
+		position: relative;
+		width: 320px;
+		height: 180px;
+	}
+
+	a:hover {
+		text-decoration: none!important;
+	}
+
+	img {
+		height: 100%;
+		width: 100%;
+	}
+
+	.mod-poor-title {
+		@extend %bgcolor-alpha;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		font-size: 14px;
+	}
+}
+
+.mod-poor-abstract {
+	margin: 10px;
+	line-height: 24px;
+	color: lighten(#707070, 10%);
+	font-size: 14px;
+	height: 48px;
+	overflow: hidden;
+}
+
+// 非遗保护
+.mod-heritage {
+	height: 472px;
+	overflow: hidden;
+}
+
+.mod-heritage-block {
+	position: relative;
+
+	a {
+		@extend %inline-block;
+	}
+
+	img {
+		display: none;
+		width: 320px;
+		height: 180px;
+	}
+
+	.mod-heritage-title {
+		font-size: 14px;
+		height: 40px;
+		line-height: 40px;
+		text-indent: 5px;
+	}
+}
+
+.mod-heritage-block.active {
+	img {
+		display: inline-block;
+	}
+	.mod-heritage-title {
+		@extend %bgcolor-alpha;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+	}
+}
+
+// 一带一路
+.mod-rich {
+	margin-top: 10px;
+}
+
+.mod-rich-block {
+	position: relative;
+	float: left;
+
+	img {
+		width: 100%;
+		height: 100%;
+	}
+
+	.mod-rich-title {
+		@extend %bgcolor-alpha;
+		display: none;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		font-size: 14px;
+		overflow: hidden;
+	}
+}
+
+.mod-rich-block:hover {
+	.mod-rich-title {
+		@extend %inline-block;
+	}
+}
+
+.mod-rich-0 {
+	width: 180px;
+	height: 160px;
+	border-bottom: 2px solid #fff;
+	border-right: 2px solid #fff;
+}
+
+.mod-rich-1 {
+	width: 138px;
+	height: 160px;
+	border-bottom: 2px solid #fff;
+}
+
+.mod-rich-2 {
+	width: 140px;
+	height: 120px;
+	border-right: 2px solid #fff;
+}
+
+.mod-rich-3 {
+	width: 178px;
+	height: 120px;
+}
+
+// 精彩图集
+.mod-pic-content {
+	margin-left: -10px;
+	margin-right: -10px;
+}
+
+.mod-pic-block {
+	margin: 20px 10px 0;
+	float: left;
+
+	img {
+		width: 320px;
+		height: 180px;
+	}
+
+	.mod-pic-title {
+		padding-top: 10px;
+		width: 320px;
+		height: 21px;
+		font-size: 14px;
+		text-align: center;
+		overflow: hidden;
+	}
+}
+
+// 合作媒体
+.company-title {
+	height: 48px;
+	line-height: 48px;
+	font-size: 16px;
+	font-weight: bolder;
+	color: #c81f17;
+	text-align: center;
+	border-bottom: 1px dotted #2b2b2b;
+}
+
+.company-content {
+	padding: 20px 0;
+	font-size: 0;
+
+	a {
+		@extend %inline-block;
+		width: 20%;
+		height: 36px;
+		line-height: 36px;
+		text-align: center;
+		font-size: 16px;
+	}
+}
