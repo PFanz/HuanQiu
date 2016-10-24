@@ -120,10 +120,16 @@ var Lunbo = function () {
 			// 修改dot active
 			if (this.hasDot) {
 				var dotElems = this.contentElem.parentNode.querySelectorAll('.dot');
-				dotElems.forEach(function (dotElem) {
-					dotElem.classList.remove('active');
-				});
-				dotElems[pos].classList.add('active');
+				for (var i = 0, len = dotElems.length; i < len; i++) {
+					// IE 9以下不支持classList
+					// dotElems[i].classList.remove('active');
+					dotElems[i].className = 'dot';
+				}
+				// dotElems.forEach(dotElem => {
+				// 	dotElem.classList.remove('active');
+				// });
+				// dotElems[pos].classList.add('active');
+				dotElems[pos].className = 'dot active';
 			}
 		}
 
@@ -185,11 +191,16 @@ var Lunbo = function () {
 								return;
 							}
 							var targetIndex = 0;
-							dotElems.forEach(function (item, index) {
-								if (item === target) {
-									targetIndex = index;
+							for (var i = 0, len = dotElems.length; i < len; i++) {
+								if (dotElems[i] === target) {
+									targetIndex = i;
 								}
-							});
+							}
+							// dotElems.forEach( (item, index) => {
+							// 	if(item === target) {
+							// 		targetIndex = index;
+							// 	}
+							// });
 							_this2.turn(targetIndex - _this2._n);
 						}
 					};
@@ -217,14 +228,22 @@ var Lunbo = function () {
 
 			var imgElems = this.contentElem.querySelectorAll('li');
 			var imgHeight = this.contentElem.clientHeight;
-			imgElems.forEach(function (item) {
-				item.style.listStyle = 'none';
-				item.style.display = 'inline-block';
-				item.style.width = _this3.imgWidth + 'px';
-				item.style.height = imgHeight + 'px';
-				item.querySelector('img').style.width = '100%';
-				item.querySelector('img').style.height = '100%';
-			});
+			for (var i = 0, len = imgElems.length; i < len; i++) {
+				imgElems[i].style.listStyle = 'none';
+				imgElems[i].style.display = 'inline-block';
+				imgElems[i].style.width = this.imgWidth + 'px';
+				imgElems[i].style.height = imgHeight + 'px';
+				imgElems[i].querySelector('img').style.width = '100%';
+				imgElems[i].querySelector('img').style.height = '100%';
+			}
+			// imgElems.forEach(item => {
+			// 	item.style.listStyle = 'none';
+			// 	item.style.display = 'inline-block';
+			// 	item.style.width = this.imgWidth + 'px';
+			// 	item.style.height = imgHeight + 'px';
+			// 	item.querySelector('img').style.width = '100%';
+			// 	item.querySelector('img').style.height = '100%';
+			// });
 			// 自动播放
 			if (this.autoplay) {
 				this.autoplayFlag = setInterval(function () {
@@ -241,6 +260,17 @@ var Lunbo = function () {
 								_this3.turn(1);
 							}, _this3.delay * 1000);
 						});
+						if (this.hasDot) {
+							var dotContentElem = document.querySelector('.focus-dots-content');
+							dotContentElem.addEventListener('mouseenter', function () {
+								clearInterval(_this3.autoplayFlag);
+							});
+							dotContentElem.addEventListener('mouseleave', function () {
+								_this3.autoplayFlag = setInterval(function () {
+									_this3.turn(1);
+								}, _this3.delay * 1000);
+							});
+						}
 					} else if (document.attachEvent) {
 						this.contentElem.attachEvent('onmouseenter', function () {
 							clearInterval(_this3.autoplayFlag);
@@ -250,6 +280,17 @@ var Lunbo = function () {
 								_this3.turn(1);
 							}, _this3.delay * 1000);
 						});
+						if (this.hasDot) {
+							var _dotContentElem = document.querySelector('.focus-dots-content');
+							_dotContentElem.attachEvent('onmouseenter', function () {
+								clearInterval(_this3.autoplayFlag);
+							});
+							_dotContentElem.attachEvent('onmouseleave', function () {
+								_this3.autoplayFlag = setInterval(function () {
+									_this3.turn(1);
+								}, _this3.delay * 1000);
+							});
+						}
 					}
 				}
 			}
