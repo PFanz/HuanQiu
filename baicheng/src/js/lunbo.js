@@ -95,8 +95,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *params: {contetnElem: docElem, autoplay: true, delay: 3, hasDot: true, hsaArrow: true}
  * return: div.focus-dots-content包含N个a.dot,需要自定义样式
  *					div.focus-arrows-content包含a.focus-arrow-pre和a.focus-arrow-next，需要自定义样式
- *
- * 未实现： 鼠标悬浮悬浮暂停
  *					
  * 兼容IE 8
  */
