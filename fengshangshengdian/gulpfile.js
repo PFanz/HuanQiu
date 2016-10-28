@@ -23,7 +23,7 @@ gulp.task('sass', function() {
 	return gulp.src('src/sass/*.scss')
 					.pipe(sass())
 					.pipe(autoprefixer({
-						browsers: ['last 2 versions', 'ios 6', 'android >= 4.0', 'IE 8'],
+						browsers: ['last 2 versions', '> 5%', 'Firefox > 20', 'ios 6', 'android >= 4.0', 'IE 8'],
 						remove: false
 					}))
 					.pipe(postcss(processors))
@@ -41,8 +41,8 @@ gulp.task('minfile', function() {
 	// js
 	gulp.src('src/ES6/*.js')
 		.pipe(babel({
-			presets: ['es2015', 'stage-0']
-			// plugins: ["transform-es2015-modules-amd"]
+			presets: ['es2015-loose', 'stage-0'],
+			plugins: ['transform-es3-member-expression-literals']
 		}))
 		.pipe(gulp.dest('src/js'))
 		.pipe(order([

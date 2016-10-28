@@ -127,7 +127,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 .time-container {
     font-size: 43px;
     position: absolute;
-    top: 55px;
+    top: 105px;
     right: 0;
     color: #e6c250;
 }
@@ -151,7 +151,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 .vBox {
     position: absolute;
-    top: 160px;
+    top: 220px;
     right: 0;
     display: block;
     overflow: hidden;
@@ -161,7 +161,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 }
 
 .txtTop2 {
-    font-family: Microsoft YaHei, SimHei;
+    font-family: Arial;
     font-size: 24px;
     line-height: 50px;
     line-height: 25px;
@@ -171,8 +171,9 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
     width: 100%;
     height: 25px;
     text-align: center;
+    font-weight: 100;
     color: #e6c250;
-    // background: url(../images/bg_title.png) no-repeat center bottom;
+    background: url(../images/bg_title.png) no-repeat center bottom;
 }
 
 // 第一部分
@@ -186,6 +187,16 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
     position: relative;
     float: left;
     overflow: hidden;
+
+    .cover {
+        position: absolute;
+        bottom: 15px;
+        right: 0;
+        width: 130px;
+        height: 30px;
+        background: #044a40;
+        background: linear-gradient(#0d6356, #095a4e, #065146);
+    }
 }
 
 #foucsBox {
@@ -217,7 +228,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 .focus-dots-content {
     position: absolute;
-    bottom: 25px;
+    bottom: 20px;
     right: 40px;
 
     .dot {
@@ -286,14 +297,21 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
     float: right;
     overflow: hidden;
     width: 320px;
-    height: 500px - 48px - 25px;
-    padding: 48px 25px 25px;
+    height: 500px - 35px - 25px;
+    padding: 35px 25px 25px;
     background: #fff;
 
-    .tit {
-        font-size: 30px;
-        color: #e6c250;
-        border-bottom: 1px solid #e6c250;
+    .bg_action {
+        padding: 0;
+        height: 37px;
+        background: url(../images/bg_action.jpg) no-repeat;
+    }
+
+    .bg_news {
+        margin: 20px 0;
+        padding: 0;
+        height: 37px;
+        background: url(../images/bg_news.png) no-repeat;
     }
 
     p {
@@ -311,7 +329,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
     background: url(../images/bg_standard.png) no-repeat;
     font-size: 14px;
     color: #fff;
-    line-height: 35px;
+    line-height: 30px;
     text-align: center;
 
     .standard-0 {
@@ -410,12 +428,13 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
     background: rgba(207, 178, 90, .8);
     text-align: center;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .triangle-title {
-    margin: 10px auto 5px;
+    margin: 20px auto 10px;
     width: 140px;
-    height: 42px;
+    height: 44px;
     overflow: hidden;
     font-size: 22px;
     line-height: 22px;
@@ -424,8 +443,6 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 .triangle-small {
     margin: 5px auto 0;
-    width: 85px;
-    height: 27px;
     font-size: 18px;
     color: #7e5624;
 }
@@ -443,12 +460,96 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 .triangle-heart.active {
     background: url(../images/heart_active.png) no-repeat;
+    transition: background .3s ease-in 0.05s;
 }
+
+// 第一行三角形正反
+    .row-1 .triangle-content-0 {
+        position: absolute;
+        top: -205px;
+        left: -11px;
+        width: 217.1px;
+        height: 217.1px;
+        -webkit-transform: skew(14deg, 14deg);
+        transform: skew(14deg, 14deg);
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .row-1 .triangle-content-2 {
+        position: absolute;
+        top: -375px;
+        left: 159px;
+        width: 217.1px;
+        height: 217.1px;
+        -webkit-transform: skew(14deg, 14deg);
+        transform: skew(14deg, 14deg);
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .row-1 .triangle-content-4 {
+        position: absolute;
+        top: -545px;
+        left: 329px;
+        width: 217.1px;
+        height: 217.1px;
+        -webkit-transform: skew(14deg, 14deg);
+        transform: skew(14deg, 14deg);
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .row-1 .triangle-content-6 {
+        position: absolute;
+        top: -715px;
+        left: 499px;
+        width: 217.1px;
+        height: 217.1px;
+        -webkit-transform: skew(14deg, 14deg);
+        transform: skew(14deg, 14deg);
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .row-1 .triangle-content-1 {
+        position: absolute;
+        top: -138px;
+        left: 226px;
+        width: 217.1px;
+        height: 217.1px;
+        -webkit-transform: skew(14deg, 14deg);
+        transform: skew(14deg, 14deg);
+        overflow: hidden;
+    }
+
+    .row-1 .triangle-content-3 {
+        position: absolute;
+        top: -308px;
+        left: 396px;
+        width: 217.1px;
+        height: 217.1px;
+        -webkit-transform: skew(14deg, 14deg);
+        transform: skew(14deg, 14deg);
+        overflow: hidden;
+    }
+
+    .row-1 .triangle-content-5 {
+        position: absolute;
+        top: -478px;
+        left: 566px;
+        width: 217.1px;
+        height: 217.1px;
+        -webkit-transform: skew(14deg, 14deg);
+        transform: skew(14deg, 14deg);
+        overflow: hidden;
+    }
+// /第一行三角形正反
 
 .row-1 {
     position: relative;
     margin-top: 20px;
-    height: 200px;
+    height: 218px;
     overflow: hidden;
 
     .triangle {
@@ -456,30 +557,32 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
         transform: rotate(45deg);
     }
 
-    @for $i from 0 to 4 {
-        .triangle-content-#{$i} {
-            position: absolute;
-            top: -200px - $i * 170px;
-            left: 0px + $i * 170px;
-            width: 200px;
-            height: 200px;
-            transform: skew(10deg, 10deg);
-            overflow: hidden;
-            background: #fff;
-        }
-    }
+    // @for $i from 0 to 4 {
+    //     // 倒三角
+    //     .triangle-content-#{$i} {
+    //         position: absolute;
+    //         top: -205px - $i * 170px;
+    //         left: -11px + $i * 170px;
+    //         width: 217.1px;
+    //         height: 217.1px;
+    //         transform: skew(14deg, 14deg);
+    //         overflow: hidden;
+    //         background: #fff;
+    //     }
+    // }
 
-    @for $i from 4 to 7 {
-        .triangle-content-#{$i} {
-            position: absolute;
-            top: -144px - ($i - 4) * 170px;
-            left: 226px + ($i - 4) * 170px;
-            width: 200px;
-            height: 200px;
-            transform: skew(10deg, 10deg);
-            overflow: hidden;
-        }
-    }
+    // @for $i from 4 to 7 {
+    //     // 正三角
+    //     .triangle-content-#{$i} {
+    //         position: absolute;
+    //         top: -138px - ($i - 4) * 170px;
+    //         left: 226px + ($i - 4) * 170px;
+    //         width: 217.1px;
+    //         height: 217.1px;
+    //         transform: skew(14deg, 14deg);
+    //         overflow: hidden;
+    //     }
+    // }
 
     .triangle-content-0,
     .triangle-content-1,
@@ -491,38 +594,120 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
         .triangle-cover,
         img {
             position: absolute;
-            height: 170px;
-            width: 240px;
-            transform: skew(-10deg, -10deg) rotate(-45deg);
+            height: 210px;
+            width: 250px;
+            transform: skew(-14deg, -14deg) rotate(-45deg);
         }
     }
 
     .triangle-content-0,
-    .triangle-content-1,
-    .triangle-content-2,
-    .triangle-content-3 {
-        .triangle-cover,
-        img {
-            top: 64px;
-            left: 29px;
-        }
-    }
-
     .triangle-content-4,
-    .triangle-content-5,
+    .triangle-content-2,
     .triangle-content-6 {
         .triangle-cover,
         img {
-            top: -37px;
-            left: -70px;
+            top: 58px;
+            left: 38px;
+        }
+    }
+
+    .triangle-content-1,
+    .triangle-content-5,
+    .triangle-content-3 {
+        .triangle-cover,
+        img {
+            top: -49px;
+            left: -74px;
         }
     }
 }
+
+// 第二行三角形正反
+.row-2 .triangle-content-1 {
+    position: absolute;
+    top: -290px;
+    left: 74px;
+    width: 217.1px;
+    height: 217.1px;
+    -webkit-transform: skew(14deg, 14deg);
+    transform: skew(14deg, 14deg);
+    overflow: hidden;
+    background: #fff;
+}
+
+.row-2 .triangle-content-3 {
+    position: absolute;
+    top: -460px;
+    left: 244px;
+    width: 217.1px;
+    height: 217.1px;
+    -webkit-transform: skew(14deg, 14deg);
+    transform: skew(14deg, 14deg);
+    overflow: hidden;
+    background: #fff;
+}
+
+.row-2 .triangle-content-5 {
+    position: absolute;
+    top: -630px;
+    left: 414px;
+    width: 217.1px;
+    height: 217.1px;
+    -webkit-transform: skew(14deg, 14deg);
+    transform: skew(14deg, 14deg);
+    overflow: hidden;
+    background: #fff;
+}
+
+.row-2 .triangle-content-0 {
+    position: absolute;
+    top: -51px;
+    left: 141px;
+    width: 217.1px;
+    height: 217.1px;
+    -webkit-transform: skew(14deg, 14deg);
+    transform: skew(14deg, 14deg);
+    overflow: hidden;
+}
+
+.row-2 .triangle-content-2 {
+    position: absolute;
+    top: -221px;
+    left: 311px;
+    width: 217.1px;
+    height: 217.1px;
+    -webkit-transform: skew(14deg, 14deg);
+    transform: skew(14deg, 14deg);
+    overflow: hidden;
+}
+
+.row-2 .triangle-content-4 {
+    position: absolute;
+    top: -391px;
+    left: 481px;
+    width: 217.1px;
+    height: 217.1px;
+    -webkit-transform: skew(14deg, 14deg);
+    transform: skew(14deg, 14deg);
+    overflow: hidden;
+}
+
+.row-2 .triangle-content-6 {
+    position: absolute;
+    top: -561px;
+    left: 651px;
+    width: 217.1px;
+    height: 217.1px;
+    -webkit-transform: skew(14deg, 14deg);
+    transform: skew(14deg, 14deg);
+    overflow: hidden;
+}
+// /第二行三角形正反
 
 .row-2 {
     position: relative;
     margin-top: 20px;
-    height: 200px;
+    height: 218px;
     overflow: hidden;
 
     .triangle {
@@ -530,30 +715,30 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
         transform: rotate(45deg);
     }
 
-    @for $i from 0 to 3 {
-        .triangle-content-#{$i} {
-            position: absolute;
-            top: -285px - $i * 170px;
-            left: 85px + $i * 170px;
-            width: 200px;
-            height: 200px;
-            transform: skew(10deg, 10deg);
-            overflow: hidden;
-            background: #fff;
-        }
-    }
+    // @for $i from 0 to 3 {
+    //     .triangle-content-#{$i} {
+    //         position: absolute;
+    //         top: -290px - $i * 170px;
+    //         left: 74px + $i * 170px;
+    //         width: 217.1px;
+    //         height: 217.1px;
+    //         transform: skew(14deg, 14deg);
+    //         overflow: hidden;
+    //         background: #fff;
+    //     }
+    // }
 
-    @for $i from 3 to 7 {
-        .triangle-content-#{$i} {
-            position: absolute;
-            top: -229px - ($i - 4) * 170px;
-            left: 311px + ($i - 4) * 170px;
-            width: 200px;
-            height: 200px;
-            transform: skew(10deg, 10deg);
-            overflow: hidden;
-        }
-    }
+    // @for $i from 3 to 7 {
+    //     .triangle-content-#{$i} {
+    //         position: absolute;
+    //         top: -221px - ($i - 4) * 170px;
+    //         left: 311px + ($i - 4) * 170px;
+    //         width: 217.1px;
+    //         height: 217.1px;
+    //         transform: skew(14deg, 14deg);
+    //         overflow: hidden;
+    //     }
+    // }
 
     .triangle-content-0,
     .triangle-content-1,
@@ -565,29 +750,29 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
         .triangle-cover,
         img {
             position: absolute;
-            height: 170px;
-            width: 240px;
-            transform: skew(-10deg, -10deg) rotate(-45deg);
+            height: 210px;
+            width: 250px;
+            transform: skew(-14deg, -14deg) rotate(-45deg);
+        }
+    }
+
+    .triangle-content-1,
+    .triangle-content-3,
+    .triangle-content-5 {
+        .triangle-cover,
+        img {
+            top: 58px;
+            left: 38px;
         }
     }
 
     .triangle-content-0,
-    .triangle-content-1,
-    .triangle-content-2 {
-        .triangle-cover,
-        img {
-            top: 64px;
-            left: 29px;
-        }
-    }
-
-    .triangle-content-3,
+    .triangle-content-2,
     .triangle-content-4,
-    .triangle-content-5,
     .triangle-content-6 {
         .triangle-cover,
         img {
-            top: -37px;
+            top: -49px;
             left: -70px;
         }
     }
@@ -595,9 +780,9 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 .row-1 {
     .triangle-content-0,
-    .triangle-content-1,
     .triangle-content-2,
-    .triangle-content-3 {
+    .triangle-content-4,
+    .triangle-content-6 {
 
         .triangle-num {
             margin: 0 auto 10px;
@@ -609,12 +794,12 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
         }
     }
 
-    .triangle-content-4,
-    .triangle-content-5,
-    .triangle-content-6 {
+    .triangle-content-1,
+    .triangle-content-3,
+    .triangle-content-5 {
 
         .triangle-small {
-            margin-top: 55px;
+            margin-top: 75px;
         }
 
         .triangle-num {
@@ -631,9 +816,9 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 }
 
 .row-2 {
-    .triangle-content-0,
     .triangle-content-1,
-    .triangle-content-2 {
+    .triangle-content-3,
+    .triangle-content-5 {
 
         .triangle-num {
             margin: 0 auto 10px;
@@ -645,12 +830,12 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
         }
     }
 
-    .triangle-content-3,
+    .triangle-content-0,
+    .triangle-content-2,
     .triangle-content-4,
-    .triangle-content-5,
     .triangle-content-6 {
         .triangle-small {
-            margin-top: 55px;
+            margin-top: 75px;
         }
 
         .triangle-num {
@@ -685,22 +870,22 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 .jury ul {
     display: block;
     overflow: hidden;
-    width: 910px;
-    margin: 0 auto;
+    margin: 0 15px;
 }
 
 .jury li {
     position: relative;
     display: inline;
     float: left;
-    width: 283px;
-    height: 282px;
+    width: 300px;
+    height: 300px;
     margin: 0 10px 20px;
+    box-shadow: 7px 7px 7px rgba(0, 0, 0, .4);
 }
 
 .jury img {
-    width: 283px;
-    height: 282px;
+    width: 300px;
+    height: 300px;
 }
 
 .jury .txtBox {
@@ -714,7 +899,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
     display: block;
     // filter: progid: DXImageTransform.Microsoft.gradient(enabled='true', startColorstr=#eeffffff, endColorstr=#eeffffff);
     overflow: hidden;
-    width: 253px;
+    width: 270px;
     height: 63px;
     padding: 10px 15px 0;
     background: rgba(250, 250, 250, .9) none repeat scroll 0 0 !important;
@@ -774,6 +959,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
     float: left;
     margin: 0 11px 20px;
     width: 170px;
+    box-shadow: 7px 7px 7px rgba(0, 0, 0, .4);
 
     img {
         width: 170px;
@@ -786,6 +972,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
     height: 30px;
     line-height: 30px;
     font-size: 18px;
+    font-weight: 900;
     text-align: center;
     color: #ac914d;
     overflow: hidden;
@@ -793,9 +980,11 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 }
 
 .self-text {
-    padding: 0 5px 5px;
-    height: 57px;
-    font-size: 13px;
+    padding: 0 13px 5px;
+    height: 58px;
+    line-height: 20px;
+    color: #929292;
+    font-size: 12px;
     background: #fff;
     overflow: hidden;
 }
@@ -832,9 +1021,12 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
         h4 {
             margin-top: 35px;
             font-family: Microsoft YaHei, SimHei;
-            font-size: 22px;
+            font-size: 20px;
+            font-weight: 100;
             color: #e8e8e8;
             text-align: center;
+            height: 66px;
+            overflow: hidden;
         }
     }
 
@@ -848,6 +1040,10 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
     .m1 {
         position: relative;
         width: 171px;
+
+        h4 {
+            margin-left: 14px;
+        }
 
         &:after {
             content: '';
@@ -916,6 +1112,10 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
         margin-left: 37px;
         width: 171px;
 
+        h4 {
+            width: 152px;
+        }
+
         &:before {
             content: '';
             position: absolute;
@@ -982,6 +1182,10 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
         position: relative;
         width: 171px;
 
+        h4 {
+            margin-left: 14px;
+        }
+
         &:after {
             content: '';
             position: absolute;
@@ -1006,6 +1210,10 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
         position: relative;
         margin-left: 37px;
         width: 171px;
+
+        h4 {
+            width: 153px;
+        }
 
         &:before {
             content: '';
@@ -1075,7 +1283,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 .modelPop .rigBox h4 strong {
     font-family: Microsoft YaHei, SimHei;
     font-size: 30px;
-    font-weight: normal;
+    font-weight: 100;
     margin: 0 10px 0 0;
 }
 
@@ -1098,7 +1306,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 }
 
 .modelPop .rigBox h5 span strong {
-    font-weight: normal;
+    font-weight: 100;
     color: #dac531 !important;
 }
 
@@ -1166,12 +1374,14 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 5px;
-    width: 220px - 5px - 5px;
+    padding: 2.5px 8px;
+    height: 25px;
+    width: 204px;
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     color: #fff;
     background: rgba(0, 0, 0, .5);
+    overflow: hidden;
 }
 
 .moments-left {
@@ -1179,18 +1389,33 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
     float: left;
     width: 220px;
     height: 400px;
+
+    .moments-title {
+        padding: 2.5px 5px;
+        width: 210px;
+        height: 56px;
+        font-size: 18px;
+    }
 }
 
 .moments-right {
     float: right;
     width: 220px;
     height: 400px;
+
+    .moments-title {
+        padding: 2.5px 5px;
+        width: 210px;
+        height: 56px;
+        font-size: 18px;
+    }
 }
 
 .moments-center {
     float: left;
     width: 460px;
     margin-right: 20px;
+    font-family: Microsoft YaHei;
     font-size: 0;
 
     a {
@@ -1257,12 +1482,37 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
         position: absolute;
         bottom: 0;
         left: 0;
-        padding: 5px;
-        width: calc(100% - 10px);
+        padding: 0 8px;
+        height: 31px;
+        line-height: 31px;
+        width: 220px - 16px;
         background: rgba(0, 0, 0, .5);
         text-align: center;
-        font-size: 20px;
+        font-size: 16px;
         color: #fff;
+        overflow: hidden;
+    }
+}
+
+.leader-cover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .3);
+
+    span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -35px;
+        margin-left: -30px;
+        display: inline-block;
+        height: 60px;
+        width: 60px;
+        background:  url(../images/video_btn.png) center no-repeat;
+        background-size: cover;
     }
 }
 
@@ -1275,6 +1525,13 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
     margin: 15px 20px 0 0;
     width: 458px;
     height: 250px;
+
+    .leader-title {
+        width: 442px;
+        height: 36px;
+        line-height: 36px;
+        font-size: 18px;
+    }
 }
 
 .leader-small {
@@ -1290,14 +1547,17 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 }
 
 .leader-small-title {
-    font-size: 18px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 16px;
     color: #e6c250;
+    overflow: hidden;
 }
 
 .leader-small-text {
     margin-top: 10px;
     height: 84px;
-    font-size: 14px;
+    font-size: 13px;
     color: #fff;
     overflow: hidden;
 }
@@ -1499,7 +1759,7 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 /*最新消息*/
 .lastNews ul {
-    margin: 20px 0 0;
+    margin: 10px 0 0;
 }
 
 .lastNews .iconBoxT14 a {
@@ -1514,49 +1774,29 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
 
 // 导航
 .nav {
+    margin-left: 525px;
     top: 260px;
-    right: 50px;
-}
-
-@media screen and (max-width: 1300px) {
-    .nav {
-        right: 10px;
-    }
-}
-
-@media screen and (max-width: 1100px) {
-    .nav {
-        display: none;
-    }
-}
-
-@media screen and (max-height: 740px) {
-    .nav {
-        top: 180px;
-    }
-}
-
-@media screen and (max-height: 640px) {
-    .nav {
-        display: none;
-    }
+    left: 50%;
+    width: 118px;
 }
 
 .nav {
     position: fixed;
-    padding-top: 80px;
-    background: url(../images/bg_nav.png) no-repeat;
+    padding-top: 65px;
+    background: url(../images/nav_small.png) no-repeat;
+    background-size: contain;
     z-index: 1111;
     overflow: hidden;
 
     a {
         position: relative;
         display: inline-block;
-        padding: 15px 25px;
-        width: 96px;
+        padding: 15px 15px;
+        width: 85px;
         // height: 50px;
         // line-height: 50px;
         font-size: 14px;
+        font-weight: 900;
         letter-spacing: 2px;
         color: #fff;
         text-align: center;
@@ -1569,9 +1809,9 @@ body { font:12px/1.5 Arial,"\5FAE\8F6F\96C5\9ED1",sans-serif; }
             &:before {
                 content: '>';
                 position: absolute;
-                top: 10px;
-                left: 10px;
-                font-size: 20px;
+                top: 13px;
+                left: 5px;
+                font-size: 16px;
             }
         }
     }

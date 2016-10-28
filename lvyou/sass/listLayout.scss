@@ -1,0 +1,34 @@
+@charset "UTF-8";
+//-----------------------------------------------------
+// author:      Teng MM
+// time:        2015-08-18
+// mail:        tengxumin@huanqiu.com
+//-----------------------------------------------------
+
+
+// 导入core中的基础文件  @import "../../../../sassCore/core/reset";
+//-----------------------------------------------------
+@import "../../../../sassCore/base"; 
+
+// 默认变量
+$baseUrl:  	"http://himg2.huanqiu.com/statics/www/hqnet/dist/images/"; //http://himg2.huanqiu.com/statics/www/hqnet/dist/images/
+$curUrl:   	"http://himg2.huanqiu.com/statics/www/hqnet/dist/channel/lvyou/images/";		//http://himg2.huanqiu.com/statics/www/hqnet/dist/channel/lvyou/images/
+$channelName: 	"go"; 		    //频道名称
+$name: 			"go"; 		    //icon图片背景后缀
+$cNavDefault: #2b2b2b;   		//默认 a 文字颜色
+$cNavArrow: #00b7ee; 			//导航箭头
+$cPrimary: #8d50ad;   		//主色调--导航背景颜色，a选中颜色
+
+
+
+
+
+// 载入自定义公用碎片  src/import文件夹
+//-----------------------------------------------------
+@import "../../../import/layout";     		//基础框架 
+@import "../../../import/mod-footer"; 		//公共底部模块
+@import "../../../import/mod-channelNav"; 	//频道导航模块
+body {
+	background-color: #eee;
+}
+.fallsFlow h3 a,.fallsFlow h6 { color: #06346f; font-weight: normal;}

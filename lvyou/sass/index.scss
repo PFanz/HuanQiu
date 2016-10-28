@@ -1,0 +1,603 @@
+@charset "UTF-8";
+//-----------------------------------------------------
+// author:      Teng MM
+// time:        2015-08-18
+// mail:        tengxumin@huanqiu.com
+//-----------------------------------------------------
+
+
+// 导入core中的基础文件  @import "../../../../sassCore/core/reset";
+//-----------------------------------------------------
+@import "../../../../sassCore/base"; 
+
+// 默认变量
+$baseUrl:  	"http://himg2.huanqiu.com/statics/www/hqnet/dist/images/"; //http://himg2.huanqiu.com/statics/www/hqnet/dist/images/
+$curUrl:   	"http://himg2.huanqiu.com/statics/www/hqnet/dist/channel/lvyou/images/";		//http://himg2.huanqiu.com/statics/www/hqnet/dist/channel/lvyou/images/
+$channelName: 	"go"; 		    //频道名称
+$name: 			"go"; 		    //icon图片背景后缀
+$cNavDefault: #2b2b2b;   		//默认 a 文字颜色
+$cNavArrow: #00b7ee; 			//导航箭头
+$cPrimary: #8d50ad;   		//主色调--导航背景颜色，a选中颜色
+
+
+
+// 载入自定义公用碎片  src/import文件夹
+//-----------------------------------------------------
+@import "../../../import/layout";     		//基础框架
+@import "../../../import/icon";     		//全站icon
+@import "../../../import/media"; 			//媒体查询
+@import "../../../import/nav_tabs"; 		//导航tabs
+@import "../../../import/pic_list"; 		//图片列表
+@import "../../../import/accordion_list"; 	//手风琴列表
+@import "../../../import/lumpNews_list"; 	//块图文列表
+@import "../../../import/equalTxt_list"; 	//等分文字列表
+@import "../../../import/mod-focus"; 		//焦点图模块
+@import "../../../import/mod-footer"; 		//公共底部模块
+@import "../../../import/mod-channelNav"; 	//频道导航模块
+@import "../../../import/mod-scrollPicList";//滚动图片列表模块 
+
+body {
+	min-width: 1020px;
+	background-color: #eee;
+}
+
+.mod-channelNav {
+	.navMenu {
+		margin: 20px 160px 0!important;
+	}
+	.channelLogo {
+		background: url($curUrl + 'channelLogo_go_2.png') no-repeat;
+	}
+}
+
+// 旅游频道图标 iconGo iconGo-arrow
+.iconGo {
+	@extend %inline-block;
+	vertical-align: middle;
+	text-indent: -999em;
+	width: 20px;
+	height: 20px;
+	background-image: url(#{$curUrl}/#{$channelName}_icon.png);
+	background-repeat: no-repeat;
+}
+.iconGo-information {
+	background-position: 0 0;
+	margin-right: 2px;
+}
+.iconGo-editorial {
+	background-position: -20px 0;
+}
+.iconGo-strategy {
+	width: 25px;
+	background-position: -40px 0;
+}
+.iconGo-equip {
+	width: 25px;
+	background-position: -70px 0;
+}
+.iconGo-more {
+	background-position: -100px 0;
+}
+.iconGo-more-gray {
+	background-position: -120px 0;
+}
+.iconGo-more-white {
+	background-position: -140px 0;
+}
+.iconGo-travelMake {
+	width: 30px;
+	height: 40px;
+	background-position: 0 -50px;
+}
+.iconGo-hotMap {
+	width: 30px;
+	height: 30px;
+	margin-left: 3px;
+	background-position: 0 -20px;
+}
+.iconGo-hotRoute {
+	width: 30px;
+	height: 30px;
+	margin-left: 3px;
+	background-position: -60px -20px;
+}
+.iconGo-hqGuest {
+	width: 30px;
+	height: 40px;
+	background-position: -60px -50px;
+}
+.iconGo-video {
+	width: 30px;
+	height: 40px;
+	background-position: -30px -50px;
+}
+.iconGo-arrowL {
+	width: 25px;
+	height: 30px;
+	background-position: -120px -20px;
+}
+.iconGo-arrowR {
+	width: 25px;
+	height: 30px;
+	background-position: -140px -20px;
+}
+.iconGo-video-lg {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -50px 0 0 -50px;
+	width: 100px;
+	height: 100px;
+	background-position: 0 -90px;
+}
+// 选中的图标
+.cur {
+	.iconGo-hotMap {
+		background-position: -30px -20px;
+	}
+	.iconGo-hotRoute {
+		background-position: -90px -20px;
+	}
+}
+
+.hd {
+	position: relative;
+	font-size: 20px;
+	color: #8d50ad;
+	line-height: 45px;
+	height: 45px;
+	margin-bottom: 10px;
+	strong {
+		@extend %inline-block;
+		vertical-align: middle;
+	}
+	.more {
+		position: absolute;
+		top: 10px;
+		right: 0;
+		height: 30px;
+		line-height: 30px;
+	}
+	&.hd-large {
+		font-size: 28px;
+		text-align: center;
+		margin: 15px 0 0 0;
+	}
+	.cur { 
+	  	background:#fff; 
+	  	border-radius:3px;
+	  	color:#a14796;
+		font-size:15px;
+		padding:2px 10px;
+	}
+}
+.bd {
+	@extend %clearfix;
+}
+
+.mod-focus {
+	height: 394px;
+}
+
+// ********* 资讯 *********//
+.mod-information { 
+	width: 740px;
+	height: 476px;
+	overflow: hidden;
+
+	h2 {
+		font-size: 14px;
+	}
+
+	strong {
+		margin-right: 20px;
+		font-size: 20px;
+	}
+
+	.information-link {
+		@extend %inline-block;
+		line-height: 40px;
+		vertical-align: bottom;
+		color: #707070;
+
+		a {
+			padding: 0 5px;
+		}
+	}
+}
+
+
+// ********* 编辑推荐 *********//
+#editor_more_1,
+#editorial_accordion_1 {
+	display: none;
+}
+
+.mod-editorial {
+	width: 240px;
+	height: 476px;
+	overflow: hidden;
+
+	.hd {
+		text-align: center;
+	}
+
+	.tab_editorial_btns {
+		@extend %inline-block;
+		width: 136px;
+		height: 30px;
+		line-height: 30px;
+		border: 1px solid #8d50ad;
+		border-radius: 3px;
+		font-size: 0;
+		vertical-align: -2px;
+
+		li {
+			@extend %inline-block;
+			width: 68px;
+			height: 30px;
+			line-height: 30px;
+			cursor: pointer;
+
+			strong {
+				@extend %inline-block;
+				font-size: 16px;
+				height: 30px;
+				line-height: 30px;
+			}
+		}
+
+		li.active {
+			color: #fff;
+			background-color: #8d50ad;
+		}
+	}
+
+	// 编辑推荐手风琴列表重置
+	.accordion_list {
+		position: absolute;
+		width: 240px;
+		.showElm {
+			img {
+				height: 205px;
+			}
+		}
+		p {
+			@extend .iconGo;
+			width: 100%;
+			height: 40px;
+			text-indent: 20px;			
+			background-position: -180px 18px;
+			overflow: hidden;
+		}
+		.cur {
+			background-color: $cPrimary;
+			p {
+				position: static;
+				color: #fff;
+				background-position: -180px -6px;
+				background-color: transparent;
+			}
+		}
+	}
+}
+
+ 
+// ******* 环球旅行制造 *********//
+.mod-travelMake {
+	border-top: 1px solid #6b548f;
+	height: 1269px;
+	background: url(#{$curUrl}/travelMake.jpg) top center no-repeat;
+	.hd {
+		color: #fff;
+	}
+
+	.hd-large {
+		margin-bottom: 20px;
+	}
+}
+
+
+// ********* 独家产品 *********//
+#sole_more_1,
+#sole_more_2,
+#sole_pics_1,
+#sole_pics_2 {
+	display: none;
+}
+
+#sole_btn_1 {
+	width: 142px;
+	border-right: 1px solid #b54a90;
+	border-left: 1px solid #b54a90;
+}
+
+
+.mod-soleProduct {
+	margin-bottom: 20px;
+	height: 425px;
+
+	.hd {
+		text-align: center;
+	}
+
+	.tab_sole_btns {
+		@extend %inline-block;
+		width: 144 * 3px;
+		height: 30px;
+		line-height: 30px;
+		border: 1px solid #fff;
+		border-radius: 3px;
+		font-size: 0;
+
+		li {
+			@extend %inline-block;
+			width: 144px;
+			text-align: center;
+			height: 30px;
+			line-height: 30px;
+			background: #fff;
+			color: #b54a90;
+			cursor: pointer;
+
+			strong {
+				@extend %inline-block;
+				font-size: 18px;
+				height: 30px;
+				line-height: 30px;
+			}
+		}
+
+		li.active {
+			background: none;
+			color: #fff;
+		}
+	}
+
+	.pic_list-clean {
+		position: absolute;
+		width: 1010px;
+
+		li {
+			img {
+				@extend %all-transition;
+			}
+			.link:hover {
+				img {
+					@include scale(1.1);
+				}
+			}
+		}
+	}
+}
+
+
+// ********* 独家策划 *********//
+.mod-solePlan {
+	margin-bottom: 40px;
+}
+
+
+// ********* 热门目的地 + 热门路线 *********//
+.mod-hotRoute {
+	.nav_tabs {
+		.tab_hd {
+			.tab_hd_btns {
+				width: 144px!important;
+				border: 1px solid #fff;
+				li {
+					width: 100%;
+					color: #fff;
+					&.cur {
+						color: #7b7ca2;
+						background-color: #fff;
+					}
+				}
+			} 
+		}
+	}
+	.hotMap_con {
+		.equalTxt_list {
+			padding-top: 60px;
+			.link {
+				font-size: 20px;
+			}
+		}
+	}
+	.hotRoute_con {
+		.equalTxt_list {
+			padding-top: 60px; 
+			height: 250px;
+			background: url(#{$curUrl}/travelMake_equalTxtList.png) no-repeat;
+		}
+	}
+} 
+
+// ********* 环球客 *********//
+.mod-hqGuest {
+	.hd-large {
+		margin: 0 0 20px 0;
+	}
+
+	// .more {
+	// 	right: 35px;
+	// }
+
+	.nav_tabs {
+		.tab_hd {
+			.tab_hd_btns {
+				border: 1px solid $cPrimary;
+				li {
+
+					color: $cPrimary;
+					text-align: center;
+					&.cur {
+						color: #fff;
+						background-color: $cPrimary;
+					}
+				}
+			}
+		}
+		.tab_bd {
+			padding-top: 20px;
+		}
+	}
+	// 环球客滚动图片列表重置
+	.mod-scrollPicList {
+	}
+	// 图片列表重置
+	.pic_list {
+		margin-right: -22px;
+		li {
+			margin-right: 22px;
+		}
+		.link {
+			width: 298px;
+		}
+		img {
+			height: 160px;
+		}
+		.media {
+			padding: 20px;
+			.p_tle {
+				white-space: nowrap;
+				* {
+					@extend %inline-block;
+					vertical-align: middle;
+				}
+			}
+			.p_des {
+				color: $cPrimary;
+				font-size: 16px;
+				line-height: 22px;
+				padding-left: 26px;
+				background: url(#{$curUrl}/#{$channelName}_icon.png) -180px -50px no-repeat;
+			}
+			img {
+				width: 64px;
+				height: 64px;
+				border-radius: 50%;
+				border: 2px solid #e5e5e5;
+			}
+		}
+	}
+
+}
+
+
+// ********* 环球视觉 *********//
+.mod-hqVideo {
+	height: 505px;
+	background: url(#{$curUrl}/hqVideo.jpg) top center no-repeat;
+	.hd {
+		color: #fff;
+		margin-bottom: 20px;
+	} 
+	.pic_list {
+		li {
+			img {
+				@extend %all-transition;
+			}
+			.link:hover {
+				img {
+					@include scale(1.1);
+				}
+			}
+		}
+	}
+} 
+
+// ********* 攻略 *********//
+.mod-strategy {
+	// height: 686px;
+	height: 852px;
+	overflow: hidden;
+	.bd {
+		padding: 20px 30px 27px;
+		background-color: #fff;
+	}
+
+	.pic_list {
+		li {
+			margin-top: 28px;
+		}
+	}
+}
+
+// ********* 装备 *********//
+.mod-equip {
+	height: 416px;
+	overflow: hidden;
+	margin-bottom: 20px;
+	.showElm {
+		height: 185px;
+	}
+
+	.accordion_list {
+		p {
+			overflow: hidden;
+		}
+	}
+}
+
+// ********* 合作伙伴 *********// 
+.mod-partners {
+	.bd {
+		padding: 27px 20px;
+		background-color: #fff;
+	} 
+	.partners_items {
+		height: 200px;
+		overflow: hidden;
+		.item {
+			@extend %inline-block;
+			font-size: 16px;
+			margin-right: 10px;
+			line-height: 40px;
+		}
+	}
+}
+
+// ********* 关于我们 *********// 
+.mod-about {
+	.bd {
+		padding: 20px;
+		background-color: #fff;
+	}  
+	.about_items {
+		color: $cPrimary;
+		font-size: 14px;
+		.about_top {
+			margin-bottom: 20px;
+			.a_tle {
+				color: #000;
+				font-size: 14px;
+				font-weight: normal;
+			}
+		}
+		.media {
+			.media_l {
+				text-align: center;
+				font-size: 12px;
+				margin-right: 9px;
+				strong {
+					font-size: 16px;
+					margin-right: 5px;
+				}
+				img {
+					border: 2px solid $cPrimary;
+					width: 72px;
+					height: 72px;
+					margin: 5px 0;
+				}
+			}
+			.media_body {
+				color: #676767;
+				line-height: 20px;
+				height: 100px;
+				overflow: hidden;
+			}
+		}
+	}
+}
+
