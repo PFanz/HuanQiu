@@ -402,6 +402,10 @@ $(window).scroll(function () {
 var exampleId = 1;
 var honorId = 1;
 // 本地数据
+if (localStorage.getItem('date') != new Date().getDate()) {
+  localStorage.setItem('example', '');
+  localStorage.setItem('honor', '');
+}
 // 榜样
 var example = localStorage.getItem('example');
 if (example === null) {
@@ -529,6 +533,7 @@ $('#tab-content-0').on('click', '.triangle-heart', function () {
     vote(exampleId, $(this).attr('data-qid'), $(this).attr('data-aid'));
     example += '' + $(this).attr('data-qid') + $(this).attr('data-aid') + ',';
     localStorage.setItem('example', example);
+    localStorage.setItem('date', new Date().getDate());
   }
 });
 // 众誉
