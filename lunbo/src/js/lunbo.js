@@ -1,301 +1,204 @@
-'use strict';
+import Event from './Event.js'
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var addEvent = Event.addEvent
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var Lunbo = function (config) {
+  // 默认配置
+  let defaultConfig = {
+    play: true,
+    pause: true,
+    step: 1,
+    delay: 3,
+    hasDot: true,
+    hasArrow: true
+  }
+  // 合并配置
+  config = {
+    ...defaultConfig,
+    ...config
+  }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  // 用到的配置项
+  this.contentElem = document.getElementById(config.id)
+  this.play = config.play
+  this.pause = config.pause
+  this.step = config.step
+  this.delay = config.delay
+  this.hasDot = config.hasDot
+  this.hasArrow = config.hasArrow
 
-/**
- * 使用方法：new Lunbo({config}).initFocus()
- * 							再initFocus()前可以自定义createArrows和createDots()方法
- *params: {contetnElem: docElem, autoplay: true, delay: 3, hasDot: true, hsaArrow: true}
- * return: div.focus-dots-content包含N个a.dot,需要自定义样式
- *					div.focus-arrows-content包含a.focus-arrow-pre和a.focus-arrow-next，需要自定义样式
- *					
- * 兼容IE 8
- */
-var Lunbo = function () {
-	function Lunbo(config) {
-		_classCallCheck(this, Lunbo);
+  // 一些使用到的变量
+  // DOM相关
+  this.listContainer = this.contentElem.querySelector('ul')
+  this.len = this.contentElem.querySelectorAll('img').length
+  this.imgWidth = this.contentElem.clientWidth
+  this.imgHeight = this.contentElem.clientHeight
+  this.dotContainer = null
+  this.arrowContainer = null
+  this.dotNodes = null
+  // 位置相关
+  this._n = 0
+  this.movingFlag = null
+  this.playingFlag = null
+}
 
-		// 默认配置
-		var defaultConfig = {
-			autoplay: true,
-			pause: true,
-			contin: 1,
-			delay: 3,
-			hasDot: false,
-			hasArrow: false
-		};
-		// 合并
-		config = _extends({}, defaultConfig, config);
+Lunbo.prototype.createDots = function (parentElem) {
+  // 使用createElement创建的Dom节点,可以避免修改DOM对事件的影响
+  this.dotContainer = document.createElement('div')
+  this.dotContainer.setAttribute('class', 'focus-dots-content')
+  let str = '<a href="javascript:void(0);" class="dot active"></a>'
+  for (let i = 1; i < this.len; i++) {
+    str += '<a href="javascript:void(0);" class="dot"></a>'
+  }
+  this.dotContainer.innerHTML = str
+  parentElem.appendChild(this.dotContainer)
+  // 为dot添加事件
+  let dotNodes = this.dotContainer.querySelectorAll('.dot')
+  let targetIndex = 0
+  addEvent(this.dotContainer, 'click', (event) => {
+    let target = event.target || event.srcElement
+    if (target.className.indexOf('dot') !== -1) {
+      // 阻止点击多次
+      if (target.className.indexOf('active') !== -1) {
+        return
+      }
+      for (let i = 0; i < this.len; i++) {
+        if (dotNodes[i] === target) {
+          targetIndex = i
+          break
+        }
+      }
+      this.turn(targetIndex - this._n)
+    }
+  })
+}
 
-		var _config = config;
-		var contentElem = _config.contentElem;
-		var autoplay = _config.autoplay;
-		var pause = _config.pause;
-		var contin = _config.contin;
-		var delay = _config.delay;
-		var hasDot = _config.hasDot;
-		var hasArrow = _config.hasArrow;
+Lunbo.prototype.createArrows = function (parentElem) {
+  this.arrowContainer = document.createElement('div')
+  this.arrowContainer.setAttribute('class', 'focus-arrows-content')
+  let str = '<a href="javascript:void(0);" class="focus-arrow-pre"></a>' +
+        '<a href="javascript:void(0);" class="focus-arrow-next"></a>'
+  this.arrowContainer.innerHTML = str
+  parentElem.appendChild(this.arrowContainer)
+  // 为arrows添加事件
+  addEvent(this.arrowContainer, 'click', (event) => {
+    let target = event.target || event.srcElement
+    if (target.className.indexOf('focus-arrow-pre') !== -1) {
+      this.turn(-1)
+    } else if (target.className.indexOf('focus-arrow-next') !== -1) {
+      this.turn(1)
+    }
+  })
+}
 
-		// 兼容jQuery对象
+// 重写
+Lunbo.prototype.turn = function (n) {
+  // 目的地
+  let pos = this._n + n
+  if (pos < 0) {
+    pos = pos + this.len
+  } else if (pos >= this.len) {
+    pos = pos - this.len
+  }
+  // 如果正在滚动，停止滚动，并重新开始
+  if (this.movingFlag !== null) {
+    clearInterval(this.movingFlag)
+    this.movingFlag = null
+  }
 
-		if (contentElem.length !== undefined) {
-			this.contentElem = contentElem[0];
-		} else {
-			this.contentElem = contentElem;
-		}
+  // 滚动到该目的地
+  // 坐标轴 左为正，又为负
+  let nextLeft = -pos * this.imgWidth
+  let currLeft = parseFloat(this.listContainer.style.left)
+  // 每次移动距离
+  let move = (nextLeft - currLeft) / (this.step * 1000) * 13
 
-		this.autoplay = autoplay;
-		this.pause = pause;
-		this.contin = contin;
-		this.delay = delay;
-		this.hasDot = hasDot;
-		this.hasArrow = hasArrow;
+  // 滚动动画，13ms一次
+  this.movingFlag = setInterval(() => {
+    // 每次要移动到的位置
+    let targetLeft = parseFloat(this.listContainer.style.left) + move
 
-		// 一些全局变量
-		this.imgListElem = contentElem.querySelector('ul');
-		this.len = contentElem.querySelectorAll('img').length;
-		this.imgWidth = contentElem.clientWidth;
-		this._n = 0;
-		this.movingFlag = null;
-		// 将init函数提出，之后手动调用，再调用前可以自定义createArrows和createDots函数
-		// this.initFocus();
-	}
+    // 向前移动
+    if (move < 0) {
+      // 移动到的位置在目标位置的右边
+      if (targetLeft <= nextLeft) {
+        targetLeft = nextLeft
+        clearInterval(this.movingFlag)
+        this.movingFlag = null
+      }
+    } else if (move > 0) {
+      // 移动到的位置再目标位置的左边
+      if (targetLeft >= nextLeft) {
+        targetLeft = nextLeft
+        clearInterval(this.movingFlag)
+        this.movingFlag = null
+      }
+    }
 
-	_createClass(Lunbo, [{
-		key: 'turn',
-		value: function turn(n) {
-			var _this = this;
+    this.listContainer.style.left = targetLeft + 'px'
+  }, 13)
 
-			// 目的地
-			var pos = this._n + n;
-			if (pos < 0) {
-				pos = pos + this.len;
-			} else if (pos >= this.len) {
-				pos = pos - this.len;
-			}
-			// 如果正在滚动，停止滚动，并重新开始
-			if (this.movingFlag) {
-				clearInterval(this.movingFlag);
-				this.movingFlag = null;
-			}
+  this._n = pos
 
-			// 滚动到该目的地
-			// 坐标轴 左为正，又为负
-			var nextLeft = -pos * this.imgWidth;
-			var currLeft = parseFloat(this.imgListElem.style.left);
-			// 每次移动距离
-			var move = (nextLeft - currLeft) / (this.contin * 1000) * 13;
+  // 修改dot active
+  if (this.hasDot) {
+    this.dotNodes = this.dotContainer.querySelectorAll('.dot')
+    for (let i = 0; i < this.len; i++) {
+      this.dotNodes[i].className = 'dot'
+    }
+    this.dotNodes[this._n].className = 'dot active'
+  }
+}
 
-			// 滚动动画，13ms一次
-			this.movingFlag = setInterval(function () {
-				// 每次要移动到的位置
-				var targetLeft = parseFloat(_this.imgListElem.style.left) + move;
+Lunbo.prototype.setStyle = function () {
+  // 样式初始化
+  this.contentElem.style.position = 'relative'
+  this.contentElem.style.overflow = 'hidden'
 
-				// 向前移动 
-				if (move < 0) {
-					// 移动到的位置在目标位置的右边
-					if (targetLeft <= nextLeft) {
-						targetLeft = nextLeft;
-						clearInterval(_this.movingFlag);
-						_this.movingFlag = null;
-					}
-				} else if (move > 0) {
-					// 移动到的位置再目标位置的左边
-					if (targetLeft >= nextLeft) {
-						targetLeft = nextLeft;
-						clearInterval(_this.movingFlag);
-						_this.movingFlag = null;
-					}
-				}
+  this.listContainer.style.padding = 0
+  this.listContainer.style.width = this.len * this.imgWidth + 'px'
+  this.listContainer.style.position = 'absolute'
+  this.listContainer.style.left = 0 + 'px'
 
-				_this.imgListElem.style.left = targetLeft + 'px';
-			}, 13);
+  let listNodes = this.contentElem.querySelectorAll('li')
+  for (let i = 0, len = listNodes.length; i < len; i++) {
+    listNodes[i].style.listStyle = 'none'
+    listNodes[i].style.float = 'left'
+    listNodes[i].style.width = this.imgWidth + 'px'
+    listNodes[i].style.height = this.imgHeight + 'px'
+    listNodes[i].querySelector('img').style.width = '100%'
+    listNodes[i].querySelector('img').style.height = '100%'
+  }
+}
 
-			this._n = pos;
+Lunbo.prototype.autoPlay = function () {
+  if (this.playingFlag === null) {
+    this.playingFlag = setInterval(
+      () => {
+        this.turn(1)
+      }, this.delay * 1000)
+  }
+  return this.playingFlag
+}
 
-			// 修改dot active
-			if (this.hasDot) {
-				var dotElems = this.contentElem.parentNode.querySelectorAll('.dot');
-				for (var i = 0, len = dotElems.length; i < len; i++) {
-					// IE 9以下不支持classList
-					// dotElems[i].classList.remove('active');
-					dotElems[i].className = 'dot';
-				}
-				// dotElems.forEach(dotElem => {
-				// 	dotElem.classList.remove('active');
-				// });
-				// dotElems[pos].classList.add('active');
-				dotElems[pos].className = 'dot active';
-			}
-		}
+Lunbo.prototype.autoPause = function (domElem) {
+  addEvent(domElem, 'mouseenter', () => {
+    clearInterval(this.playingFlag)
+    this.playingFlag = null
+  })
+  addEvent(domElem, 'mouseleave', () => {
+    this.autoPlay()
+  })
+  return this.playingFlag
+}
 
-		// Dots和Arrows需要自定义样式
+Lunbo.prototype.init = function () {
+  this.setStyle()
+  this.hasDot && this.createDots(this.contentElem)
+  this.hasArrow && this.createArrows(this.contentElem)
+  this.play && this.autoPlay() &&
+    this.pause && this.autoPause(this.contentElem) &&
+    this.hasDot && this.autoPause(this.dotContainer)
+}
 
-	}, {
-		key: 'createDots',
-		value: function createDots() {
-			// 最好使用createElement创建的Dom节点像页面添加元素
-			var dotContentElem = document.createElement('div');
-			dotContentElem.setAttribute('class', 'focus-dots-content');
-
-			var str = '<a href="javascript:void(0);" class="dot active"></a>';
-			for (var i = 1; i < this.len; i++) {
-				str += '<a href="javascript:void(0);" class="dot"></a>';
-			}
-			dotContentElem.innerHTML = str;
-			// 添加到父节点，可以避免被容器元素overflow隐藏
-			this.contentElem.parentNode.appendChild(dotContentElem);
-		}
-	}, {
-		key: 'createArrows',
-		value: function createArrows() {
-			var arrowContentElem = document.createElement('div');
-			arrowContentElem.setAttribute('class', 'focus-arrows-content');
-
-			var str = '<a href="javascript:void(0);" class="focus-arrow-pre"></a>' + '<a href="javascript:void(0);" class="focus-arrow-next"></a>';
-			arrowContentElem.innerHTML = str;
-			this.contentElem.parentNode.appendChild(arrowContentElem);
-		}
-	}, {
-		key: 'addEvent',
-		value: function addEvent() {
-			var _this2 = this;
-
-			if (this.hasArrow) {
-				var arrowContentElem = this.contentElem.parentNode.querySelector('.focus-arrows-content');
-				arrowContentElem.onclick = function (event) {
-					var target = event.target || event.srcElement;
-					if (target.className.indexOf('focus-arrow-pre') !== -1) {
-						_this2.turn(-1);
-					}
-					if (target.className.indexOf('focus-arrow-next') !== -1) {
-						_this2.turn(1);
-					}
-				};
-			}
-
-			if (this.hasDot) {
-				(function () {
-					var dotContentElem = _this2.contentElem.parentNode.querySelector('.focus-dots-content');
-
-					var dotElems = dotContentElem.querySelectorAll('.dot');
-					dotContentElem.onclick = function (event) {
-						var target = event.target || event.srcElement;
-						if (target.className.indexOf('dot') !== -1) {
-							// 阻止点击多次
-							if (target.className.indexOf('active') !== -1) {
-								return;
-							}
-							var targetIndex = 0;
-							for (var i = 0, len = dotElems.length; i < len; i++) {
-								if (dotElems[i] === target) {
-									targetIndex = i;
-								}
-							}
-							// dotElems.forEach( (item, index) => {
-							// 	if(item === target) {
-							// 		targetIndex = index;
-							// 	}
-							// });
-							_this2.turn(targetIndex - _this2._n);
-						}
-					};
-				})();
-			}
-		}
-	}, {
-		key: 'init',
-		value: function init() {
-			var _this3 = this;
-
-			// 样式初始化
-			this.contentElem.style.position = 'relative';
-			this.contentElem.style.fontSize = 0;
-			this.contentElem.style.overflow = 'hidden';
-			this.imgListElem.style.padding = 0;
-			this.imgListElem.style.width = this.len * this.imgWidth + 'px';
-			this.imgListElem.style.position = 'absolute';
-			this.imgListElem.style.left = 0;
-
-			this.hasArrow && this.createArrows();
-			this.hasDot && this.createDots();
-
-			this.addEvent();
-
-			var imgElems = this.contentElem.querySelectorAll('li');
-			var imgHeight = this.contentElem.clientHeight;
-			for (var i = 0, len = imgElems.length; i < len; i++) {
-				imgElems[i].style.listStyle = 'none';
-				imgElems[i].style.display = 'inline-block';
-				imgElems[i].style.width = this.imgWidth + 'px';
-				imgElems[i].style.height = imgHeight + 'px';
-				imgElems[i].querySelector('img').style.width = '100%';
-				imgElems[i].querySelector('img').style.height = '100%';
-			}
-			// imgElems.forEach(item => {
-			// 	item.style.listStyle = 'none';
-			// 	item.style.display = 'inline-block';
-			// 	item.style.width = this.imgWidth + 'px';
-			// 	item.style.height = imgHeight + 'px';
-			// 	item.querySelector('img').style.width = '100%';
-			// 	item.querySelector('img').style.height = '100%';
-			// });
-			// 自动播放
-			if (this.autoplay) {
-				this.autoplayFlag = setInterval(function () {
-					_this3.turn(1);
-				}, this.delay * 1000);
-				// 鼠标暂停
-				if (this.pause) {
-					if (document.addEventListener) {
-						this.contentElem.addEventListener('mouseenter', function () {
-							clearInterval(_this3.autoplayFlag);
-						});
-						this.contentElem.addEventListener('mouseleave', function () {
-							_this3.autoplayFlag = setInterval(function () {
-								_this3.turn(1);
-							}, _this3.delay * 1000);
-						});
-						if (this.hasDot) {
-							var dotContentElem = document.querySelector('.focus-dots-content');
-							dotContentElem.addEventListener('mouseenter', function () {
-								clearInterval(_this3.autoplayFlag);
-							});
-							dotContentElem.addEventListener('mouseleave', function () {
-								_this3.autoplayFlag = setInterval(function () {
-									_this3.turn(1);
-								}, _this3.delay * 1000);
-							});
-						}
-					} else if (document.attachEvent) {
-						this.contentElem.attachEvent('onmouseenter', function () {
-							clearInterval(_this3.autoplayFlag);
-						});
-						this.contentElem.attachEvent('onmouseleave', function () {
-							_this3.autoplayFlag = setInterval(function () {
-								_this3.turn(1);
-							}, _this3.delay * 1000);
-						});
-						if (this.hasDot) {
-							var _dotContentElem = document.querySelector('.focus-dots-content');
-							_dotContentElem.attachEvent('onmouseenter', function () {
-								clearInterval(_this3.autoplayFlag);
-							});
-							_dotContentElem.attachEvent('onmouseleave', function () {
-								_this3.autoplayFlag = setInterval(function () {
-									_this3.turn(1);
-								}, _this3.delay * 1000);
-							});
-						}
-					}
-				}
-			}
-		}
-	}]);
-
-	return Lunbo;
-}();
+new Lunbo({id: 'lunbo'}).init()

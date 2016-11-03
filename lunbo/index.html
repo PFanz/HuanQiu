@@ -1,81 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>轮播图演示</title>
-	<style>
-		.lunbo-block {
-			position: relative;
-		}
-
-		/*定义轮播图图片宽高*/
-		.images-content {
-			width: 200px;
-			height: 200px;
-		}
-		/*定义dots容器样式*/
-		.focus-dots-content {
-			height: 20px;
-			width: 200px;
-		}
-		/*定义dot样式*/
-		.dot {
-			display: inline-block;
-			height: 20px;
-			width: 20px;
-			margin: 0 10px;
-			background: red;
-			border-radius: 50%;
-		}
-		/*dot active样式*/
-		.dot.active {
-			background: blue;
-		}
-		/*箭头容器样式*/
-		.focus-arrows-content {
-			position: absolute;
-			top: 50%;
-			width: 200px;
-			height: 50px;
-			margin-top: -25px;
-		}
-		/*箭头公用样式*/
-		.focus-arrows-content a {
-			display: inline-block;
-			width: 50px;
-			height: 50px;
-			background: red;
-		}
-		/*前箭头样式*/
-		.focus-arrow-pre {
-			float: left;
-		}
-		/*后箭头样式*/
-		.focus-arrow-next {
-			float: right;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    #lunbo {
+      float: left;
+      width: 500px;
+      height: 500px;
+    }
+  </style>
 </head>
 <body>
-	<div class="lunbo-block">
-		<div class="images-content">
-			<ul>
-				<li><a href=""><img src="dist/images/photo-1.png" alt=""></a></li>
-				<li><a href=""><img src="dist/images/photo-2.png" alt=""></a></li>
-				<li><a href=""><img src="dist/images/photo-3.png" alt=""></a></li>
-				<li><a href=""><img src="dist/images/photo-4.png" alt=""></a></li>
-				<li><a href=""><img src="dist/images/photo-5.png" alt=""></a></li>
-			</ul>
-		</div>
-	</div>
-	<script src="src/js/lunbo.js"></script>
-	<script>
-		new Lunbo({
-			contentElem: document.querySelector('.images-content'),
-			autoplay: true,
-			hasDot: true,
-			hasArrow: true
-		}).init();
-	</script>
+  <div id="lunbo">
+    <ul>
+      <li><img src="dist/images/photo-1.png" alt=""></li>
+      <li><img src="dist/images/photo-2.png" alt=""></li>
+      <li><img src="dist/images/photo-3.png" alt=""></li>
+      <li><img src="dist/images/photo-4.png" alt=""></li>
+    </ul>
+  </div>
+  <script type="text/javascript" src="dist/js/index.js"></script>
 </body>
 </html>
