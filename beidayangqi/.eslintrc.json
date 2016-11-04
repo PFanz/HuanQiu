@@ -1,6 +1,6 @@
 {
   "globals": {
-    // "$": true
+    "$": true
   },
   "extends": [
     "standard"

@@ -1,4 +1,4 @@
-var releaseUrl = '"dist/'
+var releaseUrl = '"http://himg2.huanqiu.com/statics/www/hqspecial/dist/beidayangqi/'
 
 var gulp = require('gulp')
 var replace = require('gulp-replace')
@@ -9,9 +9,8 @@ var sass = require('gulp-sass')
 var autoprefixer = require('gulp-autoprefixer')
 var cleanCSS = require('gulp-clean-css')
 var postcss = require('gulp-postcss')
-var webpack = require('webpack-stream')
-// var babel = require('gulp-babel')
-// var uglify = require('gulp-uglify')
+var babel = require('gulp-babel')
+var uglify = require('gulp-uglify')
 var imagemin = require('gulp-imagemin')
 var browserSync = require('browser-sync').create()
 
@@ -45,20 +44,19 @@ gulp.task('sass', function () {
 })
 
 // 压缩JS
-gulp.task('jsMin', function () {
+gulp.task('minfile', function () {
   // jslib 直接移动
   gulp.src('src/libs/**')
     .pipe(gulp.dest('dist/libs'))
   // js
   gulp.src('src/js/*.js')
-    .pipe(plumber({errorHandler: errorHandler}))
-    // .pipe(sourcemaps.init())
-    // .pipe(babel())
-    // 使用webpack
-    .pipe(webpack(require('./webpack.config.js')))
-    // .pipe(uglify())
-    // .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist/js/'))
+    .pipe(sourcemaps.init())
+    .pipe(babel({
+      presets: ['es2015', 'stage-0']
+    }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist/js'))
 })
 
 // 压缩图片
@@ -76,14 +74,14 @@ gulp.task('releaseHtml', function () {
 })
 
 // browser-sync服务
-gulp.task('serve', ['sass', 'jsMin', 'imageMin'], function () {
+gulp.task('serve', ['sass', 'minfile', 'imageMin'], function () {
   browserSync.init({
     server: './'
   })
   gulp.watch('src/sass/*.scss', ['sass'])
-  gulp.watch('src/js/*.js', ['jsMin']).on('change', browserSync.reload)
+  gulp.watch('src/ES6/*.js', ['minfile']).on('change', browserSync.reload)
   gulp.watch('src/images/*', ['imageMin']).on('change', browserSync.reload)
-  gulp.watch('*.html', ['jsMin', 'sass', 'imageMin', 'releaseHtml', 'serve']).on('change', browserSync.reload)
+  gulp.watch('*.html', ['releaseHtml']).on('change', browserSync.reload)
 })
 
-gulp.task('default', ['jsMin', 'sass', 'imageMin', 'releaseHtml', 'serve'])
+gulp.task('default', ['minfile', 'sass', 'imageMin', 'releaseHtml', 'serve'])

@@ -1,10 +1,5 @@
 */dist/
 */node_modules/
-*/psd/
+**/psd/
 **/*.zip
-
-统计代码.html
-/race/
-/lvyou/
-/huanqiushengdian/
-
+**/*.psd

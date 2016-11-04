@@ -1,0 +1,831 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>广州车展</title>
+<link href="http://himg2.huanqiu.com/statics/css/public.css" rel="stylesheet" type="text/css"/>
+<link href="http://himg2.huanqiu.com/statics/images/favicon1.ico" rel="shortcut icon" />
+<!-- 外部css -->
+<link rel="stylesheet" href="http://himg2.huanqiu.com/statics/www/hqspecial/dist/dragonSKI/css/index.css">
+<!-- /外部css  -->
+<script src="http://himg2.huanqiu.com/statics/hq2013/js/lib/jquery1.9.1.js" type="text/javascript"></script>
+
+<style type="text/css">
+/*********** 图片引用区 **********/
+body { background:#fff;}
+.clear { zoom:1;}
+.clear:after { content:''; clear:both; display:block;}
+
+.head { background:url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/car-show/images/Banner.jpg) no-repeat top center;}
+
+h2 ,.gallery .price ,#foucsBox .lBtn span ,#foucsBox .rBtn span ,#foucsBox .foucs span ,#foucsBox .foucs span.f ,.arrLeft, .arrRight ,.globalPageList a ,.globalPageList .selected { background:url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/car-show/images/icon.png) no-repeat;}
+.iconBoxT14 { background:url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/car-show/images/iconList.png) no-repeat; background-position: 25px 0;}
+.scrollPic { background:url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/car-show/images/moment_bg.jpg) no-repeat top center;}
+
+/*********** 公共 **********/
+.boxArea { display:block; overflow:hidden;}
+h2 { display:block; width:970px; height:52px; margin:0 auto 55px; text-indent:-1000px; overflow:hidden; position:relative;}
+h2 em { display:block; background:#fff; width:45px; height:40px; line-height:40px; position:absolute; right:0; top:0; z-index:9999; text-indent:0; text-align:right;}
+h2 em a { display:block; font-family:Microsoft YaHei,SimSun; font-size:16px; color:#2685e6; position:relative;}
+.main { background:none;}
+/**/
+.iconBoxT14 { padding-left:30px;}
+.iconBoxT14 li { background:none; height:35px; line-height:35px;}
+.iconBoxT14 li a { font-family:Microsoft YaHei,SimHei; font-size:16px; color:#272727;}
+.iconBoxT14 li a:hover { color:#d19a07; text-decoration:none;}
+
+/*********** 头 **********/
+.head { display:block; width:100%; height:525px;}
+
+/*********** 巴蜀之地 **********/
+.firCon { display:block; width:970px; margin:0 auto; position:static;}
+
+/* 今日头条*/
+.first-title { margin-top: 58px; margin-bottom: 10px; background-position: -4px -153px; }
+
+/***** 焦点图 *****/
+.focusNews { width:640px; height:420px; line-height:24px; float:left; margin-top:10px;}
+#foucsBox ,#foucsBox .imgCon li ,#foucsBox .imgCon li img { width:640px; height:420px;}
+#foucsBox .imgCon { height:420px;}
+#foucsBox .imgCon li .imgTitle { background-color:#0e509e; filter:alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity:0.8; opacity:0.8; width:640px; height:44px; line-height:44px; font-size:18px;}
+#foucsBox .imgCon li .imgTitle a { height:44px; line-height:44px; font-size:18px;}
+#foucsBox .lBtn img { display:none;}
+#foucsBox .foucs { right:30px; bottom:18px;}
+#foucsBox .foucs span { background-position:-873px -255px; width: 16px; height: 12px; margin: 0;}
+#foucsBox .foucs span.f { background-position:-889px -255px;}
+#foucsBox .foucsButton { background:none !important; filter:none; width:43px; height:49px; margin-top:-240px;}
+#foucsBox .foucsButton span { width:43px; height:49px;}
+#foucsBox .lBtn span { background-position:-181px -346px}
+#foucsBox .rBtn span { background-position:-130px -346px;}
+
+/*********** 环球视线 **********/
+.sight { display:block; width:310px; float:right;}
+.sight h2 { background-position:0 -40px; width:330px; height:95px; margin:0;}
+.sight h4 { display:block; height:35px; line-height:35px; text-align:left; font-weight:bold; white-space:nowrap; overflow:hidden;}
+.sight h4 ,.sight h4 a { font-family:Microsoft YaHei,SimHei; font-size:18px; color:#000;}
+.sight h4 a:hover ,.sight h5 em a:hover { color:#1e83d1; text-decoration:none;}
+.sight h5 { display:block; line-height:25px; text-align:left; margin:0 0 10px; padding:0 0 10px; font-size:14px; color:#898d8f;}
+.sight .line { border-bottom:#1e83d1 1px solid;}
+
+/*********** 外媒评车 **********/
+.commentCar { display:block; width:970px; margin:0 auto 10px; overflow:hidden;}
+.commentCar h2 { background-position:-4px -102px; margin:45px 0 0;}
+.commentCar ul { margin-left:-18px;}
+.commentCar li { width:310px; height:286px; float:left; margin:36px 0 0 18px; display:inline;}
+.commentCar li a { width:100%; height:100%; display:block;}
+.commentCar li a:hover { text-decoration:none;}
+.commentCar li img { width:310px; height:176px; overflow:hidden;}
+.commentCar li p { line-height:34px; font-size:22px; color:#eef8f6; padding:20px 24px 24px 24px; background:#1264c5;}
+
+/*********** 新车汇 **********/
+.newCar { display:block; width:470px; float:left; overflow:hidden;}
+.newCar h2 { background-position:-4px -255px; width:415px; margin:45px 0 0;}
+
+/*********** 车展24小时 **********/
+.hour24Car { width:460px; float:right; overflow:hidden;}
+.hour24Car h2 { background-position:-419px -255px; width:415px; margin:45px 0 0;}
+
+/*********** 饕餮盛宴 **********/
+.gallery { display:block; width:970px; margin:30px auto 10px;}
+.gallery h2 { background-position:-4px -55px; width:970px; height:43px; margin:0 0 30px;}
+.gallery ul { display:block; width:600px; overflow:visible; position:relative;}
+.gallery li { width:184px; height:168px; float:left; margin:0 14px 38px 0; padding:2px 0 0; position:relative;}
+.gallery li img { width:184px; height:103px;}
+.gallery .txt { display:block; background:#1264c5; width:154px; height:55px; line-height:20px; text-align:left; font-size:14px; color:#fff; padding:10px 15px 0;}
+.gallery .price { display:block; background-position:-365px -88px; width:78px; height:25px; line-height:25px; text-align:center; font-size:14px; color:#fff; position:absolute; left:10px; top:0;}
+.gallery .bigImg { width:370px; height:376px; position:absolute; right:-370px; top:0; margin:0;}
+.gallery .bigImg img { width:370px; height:245px;}
+.gallery .bigImg .txt { width:330px; height:123px; padding:20px 20px 0;}
+.gallery .bigImg .txt strong { display:block; font-family:Microsoft YaHei,SimHei; font-size:18px; color:#fff; white-space:nowrap; overflow:hidden; margin:0 0 10px;}
+.gallery .bigImg .txt p { line-height:20px; color:#fefefe;}
+.gallery .bigImg .price { background-position:-455px -88px; width:124px; height:40px; line-height:40px; font-family:Microsoft YaHei,SimHei; font-size:24px;}
+.gallery .img2 { top:416px;}
+
+/*********** 现场直击 **********/
+.sceneWatch { width:640px; float:left; overflow:hidden;}
+.sceneWatch h2 { width:100%; background-position:-4px -208px; height:43px; margin-bottom:0;}
+.sceneWatch-main { width:640px; height:1118px; margin-top:34px; position:relative;}
+.sceneWatch-topLine { width:632px; height:1px; overflow:hidden; background:#eee; position:absolute; right:0; top:0;}
+.sceneWatch-bottomLine { width:632px; height:1px; overflow:hidden; background:#eee; position:absolute; right:0; bottom:0; *bottom:-12px;}
+.sceneWatch-leftLine { width:1px; height:1118px; *height:1129px; overflow:hidden; background:#eee; position:absolute; left:8px; top:0;}
+.sceneWatch-rightLine { width:1px; height:1118px; overflow:hidden; background:#eee; position:absolute; right:0; top:0;}
+
+.sceneWatch-box { width:640px; height:1118px; overflow-y:scroll; overflow-x:hidden; padding-top:13px; position:relative; z-index:1;}
+.refresh{ width:275px; height:28px; line-height:28px; overflow:hidden; padding:8px 0 0; float:right; position:absolute; right:0; top:13px;}
+.refresh label{ display:block; font-size:14px; color:#2b2b2b;}
+.refresh label input{ float:left; margin:1px 16px 0 0; *margin-top:7px;}
+.refresh .refreshBtn{ display:block; float:right; width:110px; height:28px; color:#2b2b2b; line-height:28px; background-position:0 -56px!important; text-indent:18px; *position:absolute; *right:0; *top:8px;}
+.refresh .refreshBtn:hover{ background-position:-110px -56px; text-decoration:none;}
+
+/*tu*/
+/*.banner ,.hdTitle{ background:url(http://himg2.huanqiu.com/statics/hq2013/images/v/bgLive.png) repeat;}*/
+.liveList { width:96%;}
+.liveList li .liveTime span,.liveList li.liveFirst .liveTime span,.liveList li:first-child .liveTime span { background:url(http://himg2.huanqiu.com/statics/hq2013/images/lp/live/live.png) no-repeat;}
+.pageBox .current ,.pageBox a ,.pageBox .a1lNum ,.pageBox .a1lNum:hover ,.pageBox .prev ,.pageBox .prev:hover,.pageBox .next,.pageBox .next:hover ,.pageBox .cur ,.pageBox a:hover ,.pageBox em ,.pageBox em ,.pageBox .lookMore ,.pageBox .lookMore:hover{ background:url(http://himg2.huanqiu.com/statics/hq2013/images/lp/live/btnPage.png) no-repeat;}
+.firTit h2 em ,.leftLive h4 ,.leftLive h4.cur ,.refresh .refreshBtn { background:url(http://himg2.huanqiu.com/statics/hq2013/images/v/live.png) no-repeat;}
+
+/**/
+/*.pageWrap{ width:100%; overflow:hidden;}
+.pageCon{ width:970px; margin:0 auto; background:#fff; padding:20px 0 0;}
+.liveCon{ width:980px; overflow:hidden; margin:22px 0 0 -10px;}
+.hdTitle{ width:100%; height:130px; overflow:hidden; background-position:left -83px;}
+.hdTitleCon{ width:970px; height:70px; line-height:70px; position:relative; margin:31px auto 0 auto; font-family:Microsoft YaHei; font-weight:700; font-size:34px; color:#2b2b2b;background:url(http://himg2.huanqiu.com/statics/hq2013/images/v/liveTit.png);zoom:1;border-radius:5px; overflow:hidden;}
+.hdTitleCon strong{ display:block; width:70px; height:70px; overflow:hidden; float:left; margin-right:60px;}
+.liveSection{ width:635px; float:left; padding-left:1px; overflow:hidden;}*/
+.liveList{}
+.liveList li{ overflow:hidden; margin:0 0 45px;}
+.liveList li .liveTime{ width:100%; height:51px; overflow:hidden; margin:0 0 10px;}
+.liveList li .liveTime span{ display:block; width:223px; height:51px; padding-left:57px; font-family:Tahoma, Geneva, sans-serif; font-weight:bold;  color:#2b2b2b; font-size:20px; background-position:0 -293px; line-height:40px;}
+.liveList li .liveTime em{ font-size:16px; font-weight:normal; padding-left:17px; color:#2b2b2b;}
+.liveList li.liveFirst .liveTime span{ background-position:0 -226px; color:#fff;}
+.liveList li.liveFirst .liveTime em{ color:#fff;}
+.liveList li:first-child .liveTime span{ background-position: 0 -226px;color:#fff;}
+.liveList li:first-child .liveTime em{ color:#fff;}
+.liveList li .conBox{ overflow:hidden; padding-left:48px;}
+.liveList li .img{width:586px; margin-top:20px;}
+.liveList li img{max-width:586px;_width:586px;}
+.liveList li .conBox p{ font-size:14px; color:#565656; line-height:24px;word-break:break-all;text-align:justify;}
+.liveList li .conBox p a { color:#06346f; margin:0 5px; padding:0 0 2px; font-size:14px;}
+.liveList li .conBox p a:visited{ color:#06346f;}
+.liveList li .conBox p a:hover { color:#900;}
+
+/*********** 往期专题 **********/
+.pastTopic { width:312px; overflow:hidden; float:right;}
+.pastTopic h2 { width:100%; background-position:-651px -208px; height:43px; margin-bottom:0;}
+.pastTopic-ul { margin-top:34px; width:312px; height:1118px; overflow:hidden;}
+.pastTopic ul { overflow:hidden;}
+.pastTopic ul li { width:312px; height:236px; margin-bottom:58px;}
+.pastTopic ul li a { width:100%; height:100%; display:block;}
+.pastTopic ul li a:hover { text-decoration:none;}
+.pastTopic ul li img { width:312px; height:176px; overflow:hidden;}
+.pastTopic ul li p { height:58px; line-height:58px; font-size:20px; color:#eef8f6; text-align:center; background:#1264c5; overflow:hidden;}
+
+/***** 翻页 *****/
+.pageBox { width:586px; border-top:1px solid #b6b6b6; float:right; clear:both; text-align:center; padding:16px 0 25px; margin:0 auto; clear:both; display:block; height:30px; overflow:hidden; color:#2b2b2b;}
+.pageBox a,.pageBox span{ background-position:-180px 0; display:inline-block; border:none; width:30px; height:30px; line-height:30px; padding:0; margin:0 5px; font-family:Arial,Simsun; font-size:14px; color:#2b2b2b; overflow:hidden;}
+.pageBox a:hover { background-position:-180px -80px; padding:0; border:none; color:#2b2b2b;}
+.pageBox .a1lNum ,.pageBox .a1lNum:hover ,.pageBox .lookMore{ background-position:0 0; width:70px; color:#8b8b8b; cursor:default; text-decoration:none;}
+.pageBox .current { background-position:-180px -40px; color:#fff; display:inline-block; width:30px; height:30px; line-height:30px; font-family:Arial,Simsun; font-size:14px; margin:0 5px 10px; vertical-align:top; overflow:hidden;/*zoom:1;*display:inline;*/ font-style:normal;}
+.pageBox .prev,.pageBox .next { width:70px; background-position:-100px 0; *margin-bottom:1px; color:#2b2b2b;}
+.pageBox .prev:hover,.pageBox .next:hover { background-position:-100px -80px;}
+.pageBox .curA1 { background-position:-100px -40px; color:#fff;}
+.pageBox .cur ,.pageBox .cur:hover { background-position:-180px -40px; color:#fff;}
+.pageBox .lookMore { background-position:0 -120px; width:140px; height:35px; line-height:35px;}
+.pageBox .lookMore:hover { background-position:0 -120px; cursor:pointer}
+
+/*********** 高清瞬间 **********/
+.scrollPic { display:block; width:100%; height:705px; position:relative; margin:0 auto; padding:80px 0 0; overflow:hidden; margin-top:50px;}
+.picMid { display:block; width:970px; margin:0 auto; position:relative;}
+.picMid ul { width:970px; display:block; overflow:hidden;}
+.picMid li { width:970px; height:651px; float:left; display:block; overflow:hidden; text-align:left; position:relative;}
+.picMid li a { width:970px; height:651px; display:block; overflow:hidden; font-size:18px; color:#fff;}
+.picMid li a:hover { color:#ffc000;}
+.picMid .txt { background-color:#1264c5;filter:alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity: 0.8; opacity: 0.8; width:970px; height:67px; line-height:67px; font-family:Microsoft YaHei,SimHei; font-size:24px; text-indent:30px; position:absolute; left:0; bottom:0; color:#fff;}
+.picMid img { width:970px; height:651px;}
+.arrLeft ,.arrRight { display:block !important; background-position:-67px -346px; width:55px; height:62px; position:absolute  !important; left:0; bottom:310px;}
+/*.arrLeft:hover { background-position:-590px -66px;}*/
+.arrRight { background-position:-4px -346px; left:auto; right:0;}
+/*.arrRight:hover { background-position:-654px -66px;}*/
+.globalPageList { display:block; position:absolute; right:30px; bottom:27px;}
+.globalPageList a { display:block; background-position:-856px -259px; width:13px; height:13px; float:left; text-indent:-100px; overflow:hidden; margin:0 7px;}
+.globalPageList .selected { background-position:-835px -259px;}
+
+/*********** 独家专访 **********/
+.talk { display:block; width: 970px; margin:50px auto 0; overflow:hidden;}
+.talk h2 { background-position:-4px -0px; margin:0 0 20px;}
+.imgTxt { display:block; width:996px; margin:0 auto; overflow:inherit; position:relative; z-index:999;}
+.imgTxt li { display:block; width:476px; height:330px; float:left; margin:0 18px 20px 0; position: relative;; overflow:hidden;}
+.imgTxt img { display:block; width:272px; height:330px; float:left; margin:-3px 15px 0 -3px;}
+.imgTxt h4 { display:block; height:90px; overflow:hidden; padding: 20px 0 0;}
+.imgTxt h4 strong { display:block; height:60px; line-height:60px; font-family:Microsoft YaHei,SimHei; font-size:36px; color:#0f588c;}
+.imgTxt h4 em { display:block; font-family:Microsoft YaHei,SimHei; font-size:18px; color:#0f588c; font-style:normal;}
+.imgTxt h5 { line-height:25px; font-size: 14px; color: #0f588c !important;}
+.imgTxt a { display:block; width:460px; height:324px; border:#188fe4 3px solid; padding: 0 10px 0 0;}
+.imgTxt a:hover { text-decoration:none;}
+.imgTxt a:hover h4 strong ,.imgTxt a:hover h6 strong { color:#0f588c;}
+.imgTxt a:hover h4 em { color:#0f588c;}
+.imgTxt a:hover h5 { color:#0f588c !important;}
+
+/**/
+.coLink { display: block; width: 970px; border: #188fe4 3px solid; margin:50px auto; padding:0 0 10px;}
+.coLink h2 { background-position: -4px -312px; width:165px; height: 34px; margin:-15px auto; float:none; position:relative; z-index:99;}
+.coLink h2 em { width:100%; border-top:#333 2px solid; top:22px; z-index:0;}
+.coLinkCon { display:block; padding:30px 30px 10px; line-height:30px; text-align:left; overflow:hidden;}
+.coLinkCon a { display:inline-block; width: 107px; font-family:Microsoft YaHei,SimHei; font-size:16px; color:#333; margin:0 10px; *margin:0 8px;}
+.coLinkCon a:hover { color:#d00005;}
+
+/**/
+.sao-code { display:block; background: url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/car-show/images/code.png); width: 130px; height: 124px; position: fixed; top: 340px; ;left: auto; right: 100px; bottom: auto; z-index: 9999; margin: 0; border:none;}
+
+/*底部*/
+.f_lists h3 { color:#fff!important;}
+</style>
+</head>
+
+<body>
+<!-- 公共顶部 begin -->
+<script type="text/javascript" src="http://himg2.huanqiu.com/statics/hq2015/js/page/pubHeader.js" slogan="h"></script>
+<!-- 公共顶部 end -->
+<input type="hidden" value="3205" id="typeId"/>
+<!-- 内容部分 begin -->
+<div class="wrap">
+  <!-- 头 begin -->
+    <div class="head">
+    </div>
+    <!-- 头 end -->
+    
+    <!-- 第一部分 begin -->
+    <div class="firCon">
+        <div class="sao-code" name="scroll"></div>
+      <div class="boxArea">
+            <h2 class="first-title"></h2>
+            <!-- 焦点图 begin -->
+            <div class="focusNews">
+                <div id="foucsBox">
+                    <ul class="imgCon">
+                        <!--展示图片开始-->
+                        <li><a href="http://auto.huanqiu.com/newmodel/2016-09/9388356.html" target="_blank">
+                            <img width="560" height="315" src="http://c.huanqiu.com/attachment2010/2016/0902/03/07/20160902030759640.jpg" /></a>
+                            <div class="imgTitle"><a href="http://auto.huanqiu.com/newmodel/2016-09/9388356.html" target="_blank">外观运动时尚/融入高科技配置 外媒点评奥迪A4L</a></div>
+                        </li>
+                        <li><a href="http://auto.huanqiu.com/newmodel/2016-09/9388428.html" target="_blank">
+                            <img width="560" height="315" src="http://c.huanqiu.com/attachment2010/2016/0902/03/09/20160902030918168.jpg" /></a>
+                            <div class="imgTitle"><a href="http://auto.huanqiu.com/newmodel/2016-09/9388428.html" target="_blank">运动范儿足/动力强劲 外媒集体围观宝沃BX6 TS</a></div>
+                        </li>
+                        <li><a href="http://auto.huanqiu.com/newmodel/2016-09/9388401.html" target="_blank">
+                            <img width="560" height="315" src="http://c.huanqiu.com/attachment2010/2016/0902/03/09/20160902030941892.jpg" /></a>
+                            <div class="imgTitle"><a href="http://auto.huanqiu.com/newmodel/2016-09/9388401.html" target="_blank">加速性能令人失望 外媒辛辣点评雪佛兰科沃兹</a></div>
+                        </li>
+                        <li><a href="http://auto.huanqiu.com/newmodel/2016-09/9388424.html" target="_blank">
+                            <img width="560" height="315" src="http://c.huanqiu.com/attachment2010/2016/0902/03/10/20160902031005203.jpg" /></a>
+                            <div class="imgTitle"><a href="http://auto.huanqiu.com/newmodel/2016-09/9388424.html" target="_blank">外观靓丽内饰时尚 奔驰SLC是如何打动主流外媒的</a></div>
+                        </li>
+                        <li><a href="http://auto.huanqiu.com/newmodel/2016-09/9388451.html" target="_blank">
+                            <img width="560" height="315" src="http://c.huanqiu.com/attachment2010/2016/0902/03/10/20160902031033856.jpg" /></a>
+                            <div class="imgTitle"><a href="http://auto.huanqiu.com/newmodel/2016-09/9388451.html" target="_blank">内饰精美/空间宽敞 外媒围观沃尔沃豪华旗舰S90</a></div>
+                        </li>
+                        <!--展示图片结束-->
+                    </ul>
+                    <div class="foucs"></div>
+                    <div class="rBtn foucsButton">
+                        <span></span>
+                    </div>
+                    <div class="lBtn foucsButton">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <!-- 焦点图 end -->
+            
+            <!-- 环球视线 begin -->
+            <div class="sight">
+                <h4><a href="http://auto.huanqiu.com/newmodel/2016-09/9386842.html" target="_blank" title="2016成都车展前瞻 盘点您想要的各类新车">成都车展前瞻 盘点您想要的各类新车</a></h4>
+                <h5 class="line">本届车展以“缤纷车展•炫动蓉城”为主题，下面我们就通过成都车展的展位来向大家介绍一下本次车展都有哪些新车。</h5>
+                <h4><a href="http://auto.huanqiu.com/news/2016-09/9390745.html" target="_blank" title="各路新车抢先看 成都车展探馆前瞻 "> 各路新车抢先看 成都车展探馆前瞻 </a></h4>
+                <h5 class="line">宝马展台亮点颇多，其中BMW城市新概念轿车为全球首发，全新BMW X5插电式混合动力、新BMW 6系与新BMW M3、全新BMW S 1000 R共四款产品为中国上市。</h5>
+                <h4><a href="http://auto.huanqiu.com/newmodel/2016-09/9388374.html" target="_blank" title="凭啥能够赢得中国消费者青睐？外媒剖析捷豹F-PACE">加速强劲/座椅舒适 外媒点评现代悦纳</a></h4>
+                <h5>日前，北京现代公布了其2016年成都车展的新车阵容。据悉此前曾曝光的悦纳量产版即将迎来首发。据悉，该车在印度市场已经上市，那么印度媒体是如何评价这款车型的？</h5>
+            </div>
+            <!-- 环球视线 end -->
+        </div>
+
+        <div class="commentCar">
+            <!-- 外媒评车 begin -->
+            <h2></h2>
+            <ul class="clear">
+                <li>
+                    <a href="http://auto.huanqiu.com/newmodel/2016-09/9388356.html" target="_blank">
+                        <img src="http://c.huanqiu.com/attachment2010/2016/0902/02/19/20160902021954117.jpg" alt="" />
+                        <p>外观运动时尚/融入高科技配置 外媒点评奥迪A4L</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://auto.huanqiu.com/newmodel/2016-09/9388428.html" target="_blank">
+                        <img src="http://c.huanqiu.com/attachment2010/2016/0902/02/21/20160902022123424.jpg" alt="" />
+                        <p>运动范儿足/动力强劲 外媒集体力挺宝沃BX6 TS</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://auto.huanqiu.com/newmodel/2016-09/9388401.html" target="_blank">
+                        <img src="http://c.huanqiu.com/attachment2010/2016/0902/02/22/20160902022232330.jpg" alt="" />
+                        <p>加速性能令人失望 外媒辛辣点评雪佛兰科沃兹</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://auto.huanqiu.com/newmodel/2016-09/9388424.html" target="_blank">
+                        <img src="http://c.huanqiu.com/attachment2010/2016/0902/02/23/20160902022332127.jpg" alt="" />
+                        <p>外观靓丽内饰时尚 奔驰SLC如何打动主流外媒</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://auto.huanqiu.com/newmodel/2016-09/9388451.html" target="_blank">
+                        <img src="http://c.huanqiu.com/attachment2010/2016/0902/02/24/20160902022411866.jpg" alt="" />
+                        <p>内饰精美/空间宽敞 外媒围观沃尔沃豪华旗舰S90</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://auto.huanqiu.com/newmodel/2016-09/9388374.html" target="_blank">
+                        <img src="http://c.huanqiu.com/attachment2010/2016/0902/02/25/20160902022539264.jpg" alt="" />
+                        <p>加速强劲/座椅舒适 外媒点评全新现代悦纳</p>
+                    </a>
+                </li>
+            </ul>
+            <!-- 外媒评车 end -->
+        </div>
+        
+        <div class="boxArea">
+          <!-- 新车汇 begin -->
+            <div class="newCar">
+              <h2><em style="display: none;"><a href="#">更多</a></em></h2>
+                <ul class="iconBoxT14">
+                    <li><a title="售价7.99-10.99万元 上汽通用科沃兹成都车展上市" href="http://auto.huanqiu.com/newmodel/2016-09/9392958.html" target="_blank">售价7.99-10.99万元 上汽通用科沃兹成都车展上市</a></li>
+                    <li><a title="外观亮眼 奔驰GLA蓝调版成都车展正式发布" href="http://auto.huanqiu.com/newmodel/2016-09/9393524.html" target="_blank">外观亮眼 奔驰GLA蓝调版成都车展正式发布</a></li>
+                    <li><a title="北京BJ20成都车展启动预售 10万元起售" href="http://auto.huanqiu.com/newmodel/2016-09/9393527.html" target="_blank">北京BJ20成都车展启动预售 10万元起售</a></li>
+                    <li><a title="2016成都车展:沃尔沃S60/V60性能版亮相" href="http://auto.huanqiu.com/newmodel/2016-09/9393910.html" target="_blank">2016成都车展:沃尔沃S60/V60性能版亮相</a></li>
+                    <li><a title="2016成都车展：途观丝绸之路版正式亮相" href="http://auto.huanqiu.com/newmodel/2016-09/9393905.html" target="_blank">2016成都车展：途观丝绸之路版正式亮相</a></li>
+                    <li><a title="2016成都车展：奇骏新车型售24.78万" href="http://auto.huanqiu.com/newmodel/2016-09/9393904.html" target="_blank">2016成都车展：奇骏新车型售24.78万</a></li>
+                </ul>
+            </div>
+            <!-- 新车汇 end -->
+            
+            <!-- 车展24小时 begin -->
+            <div class="hour24Car">
+              <h2><em style="display: none;"><a href="#">更多</a></em></h2>
+                <ul class="iconBoxT14">
+                    <li><a title="2016成都车展：东风本田Gienia竞瑞首发" href="http://auto.huanqiu.com/newmodel/2016-09/9393870.html" target="_blank">2016成都车展：东风本田Gienia竞瑞首发</a></li>
+                    <li><a title="蓝标版哈弗H2上市 售价9.58-11.88万元" href="http://auto.huanqiu.com/newmodel/2016-09/9393864.html" target="_blank">蓝标版哈弗H2上市 售价9.58-11.88万元</a></li>
+                    <li><a title="东风标致新308成都车展启动预售 价格10.8-16万" href="http://auto.huanqiu.com/newmodel/2016-09/9393861.html" target="_blank">东风标致新308成都车展启动预售 价格10.8-16万</a></li>
+                    <li><a title="上汽大众新桑塔纳/Cross版上市 售10.29-12.99万元" href="http://auto.huanqiu.com/newmodel/2016-09/9393664.html" target="_blank">上汽大众新桑塔纳/Cross版上市 售10.29-12.99万元</a></li>
+                    <li><a title="2016成都车展：发现神行限量版售42.8万" href="http://auto.huanqiu.com/newmodel/2016-09/9393918.html" target="_blank">2016成都车展：发现神行限量版售42.8万</a></li>
+                    <li><a title="2016成都车展:现代发布新款索纳塔九" href="http://auto.huanqiu.com/newmodel/2016-09/9393914.html" target="_blank">2016成都车展:现代发布新款索纳塔九</a></li>
+                </ul>
+            </div>
+            <!-- 车展24小时 end -->
+        </div>
+    </div>
+    <!-- 第一部分 end -->
+
+    <!-- 饕餮盛宴 begin -->
+    <div class="gallery" id="gallery">
+         <h2>车展新车</h2>
+        <ul class="clear">
+            <li>
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395484.html" title="图片链接" target="_blank"><img src="http://c.huanqiu.com/attachment2010/2016/0902/18/52/20160902065206168.jpg" name="pic"></a>
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395484.html" title="文字连接" class="txt" target="_blank">年轻，真好！ 2016成都车展解析东风标致308</a>
+            </li>
+            <li>
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395410.html" title="图片链接" target="_blank"><img src="http://c.huanqiu.com/attachment2010/2016/0902/18/54/20160902065423445.jpg" name="pic"></a>
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395410.html" title="文字连接" class="txt" target="_blank">新标杆来了 2016成都车展解析全新一代Tiguan</a>
+            </li>
+            <li>
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395482.html" title="图片链接" target="_blank"><img src="http://c.huanqiu.com/attachment2010/2016/0902/18/59/20160902065959630.jpg" name="pic"></a>
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395482.html" title="文字链接" class="txt" target="_blank">论如何成为旗舰 2016成都车展解析传祺GS8</a>
+            </li>
+            <li class="bigImg">
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395489.html" title="图片链接" target="_blank"><img src="http://c.huanqiu.com/attachment2010/2016/0902/18/46/20160902064638630.jpg" name="pic"></a>
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395489.html" title="文字链接" class="txt" target="_blank"><strong>7座SUV新选择 成都车展解析幻速S3L</strong><p>2016年成都车展于9月2日在成都新会展中心举行，其中不乏每个厂家的新车亮相。环球网在这里用简短的九张图为大家解析新车，让网友可以更快更全面的了解新车。
+</p></a>
+            </li>
+            <li>
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395297.html" title="图片链接" target="_blank"><img src="http://c.huanqiu.com/attachment2010/2016/0902/19/02/20160902070214139.jpg" name="pic"></a>
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395297.html" title="文字链接" class="txt" target="_blank">填补市场空白 2016成都车展解析东风本田竞瑞</a>
+            </li>
+            <li>
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395557.html" title="图片链接" target="_blank"><img src="http://c.huanqiu.com/attachment2010/2016/0902/19/09/20160902070918426.jpg" name="pic"></a>
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395557.html" title="文字连接" class="txt" target="_blank">金字招牌生命力无限 成都车展解析新桑塔纳</a>
+            </li>
+            <li>
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395494.html" title="图片链接" target="_blank"><img src="http://c.huanqiu.com/attachment2010/2016/0902/19/10/20160902071019249.jpg" name="pic"></a>
+                <a href="http://auto.huanqiu.com/purchasecar/2016-09/9395494.html" title="文字链接" class="txt" target="_blank">
+抢先登陆 2016成都车展解析众泰大迈X7</a>
+            </li>
+        </ul>
+    </div>
+    <!-- 饕餮盛宴 end -->
+
+    <div class="firCon">
+        <div class="boxArea">
+            <!-- 现场直击 begin -->  
+            <div class="sceneWatch">
+              <h2></h2>
+              <div class="sceneWatch-main">
+                    <div class="sceneWatch-topLine"></div>
+                    <div class="sceneWatch-bottomLine"></div>
+                    <div class="sceneWatch-leftLine"></div>
+                    <div class="sceneWatch-rightLine"></div>
+
+                    <div class="sceneWatch-box">
+                        <!--刷新 begin-->
+                        <div class="refresh">
+                            <label>
+                                <input type="checkbox"  id="check"/>
+                                自动刷新（30秒）
+                                <a href="javascript:void(0);" class="refreshBtn">立即刷新</a>
+                            </label>
+                        </div>
+                        <!--刷新 end-->
+
+                        <ul class="liveList">
+                        </ul>
+
+                        <div id="Pagination" class="pageBox">
+                        </div>
+
+                        <br/><br/>
+                    </div>
+              </div>  
+            </div>
+            <!-- 现场直击 end -->
+
+            <!-- 往期专题 begin -->  
+            <div class="pastTopic">
+                <h2></h2>
+                <div class="pastTopic-ul">
+                    <ul>
+                        <li>
+                            <a href="http://auto.huanqiu.com/special/beijingautoshow/index.html?qq-pf-to=pcqq.c2c" target="_blank">
+                                <img src="http://c.huanqiu.com/attachment2010/2016/0830/09/59/20160830095911764.jpg" alt="" />
+                                <p>2016年北京国际车展</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://auto.huanqiu.com/special/2016GIMS/index.html" target="_blank">
+                                <img src="http://c.huanqiu.com/attachment2010/2016/0830/10/01/20160830100109462.jpg" alt="" />
+                                <p>2016年日内瓦国际车展</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://auto.huanqiu.com/special/2016naiasautoshow/index.html" target="_blank">
+                                <img src="http://c.huanqiu.com/attachment2010/2016/0830/10/03/20160830100325407.jpg" alt="" />
+                                <p>2016年底特律国际车展</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://auto.huanqiu.com/special/2015guangzhou/index.html" target="_blank">
+                                <img src="http://c.huanqiu.com/attachment2010/2016/0830/10/07/20160830100732889.jpg" alt="" />
+                                <p>2015年广州国际车展</p>
+                            </a>
+                        </li>
+                    </ul>                     
+                </div>
+     
+            </div>  
+            <!-- 往期专题 end -->
+        </div>
+    </div>
+    
+
+    <!-- 独家专访 begin -->
+    <div class="talk" id="talk">
+        <h2>独家专访</h2>
+        <ul class="imgTxt clear">
+            <li><a title="图片链接" href="http://auto.huanqiu.com/toptalk/2015-11/8023238.html" target="_blank">
+                    <img alt="图片信息" src="http://himg2.huanqiu.com/attachment2010/2015/1126/11/24/20151126112452471.jpg">
+                    <h4><strong>井口一成</strong><em>一汽丰田业务部部长</em></h4>
+                    <h5 class="txt">“卡罗拉对今年目标销量的达成起到了积极的作用”，井口部长在谈到今年销售情况时说。“今年取得了业绩不错，虽然天津爆炸事件有影响，但是我们一直在极力挽回。”</h5>
+                </a>           </li>
+            <li>
+                <a title="图片链接" href="http://auto.huanqiu.com/toptalk/2015-11/8034888.html" target="_blank">
+                    <img alt="图片信息" src="http://himg2.huanqiu.com/attachment2010/2015/1126/11/24/20151126112452360.jpg">
+                    <h4><strong>沈世闻</strong><em>沃尔沃市场部副总裁</em></h4>
+                    <h5 class="txt">沈世闻首先强调了全新XC90对于沃尔沃的意义，“全新XC90这款车，其实是沃尔沃汽车在真正实现经营自主化后，完全独立、可以自己决定产品的研发和设计后推出的第一款90系列产品。”</h5>
+                </a>            </li>
+            <li>
+                <a title="图片链接" href="http://auto.huanqiu.com/toptalk/2015-11/8044202.html" target="_blank">
+                    <img alt="图片信息" src="http://himg2.huanqiu.com/attachment2010/2015/1126/11/24/20151126112452757.jpg">
+                    <h4><strong>庞立博</strong><em>林肯中国总裁</em></h4>
+                    <h5 class="txt">中国消费者是否愿意买单林肯之道？庞立博给出了肯定的答案。“我们做了一些调研，了解到迄今为止，消费者给予林肯的产品以及服务的反馈都非常好。”
+</h5>
+                </a>            </li>
+            <li>
+                <a title="图片链接" href="http://auto.huanqiu.com/toptalk/2015-11/8035012.html" target="_blank">
+                    <img alt="图片信息" src="http://himg2.huanqiu.com/attachment2010/2015/1126/11/24/20151126112452193.jpg">
+                    <h4><strong>雷新</strong><em>英菲尼迪副总经理</em></h4>
+                    <h5 class="txt">我从小就在东风公司长大，我的父母、兄弟姐妹、爱人家人都在这个系统，我对那些工人非常了解，那是真正做到以厂为家的一群人。 </h5>
+                </a>            </li>
+        </ul>
+    </div>
+    <!-- 独家专访 end -->
+       
+    <!-- 焦点图 begin -->
+    <div class="scrollPic">
+        <div class="picMid frontCon">
+            <ul id="picFront">
+                <li>
+                    <a href="#" class="img" target="_blank"><img src="http://c.huanqiu.com/attachment2010/2016/0902/03/29/20160902032932995.jpg"></a>
+                    <a class="txt" href="#" target="_blank">全新一代途观抢先看</a>
+                </li>
+                <li>
+                    <a href="#" class="img" target="_blank"><img src="http://c.huanqiu.com/attachment2010/2016/0902/03/32/20160902033231279.jpg"></a>
+                    <a class="txt" href="#" target="_blank">斯柯达全新七座SUV抢先看</a>
+                </li>
+                <li>
+                    <a href="#" class="img" target="_blank"><img src="http://c.huanqiu.com/attachment2010/2016/0902/03/33/20160902033327806.jpg"></a>
+                    <a class="txt" href="#" target="_blank">起亚个性涂装车闪亮登场</a>
+                </li>
+                <li>
+                    <a href="#" class="img" target="_blank"><img src="http://c.huanqiu.com/attachment2010/2016/0902/03/34/20160902033437970.jpg"></a>
+                    <a class="txt" href="#" target="_blank">全新概念车闪亮登场</a>
+                </li>
+            </ul>
+            <div class="globalPageList" id="globalPicFoo"></div>
+            <a class="arrLeft" title="左滚动" id="lArrFront" href="javascript:void(0)" style="display: block;"></a>
+            <a class="arrRight" title="右滚动" id="rArrFront" href="javascript:void(0)" style="display: block;"></a>
+        </div>
+    </div>
+    <!-- 焦点图 end -->
+    
+    <!-- 友情链接 begin -->
+    <div class="row coLink">
+        <div class="main">
+            <h2>友情链接</h2>
+            <div class="coLinkCon">
+                <a href="http://auto.sohu.com/s2015/gzcz/index.shtml?adsid=5" target="_blank">搜狐汽车</a>
+                <a href="http://auto.cri.cn/other/2015gzcz/" target="_blank">国际在线汽车</a>
+                <a href="http://www.xinhuanet.com/auto/zt/2015guangzhou/index.htm" target="_blank">新华汽车</a>
+                <a href="http://auto.sina.com.cn/guangzhouchezhan/" target="_blank">新浪汽车</a>
+                <a href="http://www.autohome.com.cn/chezhan/guangzhou/" target="_blank">汽车之家</a>
+                <a href="http://auto.163.com/special/guangzhou-chezhan/" target="_blank">网易汽车</a>
+                <a href="http://auto.ifeng.com/guangzhouchezhan/" target="_blank">凤凰汽车</a>
+                <a href="http://chezhan.bitauto.com/guangzhou-chezhan/" target="_blank">易车网</a>
+                <a href="http://www.pcauto.com.cn/guangzhou/" target="_blank">太平洋汽车</a>
+                <a href="http://www.xcar.com.cn/chezhan/guangzhou/" target="_blank">爱卡汽车</a>
+                <a href="http://www.cheshen.cn/zt/2015guangz/" target="_blank">车神榜</a>
+                <a href="http://www.chexun.com/2015guangzhouchezhan/" target="_blank">车讯网</a>
+                <a href="http://www.xgo.com.cn/guangzhouchezhan/2015md.html" target="_blank">汽车点评网</a>
+                <a href="http://auto.youth.cn/chezhan/2015guangzhou/" target="_blank">中青网汽车</a>
+            </div>
+        </div>
+  </div>
+    <!-- /end 友情链接 -->
+    
+</div>
+<!-- 内容部分 end -->
+
+<!-- 公共尾部 begin -->
+<div class="mod-footer">
+    <div class="f_products">
+        <div class="main">
+            <ul class="f_lists">
+                <li class="col_1">
+                    <h3>环球无线</h3>
+                    <div class="f_items">
+                        <a href="http://mobile.huanqiu.com/#paperBox" target="_blank">环球时报客户端</a>
+                        <a href="http://mobile.huanqiu.com/#mobileBox" target="_blank">手机环球网</a>
+                    </div>
+                </li>
+                <li class="col_2">
+                    <h3>推荐服务</h3>
+                    <div class="f_items">
+                        <a href="http://www.huanqiu.com/weibo.html" target="_blank">环球网-官方微博</a>
+                        <a href="http://rss.huanqiu.com/" target="_blank">RSS订阅</a>
+                        <a href="http://dl.baofeng.com/BFVCenter/kb-huanqiu-0125.exe" target="_blank">环球网-桌面版</a>
+                        <a href="http://rank.huanqiu.com/" target="_blank">资讯排行</a>
+                    </div>
+                </li>
+                <li class="col_3">
+                    <h3>环球时报系产品</h3>
+                    <div class="f_items">
+                        <a href="http://data.huanqiu.com/" target="_blank">环球时报版权数据库</a>
+                        <a href="http://www.lifetimes.cn/" target="_blank">生命时报</a>
+                        <a href="http://hd.globaltimes.cn/" target="_blank">品牌活动</a>
+                        <a href="http://www.globaltraveler.com.cn/" target="_blank">环球旅游周刊</a>
+                        <a href="http://www.gtfoundation.cn/" target="_blank">环球时报公益基金会</a>
+                        <a href="http://humor.huanqiu.com/" target="_blank">讽刺与幽默</a>
+                        <a href="http://www.globalsurvey.com.cn/" target="_blank">舆情中心</a>
+                        <a href="http://www.globaltimes.cn/" target="_blank">GlobalTimes</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="f_links">
+            <a href="http://corp.huanqiu.com/about/" target="_blank">环球网简介</a>
+            <i>|</i>
+            <a href="http://corp.huanqiu.com/aboutus/" target="_blank">About huanqiu.com</a>
+            <i>|</i>
+            <a href="http://www.huanqiu.com/sitemap.html" target="_blank">网站地图</a>
+            <i>|</i>
+            <a href="http://www.huanqiu.com/weibo.html" target="_blank">官方微博</a>
+            <i>|</i>
+            <a href="http://corp.huanqiu.com/jobs/" target="_blank">诚聘英才</a>
+            <i>|</i>
+            <a href="http://corp.huanqiu.com/advertising_services/" target="_blank">广告服务</a>
+            <i>|</i>
+            <a href="http://corp.huanqiu.com/contactus/" target="_blank">联系方式</a>
+            <i>|</i>
+            <a href="http://corp.huanqiu.com/privacy_policy/" target="_blank">隐私政策</a>
+            <i>|</i>
+            <a href="http://corp.huanqiu.com/terms/" target="_blank">服务条款</a>
+            <i>|</i>
+            <a href="mailto:jubao@huanqiu.com" target="_blank">意见反馈</a>
+        </div>
+    </div>
+</div>
+<!-- 公共尾部 end -->
+
+<!-- <script src="http://himg2.huanqiu.com/statics/hq2013/js/lib/sea.js" type="text/javascript" data-main="http://himg2.huanqiu.com/statics/hq2013/allMinJs/allPageCommon/allTopBottom.min.js"></script> -->
+<script type="text/javascript" src="http://himg2.huanqiu.com/statics/js/jquery.carouFredSel-5.6.2-min.js" charset="utf-8" ></script>
+<script language="javascript">
+$('#picFront').carouFredSel({
+    width: 970,
+    scroll  : {
+        items   : 1
+    },
+    circular: true,
+    infinite: false,
+    auto    : false,
+    prev: '#lArrFront',
+    next: '#rArrFront',
+  pagination  :{
+    container:"#globalPicFoo",
+    event:"mouseover"
+  }
+});
+</script>
+
+<script src="http://himg2.huanqiu.com/statics/hq2013/js/lp/live/jquery.pagination.js" type="text/javascript"></script>
+<script src="http://himg2.huanqiu.com/statics/hq2013/js/zzsc.js" type="text/javascript"></script>
+<script type="text/javascript">
+var typeId=$("#typeId").val();
+function pageselectCallback(page_index){
+    $(".liveList").html("");  
+    var i= parseInt(page_index+1);
+    
+        //var pagesize=2//默认每页多少条
+    var url='http://ac.huanqiu.com/newslives/getjson/?flag=js&typeid='+typeId+'&p='+i+'&callback='     
+     $.ajax({
+        url: url,
+        type:'get',
+        dataType: 'jsonp',
+       // data:{"key":obj.m},//输入的
+        success: function(data){
+            var items_per_page = data.list.length;
+            var newcontent = '';
+            var img='';
+            for(var i=0;i<items_per_page;i++)
+            {
+                 if(data.list[i].imgurl!='')
+                    {
+                         img='<div class="img">'
+                                    +'<img src="'+data.list[i].imgurl+'" alt="图片" />'
+                                +'</div>'
+                    }else{
+                        img='';
+                    }
+                  
+                     newcontent='<li>'
+                        +'<div class="liveTime">'
+                            +'<span>'+data.list[i].created+'<em>'+data.list[i].created2+'</em></span>'
+                        +'</div>'
+                        +'<div class="conBox">'
+                           +' <p>'+data.list[i].content+'</p>'
+                           +''+img+''
+                        +'</div>'
+                    +'</li>' 
+                    $(".liveList").append(newcontent);
+            } 
+            
+        },
+        error:function()
+        {
+            //alert("错误");
+        }
+    })
+
+    return false;
+}
+
+function getOptionsFromForm(){
+    var opt = {callback: pageselectCallback};
+    // Collect options from the text fields - the fields are named like their option counterparts
+    return opt;
+}
+
+function  fload()
+{
+    var opt = getOptionsFromForm();
+    var url='http://ac.huanqiu.com/newslives/getjson/?flag=js&typeid='+typeId+'&callback='     
+     $.ajax({
+        url: url,
+        type:'get',
+        dataType: 'jsonp',
+        success: function(data){
+            $("#Pagination").pagination(data.count,opt);
+        },
+        error:function()
+        {
+            //alert("错误");
+        }
+    })
+}
+
+
+$(".refreshBtn").click(function(){
+    fload();
+});
+
+
+$(function(){
+  var option = {
+    prev:"#banner_prev", //上一张按钮，默认为null
+    next:"#banner_next",//下一张按钮，默认为null
+    nav:'.scroll_nav',//轮播导航，默认为null,当为null时，自动生成导航。
+    auto:false//是否自动轮显，默认为true
+  };
+  $("#scroll_box").baisonSlider(option);
+  //banner轮显按钮特效
+  // $("#banner_prev,#banner_next").find('img').hover(
+  //  function(){
+  //    $(this).stop(false,true).fadeTo(800,0); 
+  //  },
+  //  function(){
+  //    $(this).stop(false,true).fadeTo(500,1);
+  //  }
+  // );
+  $(function () {
+      var lmk123 = {
+          com: function (con) {
+              var t, imgArr = [], $lmk = $('#foucsBox'), $imgUl = $lmk.find('ul.imgCon'), $titleDiv = $lmk.find('div.showTitle'), $foucsDiv = $lmk.find('div.foucs'), $rlBtn = $lmk.find('.foucsButton'), $rBtn = $lmk.find('.rBtn'), $lBtn = $lmk.find('.lBtn'), config = {
+                  len: $imgUl.find('li').length,
+                  //自动滚动时间，默认两千毫秒（一秒等于一千毫秒）
+                  timeo: 5000,
+                  //宽，默认560px
+                  wid: $lmk.width(),
+                  //高，默认315px
+                  hei: 360
+              }, i = 0, autoChange = function () {
+                  $imgUl.animate({ marginLeft: '-' + i * config.wid + 'px' }, function () {
+                      $foucsDiv.find('span:eq(' + i + ')').addClass('f').siblings().removeClass('f');
+                      $rBtn.find('img').replaceWith(imgArr[(i === config.len - 1) ? 0 : (i + 1)]);
+                      $lBtn.find('img').length !== 0 ? $lBtn.find('img:eq(0)').replaceWith(imgArr[(i === 0) ? (config.len - 1) : (i - 1)]) : $lBtn.append(imgArr[(i === 0) ? (config.len - 1) : (i - 1)]);
+                      i += 1;
+                      i = i === config.len ? 0 : i;
+                  });
+              };
+              $imgUl.find('img').each(function (inde, ele) {
+                  imgArr[inde] = new Image();
+                  imgArr[inde].src = $(this).attr('src');
+              });
+              $imgUl.css('width', config.len * config.wid);
+              $foucsDiv.html(function () {
+                  var i, s = '';
+                  for (i = 0; i < config.len; i += 1) {
+                      s += '<span ' + (i === 0 ? 'class="f"' : '') + '></span>';
+                  }
+                  return s;
+              });
+              $rBtn.find('img').replaceWith(imgArr[(i === config.len - 1) ? 0 : (i + 1)]);
+              $lBtn.find('img').length !== 0 ? $lBtn.find('img:eq(0)').replaceWith(imgArr[(i === 0) ? (config.len - 1) : (i - 1)]) : $lBtn.append(imgArr[(i === 0) ? (config.len - 1) : (i - 1)]);
+              t = setInterval(autoChange, config.timeo);
+              $lmk.mouseenter(function () { clearInterval(t); }).mouseleave(function () { t = setInterval(autoChange, config.timeo); });
+              $rlBtn.hover(function () {
+                  $(this).addClass('btnHover');
+              }, function () {
+                  $(this).removeClass('btnHover');
+              }).click(function () {
+                  i = $foucsDiv.find('span.f').index();
+                  if ($(this).is('.lBtn')) {
+                      i = (i === 0) ? (config.len - 1) : (i - 1);
+                  } else {
+                      i = (i === config.len - 1) ? 0 : (i + 1);
+                  }
+                  autoChange();
+              });
+              $foucsDiv.find('span').click(function () {
+                  i = $(this).index();
+                  autoChange();
+              });
+          }
+      };
+      
+      //执行开始
+      lmk123.com();
+  });
+
+ });
+
+</script>
+
+<script src="http://himg2.huanqiu.com/statics/hq2013/js/lib/jquery1.9.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+        var jquery1_9_1 = jQuery.noConflict(true);
+        jquery1_9_1(document).ready(function(){
+            fload();
+           
+            setInterval(function(){
+                 var ischecked = jquery1_9_1("#check").prop('checked');
+                if(ischecked == true)
+                {
+                    fload();
+                }  
+            },30000)
+        });
+</script>
+
+<script type="text/javascript" src="http://himg2.huanqiu.com/script/HuanQiuAllBottom.Js" ></script>
+
+</body>
+</html>
+<!--Baidu Button BEGIN --><script type="text/javascript" id="bdshare_js" data="type=slide&img=0&pos=right&uid=745453" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript">var bds_config={"snsKey":{"tsina":"2004760508","tqq":"55871570908b64df"},"bdTop":138,"bdPic":"1111111","bdText":"2016年广州国际车展...——分享自环球网@环球网"};document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);</script><!-- Baidu Button END -->

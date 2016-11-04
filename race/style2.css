@@ -1,0 +1,178 @@
+body,ul,li,p,h1,h2,h3,h4,h5 { margin:0; padding:0;}
+li { list-style:none;}
+
+.clear { zoom:1;}
+.clear:after { content:''; clear:both; display:block;}
+
+.mod-footer { margin-top:0;}
+
+/*内容部分*/
+.page-main { width:100%; background:#defaff;}
+
+.float-left { float:left;}
+.float-right { float:right;}
+
+.page-head { width:100%; background:url(../images/head-bg.gif) no-repeat center 0;}
+.page-footer { width:100%; background:url(../images/footer-bg.jpg) no-repeat center bottom; padding-bottom:20px;} 
+
+.page-main-center { width:1000px; margin:0 auto; padding-top:450px;}
+
+.race-logo { height:92px;}
+.race-logo img { margin-top:30px;}
+
+.kangbaolai-headPic { height:400px; margin:0 auto 20px auto; overflow:hidden;}
+.mod-focus { margin:0 auto; height:400px; position:relative;}
+.mod-focus .focus_con { overflow:hidden; width:700px; height:400px; float:left;}
+.mod-focus .focus_con li { width:700px; height:400px;}
+.mod-focus .focus_con img { width:100%; height:100%; overflow:hidden;}
+.mod-focus .focus_page { width:298px; height:398px; border:1px solid #43deef; border-bottom:none; position:absolute; right:0; top:0;}
+.mod-focus .focus_page li { position:relative; height:65px; background:#eefdff; border-bottom:1px solid #43deef;}
+.mod-focus .focus_page li a { display:block; width:100%; height:100%; position:relative; z-index:1;}
+.mod-focus .focus_page li a:hover { text-decoration:none;}
+.mod-focus .focus_page .f_tle { height:64px; line-height:64px; font-size:18px; color:#003036; overflow:hidden; text-align:center;}
+.mod-focus .focus_page .f_des { display:none; line-height:20px; height:40px; overflow:hidden; color:#fff;}
+.mod-focus .focus_page .cur { background:#00b0c6; height:134px;}
+.mod-focus .focus_page .cur .f_tle { color:#fff; padding-top:18px; height:52px; line-height:52px;}
+.mod-focus .focus_page .cur .f_des { padding:0 22px; display:block;}
+
+.race-top-box { }
+.race-box { width:590px; height:384px;}
+.race-box-title { height:63px; background:url(../images/box-title-bg.png) no-repeat;}
+.race-box-title ul { width:590px; height:63px;}
+.race-box-title li { cursor:pointer; float:left; width:90px; height:63px; margin-left:12px; display:inline;}
+.race-box-title li span { width:100%; height:100%; float:left;}
+.race-box-title li.li1 span { background:url(../images/race-box-li1.png) no-repeat center center;}
+.race-box-title li .span1 { background:url(../images/race-box-li1-hover.png) no-repeat center center!important;}
+.race-box-title li.li2 span { background:url(../images/race-box-li2.png) no-repeat center center;}
+.race-box-title li .span2 { background:url(../images/race-box-li2-hover.png) no-repeat center center!important;}
+.race-box-title li.li3 span { background:url(../images/race-box-li3.png) no-repeat center center;}
+.race-box-title li .span3 { background:url(../images/race-box-li3-hover.png) no-repeat center center!important;}
+.race-box-title li.li4 span { background:url(../images/race-box-li4.png) no-repeat center center;}
+.race-box-title li .span4 { background:url(../images/race-box-li4-hover.png) no-repeat center center!important;}
+.race-box-title li.li5 { width:140px;}
+.race-box-title li.li5 span { background:url(../images/race-box-li5.png) no-repeat center center;}
+.race-box-title li .span5 { background:url(../images/race-box-li5-hover.png) no-repeat center center!important;}
+.race-box-title li.active { background:url(../images/race-box-liActive.png) no-repeat center 49px;}
+
+.race-box-main { width:588px; height:318px; background:#fff; border:1px solid #43deef; border-radius:2px; overflow:hidden;}
+.race-box-main ul { width:100%; height:100%;}
+.race-box-main li { width:100%; padding-top:20px; display:none;}
+.race-box-main li.liShow { display:block;}
+.race-box-main li p { line-height:30px; font-size:14px; color:#808080; padding:10px 26px 0 26px; text-indent:2em;}
+.prize-info { padding:60px 0 0 140px;}
+.prize-info h3 { line-height:40px; height:40px; overflow:hidden; font-size:18px; color:#808080; background:url(../images/dot.gif) no-repeat 0 center; padding-left:28px;}
+
+.race-map { width:590px; height:460px; margin-top:22px;}
+.race-map-title { height:63px; background:url(../images/race-map-title.png) no-repeat;}
+.race-map-main { width:588px; height:394px; border:1px solid #43deef; border-radius:2px;}
+
+.hear-love, .kangbaolai-box, .kangbaolai-dynamic { width:390px; height:274px;}
+.hear-love-title { height:63px; background:url(../images/hear-love.png) no-repeat;}
+.hear-love-main, .kangbaolai-main, .kangbaolai-dynamic-main { width:388px; height:210px; background:#fff; border:1px solid #43deef; border-radius:2px;}
+.hear-log-pic { width:152px; height:78px; float:left; margin:54px 0 0 22px;}
+.hear-love-main p { width:180px; line-height:24px; font-size:12px; padding-top:40px; float:left; margin-left:15px; display:inline;}
+.hear-love-main p a { color: #ffa701;}
+.hear-love-main p a:hover { text-decoration:underline;}
+
+.kangbaolai-box { margin-top:21px;}
+.kangbaolai-title { height:63px; background:url(../images/kangbaolai-title.gif) no-repeat;}
+.kangbaolai-pic { width:152px; height:78px; float:left; margin:29px 0 0 22px;}
+.kangbaolai-main p { width:180px; line-height:24px; font-size:12px; padding-top:40px; float:left; margin-left:15px; display:inline;}
+.kangbaolai-main p a { color: #ffa701;}
+.kangbaolai-main p a:hover { text-decoration:underline;}
+
+.kangbaolai-dynamic { margin-top:20px;}
+.kangbaolai-dynamic-title { height:63px; background:url(../images/kangbaolai-dynamic-title.png) no-repeat;}
+.kangbaolai-dynamic-title .more { float: right; background: #037e8d; color: #fff; text-align: center; width: 54px; line-height: 24px; border-radius: 12px; margin: 20px 10px 0 0;} 
+
+.kangbaolai-dynamic-info { height:90px; padding:25px 0 12px 30px;}
+.kangbaolai-dynamic-pic { width:142px; height:86px; float:left;}
+.kangbaolai-dynamic-txt { width:164px; float:left; margin-left:18px; display:inline;}
+.kangbaolai-dynamic-txt h4 { line-height:25px; height:50px; overflow:hidden; font-size:16px;}
+.kangbaolai-dynamic-txt h4 a { color:#3a3a3a;}
+.kangbaolai-dynamic-txt h4 a:hover { text-decoration:underline;}
+.kangbaolai-dynamic-txt p { line-height:20px; height:40px; overflow:hidden; font-size:12px;}
+.kangbaolai-dynamic-txt p a { color:#333;}
+.kangbaolai-dynamic-txt p a:hover { text-decoration:underline;}
+.kangbaolai-dynamic-main ul { padding:8px 0 0 30px; background:url(../images/kangbaolai-dynamic-line.gif) no-repeat center 0;}
+.kangbaolai-dynamic-main li { line-height:26px; height:26px; font-size:12px; padding-left:14px; background:url(../images/kangbaolai-dynamic-dot.gif) no-repeat 0 center;}
+.kangbaolai-dynamic-main li a { color:#333;}
+.kangbaolai-dynamic-main li a:hover { text-decoration:underline;}
+
+.kangbaolai-center { height:548px; margin-top:20px;}
+.kangbaolai-center-title { width:1000px; height:63px; background:url(../images/kangbaolai-center-title.gif) no-repeat; overflow:hidden;}
+.kangbaolai-center-title ul { margin-left:-20px;}
+.kangbaolai-center-title li { width:212px; height:62px; float:left; margin-left:30px; display:inline; cursor:pointer;}
+.kangbaolai-center-title li.active { background:url(../images/kangbaolai-center-liActive.png) no-repeat center 53px;}
+.kangbaolai-center-title li span { width:100%; height:100%; float:left;}
+.kangbaolai-center-title li span.span1 { background:url(../images/kangbaolai-center-li1.png) no-repeat center center;}
+.kangbaolai-center-title li span.span2 { background:url(../images/kangbaolai-center-li2.png) no-repeat center center;}
+.kangbaolai-center-title li span.span3 { background:url(../images/kangbaolai-center-li3.png) no-repeat center center;}
+.kangbaolai-center-title li span.span4 { background:url(../images/kangbaolai-center-li4.png) no-repeat center center;}
+.kangbaolai-center-main { width:998px; height:478px; background:#fff; border:1px solid #43deef; border-radius:2px;}
+.kangbaolai-center-main ul { width:998px; height:478px; overflow:hidden;}
+.kangbaolai-center-main li { width:998px; height:478px; display:none;}
+.kangbaolai-center-main li.kangbaolai-center-showPic { display:block;}
+.kangbaolai-center-main li img { width:998px; height:478px; overflow:hidden;}
+
+.spokesman { margin-top:25px; background:#fff;}
+.spokesman-title { height:63px; background:url(../images/spokesman-title.png) no-repeat;}
+.spokesman-title1 { height:63px; background:url(../images/spokesman-title1.png) no-repeat;}
+.spokesman-title2 { height:63px; background:url(../images/spokesman-title2.png) no-repeat;}
+.spokesman-title3 { height:63px; background:url(../images/spokesman-title3.png) no-repeat;}
+.spokesman-pic { width:998px; height:318px; background:#fff; border:1px solid #43deef; border-radius:2px; overflow:hidden;}
+.spokesman-pic li { width:450px; float:left; margin-left:37px; display:inline; padding-top:22px;}
+.spokesman-pic li a { width:100%; height:100%; display:block;}
+.spokesman-pic img { width:210px; height:256px; overflow:hidden; float:left; margin-top:9px;}
+.spokesman-pic-txt { width:209px; height:227px; float:left; padding-left:30px;}
+.spokesman-pic-txt h4 { height:64px; line-height:64px; font-size:24px; color:#3a3a3a; font-weight:bold;}
+.spokesman-pic-txt h4:hover { text-decoration:underline;}
+.spokesman-pic-txt p { line-height:24px; font-size:14px; color:#333;}
+.spokesman-pic-txt p:hover { text-decoration:underline;}
+.spokesman-pic-txt .show-btn { height:38px; background: url(../images/show_btn.png) center no-repeat;}
+
+.review-area { height:254px; margin-top:25px;}
+.review-area-title { height:63px; background:url(../images/review-area-title.gif) no-repeat;}
+.review-area-main { width:998px; height:191px; background:#fff; border:1px solid #43deef; border-radius:2px; overflow:hidden;}
+.review-area-main ul { padding-top:20px; margin-left:-10px;}
+.review-area-main li { width:216px; float:left; margin-left:30px; display:inline;}
+.review-area-left { width:90px; float:left;}
+.review-area-pic { width:90px; height:110px; display:block;}
+.review-area-pic img { width:90px; height:110px; overflow:hidden;}
+.review-area-left p { height:34px; line-height:34px; font-size:16px; text-align:center;}
+.review-area-left p a { color:#3a3a3a;}
+.review-area-left p a:hover { text-decoration:underline;}
+.review-area-right { width:108px; float:left; margin-left:16px; display:inline; line-height:24px; font-size:12px;}
+.review-area-right a { color:#333;}
+.review-area-right a:hover { text-decoration:underline;}
+
+.race-review { width:1000px; height:598px; background:url(../images/race-review-bg.gif) no-repeat; margin-top:96px; position:relative;}
+.race-review-title { width:395px; height:188px; background:url(../images/race-review-title.png) no-repeat; position:absolute; left:-58px; top:-64px;}
+
+.focus-box { width:390px; height:380px; overflow-y:hidden; float:left; margin-top:138px;}
+.list_carousel { width:330px; height:376px; position:relative; left:30px;}
+.list_carousel ul { width:330px; height:376px;}
+.list_carousel li { width:330px; height:376px; float:left;}
+.list_carousel li p { height:150px; line-height:30px; font-size:14px; overflow:hidden; padding-bottom:40px; text-indent:2em;}
+.list_carousel li p a { color:#4e4e4e;}
+.list_carousel li p a:hover { text-decoration:underline;}
+.race-review-pic { width:330px; height:185px; display:block;}
+.prev, .next { width:35px; height:70px; position:absolute;}
+.prev { left:-30px; top:242px; background:url(../images/prev-btn.png) no-repeat;}
+.next { right:-30px; top:242px; background:url(../images/next-btn.png) no-repeat;}
+
+.race-interview { width:444px; height:496px; float:right; margin:54px 66px 0 0; display:inline;}
+.race-interview-title { height:63px; background:url(../images/race-interview-title1.png) no-repeat;}
+.race-interview-main { width:442px; height:432px; background:#fff; border:1px solid #43deef; border-radius:2px; overflow:hidden;}
+.race-interview-main ul { padding:42px 0 0 32px;}
+.race-interview-main li { margin-bottom:38px; height:90px;}
+.race-interview-pic { width:90px; height:90px; float:left; }
+.race-interview-txt { width:270px; float:left; margin-left:18px; display:inline;}
+.race-interview-txt h4 { height:20px; line-height:20px; font-size:16px; overflow:hidden;}
+.race-interview-txt h4 a { color:#3a3a3a;}
+.race-interview-txt h4 a:hover { text-decoration:underline;}
+.race-interview-txt p { margin-top:10px; height:60px; line-height:20px; font-size:12px; overflow:hidden;}
+.race-interview-txt p a { color:#333;}
+.race-interview-txt p a:hover { text-decoration:underline;}
+
+.partner { width:1000px; height:114px; background:url(../images/partner.png) no-repeat; margin-top:35px;}
