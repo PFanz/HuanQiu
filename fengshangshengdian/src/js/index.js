@@ -317,7 +317,7 @@ Lunbo.prototype = {
 // 倒计时
 setInterval(function () {
   // 此处为2016-12-12 20:00:00
-  var time = compareTime(1481544000000);
+  var time = compareTime(1481018400000);
   // dom赋值
   $('#txtDay').text(time.date);
   $('#txtHours').text(time.hours);
@@ -396,25 +396,25 @@ $(window).scroll(function () {
     }
     $('.nav-container a').removeClass('active');
     $nav1.addClass('active');
-  } else if (scrollTop < 2500) {
+  } else if (scrollTop < 2800) {
     if ($nav2.hasClass('active')) {
       return;
     }
     $('.nav-container a').removeClass('active');
     $nav2.addClass('active');
-  } else if (scrollTop < 3300) {
+  } else if (scrollTop < 3500) {
     if ($nav3.hasClass('active')) {
       return;
     }
     $('.nav-container a').removeClass('active');
     $nav3.addClass('active');
-  } else if (scrollTop < 7600) {
+  } else if (scrollTop < 4550) {
     if ($nav4.hasClass('active')) {
       return;
     }
     $('.nav-container a').removeClass('active');
     $nav4.addClass('active');
-  } else if (scrollTop < 8500) {
+  } else if (scrollTop < 4900) {
     if ($nav5.hasClass('active')) {
       return;
     }
@@ -430,27 +430,19 @@ $(window).scroll(function () {
 });
 
 // 风尚榜样数据获取
-var exampleId = 1;
-var honorId = 1;
+var exampleId = 6;
+var honorId = 7;
+var ipdata = [];
 // 本地数据
-if (localStorage.getItem('date') != new Date().getDate()) {
-  localStorage.setItem('example', '');
-  localStorage.setItem('honor', '');
-}
-// 榜样
-var example = localStorage.getItem('example');
-if (example === null) {
-  localStorage.setItem('example', '');
-  example = localStorage.getItem('example');
-}
-var exampleArr = example.split(',');
-// 众誉
-var honor = localStorage.getItem('honor');
-if (honor === null) {
-  localStorage.setItem('honor', '');
-  honor = localStorage.getItem('honor');
-}
-var honorArr = honor.split(',');
+$.ajax({
+  type: 'GET',
+  async: false,
+  url: 'http://toys.m.people.cn/apps/vote/getvotes.php?r=' + Math.random(),
+  dataType: 'jsonp',
+  success: function success(data) {
+    ipdata = data;
+  }
+});
 // 榜样
 $.ajax({
   type: 'get',
@@ -460,7 +452,6 @@ $.ajax({
   success: function success(data) {
     data = data.data;
     var options = data.questions;
-    console.log(options);
     var str = '';
     for (var i = 0, len = Math.ceil(options.length / 7); i < len; i++) {
       // 奇数 row-1
@@ -475,7 +466,7 @@ $.ajax({
             str += '<a href="' + _data.answers[0].text + '" target="_blank">\n                        <p class="triangle-small">查看详情</p>\n                        <p class="triangle-title">' + _data.title + '</p>\n                        <p class="triangle-num"><span>' + _data.answers[0].count + '</span>人</p>\n                      </a>';
           }
 
-          str += '<p class="triangle-heart ' + (exampleArr.indexOf('' + _data.id + _data.answers[0].id) !== -1 ? 'active' : '') + '" data-qid="' + _data.id + '" data-aid="' + _data.answers[0].id + '"></p>\n                      </div>\n                    </div>\n                  </div>';
+          str += '<p class="triangle-heart ' + (('' + ipdata).indexOf('' + exampleId + _data.id + _data.answers[0].id) !== -1 ? 'active' : '') + '" data-qid="' + _data.id + '" data-aid="' + _data.answers[0].id + '"></p>\n                      </div>\n                    </div>\n                  </div>';
         }
         str += '</div>';
       } else {
@@ -490,7 +481,7 @@ $.ajax({
             str += '<a href="' + _data2.answers[0].text + '" target="_blank">\n                        <p class="triangle-title">' + _data2.title + '</p>\n                        <p class="triangle-small">查看详情</p>\n                        <p class="triangle-num"><span>' + _data2.answers[0].count + '</span>人</p>\n                      </a>';
           }
 
-          str += '<p class="triangle-heart ' + (exampleArr.indexOf('' + _data2.id + _data2.answers[0].id) !== -1 ? 'active' : '') + '" data-qid="' + _data2.id + '" data-aid="' + _data2.answers[0].id + '"></p>\n                  </div>\n                </div>\n              </div>';
+          str += '<p class="triangle-heart ' + (('' + ipdata).indexOf('' + exampleId + _data2.id + _data2.answers[0].id) !== -1 ? 'active' : '') + '" data-qid="' + _data2.id + '" data-aid="' + _data2.answers[0].id + '"></p>\n                  </div>\n                </div>\n              </div>';
         }
         str += '</div>';
       }
@@ -510,7 +501,6 @@ $.ajax({
   success: function success(data) {
     data = data.data;
     var options = data.questions;
-    console.log(options);
     var str = '';
     for (var i = 0, len = Math.ceil(options.length / 7); i < len; i++) {
       // 奇数 row-1
@@ -525,7 +515,7 @@ $.ajax({
             str += '<a href="' + _data3.answers[0].text + '" target="_blank">\n                        <p class="triangle-small">查看详情</p>\n                        <p class="triangle-title">' + _data3.title + '</p>\n                        <p class="triangle-num"><span>' + _data3.answers[0].count + '</span>人</p>\n                      </a>';
           }
 
-          str += '<p class="triangle-heart ' + (honorArr.indexOf('' + _data3.id + _data3.answers[0].id) !== -1 ? 'active' : '') + '" data-qid="' + _data3.id + '" data-aid="' + _data3.answers[0].id + '"></p>\n                  </div>\n                </div>\n              </div>';
+          str += '<p class="triangle-heart ' + (('' + ipdata).indexOf('' + honorId + _data3.id + _data3.answers[0].id) !== -1 ? 'active' : '') + '" data-qid="' + _data3.id + '" data-aid="' + _data3.answers[0].id + '"></p>\n                  </div>\n                </div>\n              </div>';
         }
         str += '</div>';
       } else {
@@ -540,7 +530,7 @@ $.ajax({
             str += '<a href="' + _data4.answers[0].text + '" target="_blank">\n                        <p class="triangle-title">' + _data4.title + '</p>\n                        <p class="triangle-small">查看详情</p>\n                        <p class="triangle-num"><span>' + _data4.answers[0].count + '</span>人</p>\n                      </a>';
           }
 
-          str += '<p class="triangle-heart ' + (honorArr.indexOf('' + _data4.id + _data4.answers[0].id) !== -1 ? 'active' : '') + '" data-qid="' + _data4.id + '" data-aid="' + _data4.answers[0].id + '"></p>\n                  </div>\n                </div>\n              </div>';
+          str += '<p class="triangle-heart ' + (('' + ipdata).indexOf('' + honorId + _data4.id + _data4.answers[0].id) !== -1 ? 'active' : '') + '" data-qid="' + _data4.id + '" data-aid="' + _data4.answers[0].id + '"></p>\n                  </div>\n                </div>\n              </div>';
         }
         str += '</div>';
       }
@@ -555,61 +545,42 @@ $.ajax({
 // 投票
 // 榜样
 $('#tab-content-0').on('click', '.triangle-heart', function () {
-  if (!$(this).hasClass('active') && $('#tab-content-0 .triangle-heart.active').length <= 10) {
+  if ($(this).hasClass('active')) return;
+  if ($('#tab-content-0 .triangle-heart.active').length < 10) {
     // 增加页面显示
     var $num = $(this).parents('.triangle-cover').find('.triangle-num span');
     $num.text(+$num.text() + 1);
     $(this).addClass('active');
 
     vote(exampleId, $(this).attr('data-qid'), $(this).attr('data-aid'));
-    example += '' + $(this).attr('data-qid') + $(this).attr('data-aid') + ',';
-    localStorage.setItem('example', example);
-    localStorage.setItem('date', new Date().getDate());
+  } else {
+    alert('抱歉，一天最多支持10个参选项噢~');
   }
 });
 // 众誉
 $('#tab-content-1').on('click', '.triangle-heart', function () {
-  if (!$(this).hasClass('active') && $('#tab-content-0 .triangle-heart.active').length <= 10) {
+  if ($(this).hasClass('active')) return;
+  if ($('#tab-content-1 .triangle-heart.active').length < 10) {
     // 增加页面显示
     var $num = $(this).parents('.triangle-cover').find('.triangle-num span');
     $num.text(+$num.text() + 1);
     $(this).addClass('active');
 
     vote(honorId, $(this).attr('data-qid'), $(this).attr('data-aid'));
-    honor += '' + $(this).attr('data-qid') + $(this).attr('data-aid') + ',';
-    localStorage.setItem('honor', honor);
+  } else {
+    alert('抱歉，一天最多支持10个参选项噢~');
   }
 });
 
 function vote(articleId, questionId, answerId) {
-  // var data = {
-  //   article_id: articleId,
-  //   answer: [
-  //     {
-  //       question_id: questionId,
-  //       answer: [
-  //         answerId
-  //       ]
-  //     }
-  //   ]
-  // };
-  // $.ajax({
-  //   type: 'POST',
-  //   async: false,
-  //   url: 'http://surveyx.huanqiu.com/interface/setData/',
-  //   data: {
-  //     data: JSON.stringify(data)
-  //   },
-  //   success: function() {
-
-  //   }
-  // });
   $.ajax({
     type: 'GET',
     dataType: 'jsonp',
-    url: 'http://toys.m.people.cn/apps/vote/limit.php?article_id=1&question_id=4&answer=1&callback=a',
+    url: 'http://toys.m.people.cn/apps/vote/limit.php?article_id=' + articleId + '&question_id=' + questionId + '&answer=' + answerId + '&callback=',
     success: function success(data) {
-      console.log(data);
+      if (data.code == 200) {} else {
+        alert(data.msg);
+      }
     }
   });
 }
