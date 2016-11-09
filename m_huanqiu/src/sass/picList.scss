@@ -1,0 +1,134 @@
+// reset
+body,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  margin: 0 auto;
+  width: 10rem;
+}
+
+// 新闻标签
+span.news-label-lvxing {
+  color: #8a54ad;
+  border-color: #8a54ad;
+}
+
+// header
+header {
+  height: 1.25rem;
+  line-height: 1.25rem;
+  background: #f5f5f5;
+}
+
+.header-logo {
+  display: inline-block;
+  margin: (17rem/64) 0 (17rem/64) (35rem/64);
+  width: (216rem/64);
+  height: (46rem/64);
+  background: url(../images/header_logo.png) no-repeat;
+  background-size: contain;
+}
+
+.header-small {
+  float: right;
+  font-size: (20rem/64);
+  color: #b3b3b3;
+}
+
+.header-user {
+  float: right;
+
+  img {
+    margin: 0 (.75rem/2);
+    width: .5rem;
+    height: .5rem;
+    vertical-align: middle;
+  }
+}
+
+// .header-menu {
+//   float: right;
+//   margin: (.75rem/2); 
+//   height: .5rem;
+//   width: .5rem;
+//   // background: url(../images/header_user.png) no-repeat;
+//   // background-size: contain;
+// }
+
+// nav
+nav {
+  font-size: 0;
+  border-bottom: (4rem/64) solid #910910;
+}
+
+.nav-main {
+  box-sizing: border-box;
+  height: (80rem/64);
+  line-height: (80rem/64);
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.nav-item {
+  font-family:PingFangSC-Regular;
+  display: inline-block;
+  // box-sizing: border-box;
+  // padding: .3rem 0 .1rem;
+  width: 1.75rem;
+  font-size: (28rem/64);
+  text-align: center;
+  color:#6d6d6d;
+  opacity:0.89;
+  // border-left: 1px solid #666;
+}
+
+.nav-item.active {
+  font-weight: bold;
+  color: #4a4a4a;
+}
+
+.nav-more-btn {
+  float: right;
+  box-sizing: border-box;
+  padding: (32rem/64) (23rem/64) (24rem/64);
+  width: (80rem/64);
+  height: (80rem/64);
+  background: url(../images/nav_more_btn.png) no-repeat;
+  background-size: contain;
+  background-origin: content-box;
+  border-left: 1px solid #f5f5f5;
+
+  &.active {
+    background-image: url(../images/nav_more_btn_active.png);
+  }
+}
+
+.nav-more {
+  display: none;
+
+  .nav-item {
+    width: 2rem;
+    height: (80rem/64);
+    line-height: (80rem/64);
+    font-size: (26rem/64);
+
+    &.small {
+      font-size: (24rem/64);
+    }
+
+    &.smaller {
+      font-size: (22rem/64);
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "$": true
+  },
+  "extends": [
+    "standard"
+  ],
+  "rules": {
+    "no-unused-vars": 1,
+    "no-console": [1, { "allow": ["warn", "error"]}],
+
+    "space-before-function-paren": [1, "never"]
+  }
+}
