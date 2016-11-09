@@ -1,3 +1,4 @@
+// 依赖zepto
 (function() {
   // 频道更多
   // 需要改进：解决滚轮事件
@@ -90,7 +91,7 @@
     }
   })
 
-  // 上拉
+  // 上拉 继续加载
   var loading = false
   $(window).scroll(function() {
     if (!loading && scrollY > window.innerHeight) {
