@@ -1,22 +1,18 @@
 // 依赖zepto
 (function() {
   // 频道更多
-  // 需要改进：解决滚轮事件
   $('#nav-more-btn').on('tap', function(event) {
     event.preventDefault()
     if (!$(this).hasClass('active')) {
       $(this).addClass('active')
       $('#nav-more').css('bottom', '0')
       $('#nav-more').css('opacity', '1')
-      // 临时解决办法
-      setTimeout(function() {
-        $('#news-list').css('height', '0')
-      }, 500)
+      $('body').css('overflow', 'hidden')
     } else {
       $(this).removeClass('active')
       $('#nav-more').css('bottom', '20rem')
       $('#nav-more').css('opacity', '0')
-      $('#news-list').css('height', 'auto')
+      $('body').css('overflow', 'visible')
     }
   })
 
