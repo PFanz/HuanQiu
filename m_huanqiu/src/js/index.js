@@ -1,22 +1,23 @@
 // 依赖zepto
-(function() {
+(function () {
+  var fontSize = parseFloat($('html').css('font-size'))
   // 频道更多
-  $('#nav-more-btn').on('tap', function(event) {
+  $('#nav-more-btn').on('tap', function (event) {
     event.preventDefault()
     if (!$(this).hasClass('active')) {
       $(this).addClass('active')
-      $('#nav-more').css('bottom', '0')
+      $('#nav-more').css('height', (window.innerHeight + $(window).scrollTop() - 2.5 * fontSize) + 'px')
       $('#nav-more').css('opacity', '1')
       $('body').css('overflow', 'hidden')
     } else {
       $(this).removeClass('active')
-      $('#nav-more').css('bottom', '20rem')
+      $('#nav-more').css('height', '0')
       $('#nav-more').css('opacity', '0')
       $('body').css('overflow', 'visible')
     }
   })
 
-  $('#nav-more').on('touchmove', function(event) {
+  $('#nav-more').on('touchmove', function (event) {
     // 阻止滚动
     event.preventDefault()
     event.stopPropagation()
@@ -24,7 +25,7 @@
 
   // 第一话题，设置反方所占比例设置宽度，遮盖相应正方比例
   // 目前公式 .against-bar { width: 7.2rem * 百分率 - 0.1rem; }
-  // 需要改进：依赖css代理的莫名公式
+  // 需要改进：依赖css的莫名公式
   var againstNum = +$('#against-bar').attr('data-per') * 7.2 - 0.1
   $('#against-bar').css('width', againstNum + 'rem')
 
@@ -32,8 +33,7 @@
   // 需要改进：抽取方法
   var startY = 0
   var movingY = 0
-  var fontSize = parseFloat($('html').css('font-size'))
-  $('#news-list').on('touchstart', function(event) {
+  $('#news-list').on('touchstart', function (event) {
     // 关闭css过渡效果，根据下拉距离js控制
     $('#news-list').css('transition', 'none')
     $('#news-list').css('-webkit-transition', 'none')
@@ -41,7 +41,7 @@
     $('#icon-transform').css('-webkit-transition', 'none')
     startY = event.touches[0].clientY
   })
-  $('#news-list').on('touchmove', function(event) {
+  $('#news-list').on('touchmove', function (event) {
     movingY = event.touches[0].clientY
     // 滚动条在最上面 && 继续下划
     if ($(window).scrollTop() <= 1 && movingY > startY) {
@@ -49,13 +49,13 @@
       if (movingY - startY < fontSize * 1.5) {
         $('#news-list').css('transform', 'translateY(' + (movingY - startY) + 'px)')
         $('#news-list').css('-webkit-transform', 'translateY(' + (movingY - startY) + 'px)')
-        $('#icon-transform').css('stroke-dashoffset', (movingY - startY - 16) * 10)
+        $('#icon-transform').css('stroke-dashoffset', (movingY - startY) * 25)
         // $('#loading-icon').css('transform', 'rotate(' + (movingY - startY) * (360 / fontSize) + 'deg)')
         // $('#loading-icon').css('-webkit-transform', 'rotate(' + (movingY - startY) * (360 / fontSize) + 'deg)')
       }
     }
   })
-  $('#news-list').on('touchend', function(event) {
+  $('#news-list').on('touchend', function (event) {
     // 复原，开启css过渡效果
     $('#news-list').css('transition', 'all .2s ease-in .01s')
     $('#news-list').css('-webkit-transition', 'all .2s ease-in .01s')
@@ -67,7 +67,7 @@
       console.info('加载数据')
       $('#loading-text').text('正在加载')
       $('#icon-transform').css('stroke-dashoffset', 20000)
-      setTimeout(function() {
+      setTimeout(function () {
         // 请求成功后，动画恢复初始
         $('#news-list').css('transform', 'translateY(0px)')
         $('#news-list').css('-webkit-transform', 'translateY(0px)')
@@ -75,7 +75,7 @@
         $('#loading-text').text('下拉刷新')
         // $('#loading-icon').css('transform', 'rotate(0deg)')
         // $('#loading-icon').css('-webkit-transform', 'rotate(0deg)')
-      }, 5000)
+      }, 1000)
     } else {
       // 不发送请求，动画恢复初始
       $('#news-list').css('transform', 'translateY(0px)')
@@ -89,7 +89,7 @@
 
   // 上拉 继续加载
   var loading = false
-  $(window).scroll(function() {
+  $(window).scroll(function () {
     if (!loading && scrollY > window.innerHeight) {
       console.info('加载数据')
       loading = true
