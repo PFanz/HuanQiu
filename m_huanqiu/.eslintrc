@@ -10,8 +10,6 @@
   ],
   "rules": {
     "no-unused-vars": 1,
-    "no-console": [1, { "allow": ["warn", "error"]}],
-
-    "space-before-function-paren": [1, "never"]
+    "no-console": [1, { "allow": ["warn", "error"]}]
   }
 }
