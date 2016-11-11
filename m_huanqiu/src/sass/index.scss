@@ -18,7 +18,7 @@ body {
   margin: 0 auto;
   width: 10rem;
   font-family: PingFangSC-Regular;
-  transition: overflow .5s linear .15s;
+  transition: overflow .5s linear .5s;
 }
 
 // 新闻标签
@@ -65,7 +65,7 @@ header {
 // nav
 nav {
   font-size: 0;
-  border-bottom: (4rem/64) solid #910910;
+  border-bottom: 2px solid #910910;
   z-index: 111;
 }
 
@@ -73,7 +73,7 @@ nav {
   box-sizing: border-box;
   height: (80rem/64);
   line-height: (80rem/64);
-  border-bottom: (2rem/64) solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
   background: #fff;
 }
 
@@ -109,14 +109,16 @@ nav {
 .nav-more {
   position: absolute;
   top: 2.5rem;
-  bottom: 20rem;
+  // bottom: 20rem;
+  box-sizing: border-box;
   width: 10rem;
+  height: 0;
   opacity: 0;
   background: #fff;
   z-index: 222;
-  border-bottom: (4rem/64) solid #910910;
+  border-bottom: 2px solid #910910;
   overflow: hidden;
-  transition: all .5s linear .15s;
+  transition: all .3s ease .1s;
 
   .nav-item {
     width: 2rem;
@@ -230,7 +232,7 @@ nav {
   padding: 0;
   box-sizing: border-box;
   height: (90rem/64);
-  border-bottom: 1px solid #e3e3e3;
+  border-bottom: 1px solid lighten(#e3e3e3, 5%);
   background: #f5f5f5;
 }
 
@@ -242,7 +244,7 @@ nav {
   line-height: (95rem/64);
   font-size: 0;
   text-align: center;
-  border-right: (3rem/64) solid #e3e3e3;
+  border-right: 1px solid lighten(#e3e3e3, 5%);
 
   svg {
     width: (80rem/64);
@@ -268,7 +270,7 @@ nav {
 section {
   margin: 0 (18rem/64);
   padding: (22rem/64) 0;
-  border-bottom: (2rem/64) solid #e3e3e3;
+  border-bottom: 1px solid lighten(#e3e3e3, 5%);
   overflow: hidden;
 
   &:last-child {
@@ -293,21 +295,28 @@ section {
 }
 
 .news-label {
-  // display: inline-block;
+  display: none;
   float: left;
   margin: 0 .15rem;
   padding-left: .15rem;
   color: #fff;
-  border-left: (3rem/64) solid #fff;
+  border-left: 2px solid #fff;
 }
 
 .news-from {
+  float: left;
+  margin-right: .15rem;
+  color: #9b9b9b;
+}
+
+.news-date {
   float: left;
   margin: 0 .15rem;
   color: #9b9b9b;
 }
 
 .news-comm {
+  display: none;
   float: left;
   margin: 0 .15rem;
   color: #9b9b9b;
@@ -324,6 +333,7 @@ section {
 }
 
 .news-close-btn {
+    display: none;
     float: right;
     margin: 0 .15rem;
 
@@ -333,7 +343,7 @@ section {
       width: (23rem/64);
       height: (13rem/64);
       vertical-align: bottom;
-      border: (2rem/64) solid #ccc;
+      border: 1px solid #ccc;
       border-radius: (16rem/64);
     }
   }
@@ -403,7 +413,7 @@ section {
 // 第一话题
 .first-topic {
   margin: 0;
-  margin-top: -(2rem/64);
+  margin-top: -1px;
   padding: (22rem/64) (18rem/64);
   background: #f5f5f5;
   border-bottom: none;
@@ -419,7 +429,7 @@ section {
   margin-top: (11rem/64);
   padding-left: .1rem;
   line-height: (18rem/64);
-  font-size: (16rem/64);
+  font-size: .3rem;
   color: #9b9b9b;
 }
 
@@ -485,7 +495,7 @@ section {
 // 广告
 .ad-content {
   margin: 0;
-  margin-top: -(2rem/64);
+  margin-top: -1px;
   padding: 0;
   border-bottom: none;
 
