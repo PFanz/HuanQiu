@@ -45,7 +45,7 @@ gulp.task('sassTask', function () {
     }))
     .pipe(postcss(processors))
     .pipe(cleanCSS())
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist/css'))
     .pipe(browserSync.reload({stream: true}))
 })
@@ -60,7 +60,21 @@ gulp.task('libsTask', function () {
 // 压缩图片
 gulp.task('imgTask', function () {
   gulp.src('src/images/*')
-    .pipe(imagemin())
+    .pipe(imagemin([
+      imagemin.svgo({
+        plugins: [
+          { optimizationLevel: 3 },
+          { progessive: true },
+          { interlaced: true },
+          { removeViewBox: false },
+          { removeUselessStrokeAndFill: false },
+          { cleanupIDs: false }
+        ]
+      }),
+      imagemin.gifsicle(),
+      imagemin.jpegtran(),
+      imagemin.optipng()
+    ]))
     .pipe(gulp.dest('dist/images/'))
 })
 

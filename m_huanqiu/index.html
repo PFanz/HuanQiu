@@ -4,327 +4,379 @@
   <meta charset="UTF-8">
   <title>手机环球网</title>
   <meta name="keywords" content="环球新闻网,新闻，环球，军事，新闻网，环球网，环球时报，娱乐，国内新闻，图片新闻网">
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
   <link rel="shortcut icon"  href="http://himg2.huanqiu.com/statics/images/favicon1.ico"/>
   <link rel="stylesheet" type="text/css" href="dist/css/index.css">
   <script type="text/javascript">
     !function(a,b){function c(){var b=f.getBoundingClientRect().width;b/i>540&&(b=540*i);var c=b/10;f.style.fontSize=c+"px",k.rem=a.rem=c}var d,e=a.document,f=e.documentElement,g=e.querySelector('meta[name="viewport"]'),h=e.querySelector('meta[name="flexible"]'),i=0,j=0,k=b.flexible||(b.flexible={});if(g){console.warn("将根据已有的meta标签来设置缩放比例");var l=g.getAttribute("content").match(/initial\-scale=([\d\.]+)/);l&&(j=parseFloat(l[1]),i=parseInt(1/j))}else if(h){var m=h.getAttribute("content");if(m){var n=m.match(/initial\-dpr=([\d\.]+)/),o=m.match(/maximum\-dpr=([\d\.]+)/);n&&(i=parseFloat(n[1]),j=parseFloat((1/i).toFixed(2))),o&&(i=parseFloat(o[1]),j=parseFloat((1/i).toFixed(2)))}}if(!i&&!j){var p=a.navigator.userAgent,q=(!!p.match(/android/gi),!!p.match(/iphone/gi)),r=q&&!!p.match(/OS 9_3/),s=a.devicePixelRatio;i=q&&!r?s>=3&&(!i||i>=3)?3:s>=2&&(!i||i>=2)?2:1:1,j=1/i}if(f.setAttribute("data-dpr",i),!g)if(g=e.createElement("meta"),g.setAttribute("name","viewport"),g.setAttribute("content","initial-scale="+j+", maximum-scale="+j+", minimum-scale="+j+", user-scalable=no"),f.firstElementChild)f.firstElementChild.appendChild(g);else{var t=e.createElement("div");t.appendChild(g),e.write(t.innerHTML)}a.addEventListener("resize",function(){clearTimeout(d),d=setTimeout(c,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(d),d=setTimeout(c,300))},!1),"complete"===e.readyState?e.body.style.fontSize=12*i+"px":e.addEventListener("DOMContentLoaded",function(){e.body.style.fontSize=12*i+"px"},!1),c(),k.dpr=a.dpr=i,k.refreshRem=c,k.rem2px=function(a){var b=parseFloat(a)*this.rem;return"string"==typeof a&&a.match(/rem$/)&&(b+="px"),b},k.px2rem=function(a){var b=parseFloat(a)/this.rem;return"string"==typeof a&&a.match(/px$/)&&(b+="rem"),b}}(window,window.lib||(window.lib={}));
   </script>
+  <!-- 广告加载基础代码 -->
+  <script type="text/javascript" src="http://ipengtai.huanqiu.com/resource/js/base_mobile.js "></script>
+  <!-- /广告加载基础代码 -->
+
 </head>
 <body>
-  <!-- svg 文件 -->
-  <div style="display: none;">
-    <svg>
-      <symbol id="close-btn" viewBox="0 0 8 8">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
-          <g transform="translate(-9.000000, -4.000000)" stroke="#D3D3D3">
-            <g transform="translate(9.000000, 4.000000)">
-              <path d="M7.5,0.5 L0.5,7.5"></path>
-              <path d="M0.5,0.5 L7.5,7.5"></path>
-            </g>
-          </g>
-        </g>
-      </symbol>
-      <symbol id="user-icon" viewBox="0 0 32 32">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-          <g transform="translate(-581.000000, -139.000000)">
-            <g transform="translate(581.000000, 139.000000)">
-              <path d="M6.21873171,26.7251122 C8.89529756,29.1619122 12.3639415,30.5038049 15.9843902,30.5038049 C19.6040585,30.5038049 23.0742634,29.1603122 25.7532488,26.7226927 L25.9218732,26.5700683 L25.8419512,26.3566439 C24.3226537,22.2343024 20.3608976,19.4657951 15.9843902,19.4657951 C11.6094439,19.4657951 7.64854634,22.2359024 6.12760976,26.3582439 L6.05010732,26.5708488 L6.21873171,26.7251122 Z M15.9843902,31.9687805 C7.17061463,31.9687805 0,24.7981659 0,15.9843902 C0,7.17061463 7.17061463,0 15.9843902,0 C24.7981659,0 31.9687805,7.17061463 31.9687805,15.9843902 C31.9687805,24.7981659 24.7981659,31.9687805 15.9843902,31.9687805 L15.9843902,31.9687805 Z" fill="#D2D2D2"></path>
-              <path d="M15.863479,7 C12.629942,7 10,9.63095477 10,12.8644917 C10,16.0969653 12.6310054,18.7269073 15.863479,18.7269073 C19.0959525,18.7269073 21.7279707,16.0969653 21.7279707,12.8644917 C21.726958,9.63095477 19.0959525,7 15.863479,7" fill="#FFFFFF"></path>
-            </g>
-          </g>
-        </g>
-      </symbol>
-      <symbol id="loading-icon">
-        
-      </symbol>
-      <symbol id="live-icon" viewBox="0 0 78 34">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g transform="translate(-23.000000, -691.000000)">
-              <g transform="translate(23.000000, 691.000000)">
-                <path d="M63.0054443,33.6184672 L6.01409672,33.6184672 C2.70642108,33.6184672 -5.34876399e-05,30.9309976 -5.34876399e-05,27.6462241 L-5.34876399e-05,6.23782954 C-5.34876399e-05,2.95305602 2.70642108,0.265586475 6.01409672,0.265586475 L63.0054443,0.265586475 C66.3131199,0.265586475 69.0193271,2.95305602 69.0193271,6.23782954 L69.0193271,27.6462241 C69.0193271,30.9309976 66.3131199,33.6184672 63.0054443,33.6184672" fill="#4A4A4A"></path>
-                <polygon fill="#4A4A4A" points="77.8601921 31.4188269 53.1226936 16.9419737 77.8601921 2.46512054"></polygon>
-                <polygon fill="#FFFFFF" points="11.6069935 7.91822821 11.6069935 23.2129899 19.0378296 23.2129899 19.0378296 24.9191453 6.3614782 24.9191453 6.3614782 7.91822821"></polygon>
-                <polygon fill="#FFFFFF" points="20.1637225 24.919095 25.4090186 24.919095 25.4090186 7.91817789 20.1637225 7.91817789"></polygon>
-                <polygon fill="#FFFFFF" points="41.5821464 7.91822821 36.3368503 24.9191453 31.6345414 24.9191453 26.8397253 7.91822821 32.1378514 7.91822821 35.7142892 20.7965443 39.6219559 7.91822821"></polygon>
-                <polygon fill="#FFFFFF" points="54.669125 7.91822821 54.669125 9.62463529 48.1916403 9.62463529 48.1916403 14.7685141 53.6355421 14.7685141 53.6355421 16.4749212 48.1916403 16.4749212 48.1916403 23.2129899 55.7682522 23.2129899 55.7682522 24.9191453 42.9463442 24.9191453 42.9463442 7.91822821"></polygon>
-                <text font-family="FZLTZHK--GBK1-0, FZLanTingHei-DB-GBK" font-size="14" font-weight="normal" fill="#F7F7F7">
-                <tspan x="57" y="17">+</tspan>
-                </text>
-              </g>
-            </g>
-          </g>
-      </symbol>
-      <symbol id="comm-icon" viewBox="0 0 13 12">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-          <g transform="translate(-142.000000, -879.000000)" stroke="#979797">
-            <g transform="translate(20.000000, 875.000000)">
-              <g transform="translate(123.000000, 5.000000)">
-                <g>
-                  <path d="M8.24685011,0 L2.7488434,0 C1.23655257,0 0,1.2262561 0,2.72446341 L0,4.5409878 C0,6.03918293 1.23655257,7.26545122 2.7488434,7.26545122 L3.20702908,7.26545122 L3.20702908,9.9902439 L6.34846421,7.26578049 L8.24685011,7.26578049 C9.75879642,7.26578049 10.9956935,6.03952439 10.9956935,4.54132927 L10.9956935,2.72446341 C10.996038,1.2262561 9.75879642,0 8.24685011,0"></path>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </symbol>
-    </svg>
-  </div>
-  <!-- /svg 文件 -->
 
   <!-- header -->
   <header>
       <a href="" class="header-logo"></a>
       <a href="" class="header-user">
         <svg>
-          <use xlink:href="#user-icon" />
+          <use xlink:href="dist/images/icon.svg#user-icon" />
         </svg>
       </a>
-      <a href="" class="header-small">电脑版</a>
+      <span class="header-small">电脑版</span>
   </header>
   <!-- /header -->
+
   <!-- nav -->
   <nav>
-    <div class="nav-main">
-      <a href="" class="nav-item active">首页</a>
-      <a href="" class="nav-item">视频</a>
-      <a href="" class="nav-item">旅游</a>
-      <a href="" class="nav-item">军事</a>
-      <a href="" class="nav-item">时尚</a>
-      <a href="javascript:void(0);" class="nav-more-btn" id="nav-more-btn">更多</a>
+    <div class="nav-scroll">
+      <div class="nav-main">
+        <ul class="nav-main-bar">
+          <li class="nav-item active"><a href="?channel=" >首页</a></li>
+          <li class="nav-item"><a href="?channel=world" >国际</a></li>
+          <li class="nav-item"><a href="?channel=inland" >国内</a></li>
+          <li class="nav-item"><a href="?channel=null" >社会</a></li>
+          <li class="nav-item"><a href="?channel=mil" >军事</a></li>
+          <li class="nav-item"><a href="?channel=taihai" >台海</a></li>
+          <li class="nav-item"><a href="?channel=comment" >评论</a></li>
+          <li class="nav-item small"><a href="?channel=null" >海外看中国</a></li>
+          <li class="nav-item small"><a href="?channel=null" >第一话题</a></li>
+          <li class="nav-item"><a href="?channel=null" >博览</a></li>
+          <li class="nav-item"><a href="?channel=picture" >图片</a></li>
+          <li class="nav-item"><a href="?channel=video" >视频</a></li>
+          <li class="nav-item"><a href="?channel=finance" >财经</a></li>
+          <li class="nav-item"><a href="?channel=auto" >汽车</a></li>
+          <li class="nav-item"><a href="?channel=tech" >科技</a></li>
+          <li class="nav-item"><a href="?channel=null" >智能</a></li>
+          <li class="nav-item"><a href="?channel=null" >无人机</a></li>
+          <li class="nav-item"><a href="?channel=null" >旅行</a></li>
+          <li class="nav-item"><a href="?channel=health" >健康</a></li>
+          <li class="nav-item"><a href="?channel=ent" >娱乐</a></li>
+          <li class="nav-item"><a href="?channel=fashion" >时尚</a></li>
+          <li class="nav-item"><a href="?channel=null" >女人</a></li>
+          <li class="nav-item"><a href="?channel=sports" >体育</a></li>
+          <li class="nav-item"><a href="?channel=null" >滑雪</a></li>
+          <li class="nav-item"><a href="?channel=null" >留学</a></li>
+          <li class="nav-item"><a href="?channel=null" >公益</a></li>
+          <li class="nav-item"><a href="?channel=null" >城市</a></li>
+        </ul>
+      </div>
     </div>
+    <div class="nav-more-btn" id="nav-more-btn">更多</div>
     <div class="nav-more" id="nav-more">
-      <a href="" class="nav-item">评论</a>
-      <a href="" class="nav-item">国内</a>
-      <a href="" class="nav-item">国际</a>
-      <a href="" class="nav-item">社会</a>
-      <a href="" class="nav-item">图片</a>
-      <a href="" class="nav-item">军事</a>
-      <a href="" class="nav-item">台海</a>
-      <a href="" class="nav-item">评论</a>
-      <a href="" class="nav-item">财经</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item small">兵器库</a>
-      <a href="" class="nav-item small">无人机</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item smaller">海外看中国</a>
-      <a href="" class="nav-item">汽车</a>
-      <a href="" class="nav-item smaller">一带一路</a>
+      <a href="?channel=" class="nav-item">首页</a>
+      <a href="?channel=" class="nav-item">国际</a>
+      <a href="?channel=" class="nav-item">国内</a>
+      <a href="?channel=" class="nav-item">社会</a>
+      <a href="?channel=" class="nav-item">军事</a>
+      <a href="?channel=" class="nav-item">台海</a>
+      <a href="?channel=" class="nav-item">评论</a>
+      <a href="?channel=" class="nav-item small">海外看中国</a>
+      <a href="?channel=" class="nav-item small">第一话题</a>
+      <a href="?channel=" class="nav-item">博览</a>
+      <a href="?channel=" class="nav-item">图片</a>
+      <a href="?channel=" class="nav-item">视频</a>
+      <a href="?channel=" class="nav-item">财经</a>
+      <a href="?channel=" class="nav-item">汽车</a>
+      <a href="?channel=" class="nav-item">科技</a>
+      <a href="?channel=" class="nav-item">智能</a>
+      <a href="?channel=" class="nav-item small">无人机</a>
+      <a href="?channel=" class="nav-item">旅行</a>
+      <a href="?channel=" class="nav-item">健康</a>
+      <a href="?channel=" class="nav-item">娱乐</a>
+      <a href="?channel=" class="nav-item">时尚</a>
+      <a href="?channel=" class="nav-item">女人</a>
+      <a href="?channel=" class="nav-item">体育</a>
+      <a href="?channel=" class="nav-item">滑雪</a>
+      <a href="?channel=" class="nav-item">留学</a>
+      <a href="?channel=" class="nav-item">公益</a>
+      <a href="?channel=" class="nav-item">城市</a>
     </div>
   </nav>
   <!-- /nav -->
-  <!-- 下拉提醒 -->
-  <div class="drop-down" id="drop-down">
-    <!-- <img id="loading-icon" class="loading-icon" src="dist/images/ic_loading@2x.png"> -->
-    <svg version="1.1" id="loading-icon" class="loading-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 841.9 598.1" enable-background="new 0 0 841.9 598.1" xml:space="preserve">
-      <circle fill="none" stroke-width="12" stroke-miterlimit="10" cx="412.3" cy="300.3" r="140.3" />
-      <path fill="none" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" d="M439.8,189.9
-      c34.1,8.1,62.5,31.7,76.9,63.1" />
-      <path fill="none" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" d="M389.2,189.3
-      c7.8-1.5,15.6-2.4,23.9-2.4" />
-      <path class="icon-transform" id="icon-transform" fill="none" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M539.1,209.8
-      c50.6-12,85.9-12.3,92,1.8c11,25.3-76,87.3-194.1,138.5s-222.8,72.3-233.8,47.1c-5.9-13.6,16.6-37.9,57.1-65.4" />
-    </svg>
-    <span id="loading-text" class="loading-text">下拉刷新</span>
-  </div>
-  <!-- /下拉提醒 -->
-  <!-- 新闻列表 -->
-  <div class="news-list" id="news-list">
-    <!-- 轮播图 -->
-    <div class="lunbo swiper-container" id="lunbo">
-      <ul class="swiper-wrapper">
-        <li class="swiper-slide"><a href=""><img src="dist/images/photo_0.png" alt=""><p class="first-title">首页新闻国际首页新闻国际首页新0</p></a></li>
-        <li class="swiper-slide"><a href=""><img src="dist/images/photo_0.png" alt=""><p class="first-title">首页新闻国际首页新闻国际首页新1</p></a></li>
-        <li class="swiper-slide"><a href=""><img src="dist/images/photo_0.png" alt=""><p class="first-title">首页新闻国际首页新闻国际首页新2</p></a></li>
-        <li class="swiper-slide"><a href=""><img src="dist/images/photo_0.png" alt=""><p class="first-title">首页新闻国际首页新闻国际首页新3</p></a></li>
-        <li class="swiper-slide"><a href=""><img src="dist/images/photo_0.png" alt=""><p class="first-title">首页新闻国际首页新闻国际首页新4</p></a></li>
-      </ul>
-      <div class="swiper-pagination"></div>
+
+  <!-- 下拉刷新 -->
+  <div class="refresh-control" id="refresh-control">
+    <div class="refresh-control-text">
+      <svg version="1.1" id="loading-icon" class="loading-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 841.9 598.1" enable-background="new 0 0 841.9 598.1" xml:space="preserve">
+        <circle fill="none" stroke-width="12" stroke-miterlimit="10" cx="412.3" cy="300.3" r="140.3" />
+        <path fill="none" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" d="M439.8,189.9
+        c34.1,8.1,62.5,31.7,76.9,63.1" />
+        <path fill="none" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" d="M389.2,189.3
+        c7.8-1.5,15.6-2.4,23.9-2.4" />
+        <path id="transform-icon" class="transform-icon" fill="none" stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M539.1,209.8
+        c50.6-12,85.9-12.3,92,1.8c11,25.3-76,87.3-194.1,138.5s-222.8,72.3-233.8,47.1c-5.9-13.6,16.6-37.9,57.1-65.4" />
+      </svg>
+      <span id="refresh-text">下拉刷新</span>
     </div>
-    <!-- /轮播图 -->
-    <!-- live -->
-    <section class="live">
-      <span class="live-logo">
-        <svg>
-          <use xlink:href="#live-icon" />
-        </svg>
-      </span>
-      <p class="live-item">这些年，习总书记这样谈“航天梦”</p>
-    </section>
-    <!-- /live -->
-    <!-- 无图新闻 -->
-    <section class="news-style-0">
-      <div class="news-content">
-        <a href="">
-          <p class="news-title">中国实现超400公里量子密钥分发 创世界纪录</p>
-        </a>
-        <div class="news-info">
-          <span class="news-label news-label-lvxing">旅行</span>
-          <span class="news-from">人民网</span>
-          <span class="news-date">11:26</span>
-          <div class="news-comm">
-            <svg>
-              <use xlink:href="#comm-icon" />
-            </svg>
-            <span>9999</span>
-          </div>
-          <div class="news-close-btn">
-            <svg>
-              <use xlink:href="#close-btn" />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /无图新闻 -->
+    <div class="refresh-control-container" id="content">
+      <!-- 轮播图 -->
+      <!-- <div class="lunbo" id="lunbo">
+        <ul>
+          <li>
+            <a href="">
+              <img src="dist/images/photo_0.png" alt="">
+              <div class="lunbo-title-bg">
+                <p class="lunbo-title">首页新闻国际首页新闻国际首页新3</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div> -->
+      <!-- /轮播图 -->
 
-    <!-- 单图新闻 -->
-    <section class="news-style-1">
-      <div class="news-content">
-        <a href="">
-          <p class="news-title">中国实现超400公里量子密钥分发 创世界纪录</p>
-        </a>
-        <div class="news-info">
-          <span class="news-label news-label-lvxing">旅行</span>
-          <span class="news-from">人民网</span>
-          <span class="news-date">11:26</span>
-          <div class="news-comm">
-            <svg>
-              <use xlink:href="#comm-icon" />
-            </svg>
-            <span>9999</span>
-          </div>
-          <div class="news-close-btn">
-            <svg>
-              <use xlink:href="#close-btn" />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="news-imgs">
-        <a href="">
-          <img class="news-pic" src="dist/images/photo_1.png" alt="">
-        </a>
-      </div>
-    </section>
-    <!-- /单图新闻 -->
-
-    <!-- 三图新闻 -->
-    <section class="news-style-2">
-      <a href="">
-        <p class="news-title">中国实现超400公里量子密钥分发 创世界纪录</p>
-        <div class="news-imgs">
-          <img class="news-pic" src="dist/images/photo_2.png" alt="">
-          <img class="news-pic" src="dist/images/photo_2.png" alt="">
-          <img class="news-pic" src="dist/images/photo_2.png" alt="">
-        </div>
-      </a>
-      <div class="news-info">
-        <span class="news-label news-label-lvxing">旅行</span>
-        <span class="news-from">人民网</span>
-        <span class="news-date">11:26</span>
-        <div class="news-comm">
+      <!-- live -->
+      <!-- <section class="live">
+        <span class="live-logo">
           <svg>
-            <use xlink:href="#comm-icon" />
+            <use xlink:href="dist/images/icon.svg#live-icon" />
           </svg>
-          <span>9999</span>
-        </div>
-        <div class="news-close-btn">
-          <svg>
-            <use xlink:href="#close-btn" />
-          </svg>
-        </div>
-      </div>
-    </section>
-    <!-- /三图新闻 -->
+        </span>
+        <p class="live-item">这些年，习总书记这样谈“航天梦”</p>
+      </section> -->
+      <!-- /live -->
 
-    <!-- 视频新闻 -->
-    <section class="news-video">
-      <a href="">
-        <p class="news-title">首页新闻国际首页新闻国际</p>
-        <img src="dist/images/video.png" alt="">
-      </a>
-    </section>
-    <!-- /视频新闻 -->
-
-    <!-- 第一话题 -->
-    <section class="first-topic">
-      <a href="">
-        <p class="first-title">首页新闻国际首页新闻国际首页新闻国际</p>
-        <p class="first-small">第一话题第一话题第一话题第一话题第一话题第一话题</p>
-        <div class="first-vote">
-          <div class="first-agree">
-            <p class="agree-num" id="agree-num">50%</p>
-            <span class="agree-text">认同</span>
-            <p class="agree-bar"></p>
+      <!-- 推荐位 -->
+      <!-- <div class="recommend" id="recommend">
+        <div class="block-header">
+          <span class="block-logo">今日要闻</span>
+          <div class="recommend-index" id="recommend-index">
+            <span class="recommend-index-curr" id="recommend-index-curr">1</span>
+            <span class="recommend-pages" id="recommend-pages">/5</span>
           </div>
-          <div class="first-against">
-            <p class="against-num" id="against-num">50%</p>
-            <span class="against-text">不认同</span>
-            <p class="against-bar" id="against-bar" data-per="0.5"></p>
+        </div> -->
+        <!-- 推荐位内容 -->
+        <!-- <div class="block-content"> -->
+         <!--  <ul>
+            <li> -->
+              <!-- 单图 -->
+              <!-- <section class="news-style-1">
+                <div class="news-content">
+                  <a href="">
+                    <p class="news-title">中国实现超400公里量子密钥分发 创世界纪录</p>
+                  </a>
+                  <div class="news-info">
+                    <span class="news-label news-label-lvxing">旅行</span>
+                    <span class="news-from">人民网</span>
+                    <span class="news-date">11:26</span>
+                    <div class="news-comm">
+                      <svg>
+                        <use xlink:href="dist/images/icon.svg#comm-icon" />
+                      </svg>
+                      <span>9999</span>
+                    </div>
+                    <div class="news-close-btn">
+                      <svg>
+                        <use xlink:href="dist/images/icon.svg#close-btn" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="news-imgs">
+                  <a href="">
+                    <img class="news-pic" src="dist/images/photo_1.png" alt="">
+                  </a>
+                </div>
+              </section> -->
+              <!-- /单图 -->
+
+              <!-- 单图广告位 -->
+              <!-- <section class="ad-content">
+              </section> -->
+              <!-- /单图广告位 -->
+
+              <!-- 无图新闻 -->
+              <!-- <section class="news-style-0">
+                <div class="news-content">
+                  <a href="">
+                    <p class="news-title">中国实现超400公里量子密钥分发 创世界纪录</p>
+                  </a>
+                  <div class="news-info">
+                    <span class="news-label news-label-lvxing">旅行</span>
+                    <span class="news-from">人民网</span>
+                    <span class="news-date">11:26</span>
+                    <div class="news-comm">
+                      <svg>
+                        <use xlink:href="dist/images/icon.svg#comm-icon" />
+                      </svg>
+                      <span>9999</span>
+                    </div>
+                    <div class="news-close-btn">
+                      <svg>
+                        <use xlink:href="dist/images/icon.svg#close-btn" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </section> -->
+              <!-- /无图新闻 -->
+
+              <!-- 组图广告位 -->
+              <!-- <section class="ad-content">
+              </section> -->
+              <!-- /组图广告位 -->
+
+              <!-- 三图新闻 -->
+              <!-- <section class="news-style-2">
+                <a href="">
+                  <p class="news-title">中国实现超400公里量子密钥分发 创世界纪录</p>
+                  <div class="news-imgs">
+                    <img class="news-pic" src="dist/images/photo_2.png" alt="">
+                    <img class="news-pic" src="dist/images/photo_2.png" alt="">
+                    <img class="news-pic" src="dist/images/photo_2.png" alt="">
+                  </div>
+                </a>
+                <div class="news-info">
+                  <span class="news-label news-label-lvxing">旅行</span>
+                  <span class="news-from">人民网</span>
+                  <span class="news-date">11:26</span>
+                  <div class="news-comm">
+                    <svg>
+                      <use xlink:href="dist/images/icon.svg#comm-icon" />
+                    </svg>
+                    <span>9999</span>
+                  </div>
+                  <div class="news-close-btn">
+                    <svg>
+                      <use xlink:href="dist/images/icon.svg#close-btn" />
+                    </svg>
+                  </div>
+                </div>
+              </section> -->
+              <!-- /三图新闻 -->
+
+              <!-- 无图广告位 -->
+             <!--  <section class="ad-content">
+              </section> -->
+              <!-- /无图广告位 -->
+
+              <!-- 视频新闻 -->
+              <!-- <section class="news-video">
+                <a href="">
+                  <p class="news-title">首页新闻国际首页新闻国际</p>
+                  <img src="dist/images/video.png" alt="">
+                </a>
+                <div class="news-info">
+                  <span class="news-label news-label-lvxing">旅行</span>
+                  <span class="news-from">人民网</span>
+                  <span class="news-date">11:26</span>
+                  <div class="news-comm">
+                    <svg>
+                      <use xlink:href="dist/images/icon.svg#comm-icon" />
+                    </svg>
+                    <span>9999</span>
+                  </div>
+                  <div class="news-close-btn">
+                    <svg>
+                      <use xlink:href="dist/images/icon.svg#close-btn" />
+                    </svg>
+                  </div>
+                </div>
+              </section> -->
+              <!-- /视频新闻 -->
+
+              <!-- 第一话题 -->
+              <!-- <section class="first-topic">
+                <a href="">
+                  <p class="first-topic-title">首页新闻国际首页新闻国际首页新闻国际</p>
+                  <p class="first-topic-small">第一话题第一话题第一话题第一话题第一话题第一话题</p>
+                  <div class="first-topic-vote">
+                    <div class="topic-vote-agreen">
+                      <p class="topic-vote-num">30%</p>
+                      <span class="topic-vote-text">认同</span>
+                    </div>
+                    <div class="topic-vote-against">
+                      <p class="topic-vote-num">70%</p>
+                      <span class="topic-vote-text">不认同</span>
+                    </div>
+                    <div class="topic-vote-bar" id="topic-vote-bar" data-percent="30%">
+                    </div>
+                  </div>
+                </a>
+              </section> -->
+              <!-- /第一话题 -->
+
+              <!-- 通栏广告 -->
+              <!-- <section class="ad-banner">
+                <img src="./dist/images/ad.png" alt="">
+              </section> -->
+              <!-- /通栏广告 -->
+
+            <!-- </li>
+          </ul> -->
+          
+        <!-- </div> -->
+        <!-- /推荐位内容 -->
+      <!-- </div> -->
+      <!-- /推荐位 -->
+
+      <!-- 兴趣推荐 -->
+      <!-- <div class="interest" id="interest"> -->
+        <!-- <div class="block-header">
+          <span class="block-logo">兴趣推荐</span>
+        </div>
+        <div id="interest-content" class="interest-content"> -->
+          <!-- 微信热点 -->
+          <!-- <div class="block-header">
+            <span class="block-logo">微信热点</span>
           </div>
-        </div>
-      </a>
-    </section>
-    <!-- /第一话题 -->
-
-    <!-- 广告 -->
-    <!-- <section class="ad-content">
-      <img src="dist/images/ad.png" alt="">
-    </section> -->
-    <!-- /广告 -->
-
-    <!-- 三图新闻 -->
-    <section class="news-style-2">
-      <a href="">
-        <p class="news-title">中国实现超400公里量子密钥分发 创世界纪录</p>
-        <div class="news-imgs">
-          <img class="news-pic" src="dist/images/photo_2.png" alt="">
-          <img class="news-pic" src="dist/images/photo_2.png" alt="">
-          <img class="news-pic" src="dist/images/photo_2.png" alt="">
-        </div>
-      </a>
-      <div class="news-info">
-        <span class="news-label news-label-lvxing">旅行</span>
-        <span class="news-from">人民网</span>
-        <span class="news-date">11:26</span>
-        <div class="news-comm">
-          <svg>
-            <use xlink:href="#comm-icon" />
-          </svg>
-          <span>9999</span>
-        </div>
-        <div class="news-close-btn">
-          <svg>
-            <use xlink:href="#close-btn" />
-          </svg>
-        </div>
-      </div>
-    </section>
-    <!-- /三图新闻 -->
+          <div class="wechat-content">
+            <div class="wechat-block">
+              <a href="">
+                <p class="wechat-title">败家女记者双11比较爆款线上线下价格后，清空了购物车</p>
+                <p class="wechat-small">热点</p>
+              </a>
+            </div>
+            <div class="wechat-block">
+              <a href="">
+                <p class="wechat-title">注意！这种跨行取款变贵了</p>
+                <p class="wechat-small">热点</p>
+              </a>
+            </div>
+            <div class="wechat-block">
+              <a href="">
+                <p class="wechat-title">注意！这种跨行取款变贵了</p>
+                <p class="wechat-small">热点</p>
+              </a>
+            </div>
+            <div class="wechat-block">
+              <a href="">
+                <p class="wechat-title">注意！这种跨行取款变贵了</p>
+                <p class="wechat-small">热点</p>
+              </a>
+            </div>
+            <div class="wechat-block">
+              <a href="">
+                <p class="wechat-title">注意！这种跨行取款变贵了</p>
+                <p class="wechat-small">热点</p>
+              </a>
+            </div>
+          </div> -->
+          <!-- /微信热点 -->
+        <!-- </div> -->
+      <!-- </div> -->
+      <!-- /兴趣推荐 -->
+    <!-- </div> -->
   </div>
-  <!-- /新闻列表 -->
-  <script type="text/javascript" src="http://himg2.huanqiu.com/statics/www/hq_m/dist/js/lib/zepto-1.1.4.js"></script>
-  <script type="text/javascript" src="dist/libs/swiper-3.4.0.jquery.min.js"></script>
+  <!-- /下拉刷新 -->
+
+  <!-- <div class="clear-both"></div> -->
+
+  <!-- 添加主屏 -->
+  <div class="add-screen-tip" id="add-screen-tip">
+    <div class="tip-close" id="tip-close">
+      <svg>
+        <use xlink:href="dist/images/icon.svg#tip-close-icon" />
+      </svg>
+    </div>
+    点击下方的<img src="dist/images/safari_menu.png" alt="">，然后选择“添加到主屏幕”，可在桌面创建手机环球网快捷方式。
+  </div>
+  <!-- /添加主屏 -->
+
+  <script type="text/javascript" src="dist/libs/zepto.min.js"></script>
   <script type="text/javascript" src="dist/js/index.js"></script>
-  <script>
-  new Swiper (".swiper-container", {
-    autoplay: 3000,
-    speed: 1000,
-    pagination: ".swiper-pagination"
-  })        
   </script>
 </body>
 </html>

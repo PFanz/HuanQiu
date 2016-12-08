@@ -1,4 +1,5 @@
-var path = require('path')
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   // entry: path.join(__dirname, '/src/js/Lunbo.js'),
@@ -14,5 +15,12 @@ module.exports = {
         loader: 'babel'
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ]
 }
