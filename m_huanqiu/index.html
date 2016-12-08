@@ -5,15 +5,16 @@
   <title>手机环球网</title>
   <meta name="keywords" content="环球新闻网,新闻，环球，军事，新闻网，环球网，环球时报，娱乐，国内新闻，图片新闻网">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
+  <meta name="screen-orientation" content="portrait">
+  <meta name="x5-orientation" content="portrait">
   <link rel="shortcut icon"  href="http://himg2.huanqiu.com/statics/images/favicon1.ico"/>
   <link rel="stylesheet" type="text/css" href="dist/css/index.css">
   <script type="text/javascript">
     !function(a,b){function c(){var b=f.getBoundingClientRect().width;b/i>540&&(b=540*i);var c=b/10;f.style.fontSize=c+"px",k.rem=a.rem=c}var d,e=a.document,f=e.documentElement,g=e.querySelector('meta[name="viewport"]'),h=e.querySelector('meta[name="flexible"]'),i=0,j=0,k=b.flexible||(b.flexible={});if(g){console.warn("将根据已有的meta标签来设置缩放比例");var l=g.getAttribute("content").match(/initial\-scale=([\d\.]+)/);l&&(j=parseFloat(l[1]),i=parseInt(1/j))}else if(h){var m=h.getAttribute("content");if(m){var n=m.match(/initial\-dpr=([\d\.]+)/),o=m.match(/maximum\-dpr=([\d\.]+)/);n&&(i=parseFloat(n[1]),j=parseFloat((1/i).toFixed(2))),o&&(i=parseFloat(o[1]),j=parseFloat((1/i).toFixed(2)))}}if(!i&&!j){var p=a.navigator.userAgent,q=(!!p.match(/android/gi),!!p.match(/iphone/gi)),r=q&&!!p.match(/OS 9_3/),s=a.devicePixelRatio;i=q&&!r?s>=3&&(!i||i>=3)?3:s>=2&&(!i||i>=2)?2:1:1,j=1/i}if(f.setAttribute("data-dpr",i),!g)if(g=e.createElement("meta"),g.setAttribute("name","viewport"),g.setAttribute("content","initial-scale="+j+", maximum-scale="+j+", minimum-scale="+j+", user-scalable=no"),f.firstElementChild)f.firstElementChild.appendChild(g);else{var t=e.createElement("div");t.appendChild(g),e.write(t.innerHTML)}a.addEventListener("resize",function(){clearTimeout(d),d=setTimeout(c,300)},!1),a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(d),d=setTimeout(c,300))},!1),"complete"===e.readyState?e.body.style.fontSize=12*i+"px":e.addEventListener("DOMContentLoaded",function(){e.body.style.fontSize=12*i+"px"},!1),c(),k.dpr=a.dpr=i,k.refreshRem=c,k.rem2px=function(a){var b=parseFloat(a)*this.rem;return"string"==typeof a&&a.match(/rem$/)&&(b+="px"),b},k.px2rem=function(a){var b=parseFloat(a)/this.rem;return"string"==typeof a&&a.match(/px$/)&&(b+="rem"),b}}(window,window.lib||(window.lib={}));
   </script>
   <!-- 广告加载基础代码 -->
-  <script type="text/javascript" src="http://ipengtai.huanqiu.com/resource/js/base_mobile.js "></script>
+  <script type="text/javascript" src="http://ipengtai.huanqiu.com/resource/js/base_mobile.js"></script>
   <!-- /广告加载基础代码 -->
-
 </head>
 <body>
 
@@ -256,7 +257,14 @@
               <!-- <section class="news-video">
                 <a href="">
                   <p class="news-title">首页新闻国际首页新闻国际</p>
-                  <img src="dist/images/video.png" alt="">
+                  <div class="video-img">
+                    <img src="dist/images/video.png" alt="">
+                    <div class="video-btn">
+                      <svg>
+                        <use xlink:href="dist/images/icon.svg#video-icon" />
+                      </svg>
+                    </div>
+                  </div>
                 </a>
                 <div class="news-info">
                   <span class="news-label news-label-lvxing">旅行</span>

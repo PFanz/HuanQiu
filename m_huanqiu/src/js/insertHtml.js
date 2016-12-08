@@ -1,7 +1,9 @@
 const Insert = {
   insertLunboAd: ($elem, index, data) => {
-    const str = `<li>${data}</li>`
+    const str = `<li><script type="text/javascript"></script></li>`
+    console.log(str)
     $elem.find('li').eq(index).before(str)
+    $elem.find('script').text = 'AD_SURVEY_Add_AdPos("41197");'
   },
   insertNewsAd: ($elem, index, data) => {
     const str = `<li>${data}</li>`

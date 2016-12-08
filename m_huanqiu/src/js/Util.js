@@ -71,6 +71,21 @@ const Util = {
       }
     }
     return ''
+  },
+  // 懒加载图片
+  setImgUrl: ($elem) => {
+    let $imgElems = $elem.find('img')
+    $.each($imgElems, function (index, item) {
+      let $item = $(item)
+      if ($item.attr('src') === '') {
+        $item.attr('src', $item.attr('data-imgUrl'))
+      }
+    })
+    // for (let $item of $imgElems) {
+    //   if ($item.attr('src') === '') {
+    //     $item.attr('src', $item.attr('data-imgUrl'))
+    //   }
+    // }
   }
 }
 

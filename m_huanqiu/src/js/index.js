@@ -9,8 +9,9 @@
   const Insert = require('./insertHtml.js')                 // 页面中插入html
   // 全局变量
   const fontSize = parseFloat($('html').css('font-size'))   // 1rem = fontSize px
-  let count = 0                                             // 新闻计数
+  // let count = 0                                             // 新闻计数
   let loading = false                                       // 是否正在加载
+  let lazyFlag = false                                      // 懒加载
   const tipEnable = !Util.getCookie('tipDisable')           // 是否显示tip
   let userID = Util.getCookie('userID')                     // 用户信息
   if (!userID) {
@@ -18,11 +19,15 @@
     Util.setCookie('userID', userID)
   }
 
+  const lunboBlockID = 'lunbo'                              // 轮播图ID
   const todayBlockID = 'first-news'                         // 今日要闻区块ID
   const autoBlockID = 'interesting-news'                    // 兴趣推荐区块ID
-  const wechatIndex = 11                                    // 微信热点位置
+  const wechatIndex = 41                                    // 微信热点位置
 
   let wechatData = ''                                       // 微信热点数据
+
+  // 广告代码
+  // const lunboAd = '<script type="text/javascript">AD_SURVEY_Add_AdPos("41197");</script>'
 
   // 测试代码，需要删除
   userID = Math.random()
@@ -43,12 +48,9 @@
     $('body').css('background-color', '#fff')
   }
 
-  let autoChannel = $('.nav-item.active').text()            // 当前频道 外包接口
-  autoChannel = autoChannel === '首页' ? '' : autoChannel
-
   const url = homeFlag ? 'http://gd1.m.huanqiu.com/apps/huanqiu/hqmobile.php'
                         : `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${channel}`
-  const autoUrl = `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=${autoChannel}`
+  const autoUrl = `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=${channel}`
 
   const $content = $('#content')
 
@@ -64,9 +66,9 @@
 
       if (!picChannelFlag) {
         // 轮播图 位置
-        $content.append(Generate.lunboHtml(swiperData))
+        $content.append(Generate.lunboHtml(lunboBlockID, swiperData))
         new Lunbo({
-          id: 'lunbo',
+          id: lunboBlockID,
           hasArrow: false,
           auto: true
         }).init()
@@ -93,6 +95,10 @@
           // 依赖于Lunbo中的全局变量this._n
           document.getElementById(indicatorID).innerHTML = this._n + 1
           $recomContent.height($recomContent.find('li').eq(this._n).height())
+          // 懒加载
+          if (!lazyFlag) {
+            Util.setImgUrl($content)
+          }
         }
         recommendLunbo.init()
         $recomContent.height($recomContent.find('li').eq(0).height())
@@ -149,7 +155,6 @@
           }
           // 微信热点
           if ($('.wechat-content').length === 0 && $autoBlock.find('section').length > wechatIndex) {
-            console.log('插入微信热点')
             Insert.insertWechat($autoBlock, wechatIndex, Generate.wechatHtml(wechatData))
           }
         } else if (picChannelFlag) {
