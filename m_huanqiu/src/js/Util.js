@@ -41,6 +41,18 @@ const Util = {
     })
     return searchObject
   },
+  // return hash对象
+  getHash: () => {
+    let hashObject = {}
+    let hashArr = location.hash.substr(1).split('&')
+    hashArr.forEach((item, index) => {
+      let [name, value] = item.split('=')
+      if (name.length) {
+        hashObject[name] = value
+      }
+    })
+    return hashObject
+  },
   // return UUID
   getId: (len = 36) => {
     let str = ''

@@ -8,6 +8,10 @@ const Generate = {
     let str = `<div class="lunbo" id="${id}"><ul>`
     for (let item in data) {
       data[item].title = Util.generateTitle(data[item].title, 16)
+      // 广告代码
+      if (item === '1') {
+        str += '<li><div id="AD_SURVEY_POSITION_SIMPLE_41197" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41197");</script></li>'
+      }
       str += `
         <li>
           <a href="${data[item].url}">
@@ -95,7 +99,7 @@ const Generate = {
                 <img src="${data.pic[0]}" alt="">
                 <div class="video-btn">
                   <svg>
-                    <use xlink:href="dist/images/icon.svg#video-icon" />
+                    <use xlink:href="#video-icon" />
                   </svg>
                 </div>
               </div>
@@ -115,8 +119,8 @@ const Generate = {
             <p class="news-title">${data.title}</p>
             <div class="news-imgs">
               <img class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
-              <img class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[1]}" alt="">
-              <img class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[2]}" alt="">
+              <img class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[1] : 'src="' + data.pic[1]}" alt="">
+              <img class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[2] : 'src="' + data.pic[2]}" alt="">
             </div>
           </a>
           <div class="news-info"
@@ -141,10 +145,26 @@ const Generate = {
   homeNewsHtml: (data) => {
     let str = '<div class="block-content" id="recommend-content"><ul><li>'
     for (let item in data) {
+      if (item === '1') {
+        str += `
+          <section>
+            <div id="AD_SURVEY_POSITION_SIMPLE_41201" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41201");</script>
+          </section>
+          <section>
+            <div id="AD_SURVEY_POSITION_SIMPLE_41200" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41200");</script>
+          </section>
+          <section>
+            <div id="AD_SURVEY_POSITION_SIMPLE_41199" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41199");</script>
+          </section>
+          <section>
+            <div id="AD_SURVEY_POSITION_SIMPLE_41198" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41198");</script>
+          </section>
+        `
+      }
       if (item % 12 === 0 && +item !== 0) {
         str += '</li><li>'
       }
-      str += Generate.newsHtml(data[item], item > 12 ? true : false)
+      str += Generate.newsHtml(data[item], !!(item > 12))
     }
     str += '</li></div>'
     return str

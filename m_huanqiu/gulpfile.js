@@ -1,6 +1,7 @@
-var releaseUrl = '"dist/'
+var releaseUrl = '"http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/'
 
 var gulp = require('gulp')
+var htmlmin = require('gulp-htmlmin')
 var replace = require('gulp-replace')
 var gutil = require('gulp-util')
 var plumber = require('gulp-plumber') // 防止错误打断
@@ -81,6 +82,10 @@ gulp.task('imgTask', function () {
 // html
 gulp.task('htmlTask', function () {
   gulp.src('./*.html')
+    .pipe(htmlmin({
+      collapseWhitespace: true,
+      removeComments: true
+    }))
     .pipe(replace(/"dist\//g, releaseUrl))
     .pipe(gulp.dest('dist/'))
 })
