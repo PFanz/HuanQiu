@@ -13,13 +13,12 @@ const RefreshScroll = function (config) {
 
   // 全局变量
   this.getData = config.getData
-  this.loading = false
   this.screenHeight = screen.height
   this.bodyHeight = document.body.clientHeight
 }
 
 RefreshScroll.prototype.watch = function () {
-  if (!this.loading && window.scrollY > this.bodyHeight - this.screenHeight) {
+  if (window.scrollY > this.bodyHeight - this.screenHeight * 1.2) {
     this.getData()
     this.bodyHeight = document.body.clientHeight
   }

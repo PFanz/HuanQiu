@@ -41,6 +41,19 @@ const Util = {
     })
     return searchObject
   },
+  // 通过字符串
+  // return search对象
+  getSearchByString: (urlStr) => {
+    let searchObject = {}
+    let searchArr = urlStr.split('?')[1].split('&')
+    searchArr.forEach((item, index) => {
+      let [name, value] = item.split('=')
+      if (name.length) {
+        searchObject[name] = value
+      }
+    })
+    return searchObject
+  },
   // return hash对象
   getHash: () => {
     let hashObject = {}

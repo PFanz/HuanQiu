@@ -1,6 +1,11 @@
 // HTML生成器
-
 const Util = require('./Util.js')
+
+// const AD = [
+//   '<div id="AD_SURVEY_POSITION_SIMPLE_41201" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41201");</script>',
+//   '<div id="AD_SURVEY_POSITION_SIMPLE_41200" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41200");</script>',
+//   '<div id="AD_SURVEY_POSITION_SIMPLE_41198" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41198");</script>'
+// ]
 
 const Generate = {
   // return 轮播图
@@ -9,9 +14,9 @@ const Generate = {
     for (let item in data) {
       data[item].title = Util.generateTitle(data[item].title, 16)
       // 广告代码
-      if (item === '1') {
-        str += '<li><div id="AD_SURVEY_POSITION_SIMPLE_41197" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41197");</script></li>'
-      }
+      // if (item === '1') {
+      //   str += '<li><div id="AD_SURVEY_POSITION_SIMPLE_41197" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41197");</script></li>'
+      // }
       str += `
         <li>
           <a href="${data[item].url}">
@@ -58,15 +63,15 @@ const Generate = {
     if (data.mediaType === 'text') {
       str += `
         <section class="news-style-0">
-          <div class="news-content">
-            <a href="${data.url}">
+          <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
+            <div class="news-content">
               <p class="news-title">${data.title}</p>
-            </a>
-            <div class="news-info">
-              <span class="news-from">${data.source}</span>
-              <span class="news-date">${data.date}</span>
+              <div class="news-info">
+                <span class="news-from">${data.source}</span>
+                <span class="news-date">${data.date}</span>
+              </div>
             </div>
-          </div>
+          </a>
         </section>
       `
     } else if (data.mediaType === 'oneImg') {
@@ -74,26 +79,24 @@ const Generate = {
         // 单图
         str += `
           <section class="news-style-1">
-            <div class="news-content">
-              <a href="${data.url}">
+            <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
+              <div class="news-content">
                 <p class="news-title">${data.title}</p>
-              </a>
-              <div class="news-info">
-                <span class="news-from">${data.source}</span>
-                <span class="news-date">${data.date}</span>
+                <div class="news-info">
+                  <span class="news-from">${data.source}</span>
+                  <span class="news-date">${data.date}</span>
+                </div>
               </div>
-            </div>
-            <div class="news-imgs">
-              <a href="">
-                <img class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
-              </a>
-            </div>
+              <div class="news-imgs">
+                  <img class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
+              </div>
+            </a>
           </section>
         `
       } else if (data.contentType === 'content_video') {
         str += `
           <section class="news-video">
-            <a href="${data.url}">
+            <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
               <p class="news-title">${data.title}</p>
               <div class="video-img">
                 <img src="${data.pic[0]}" alt="">
@@ -103,11 +106,11 @@ const Generate = {
                   </svg>
                 </div>
               </div>
+              <div class="news-info">
+                <span class="news-from">${data.source}</span>
+                <span class="news-date">${data.date}</span>
+              </div>
             </a>
-            <div class="news-info">
-              <span class="news-from">${data.source}</span>
-              <span class="news-date">${data.date}</span>
-            </div>
           </section>
           `
       }
@@ -115,7 +118,7 @@ const Generate = {
       // 多图
       str += `
         <section class="news-style-2">
-          <a href="${data.url}">
+          <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
             <p class="news-title">${data.title}</p>
             <div class="news-imgs">
               <img class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
@@ -123,7 +126,7 @@ const Generate = {
               <img class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[2] : 'src="' + data.pic[2]}" alt="">
             </div>
           </a>
-          <div class="news-info"
+          <div class="news-info">
             <span class="news-from">${data.source}</span>
             <span class="news-date">${data.date}</span>
           </div>
@@ -144,23 +147,17 @@ const Generate = {
   // return 首页新闻列表HTML字符串
   homeNewsHtml: (data) => {
     let str = '<div class="block-content" id="recommend-content"><ul><li>'
+    // const adIndex = ['3', '9', '15', '21', '27', '33', '39', '45', '51', '57']
     for (let item in data) {
-      if (item === '1') {
-        str += `
-          <section>
-            <div id="AD_SURVEY_POSITION_SIMPLE_41201" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41201");</script>
-          </section>
-          <section>
-            <div id="AD_SURVEY_POSITION_SIMPLE_41200" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41200");</script>
-          </section>
-          <section>
-            <div id="AD_SURVEY_POSITION_SIMPLE_41199" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41199");</script>
-          </section>
-          <section>
-            <div id="AD_SURVEY_POSITION_SIMPLE_41198" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41198");</script>
-          </section>
-        `
-      }
+      // // 添加广告
+      // if (adIndex.indexOf(item) >= 0) {
+      //   str += `
+      //     <section>
+      //       ${AD[~~(Math.random() * 3)]}
+      //     </section>
+      //   `
+      // }
+
       if (item % 12 === 0 && +item !== 0) {
         str += '</li><li>'
       }
@@ -169,11 +166,11 @@ const Generate = {
     str += '</li></div>'
     return str
   },
-  // return 图片频道、视频频道
+  // return 图片频道
   picChannelHtml: (data) => {
     let str = `
       <section class="pic-block">
-        <a href="${data.url}">
+        <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
           <img src="${data.pic}"" alt="" />
           <p class="pic-title">${data.title}</p>
         </a>
@@ -181,6 +178,26 @@ const Generate = {
     `
     return str
   },
+  // return 视频频道
+  videoChannelHtml: (data) => {
+    let str = `
+      <section class="pic-block">
+        <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
+          <div class="video-img">
+            <img src="${data.pic}" alt="">
+            <div class="video-btn">
+              <svg>
+                <use xlink:href="#video-icon" />
+              </svg>
+            </div>
+          </div>
+          <p class="pic-title">${data.title}</p>
+        </a>
+      </section>
+    `
+    return str
+  },
+  // return 微信热点
   wechatHtml: (data) => {
     let str = Generate.headerHtml('微信热点')
     str += '<div class="wechat-content">'

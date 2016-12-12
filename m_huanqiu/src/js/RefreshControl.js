@@ -53,6 +53,11 @@ RefreshControl.prototype.touchMoving = function (event) {
       // Icon定制
       this.refreshIcon.style.strokeDashoffset = movedY * 22
     }
+    if (movedY > this.height * 2 / 3) {
+      document.getElementById('refresh-text').innerHTML = '松开刷新'
+    } else {
+      document.getElementById('refresh-text').innerHTML = '下拉刷新'
+    }
   }
 }
 
