@@ -57,7 +57,7 @@ const Generate = {
   // return 单个新闻HTML字符串 针对公司接口
   newsHtml: (data, imgDisable = false) => {
     let str = ''
-    data.title = Util.generateTitle(data.title, 24)
+    data.title = Util.generateTitle(data.title, 28)
     data.date = Util.generateTime(data.date)
     // 无图
     if (data.mediaType === 'text') {

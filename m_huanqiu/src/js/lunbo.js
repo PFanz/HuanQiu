@@ -140,7 +140,7 @@ Lunbo.prototype.play = function (n) {
   let nextLeft = -pos * this.oneWidth
   let currLeft = parseFloat(this.listContainer.style.left)
   // 每次移动距离
-  let move = (nextLeft - currLeft) / (this.step * 1000) * 24
+  let move = (nextLeft - currLeft) / (this.step * 1000) * 40
 
   // 滚动动画
   this.movingFlag = setInterval(() => {
@@ -165,7 +165,7 @@ Lunbo.prototype.play = function (n) {
     }
 
     this.listContainer.style.left = targetLeft + 'px'
-  }, 8)
+  }, 15)
 
   this._n = pos
 
@@ -214,9 +214,9 @@ Lunbo.prototype.swiper = function () {
     if (Event.isMoveHorizontal(startX, startY, currX, currY)) {
       event.preventDefault()
       event.stopPropagation()
-      if (event.touches[0].clientY - startY > 10) {
-        return
-      }
+      // if (event.touches[0].clientY - startY > 10) {
+      //   return
+      // }
       if (this._n === 0 && moved > 0) {
         moved = Math.pow(moved, 0.9)
       }
@@ -240,6 +240,7 @@ Lunbo.prototype.swiper = function () {
         this.listContainer.style.webkitTransform = 'translateX(0)'
         setTimeout(() => {
           this.listContainer.style.transition = 'none'
+          this.listContainer.style.webkitTransition = 'none'
         }, 500)
       } else {
         this.listContainer.style.transform = 'translateX(0)'
@@ -247,7 +248,7 @@ Lunbo.prototype.swiper = function () {
         this.listContainer.style.left = (parseFloat(this.listContainer.style.left) + endX - startX) + 'px'
         this.play(-1)
       }
-    } else if (startX - endX > this.oneWidth / 4) {
+    } else if (startX - endX > this.oneWidth / 5) {
       if (this._n === (this.len - 1)) {
         this.listContainer.style.transition = 'all .3s ease-in .1s'
         this.listContainer.style.webkitTransition = 'all .3s ease-in .1s'

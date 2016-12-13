@@ -14,7 +14,10 @@
   const wechatIndex = 41                                    // 微信热点位置
   // 全局变量
   const $content = $('#content')                            // app content
-  const fontSize = parseFloat($('html').css('font-size'))   // 1rem = fontSize px
+  const FontSize = parseFloat($('html').css('font-size'))   // 1rem = FontSize px
+
+  const $refresh = $('#refresh-control')                    // 下拉刷新
+  const $refreshIcon = $('#transform-icon')                 // 下拉动画
 
   const tipEnable = !Util.getCookie('tipDisable')           // 是否显示tip
   let userID = Util.getCookie('userID')                     // 用户信息
@@ -42,15 +45,20 @@
     initNav: function () {
       // nav更多点击事件
       $('#nav-more-btn').on('tap', function (event) {
+        let $this = $(this)
         event.preventDefault()
-        if (!$(this).hasClass('active')) {
-          $(this).addClass('active')
-          $('#nav-more').css('height', (window.innerHeight + $(window).scrollTop() - 2.5 * fontSize) + 'px')
+        if (!$this.hasClass('active')) {
+          $this.addClass('active')
+          if ($this.parents('nav').css('position') !== 'fixed') {
+            $('#nav-more').css('height', (window.innerHeight + $(window).scrollTop() - 2.5 * FontSize) + 'px')
+          } else {
+            $('#nav-more').css('height', (window.innerHeight - 1.25 * FontSize) + 'px')
+          }
           $('#nav-more').css('opacity', '1')
           $('body').css('overflow', 'hidden')
           $('nav').css('border-bottom', '1px solid #e5e5e5')
         } else {
-          $(this).removeClass('active')
+          $this.removeClass('active')
           $('#nav-more').css('height', '0')
           $('#nav-more').css('opacity', '0')
           $('body').css('overflow', 'visible')
@@ -64,6 +72,8 @@
       })
       $('.nav-more .nav-item').on('tap', () => {
         $('#nav-more-btn').trigger('tap')
+        let href = $(this).attr('href')
+        $(`.nav-main [href="${href}"]`).parent().addClass('active')
         this.setNavPos()
       })
       // nav阻止滚动
@@ -72,6 +82,15 @@
         event.preventDefault()
         event.stopPropagation()
       })
+      // 监听滚动条
+      $(window).on('scroll', function () {
+        if (window.scrollY > 1.25 * FontSize) {
+          $('nav').css('position', 'fixed')
+        } else {
+          $('nav').css('position', 'relative')
+        }
+      })
+
       this.setNavPos()
     },
     // 设置 导航位置
@@ -95,7 +114,7 @@
           return i
         })($smallNav, activeIndex)
         // 单个导航的宽度是1.75rem，small的宽度是3rem
-        const navLeft = (activeIndex - smallNum) * (fontSize * 1.75) + smallNum * (fontSize * 3)
+        const navLeft = (activeIndex - smallNum) * (FontSize * 1.75) + smallNum * (FontSize * 3)
         $scrollNav.scrollLeft(navLeft)
       } else {
         $scrollNav.scrollLeft(0)
@@ -103,16 +122,18 @@
     },
     // 初始化 添加主屏提示 是否可见
     initTip: function () {
+      let userAgent = navigator.userAgent
       // 添加到屏幕tip
-      if (tipEnable && navigator.userAgent.indexOf('Safari') !== -1 &&
-        navigator.userAgent.indexOf('Chrome') === -1) {
+      if (tipEnable && userAgent.indexOf('Safari') !== -1 &&
+        userAgent.indexOf('Chrome') === -1 && userAgent.indexOf('Browser') < 0) {
         document.getElementById('add-screen-tip').style.display = 'block'
       } else {
         document.getElementById('add-screen-tip').style.display = 'none'
       }
-      $('#tip-close').on('tap', function (event) {
+      $('#tip-close').on('click', function (event) {
         event.stopPropagation()
         $('#add-screen-tip').css('display', 'none')
+        Util.setCookie('tipDisable', true, 1)
       })
     },
     // 设置 当前频道，调用 设置导航位置方法
@@ -124,6 +145,11 @@
       this.url = this.homeFlag ? 'http://w.huanqiu.com/apps/huanqiu/hqmobile_foo.php'
                                 : `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
       this.autoUrl = `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=${this.channel}`
+      if (this.homeFlag) {
+        $('body').css('background', '#f0f0f0')
+      } else {
+        $('body').css('background', '#fff')
+      }
     },
     // initVote: function () {
     //   // 第一话题，设置正方比例
@@ -131,6 +157,17 @@
     //   $('#topic-vote-bar').css('background-image', `linear-gradient(to right, #d0021b 0%, #d0021b ${votePercent}, #4a90e2 ${votePercent}, #4a90e2`)
     //   $('#topic-vote-bar').css('background-image', `-webkit-linear-gradient(to right, #d0021b 0%, #d0021b ${votePercent}, #4a90e2 ${votePercent}, #4a90e2`)
     // },
+    // 初始化 滚动刷新
+    initRefreshScroll: function () {
+      new RefreshScroll({
+        getData: () => {
+          this.getAuto()
+            .done(data => {
+              this.setAuto(data)
+            })
+        }
+      }).init()
+    },
     // 初始化 所有链接，添加优路回调方法
     initLink: function () {
       $('.link-flag').on('tap', function (event) {
@@ -144,6 +181,9 @@
     },
     // 获得 人工推荐接口数据
     getManual: function () {
+      this.swiperData = null
+      this.positionData = null
+      this.wechatData = null
       let ajaxBack = $.ajax({
         type: 'GET',
         url: this.url,
@@ -169,7 +209,7 @@
         new Lunbo({
           id: lunboBlockID,
           hasArrow: false,
-          auto: true
+          auto: false
         }).init()
       }
       // 设置 今日要闻
@@ -237,12 +277,13 @@
       // 下拉刷新
       new RefreshControl({
         id: 'refresh-control',
-        height: fontSize * 1.5,
+        height: FontSize * 1.5,
         getData: getData
       }).init()
     },
     // 获得 自动推荐数据
     getAuto: function () {
+      this.autoData = []
       if (!this.loading) {
         console.info('加载数据')
         this.loading = true
@@ -251,15 +292,30 @@
           url: this.autoUrl,
           dataType: 'jsonp'
         })
-        $('#transform-icon').css('stroke-dashoffset', 1000)
-        $('#refresh-text').text('正在加载……')
+        $refresh.css('-webkit-transform', `-webkit-translatey(${1.2 * FontSize}px)`)
+        $refresh.css('transform', `translatey(${1.2 * FontSize}px)`)
+        $refreshIcon.css('transition', 'all 10s linear .1s')
+        $refreshIcon.css('-webkit-transition', 'all 10s linear .1s')
+        $refreshIcon.css('stroke-dashoffset', 40000)
+        $('#refresh-text').text('正在加载中')
         ajaxBack
           .done(data => {
-            $('#transform-icon').css('stroke-dashoffset', 0)
-            $('#refresh-text').text('下拉刷新')
+            $refresh.css('-webkit-transform', `-webkit-translatey(0px)`)
+            $refresh.css('transform', `translatey(0px)`)
+            $refreshIcon.css('-webkit-transition', 'none')
+            $refreshIcon.css('transition', 'none')
+            $refreshIcon.css('stroke-dashoffset', 0)
+            setTimeout(() => {
+              $('#refresh-text').text('下拉刷新')
+            }, 300)
           })
           .fail(() => {
-            $('#refresh-text').text('下拉刷新')
+            $refresh.css('-webkit-transform', `-webkit-translatey(0px)`)
+            $refresh.css('transform', `translatey(0px)`)
+            $refreshIcon.css('transition', 'none')
+            $refreshIcon.css('-webkit-transition', 'none')
+            $refreshIcon.css('stroke-dashoffset', 0)
+            $('#refresh-text').text('加载失败，请重试~')
             this.loading = false
             console.error('加载数据出错，将重试~')
           })
@@ -294,6 +350,11 @@
         for (let item in this.autoData) {
           $content.append(Generate.picChannelHtml(this.autoData[item]))
         }
+      // 视频
+      } else if (this.videoChannelFlag) {
+        for (let item in this.autoData) {
+          $content.append(Generate.videoChannelHtml(this.autoData[item]))
+        }
       // 其他
       } else {
         for (let item in this.autoData) {
@@ -301,15 +362,16 @@
         }
       }
       this.loading = false
-      // 滚动条刷新
-      new RefreshScroll({
-        getData: () => {
-          this.getAuto()
-            .done(data => {
-              this.setAuto(data)
-            })
-        }
-      }).init()
+      // if (this.autoData.length > 0) {
+      //   $('#auto-info p').text(`为您推荐${this.autoData.length}条新闻`)
+      // } else {
+      //   $('#auto-info p').text(`暂已推荐完所有新闻，请稍候再试`)
+      // }
+      this.autoData.length
+      // $('#auto-info').css('opacity', '1')
+      // setTimeout(() => {
+      //   $('#auto-info').css('opacity', '0')
+      // }, 1000)
     },
     // 初始化
     init: function () {
@@ -324,6 +386,7 @@
               this.setAuto(data)
             })
         })
+      this.initRefreshScroll()
       // this.setData()
       this.initLink()
       // this.setAuto()

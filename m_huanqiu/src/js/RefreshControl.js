@@ -21,6 +21,7 @@ const RefreshControl = function (config) {
   this.touchMovingHook = config.touchMovingHook
   this.touchEndHook = config.touchEndHook
   // 全局变量
+  this.startX = 0
   this.startY = 0
   this.refreshControlFlag = false
   // Icon定制，非公用
@@ -35,6 +36,7 @@ RefreshControl.prototype.touchStart = function (event) {
   }
   this.controlElem.style.transition = 'none'
   this.controlElem.style.webkitTransition = 'none'
+  this.startX = event.touches[0].clientX
   this.startY = event.touches[0].clientY
 }
 
@@ -48,10 +50,10 @@ RefreshControl.prototype.touchMoving = function (event) {
     event.stopPropagation()
     let movedY = movingY - this.startY
     if (movedY < this.height) {
-      this.controlElem.style.transform = `translateY(${movedY}px)`
-      this.controlElem.style.webkitTransform = `translateY(${movedY}px)`
+      this.controlElem.style.transform = `translatey(${movedY}px)`
+      // this.controlElem.style.webkitTransform = `translatey(${movedY}px)`
       // Icon定制
-      this.refreshIcon.style.strokeDashoffset = movedY * 22
+      this.refreshIcon.style.strokeDashoffset = movedY * 25.5
     }
     if (movedY > this.height * 2 / 3) {
       document.getElementById('refresh-text').innerHTML = '松开刷新'
@@ -62,6 +64,15 @@ RefreshControl.prototype.touchMoving = function (event) {
 }
 
 RefreshControl.prototype.touchEnd = function (event) {
+  let currX = event.changedTouches[0].clientX
+  let currY = event.changedTouches[0].clientY
+  if (Event.isMoveHorizontal(this.startX, this.startY, currX, currY)) {
+    event.preventDefault()
+    event.stopPropagation()
+    this.refreshControlFlag = false
+    this.controlElem.style.transform = 'translatey(0px)'
+    // this.controlElem.style.webkitTransform = 'translatey(0px)'
+  }
   if (!this.refreshControlFlag) {
     return
   }
@@ -69,25 +80,14 @@ RefreshControl.prototype.touchEnd = function (event) {
   // 开启css过渡效果
   this.controlElem.style.transition = `all .2s ease-in .1s`
   this.controlElem.style.webkitTransition = `all .2s ease-in .1s`
-  // Icon定制
-  this.refreshIcon.style.transition = 'all 5s linear .1s'
-  this.refreshIcon.style.webkitTransition = 'all 5s linear .1s'
   // 大于一定范围，发送请求
   if (event.changedTouches[0].clientY - this.startY > this.height * 2 / 3) {
     this.getData()
-    this.controlElem.style.transform = 'translateY(0)'
-    this.controlElem.style.webkitTransform = 'translateY(0)'
-    // Icon定制
-    this.refreshIcon.style.transition = 'none'
-    this.refreshIcon.style.webkitTransition = 'none'
-    this.refreshIcon.style.strokeDashoffset = 0
+    // this.controlElem.style.transform = 'translateY(0)'
+    // this.controlElem.style.webkitTransform = 'translateY(0)'
   } else {
-    this.controlElem.style.transform = 'translateY(0)'
-    this.controlElem.style.webkitTransform = 'translateY(0)'
-    // Icon定制
-    this.refreshIcon.style.transition = 'none'
-    this.refreshIcon.style.webkitTransition = 'none'
-    this.refreshIcon.style.strokeDashoffset = 0
+    // this.controlElem.style.transform = 'translateY(0)'
+    // this.controlElem.style.webkitTransform = 'translateY(0)'
   }
 }
 

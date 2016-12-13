@@ -13,8 +13,11 @@ const Util = {
   },
   // return 时间显示格式
   generateTime: (date, currDate = +new Date()) => {
-    if (typeof date !== 'number') {
-      date = +new Date(date)
+    if (typeof date === 'string') {
+      date = +new Date(date.replace(/-/g, '/'))
+    }
+    if (isNaN(date)) {
+      return ''
     }
     let diffDate = currDate - date
     // 一分钟内
@@ -44,6 +47,9 @@ const Util = {
   // 通过字符串
   // return search对象
   getSearchByString: (urlStr) => {
+    if (urlStr.indexOf('?') < 0) {
+      return {}
+    }
     let searchObject = {}
     let searchArr = urlStr.split('?')[1].split('&')
     searchArr.forEach((item, index) => {
@@ -97,7 +103,7 @@ const Util = {
     }
     return ''
   },
-  // 懒加载图片
+  // 懒加载图片 依赖zepto
   setImgUrl: ($elem) => {
     let $imgElems = $elem.find('img')
     $.each($imgElems, function (index, item) {
@@ -106,11 +112,6 @@ const Util = {
         $item.attr('src', $item.attr('data-imgUrl'))
       }
     })
-    // for (let $item of $imgElems) {
-    //   if ($item.attr('src') === '') {
-    //     $item.attr('src', $item.attr('data-imgUrl'))
-    //   }
-    // }
   }
 }
 
