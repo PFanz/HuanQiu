@@ -11,8 +11,8 @@ a {
   padding: 0;
   border: 0;
   text-decoration: none;
-  -webkit-touch-callout: none;
-  // -webkit-tap-highlight-color: transparent;
+  // -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 li {
@@ -59,11 +59,13 @@ header {
 
 .header-small {
   float: right;
+  padding: 0 .25rem;
   font-size: (20rem/64);
   color: #b3b3b3;
 }
 
 .header-user {
+  display: none;
   float: right;
 
   svg {
@@ -101,8 +103,9 @@ nav {
   line-height: (80rem/64);
   border-bottom: 1px solid #f5f5f5;
   background: #fff;
-  overflow-x: auto;
+  overflow-x: scroll;
   overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .nav-main-bar {
@@ -119,6 +122,10 @@ nav {
 
   a {
     color: #6d6d6d;
+
+    a:visited {
+      color: #6d6d6d;
+    }
   }
 
   &.small {
@@ -127,8 +134,10 @@ nav {
 }
 
 .nav-item.active {
-  font-weight: bold;
-  color: #4a4a4a;
+  a {
+    font-weight: bold;
+    color: #4a4a4a;
+  }
 }
 
 .nav-more-btn {
@@ -177,6 +186,17 @@ nav {
       font-size: (22rem/64);
     }
   }
+}
+
+footer {
+  background: #ccc;
+}
+
+.footer-text {
+  font-size: .35rem;
+  color: #999;
+  text-align: center;
+  padding: .2rem 0;
 }
 
 // 下拉刷新
@@ -567,13 +587,17 @@ nav {
 
   .news-content {
     float: left;
+    margin-right: .3rem;
+    // display: inline-block;
     width: 6.6rem;
   }
 
   .news-imgs {
-    float: right;
+    // float: right;
+    // display: inline-block;
     height: (120rem/64);
     width: (160rem/64);
+    overflow: hidden;
   }
 
   .news-pic {

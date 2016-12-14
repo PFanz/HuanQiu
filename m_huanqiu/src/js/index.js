@@ -1,5 +1,5 @@
 // 依赖zepto
-;(function () {
+(function () {
   // 依赖
   const Lunbo = require('./lunbo.js')                       // 轮播图
   const RefreshControl = require('./RefreshControl.js')     // 下拉刷新
@@ -26,7 +26,8 @@
     Util.setCookie('userID', userID)
   }
 
-  userID = Math.random()
+  // 测试代码
+  // userID = Math.random()
 
   const App = {
     channel: '',                                              // 当前频道
@@ -70,10 +71,9 @@
         $(this).siblings().removeClass('active')
         $(this).addClass('active')
       })
-      $('.nav-more .nav-item').on('tap', () => {
-        $('#nav-more-btn').trigger('tap')
-        let href = $(this).attr('href')
-        $(`.nav-main [href="${href}"]`).parent().addClass('active')
+      $('#nav-more .nav-item').on('tap', (event) => {
+        let channel = $(event.target).attr('href').split('=')[1]
+        this.channel = channel
         this.setNavPos()
       })
       // nav阻止滚动
@@ -90,7 +90,6 @@
           $('nav').css('position', 'relative')
         }
       })
-
       this.setNavPos()
     },
     // 设置 导航位置
@@ -99,7 +98,7 @@
       // nav位置
       if (this.channel !== '') {
         $('.nav-item').removeClass('active')
-        $('.nav-main').find(`[href="#channel=${this.channel}"`).parent().addClass('active')
+        $('.nav-main').find(`[href="#channel=${this.channel}"]`).parent().addClass('active')
         const $activeNav = $scrollNav.find('.active')
         const $smallNav = $scrollNav.find('.small')
 
@@ -117,6 +116,8 @@
         const navLeft = (activeIndex - smallNum) * (FontSize * 1.75) + smallNum * (FontSize * 3)
         $scrollNav.scrollLeft(navLeft)
       } else {
+        $('.nav-main .nav-item').removeClass('active')
+        $('.nav-main [href="#channel="]').parent().addClass('active')
         $scrollNav.scrollLeft(0)
       }
     },
@@ -138,6 +139,9 @@
     },
     // 设置 当前频道，调用 设置导航位置方法
     setChannel: function () {
+      if ($('#nav-more').height() > 50) {
+        $('#nav-more-btn').trigger('tap')
+      }
       this.channel = Util.getHash().channel || ''
       this.homeFlag = !this.channel
       this.picChannelFlag = this.channel === 'picture'
@@ -234,19 +238,19 @@
             auto: false
           })
           // 改变后期添加的指示器
-          recommendLunbo.play = function (n) {
-            Lunbo.prototype.play.bind(this, n)()
+          // recommendLunbo.play = function (n) {
+            // Lunbo.prototype.play.bind(this, n)()
             // 依赖于Lunbo中的全局变量this._n
-            if ($('#' + indicatorID).length !== 0) {
-              $('#' + indicatorID)[0].innerHTML = this._n + 1
-            }
-            $recomContent.height($recomContent.find('li').eq(this._n).height())
+            // if ($('#' + indicatorID).length !== 0) {
+            //   $('#' + indicatorID)[0].innerHTML = this._n + 1
+            // }
+            // $recomContent.height($recomContent.find('li').eq(this._n).height())
             // 懒加载
-            if (!this.lazyFlag) {
-              Util.setImgUrl($content)
-              this.lazyFlag = true
-            }
-          }
+            // if (!this.lazyFlag) {
+              // Util.setImgUrl($content)
+              // this.lazyFlag = true
+            // }
+          // }
           recommendLunbo.init()
           // 重置一个高度
           $recomContent.height($recomContent.find('li').eq(0).height())
@@ -367,7 +371,7 @@
       // } else {
       //   $('#auto-info p').text(`暂已推荐完所有新闻，请稍候再试`)
       // }
-      this.autoData.length
+      // this.autoData.length
       // $('#auto-info').css('opacity', '1')
       // setTimeout(() => {
       //   $('#auto-info').css('opacity', '0')
@@ -387,12 +391,11 @@
             })
         })
       this.initRefreshScroll()
-      // this.setData()
       this.initLink()
-      // this.setAuto()
       window.onhashchange = () => {
         $content[0].innerHTML = ''
         this.setChannel()
+        // this.setNavPos()
         this.getManual()
         .done(data => {
           this.setManual(data)

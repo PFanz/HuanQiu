@@ -1,22 +1,12 @@
 // HTML生成器
 const Util = require('./Util.js')
 
-// const AD = [
-//   '<div id="AD_SURVEY_POSITION_SIMPLE_41201" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41201");</script>',
-//   '<div id="AD_SURVEY_POSITION_SIMPLE_41200" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41200");</script>',
-//   '<div id="AD_SURVEY_POSITION_SIMPLE_41198" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41198");</script>'
-// ]
-
 const Generate = {
   // return 轮播图
   lunboHtml: (id, data) => {
     let str = `<div class="lunbo" id="${id}"><ul>`
     for (let item in data) {
       data[item].title = Util.generateTitle(data[item].title, 16)
-      // 广告代码
-      // if (item === '1') {
-      //   str += '<li><div id="AD_SURVEY_POSITION_SIMPLE_41197" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41197");</script></li>'
-      // }
       str += `
         <li>
           <a href="${data[item].url}">
@@ -65,7 +55,7 @@ const Generate = {
         <section class="news-style-0">
           <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
             <div class="news-content">
-              <p class="news-title">${data.title}</p>
+              <div class="news-title">${data.title}</div>
               <div class="news-info">
                 <span class="news-from">${data.source}</span>
                 <span class="news-date">${data.date}</span>
@@ -81,7 +71,7 @@ const Generate = {
           <section class="news-style-1">
             <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
               <div class="news-content">
-                <p class="news-title">${data.title}</p>
+                <div class="news-title">${data.title}</div>
                 <div class="news-info">
                   <span class="news-from">${data.source}</span>
                   <span class="news-date">${data.date}</span>

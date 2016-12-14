@@ -200,6 +200,7 @@ Lunbo.prototype.swiper = function () {
   let startY = 0
   // swipe start
   Event.addEvent(this.contentElem, 'touchstart', (event) => {
+    // alert('touchstart')
     // 暂停轮播
     this.pause()
     // 记录位置
@@ -232,7 +233,7 @@ Lunbo.prototype.swiper = function () {
   Event.addEvent(this.contentElem, 'touchend', (event) => {
     let endX = event.changedTouches[0].clientX
     // 判断条件还需要重写
-    if (endX - startX > this.oneWidth / 5) {
+    if (endX - startX > this.oneWidth / 6) {
       if (this._n === 0) {
         this.listContainer.style.transition = 'all .3s ease-in .1s'
         this.listContainer.style.webkitTransition = 'all .3s ease-in .1s'
@@ -248,7 +249,7 @@ Lunbo.prototype.swiper = function () {
         this.listContainer.style.left = (parseFloat(this.listContainer.style.left) + endX - startX) + 'px'
         this.play(-1)
       }
-    } else if (startX - endX > this.oneWidth / 5) {
+    } else if (startX - endX > this.oneWidth / 6) {
       if (this._n === (this.len - 1)) {
         this.listContainer.style.transition = 'all .3s ease-in .1s'
         this.listContainer.style.webkitTransition = 'all .3s ease-in .1s'

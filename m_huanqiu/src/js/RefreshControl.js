@@ -67,7 +67,7 @@ RefreshControl.prototype.touchEnd = function (event) {
   let currX = event.changedTouches[0].clientX
   let currY = event.changedTouches[0].clientY
   if (Event.isMoveHorizontal(this.startX, this.startY, currX, currY)) {
-    event.preventDefault()
+    // event.preventDefault()
     event.stopPropagation()
     this.refreshControlFlag = false
     this.controlElem.style.transform = 'translatey(0px)'
@@ -86,7 +86,7 @@ RefreshControl.prototype.touchEnd = function (event) {
     // this.controlElem.style.transform = 'translateY(0)'
     // this.controlElem.style.webkitTransform = 'translateY(0)'
   } else {
-    // this.controlElem.style.transform = 'translateY(0)'
+    this.controlElem.style.transform = 'translateY(0)'
     // this.controlElem.style.webkitTransform = 'translateY(0)'
   }
 }
