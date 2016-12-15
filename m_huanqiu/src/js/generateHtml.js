@@ -4,11 +4,11 @@ const Util = require('./Util.js')
 const Generate = {
   // return 轮播图
   lunboHtml: (id, data) => {
-    let str = `<div class="lunbo" id="${id}"><ul>`
+    let str = `<div class="lunbo" id="${id}"><ul class="lunbo-wrapper">`
     for (let item in data) {
       data[item].title = Util.generateTitle(data[item].title, 16)
       str += `
-        <li>
+        <li class="lunbo-page">
           <a href="${data[item].url}">
             <img src="${data[item].pic}" alt="">
             <div class="lunbo-title-bg">
@@ -136,7 +136,7 @@ const Generate = {
   },
   // return 首页新闻列表HTML字符串
   homeNewsHtml: (data) => {
-    let str = '<div class="block-content" id="recommend-content"><ul><li>'
+    let str = '<div class="block-content" id="recommend-content"><ul class="lunbo-wrapper"><li class="lunbo-page">'
     // const adIndex = ['3', '9', '15', '21', '27', '33', '39', '45', '51', '57']
     for (let item in data) {
       // // 添加广告
@@ -149,7 +149,7 @@ const Generate = {
       // }
 
       if (item % 12 === 0 && +item !== 0) {
-        str += '</li><li>'
+        str += '</li><li class="lunbo-page">'
       }
       str += Generate.newsHtml(data[item], !!(item > 12))
     }

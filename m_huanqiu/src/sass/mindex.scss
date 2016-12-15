@@ -189,7 +189,6 @@ nav {
 }
 
 footer {
-  display: none;
   background: #ccc;
 }
 
@@ -302,6 +301,10 @@ footer {
       background: #fff;
     }
   }
+}
+
+.lunbo-page {
+  float: left;
 }
 
 // live

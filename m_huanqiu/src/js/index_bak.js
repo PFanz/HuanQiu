@@ -1,8 +1,8 @@
 // 依赖zepto
 (function () {
   // 依赖
-  const Lunbo = require('./Lunbo.js')                       // 轮播图
-  const RefreshControl = require('./RefreshControl.js')     // 下拉刷新
+  const Lunbo = require('./mLunbo.js')                       // 轮播图
+  const RefreshControl = require('./mRefreshControl.js')     // 下拉刷新
   const RefreshScroll = require('./RefreshScroll.js')       // 滚动条自动列表
   const Util = require('./Util.js')                         // 多种工具
   const Generate = require('./generateHtml.js')             // 用于生成html代码
@@ -35,15 +35,13 @@
     picChannelFlag: false,                                    // 是否图集页样式
     videoChannelFlag: false,                                  // 是否视频频道
     url: 'http://w.huanqiu.com/apps/huanqiu/mindex.php', // 首页接口
-    autoUrl: `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=index&times=0&date=`, // 首页自动接口
+    autoUrl: `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`, // 首页自动接口
     loading: false,                                           // 是否正在加载
     lazyFlag: false,                                          // 简易懒加载标志
     swiperData: '',                                            // 轮播图数据
     positionData: '',                                           // 人工推荐数据
     wechatData: '',                                           // 微信热点数据
     autoData: '',                                             // 自动推荐数据
-    times: 0,                                                 // 请求次数
-    date: '',                                                 // 最后一条新闻时间
     // 初始化 导航点击事件、导航更多功能，调用 设置导航位置方法
     initNav: function () {
       // nav更多点击事件
@@ -148,12 +146,9 @@
       this.homeFlag = !this.channel
       this.picChannelFlag = this.channel === 'picture'
       this.videoChannelFlag = this.channel === 'video'
-      this.times = 0
-      this.date = ''
       this.url = this.homeFlag ? 'http://w.huanqiu.com/apps/huanqiu/mindex.php'
                                 : `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
-      this.autoUrl = this.homeFlag ? `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=index&times=${this.times}&date=${this.date}`
-                                    : `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
+      this.autoUrl = `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=${this.channel}`
       if (this.homeFlag) {
         $('body').css('background', '#f0f0f0')
       } else {
@@ -172,23 +167,22 @@
         getData: () => {
           this.getAuto()
             .done(data => {
-              data = data.data
               this.setAuto(data)
             })
         }
       }).init()
     },
     // 初始化 所有链接，添加优路回调方法
-    // initLink: function () {
-    //   $('.link-flag').on('tap', function (event) {
-    //     let id = $(this).attr('data-id')
-    //     let parameter = $(this).attr('data-parameter')
-    //     if (id === 'undefined' || parameter === 'undefined') {
-    //       return
-    //     }
-    //     $.ajax(`http://uluai.com.cn/rcmd/rec/falls/click?siteId=5011&recId=${id}&parameter=${parameter}`)
-    //   })
-    // },
+    initLink: function () {
+      $('.link-flag').on('tap', function (event) {
+        let id = $(this).attr('data-id')
+        let parameter = $(this).attr('data-parameter')
+        if (id === 'undefined' || parameter === 'undefined') {
+          return
+        }
+        $.ajax(`http://uluai.com.cn/rcmd/rec/falls/click?siteId=5011&recId=${id}&parameter=${parameter}`)
+      })
+    },
     // 获得 人工推荐接口数据
     getManual: function () {
       this.swiperData = null
@@ -215,7 +209,6 @@
       this.wechatData = data.wechat
       // 设置 轮播图
       if (!this.picChannelFlag && !this.videoChannelFlag) {
-        $content[0].innerHTML = ''
         $content.append(Generate.lunboHtml(lunboBlockID, this.swiperData))
         new Lunbo({
           id: lunboBlockID,
@@ -227,7 +220,6 @@
       let getData = () => {
         this.getAuto()
           .done(data => {
-            data = data.data
             this.setAuto(data)
           })
       }
@@ -266,7 +258,6 @@
             recommendLunbo.play(1)
             this.getAuto()
               .done(data => {
-                data = data.data
                 this.setAuto(data)
               })
           }
@@ -296,9 +287,6 @@
     },
     // 获得 自动推荐数据
     getAuto: function () {
-      $('footer').css('display', 'block')
-      this.autoUrl = this.homeFlag ? `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=index&times=${this.times}&date=${this.date}`
-                                    : `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
       this.autoData = []
       if (!this.loading) {
         console.info('加载数据')
@@ -316,17 +304,6 @@
         $('#refresh-text').text('正在加载中')
         ajaxBack
           .done(data => {
-            $('footer').css('display', 'none')
-            data = data.data
-            if (!data.length || data.length === 0) {
-              $('#footer-text').text('没有更多数据了~')
-              $refresh.css('-webkit-transform', `-webkit-translatey(0px)`)
-              $refresh.css('transform', `translatey(0px)`)
-              $refreshIcon.css('transition', 'none')
-              $refreshIcon.css('-webkit-transition', 'none')
-              $refreshIcon.css('stroke-dashoffset', 0)
-              return
-            }
             $refresh.css('-webkit-transform', `-webkit-translatey(0px)`)
             $refresh.css('transform', `translatey(0px)`)
             $refreshIcon.css('-webkit-transition', 'none')
@@ -335,8 +312,6 @@
             setTimeout(() => {
               $('#refresh-text').text('下拉刷新')
             }, 300)
-            this.times++
-            this.date = data[data.length - 1].date
           })
           .fail(() => {
             $refresh.css('-webkit-transform', `-webkit-translatey(0px)`)
@@ -355,7 +330,6 @@
     // 设置 自动推荐数据
     setAuto: function (data) {
       this.autoData = data
-      this.loading = false
       // 首页情况
       if (this.homeFlag) {
         let $autoBlock = $('#' + autoBlockID)
@@ -391,6 +365,7 @@
           $content.append(Generate.newsHtml(this.autoData[item]))
         }
       }
+      this.loading = false
       // if (this.autoData.length > 0) {
       //   $('#auto-info p').text(`为您推荐${this.autoData.length}条新闻`)
       // } else {
@@ -412,12 +387,11 @@
           this.setManual(data)
           this.getAuto()
             .done(data => {
-              data = data.data
               this.setAuto(data)
             })
         })
       this.initRefreshScroll()
-      // this.initLink()
+      this.initLink()
       window.onhashchange = () => {
         $content[0].innerHTML = ''
         this.setChannel()
@@ -427,7 +401,6 @@
           this.setManual(data)
           this.getAuto()
             .done(data => {
-              data = data.data
               this.setAuto(data)
             })
         })
