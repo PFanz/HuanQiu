@@ -50,8 +50,8 @@ RefreshControl.prototype.touchMoving = function (event) {
     event.stopPropagation()
     let movedY = movingY - this.startY
     if (movedY < this.height) {
-      this.controlElem.style.transform = `translatey(${movedY}px)`
-      // this.controlElem.style.webkitTransform = `translatey(${movedY}px)`
+      this.controlElem.style.transform = `translate3d(0, ${movedY}px, 0)`
+      this.controlElem.style.webkitTransform = `translate3d(0, ${movedY}px, 0)`
       // Icon定制
       this.refreshIcon.style.strokeDashoffset = movedY * 25.5
     }
@@ -70,16 +70,16 @@ RefreshControl.prototype.touchEnd = function (event) {
     // event.preventDefault()
     event.stopPropagation()
     this.refreshControlFlag = false
-    this.controlElem.style.transform = 'translatey(0px)'
-    // this.controlElem.style.webkitTransform = 'translatey(0px)'
+    this.controlElem.style.transform = 'translate3d(0, 0, 0)'
+    this.controlElem.style.webkitTransform = 'translate3d(0, 0, 0)'
   }
   if (!this.refreshControlFlag) {
     return
   }
   this.refreshControlFlag = false
   // 开启css过渡效果
-  this.controlElem.style.transition = `all .2s ease-in .1s`
-  this.controlElem.style.webkitTransition = `all .2s ease-in .1s`
+  // this.controlElem.style.transition = `all .2s ease-in .1s`
+  // this.controlElem.style.webkitTransition = `all .2s ease-in .1s`
   // 大于一定范围，发送请求
   if (event.changedTouches[0].clientY - this.startY > this.height * 2 / 3) {
     this.getData()
@@ -89,6 +89,14 @@ RefreshControl.prototype.touchEnd = function (event) {
     this.controlElem.style.transform = 'translateY(0)'
     // this.controlElem.style.webkitTransform = 'translateY(0)'
   }
+  this.hidden()
+}
+
+RefreshControl.prototype.hidden = function () {
+  this.controlElem.style.transition = 'all 0.2s ease-in 0.1s'
+  this.controlElem.style.webkitTransition = 'all 0.2s ease-in 0.1s'
+  this.controlElem.style.transform = 'translate3d(0, 0, 0)'
+  this.controlElem.style.webkitTransform = 'translate3d(0, 0, 0)'
 }
 
 RefreshControl.prototype.init = function () {

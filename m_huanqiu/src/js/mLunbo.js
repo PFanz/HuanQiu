@@ -8,7 +8,7 @@ const Lunbo = function (config) {
     auto: true,
     // loop: true,
     // speed: 1,
-    // delay: 3,
+    delay: 3,
     hasDot: true
   }
   // 合并配置
@@ -22,7 +22,7 @@ const Lunbo = function (config) {
   this.auto = config.auto
   // this.loop = config.loop
   // this.speed = config.speed
-  // this.delay = config.delay
+  this.delay = config.delay
   this.hasDot = config.hasDot
 
   // 一些使用到的变量
@@ -47,14 +47,14 @@ Lunbo.prototype.initStyle = function () {
 
 Lunbo.prototype.createDots = function (parentElem) {
   // 使用createElement创建的Dom节点,可以避免修改DOM对事件的影响
-  // this.dotContainer = document.createElement('div')
-  // this.dotContainer.setAttribute('class', 'focus-dots-content')
-  // let str = '<a href="javascript:void(0);" class="dot active"></a>'
-  // for (let i = 1; i < this.len; i++) {
-  //   str += '<a href="javascript:void(0);" class="dot"></a>'
-  // }
-  // this.dotContainer.innerHTML = str
-  // parentElem.appendChild(this.dotContainer)
+  this.dotContainer = document.createElement('div')
+  this.dotContainer.setAttribute('class', 'focus-dots-content')
+  let str = '<a href="javascript:void(0);" class="dot active"></a>'
+  for (let i = 1; i < this.len; i++) {
+    str += '<a href="javascript:void(0);" class="dot"></a>'
+  }
+  this.dotContainer.innerHTML = str
+  parentElem.appendChild(this.dotContainer)
 }
 
 // 将第一页复制到最后
@@ -67,7 +67,8 @@ Lunbo.prototype.autoPlay = function () {
   if (this.playingFlag === null) {
     this.playingFlag = setInterval(
       () => {
-        this.play(1)
+        this.setIndex(1)
+        this.play()
       }, this.delay * 1000)
   }
   return this.playingFlag
@@ -78,8 +79,8 @@ Lunbo.prototype.pause = function () {
   this.playingFlag = null
 }
 
-// 根据this._n，调用setSlidePos方法
-Lunbo.prototype.play = function (n) {
+// 设置this._n
+Lunbo.prototype.setIndex = function (n) {
   // 目的位置
   let pos = this._n + n
   if (pos < 0) {
@@ -87,7 +88,12 @@ Lunbo.prototype.play = function (n) {
   } else if (pos >= this.len) {
     pos = pos - this.len
   }
-  let currPos = -(this._n + 1) * this.oneWidth
+  this._n = pos
+}
+
+// 根据当前this._n滚动轮播
+Lunbo.prototype.play = function () {
+  this.setSlidePos(this.getSlidePos(), 0.5)
 }
 
 Lunbo.prototype.getSlidePos = function () {
@@ -96,7 +102,6 @@ Lunbo.prototype.getSlidePos = function () {
 
 // 滑动到targetPos位置，延迟delayTime秒
 Lunbo.prototype.setSlidePos = function (targetPos, delayTime) {
-  // console.log(targetPos)
   if (typeof this.listContainer.style.webkitTransform === 'undefined') {
     this.listContainer.style.marginLeft = targetPos + 'px'
   } else {
@@ -125,22 +130,27 @@ Lunbo.prototype.touch = function () {
       if (this._n === 0 && moved > 0) {
 
       }
-      this.setSlidePos(event.touches[0].pageX - this.startX, 0)
+      this.setSlidePos(event.touches[0].pageX - this.startX + this.getSlidePos(), 0)
     }
   })
   // swipe end
   this.container.addEventListener('touchend', (event) => {
-    director = ''
+    director = TouchMove.getDirection.end()
     if (this.startX - event.changedTouches[0].pageX > this.oneWidth / 5) {
-      this._n++
+      this.setIndex(1)
     }
-    this.setSlidePos(-this._n * this.oneWidth, 0.5)
+    if (event.changedTouches[0].pageX - this.startX > this.oneWidth / 5) {
+      this.setIndex(-1)
+    }
+    this.play()
   })
 }
 
 Lunbo.prototype.init = function () {
   this.initStyle()
   this.touch()
+  // this.hasDot && this.createDots()
+  this.auto && this.autoPlay()
 }
 
 module.exports = Lunbo

@@ -225,8 +225,8 @@ Lunbo.prototype.swiper = function () {
         moved = Math.pow(-moved, 0.9)
         moved = -moved
       }
-      this.listContainer.style.transform = 'translateX(' + (moved) + 'px)'
-      this.listContainer.style.webkitTransform = 'translateX(' + (moved) + 'px)'
+      this.listContainer.style.transform = 'translate3d(' + (moved) + 'px, 0, 0)'
+      this.listContainer.style.webkitTransform = 'translate3d(' + (moved) + 'px, 0, 0)'
     }
   })
   // swipe end
@@ -237,15 +237,15 @@ Lunbo.prototype.swiper = function () {
       if (this._n === 0) {
         this.listContainer.style.transition = 'all .3s ease-in .1s'
         this.listContainer.style.webkitTransition = 'all .3s ease-in .1s'
-        this.listContainer.style.transform = 'translateX(0)'
-        this.listContainer.style.webkitTransform = 'translateX(0)'
+        this.listContainer.style.transform = 'translate3d(0, 0, 0)'
+        this.listContainer.style.webkitTransform = 'translate3d(0, 0, 0)'
         setTimeout(() => {
           this.listContainer.style.transition = 'none'
           this.listContainer.style.webkitTransition = 'none'
         }, 500)
       } else {
-        this.listContainer.style.transform = 'translateX(0)'
-        this.listContainer.style.webkitTransform = 'translateX(0)'
+        this.listContainer.style.transform = 'translate3d(0, 0, 0)'
+        this.listContainer.style.webkitTransform = 'translate3d(0, 0, 0)'
         this.listContainer.style.left = (parseFloat(this.listContainer.style.left) + endX - startX) + 'px'
         this.play(-1)
       }
@@ -253,23 +253,23 @@ Lunbo.prototype.swiper = function () {
       if (this._n === (this.len - 1)) {
         this.listContainer.style.transition = 'all .3s ease-in .1s'
         this.listContainer.style.webkitTransition = 'all .3s ease-in .1s'
-        this.listContainer.style.transform = 'translateX(0)'
-        this.listContainer.style.webkitTransform = 'translateX(0)'
+        this.listContainer.style.transform = 'translate3d(0, 0, 0)'
+        this.listContainer.style.webkitTransform = 'translate3d(0, 0, 0)'
         setTimeout(() => {
           this.listContainer.style.transition = 'none'
           this.listContainer.style.webkitTransition = 'none'
         }, 500)
       } else {
-        this.listContainer.style.transform = 'translateX(0)'
-        this.listContainer.style.webkitTransform = 'translateX(0)'
+        this.listContainer.style.transform = 'translate3d(0, 0, 0)'
+        this.listContainer.style.webkitTransform = 'translate3d(0, 0, 0)'
         this.listContainer.style.left = (parseFloat(this.listContainer.style.left) + endX - startX) + 'px'
         this.play(1)
       }
     } else {
       this.listContainer.style.transition = 'all .3s ease-in .1s'
       this.listContainer.style.webkitTransition = 'all .3s ease-in .1s'
-      this.listContainer.style.transform = 'translateX(0)'
-      this.listContainer.style.webkitTransform = 'translateX(0)'
+      this.listContainer.style.transform = 'translate3d(0, 0, 0)'
+      this.listContainer.style.webkitTransform = 'translate3d(0, 0, 0)'
       setTimeout(() => {
         this.listContainer.style.transition = 'none'
         this.listContainer.style.webkitTransition = 'none'

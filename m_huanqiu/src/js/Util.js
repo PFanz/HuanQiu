@@ -111,8 +111,10 @@ const Util = {
     let $imgElems = $elem.find('img')
     $.each($imgElems, function (index, item) {
       let $item = $(item)
-      if ($item.attr('src') === '') {
+      if ($item.attr('data-imgUrl') !== undefined &&
+            $item.attr('src') !== $item.attr('data-imgUrl')) {
         $item.attr('src', $item.attr('data-imgUrl'))
+        $item.removeAttr('data-imgUrl')
       }
     })
   }

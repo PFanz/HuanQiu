@@ -2,6 +2,27 @@
 const Util = require('./Util.js')
 
 const Generate = {
+  // ad string
+  indexAdString: {
+    4: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41788" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41788");</script></section>',
+    10: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41789" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41789");</script></section>',
+    16: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41790" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41790");</script></section>',
+    22: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41791" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41791");</script></section>',
+    28: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41792" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41792");</script></section>',
+    34: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41793" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41793");</script></section>',
+    40: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41794" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41794");</script></section>',
+    46: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41795" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41795");</script></section>'
+  },
+  adString: {
+    4: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41562" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41562");</script></section>',
+    10: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41558" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41558");</script></section>',
+    16: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41559" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41559");</script></section>',
+    22: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41560" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41560");</script></section>',
+    28: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41561" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41561");</script></section>',
+    34: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41563" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41563");</script></section>',
+    40: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41");</script></section>',
+    46: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41795" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41795");</script></section>'
+  },
   // return 轮播图
   lunboHtml: (id, data) => {
     let str = `<div class="lunbo" id="${id}"><ul class="lunbo-wrapper">`
@@ -10,7 +31,7 @@ const Generate = {
       str += `
         <li class="lunbo-page">
           <a href="${data[item].url}">
-            <img src="${data[item].pic}" alt="">
+            <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" src="${data[item].pic}" alt="">
             <div class="lunbo-title-bg">
               <p class="lunbo-title">${data[item].title}</p>
             </div>
@@ -49,6 +70,9 @@ const Generate = {
     let str = ''
     data.title = Util.generateTitle(data.title, 28)
     data.date = Util.generateTime(data.date)
+    if (typeof data.pic === 'undefined' && data.mediaType !== 'advert') {
+      return ''
+    }
     // 无图
     if (data.mediaType === 'text') {
       str += `
@@ -78,7 +102,7 @@ const Generate = {
                 </div>
               </div>
               <div class="news-imgs">
-                  <img class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
+                  <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
               </div>
             </a>
           </section>
@@ -89,7 +113,7 @@ const Generate = {
             <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
               <p class="news-title">${data.title}</p>
               <div class="video-img">
-                <img src="${data.pic[0]}" alt="">
+                <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" src="${data.pic[0]}" alt="">
                 <div class="video-btn">
                   <svg>
                     <use xlink:href="#video-icon" />
@@ -111,15 +135,22 @@ const Generate = {
           <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
             <p class="news-title">${data.title}</p>
             <div class="news-imgs">
-              <img class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
-              <img class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[1] : 'src="' + data.pic[1]}" alt="">
-              <img class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[2] : 'src="' + data.pic[2]}" alt="">
+              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
+              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[1] : 'src="' + data.pic[1]}" alt="">
+              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[2] : 'src="' + data.pic[2]}" alt="">
             </div>
           </a>
           <div class="news-info">
             <span class="news-from">${data.source}</span>
             <span class="news-date">${data.date}</span>
           </div>
+        </section>
+      `
+    } else if (data.mediaType === 'advert') {
+      // 广告
+      str += `
+        <section>
+          ${data.data}
         </section>
       `
     }
@@ -137,21 +168,12 @@ const Generate = {
   // return 首页新闻列表HTML字符串
   homeNewsHtml: (data) => {
     let str = '<div class="block-content" id="recommend-content"><ul class="lunbo-wrapper"><li class="lunbo-page">'
-    // const adIndex = ['3', '9', '15', '21', '27', '33', '39', '45', '51', '57']
+    // str += '<section><div id="AD_SURVEY_POSITION_SIMPLE_41681" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41681");</script></section>'
     for (let item in data) {
-      // // 添加广告
-      // if (adIndex.indexOf(item) >= 0) {
-      //   str += `
-      //     <section>
-      //       ${AD[~~(Math.random() * 3)]}
-      //     </section>
-      //   `
-      // }
-
-      if (item % 12 === 0 && +item !== 0) {
+      if (item % 14 === 0 && +item !== 0) {
         str += '</li><li class="lunbo-page">'
       }
-      str += Generate.newsHtml(data[item], !!(item > 12))
+      str += Generate.newsHtml(data[item], !!(item > 14))
     }
     str += '</li></div>'
     return str
@@ -161,7 +183,7 @@ const Generate = {
     let str = `
       <section class="pic-block">
         <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
-          <img src="${data.pic}"" alt="" />
+          <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" src="${data.pic}"" alt="" />
           <p class="pic-title">${data.title}</p>
         </a>
       </section>
@@ -174,7 +196,7 @@ const Generate = {
       <section class="pic-block">
         <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
           <div class="video-img">
-            <img src="${data.pic}" alt="">
+            <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" src="${data.pic}" alt="">
             <div class="video-btn">
               <svg>
                 <use xlink:href="#video-icon" />
