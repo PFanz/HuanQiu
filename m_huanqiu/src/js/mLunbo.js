@@ -8,8 +8,10 @@ const Lunbo = function (config) {
     auto: true,
     // loop: true,
     // speed: 1,
-    delay: 3,
-    hasDot: true
+    // delay: 3,
+    speed: 0.5,
+    hasDot: true,
+    dotId: ''
   }
   // 合并配置
   config = {
@@ -19,9 +21,9 @@ const Lunbo = function (config) {
 
   // 用到的配置项
   this.container = document.getElementById(config.id)
-  this.auto = config.auto
+  // this.auto = config.auto
   // this.loop = config.loop
-  // this.speed = config.speed
+  this.speed = config.speed
   this.delay = config.delay
   this.hasDot = config.hasDot
 
@@ -30,15 +32,14 @@ const Lunbo = function (config) {
   this.listContainer = this.container.querySelector('.lunbo-wrapper')
   this.len = this.container.querySelectorAll('.lunbo-page').length
   this.oneWidth = this.container.clientWidth
-  this.oneHeight = this.container.clientHeight
-  this.dotContainer = null
-  this.dotNodes = null
+  // this.dotContainer = document.getElementById()
 
   // 位置相关
   this._n = 0
   this.startX = 0
-  this.movingFlag = null
-  this.playingFlag = null
+  this.startTime = 0
+  // this.movingFlag = null
+  // this.playingFlag = null
 }
 
 Lunbo.prototype.initStyle = function () {
@@ -58,26 +59,26 @@ Lunbo.prototype.createDots = function (parentElem) {
 }
 
 // 将第一页复制到最后
-Lunbo.prototype.createLoop = function () {
-  let firstPage = this.container.querySelector('.lunbo-page')
-  this.listContainer.appendChild(firstPage.clone(true))
-}
+// Lunbo.prototype.createLoop = function () {
+//   let firstPage = this.container.querySelector('.lunbo-page')
+//   this.listContainer.appendChild(firstPage.clone(true))
+// }
 
-Lunbo.prototype.autoPlay = function () {
-  if (this.playingFlag === null) {
-    this.playingFlag = setInterval(
-      () => {
-        this.setIndex(1)
-        this.play()
-      }, this.delay * 1000)
-  }
-  return this.playingFlag
-}
+// Lunbo.prototype.autoPlay = function () {
+//   if (this.playingFlag === null) {
+//     this.playingFlag = setInterval(
+//       () => {
+//         this.setIndex(1)
+//         this.play()
+//       }, this.delay * 1000)
+//   }
+//   return this.playingFlag
+// }
 
-Lunbo.prototype.pause = function () {
-  clearInterval(this.playingFlag)
-  this.playingFlag = null
-}
+// Lunbo.prototype.pause = function () {
+//   clearInterval(this.playingFlag)
+//   this.playingFlag = null
+// }
 
 // 设置this._n
 Lunbo.prototype.setIndex = function (n) {
@@ -93,7 +94,7 @@ Lunbo.prototype.setIndex = function (n) {
 
 // 根据当前this._n滚动轮播
 Lunbo.prototype.play = function () {
-  this.setSlidePos(this.getSlidePos(), 0.5)
+  this.setSlidePos(this.getSlidePos(), this.speed)
 }
 
 Lunbo.prototype.getSlidePos = function () {
@@ -119,28 +120,37 @@ Lunbo.prototype.touch = function () {
   this.container.addEventListener('touchstart', (event) => {
     TouchMove.getDirection.start(event)
     this.startX = event.touches[0].pageX
+    this.startTime = +new Date()
   })
   // swiping
   this.container.addEventListener('touchmove', (event) => {
     director = director || TouchMove.getDirection.move(event)
     if (director === 'right' || director === 'left') {
       event.preventDefault()
+      event.stopPropagation()
       let moved = event.touches[0].pageX - this.startX
-      // 第一页向左翻
       if (this._n === 0 && moved > 0) {
-
+        this.setSlidePos(Math.pow(moved, 0.85), 0)
+      } else if (this._n === this.len - 1 && moved < 0) {
+        this.setSlidePos(-Math.pow(-moved, 0.85) + this.getSlidePos(), 0)
+      } else {
+        this.setSlidePos(event.touches[0].pageX - this.startX + this.getSlidePos(), 0)
       }
-      this.setSlidePos(event.touches[0].pageX - this.startX + this.getSlidePos(), 0)
     }
   })
   // swipe end
   this.container.addEventListener('touchend', (event) => {
     director = TouchMove.getDirection.end()
-    if (this.startX - event.changedTouches[0].pageX > this.oneWidth / 5) {
-      this.setIndex(1)
-    }
-    if (event.changedTouches[0].pageX - this.startX > this.oneWidth / 5) {
-      this.setIndex(-1)
+    let diffTime = +new Date() - this.startTime
+    let diffX = this.startX - event.changedTouches[0].pageX
+    if (diffX > this.oneWidth / 5 || diffX / diffTime > 0.2) {
+      if (this._n !== this.len - 1) {
+        this.setIndex(1)
+      }
+    } else if (-diffX > this.oneWidth / 5 || -diffX / diffTime > 0.2) {
+      if (this._n !== 0) {
+        this.setIndex(-1)
+      }
     }
     this.play()
   })
@@ -149,7 +159,7 @@ Lunbo.prototype.touch = function () {
 Lunbo.prototype.init = function () {
   this.initStyle()
   this.touch()
-  // this.hasDot && this.createDots()
+  this.hasDot && this.createDots(this.container)
   this.auto && this.autoPlay()
 }
 

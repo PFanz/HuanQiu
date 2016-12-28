@@ -12,9 +12,6 @@
   <link rel="apple-touch-icon" href="http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/icon.png"/>
   <link rel="stylesheet" type="text/css" href="dist/css/index.css">
   <script type="text/javascript" src="http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/libs/flexble.js"></script>
-  <!-- 广告加载基础代码 -->
-  <script type="text/javascript" src="http://ipengtai.huanqiu.com/resource/js/base_mobile2.js"></script>
-  <!-- /广告加载基础代码 -->
 </head>
 <body>
 
@@ -56,33 +53,33 @@
     <div class="nav-scroll">
       <div class="nav-main">
         <ul class="nav-main-bar">
-          <li class="nav-item active"><a href="#channel=" >首页</a></li>
-          <li class="nav-item"><a href="#channel=world" >国际</a></li>
-          <li class="nav-item"><a href="#channel=inland" >国内</a></li>
-          <li class="nav-item"><a href="#channel=society" >社会</a></li>
-          <li class="nav-item"><a href="#channel=mil" >军事</a></li>
-          <li class="nav-item"><a href="#channel=taihai" >台海</a></li>
-          <li class="nav-item"><a href="#channel=comment" >评论</a></li>
-          <li class="nav-item small"><a href="#channel=oversea" >海外看中国</a></li>
-          <li class="nav-item"><a href="#channel=bolan" >博览</a></li>
-          <li class="nav-item"><a href="#channel=picture" >图片</a></li>
-          <li class="nav-item"><a href="#channel=video" >视频</a></li>
-          <li class="nav-item"><a href="#channel=finance" >财经</a></li>
-          <li class="nav-item"><a href="#channel=auto" >汽车</a></li>
-          <li class="nav-item"><a href="#channel=tech" >科技</a></li>
-          <li class="nav-item"><a href="#channel=smart" >智能</a></li>
-          <li class="nav-item"><a href="#channel=uav" >无人机</a></li>
-          <li class="nav-item"><a href="#channel=travel" >旅行</a></li>
-          <li class="nav-item"><a href="#channel=health" >健康</a></li>
-          <li class="nav-item"><a href="#channel=ent" >娱乐</a></li>
-          <li class="nav-item"><a href="#channel=fashion" >时尚</a></li>
-          <li class="nav-item"><a href="#channel=women" >女人</a></li>
-          <li class="nav-item"><a href="#channel=sports" >体育</a></li>
-          <li class="nav-item"><a href="#channel=ski" >滑雪</a></li>
-          <li class="nav-item"><a href="#channel=liuxue" >留学</a></li>
-          <li class="nav-item"><a href="#channel=hope" >公益</a></li>
-          <li class="nav-item"><a href="#channel=city" >城市</a></li>
-          <li class="nav-item"><a href="#channel=book" >听书</a></li>
+          <li id="index" class="nav-item active"><a href="#channel=" >首页</a></li>
+          <li id="world" class="nav-item"><a href="#channel=world" >国际</a></li>
+          <li id="inland" class="nav-item"><a href="#channel=inland" >国内</a></li>
+          <li id="society" class="nav-item"><a href="#channel=society" >社会</a></li>
+          <li id="mil" class="nav-item"><a href="#channel=mil" >军事</a></li>
+          <li id="taihai" class="nav-item"><a href="#channel=taihai" >台海</a></li>
+          <li id="comment" class="nav-item"><a href="#channel=comment" >评论</a></li>
+          <li id="oversea" class="nav-item small"><a href="#channel=oversea" >海外看中国</a></li>
+          <li id="bolan" class="nav-item"><a href="#channel=bolan" >博览</a></li>
+          <li id="picture" class="nav-item"><a href="#channel=picture" >图片</a></li>
+          <li id="video" class="nav-item"><a href="#channel=video" >视频</a></li>
+          <li id="finance" class="nav-item"><a href="#channel=finance" >财经</a></li>
+          <li id="auto" class="nav-item"><a href="#channel=auto" >汽车</a></li>
+          <li id="tech" class="nav-item"><a href="#channel=tech" >科技</a></li>
+          <li id="smart" class="nav-item"><a href="#channel=smart" >智能</a></li>
+          <li id="uav" class="nav-item"><a href="#channel=uav" >无人机</a></li>
+          <li id="travel" class="nav-item"><a href="#channel=travel" >旅行</a></li>
+          <li id="health" class="nav-item"><a href="#channel=health" >健康</a></li>
+          <li id="ent" class="nav-item"><a href="#channel=ent" >娱乐</a></li>
+          <li id="fashion" class="nav-item"><a href="#channel=fashion" >时尚</a></li>
+          <li id="women" class="nav-item"><a href="#channel=women" >女人</a></li>
+          <li id="sports" class="nav-item"><a href="#channel=sports" >体育</a></li>
+          <li id="ski" class="nav-item"><a href="#channel=ski" >滑雪</a></li>
+          <li id="liuxue" class="nav-item"><a href="#channel=liuxue" >留学</a></li>
+          <li id="hope" class="nav-item"><a href="#channel=hope" >公益</a></li>
+          <li id="city" class="nav-item"><a href="#channel=city" >城市</a></li>
+          <li id="book" class="nav-item"><a href="#channel=book" >听书</a></li>
         </ul>
       </div>
     </div>
@@ -397,9 +394,9 @@
   </div>
   <!-- /下拉刷新 -->
 
-  <footer>
+  <!-- <footer>
     <div class="footer-text" id="footer-text">正在加载数据...</div>
-  </footer>
+  </footer> -->
 
   <!-- 添加主屏 -->
   <div class="add-screen-tip" id="add-screen-tip">
@@ -414,7 +411,10 @@
 
   <script type="text/javascript" src="dist/libs/zepto.min.js"></script>
   <script type="text/javascript" src="dist/js/index.js"></script>
-  <!-- <script src="node_modules/eruda/eruda.min.js"></script>
+  <!-- 广告加载基础代码 -->
+  <script type="text/javascript" src="http://ipengtai.huanqiu.com/resource/js/base_mobile2.js"></script>
+  <!-- /广告加载基础代码 -->
+<!--   <script src="node_modules/eruda/eruda.min.js"></script>
   <script>eruda.init();</script> -->
 </body>
 </html>

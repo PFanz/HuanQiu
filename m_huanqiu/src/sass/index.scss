@@ -7,6 +7,7 @@ p {
 }
 
 a {
+  color: #6d6d6d;
   margin: 0;
   padding: 0;
   border: 0;
@@ -14,6 +15,24 @@ a {
   // -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
 }
+
+a:hover {
+  color: #000;
+}
+
+a:active {
+  color: #000;
+}
+
+a:link {
+  color: #000;
+}
+
+a:visited {
+  color: #000;
+}
+
+
 
 li {
   list-style: none;
@@ -58,6 +77,9 @@ header {
 }
 
 .header-small {
+  margin: .2rem 0;
+  height: .85rem;
+  line-height: .85rem;
   float: right;
   padding: 0 .25rem;
   font-size: (20rem/64);
@@ -118,25 +140,24 @@ nav {
   height: 1.25rem;
   font-size: .45rem;
   text-align: center;
-  color: #6d6d6d;
+  color: #6d6d6d!important;
 
   a {
-    color: #6d6d6d;
-
-    a:visited {
-      color: #6d6d6d;
-    }
+    color: #6d6d6d!important;
   }
-
+  
   &.small {
     width: 3rem;
   }
 }
 
 .nav-item.active {
+  font-weight: bold;
+  color: #4a4a4a;
+
   a {
     font-weight: bold;
-    color: #4a4a4a;
+    color: #4a4a4a!important;
   }
 }
 
@@ -230,6 +251,7 @@ footer {
 
 // 推荐提醒
 .auto-info {
+  display: none;
   opacity: 0;
   position: absolute;
   font-size: .3rem;
@@ -303,6 +325,11 @@ footer {
       background: #fff;
     }
   }
+}
+
+.lunbo-page {
+  float: left;
+  width: 10rem;
 }
 
 // live
@@ -413,8 +440,10 @@ footer {
 }
 
 .block-content {
+  position: relative;
   padding: 1px 0 .6rem;
   width: 10rem;
+  overflow: hidden;
 
   .focus-dots-content {
     position: absolute;
@@ -510,6 +539,9 @@ footer {
   font-size: .47rem;
   color:#464646;
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .news-info {

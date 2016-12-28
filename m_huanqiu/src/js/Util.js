@@ -2,7 +2,7 @@ const Util = {
   // return 轮播图标题
   generateTitle: (title, num = 16) => {
     let count = 0
-    if (!title || title.length !== 'number') {
+    if (!title || typeof title.length !== 'number') {
       return title
     }
     for (let i = 0, len = title.length; i < len; i++) {

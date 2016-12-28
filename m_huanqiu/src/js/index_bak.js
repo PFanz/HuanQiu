@@ -2,7 +2,7 @@
 (function () {
   // 依赖
   const Lunbo = require('./mLunbo.js')                       // 轮播图
-  const RefreshControl = require('./mRefreshControl.js')     // 下拉刷新
+  const RefreshControl = require('./RefreshControl.js')     // 下拉刷新
   const RefreshScroll = require('./RefreshScroll.js')       // 滚动条自动列表
   const Util = require('./Util.js')                         // 多种工具
   const Generate = require('./generateHtml.js')             // 用于生成html代码
@@ -15,7 +15,6 @@
   // 全局变量
   const $content = $('#content')                            // app content
   const FontSize = parseFloat($('html').css('font-size'))   // 1rem = FontSize px
-
   const $refresh = $('#refresh-control')                    // 下拉刷新
   const $refreshIcon = $('#transform-icon')                 // 下拉动画
 
@@ -42,6 +41,9 @@
     positionData: '',                                           // 人工推荐数据
     wechatData: '',                                           // 微信热点数据
     autoData: '',                                             // 自动推荐数据
+    // times: 0,                                                 // 请求次数
+    // date: '',                                                 // 最后一条新闻时间
+    count: 0,                                                 // 自动列表新闻数量统计
     // 初始化 导航点击事件、导航更多功能，调用 设置导航位置方法
     initNav: function () {
       // nav更多点击事件
@@ -67,15 +69,13 @@
         }
       })
       // nav点击事件
-      $('.nav-main .nav-item').on('tap', function () {
-        $(this).siblings().removeClass('active')
-        $(this).addClass('active')
-      })
-      $('#nav-more .nav-item').on('tap', (event) => {
-        let channel = $(event.target).attr('href').split('=')[1]
-        this.channel = channel
-        this.setNavPos()
-      })
+      // $('.nav-main .nav-item').on('tap', function (event) {
+      //   $(this).siblings().removeClass('active')
+      //   $(this).addClass('active')
+      //   // $(this).find('a').css('color', '#4a4a4a!important')
+      // })
+      // $('#nav-more .nav-item').on('tap', (event) => {
+      // })
       // nav阻止滚动
       $('#nav-more').on('touchmove', function (event) {
         // 阻止滚动
@@ -95,13 +95,11 @@
     // 设置 导航位置
     setNavPos: function () {
       const $scrollNav = $('.nav-main')
+      let currLeft = $scrollNav.scrollLeft()
       // nav位置
       if (this.channel !== '') {
-        $('.nav-item').removeClass('active')
-        $('.nav-main').find(`[href="#channel=${this.channel}"]`).parent().addClass('active')
         const $activeNav = $scrollNav.find('.active')
         const $smallNav = $scrollNav.find('.small')
-
         const activeIndex = $activeNav.index()
         const smallNum = (($navs, activeIndex) => {
           let i = 0
@@ -116,8 +114,6 @@
         const navLeft = (activeIndex - smallNum) * (FontSize * 1.75) + smallNum * (FontSize * 3)
         $scrollNav.scrollLeft(navLeft)
       } else {
-        $('.nav-main .nav-item').removeClass('active')
-        $('.nav-main [href="#channel="]').parent().addClass('active')
         $scrollNav.scrollLeft(0)
       }
     },
@@ -146,9 +142,25 @@
       this.homeFlag = !this.channel
       this.picChannelFlag = this.channel === 'picture'
       this.videoChannelFlag = this.channel === 'video'
-      this.url = this.homeFlag ? 'http://w.huanqiu.com/apps/huanqiu/mindex.php'
-                                : `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
-      this.autoUrl = `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=${this.channel}`
+      this.times = 0
+      this.date = ''
+      this.count = 0
+      if (this.homeFlag) {
+        this.url = 'http://w.huanqiu.com/apps/huanqiu/mindex.php'
+        this.autoUrl = `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`
+      } else {
+        this.url = `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
+        this.autoUrl = `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
+      }
+      // this.url = this.homeFlag ? 'http://w.huanqiu.com/apps/huanqiu/mindex.php'
+      //                           : `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
+      // this.autoUrl = `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=${this.channel}`
+      $('.nav-main .nav-item').removeClass('active')
+      if (this.channel === '') {
+        $('#index').addClass('active')
+      } else {
+        $('#' + this.channel).addClass('active')
+      }
       if (this.homeFlag) {
         $('body').css('background', '#f0f0f0')
       } else {
@@ -174,17 +186,22 @@
     },
     // 初始化 所有链接，添加优路回调方法
     initLink: function () {
-      $('.link-flag').on('tap', function (event) {
+      $('#content').on('click', '.link-flag', function (event) {
         let id = $(this).attr('data-id')
         let parameter = $(this).attr('data-parameter')
         if (id === 'undefined' || parameter === 'undefined') {
           return
         }
-        $.ajax(`http://uluai.com.cn/rcmd/rec/falls/click?siteId=5011&recId=${id}&parameter=${parameter}`)
+        $.ajax({
+          type: 'GET',
+          url: `http://uluai.com.cn/rcmd/rec/falls/click?siteId=5011&recId=${id}&parameter=${parameter}&cki=${userID}`,
+          dataType: 'jsonp'
+        })
       })
     },
     // 获得 人工推荐接口数据
     getManual: function () {
+      let delay = 5
       this.swiperData = null
       this.positionData = null
       this.wechatData = null
@@ -193,12 +210,35 @@
         url: this.url,
         dataType: 'jsonp'
       })
+      // 加载中提示
+      $refresh.css('-webkit-transform', `translate3d(0, ${1.2 * FontSize}px, 0)`)
+      $refresh.css('transform', `translate3d(0, ${1.2 * FontSize}px, 0)`)
+      $refreshIcon.css('transition', 'all 10s linear .1s')
+      $refreshIcon.css('-webkit-transition', 'all 10s linear .1s')
+      $refreshIcon.css('stroke-dashoffset', 40000)
+      $('#refresh-text').text('刷新中...')
       ajaxBack
         .done(data => {
+          // 加载完成提示
+          // setTimeout(() => {
+          //   $refresh.css('-webkit-transform', `-webkit-translate3d(0, 0, 0)`)
+          //   $refresh.css('transform', `translate3d(0, 0, 0)`)
+          //   $refreshIcon.css('-webkit-transition', 'none')
+          //   $refreshIcon.css('transition', 'none')
+          //   $refreshIcon.css('stroke-dashoffset', 0)
+          //   setTimeout(() => {
+          //     $('#refresh-text').text('下拉刷新')
+          //   }, 300)
+          // }, 500)
+          setTimeout(() => {
+            this.refreshControl.hidden()
+          }, 1500)
         })
         .fail(() => {
           console.error('加载数据出错，正在重试~')
-          this.getManual()
+          setTimeout(() => {
+            this.getManual()
+          }, delay = delay * delay * 1000)
         })
       return ajaxBack
     },
@@ -208,8 +248,12 @@
       this.positionData = data.position
       this.wechatData = data.wechat
       // 设置 轮播图
-      if (!this.picChannelFlag && !this.videoChannelFlag) {
+      if (!this.picChannelFlag && !this.videoChannelFlag && this.swiperData['0'] !== undefined) {
+        $content[0].innerHTML = ''
         $content.append(Generate.lunboHtml(lunboBlockID, this.swiperData))
+        // 轮播图广告
+        let lunboAd = this.homeFlag ? Generate.lunboAdString.index : Generate.lunboAdString.channels
+        Insert.insertLunboAd($content, 1, lunboAd)
         new Lunbo({
           id: lunboBlockID,
           hasArrow: false,
@@ -220,13 +264,14 @@
       let getData = () => {
         this.getAuto()
           .done(data => {
+            data = data.data
             this.setAuto(data)
           })
       }
       // 首页样式
       if (this.homeFlag) {
         const indicatorID = 'recommend-index-curr'
-        const pagesNum = Math.ceil(this.positionData.length / 12)
+        const pagesNum = Math.ceil(this.positionData.length / 14)
         const todayHeader = Generate.headerHtml('今日要闻', Generate.listIndicator(pagesNum, indicatorID))
         $content.append(Generate.newsBlock(todayBlockID, todayHeader))
         $('#' + todayBlockID).append(Generate.homeNewsHtml(this.positionData))
@@ -253,11 +298,14 @@
           }
           recommendLunbo.init()
           // 重置一个高度
-          $recomContent.height($recomContent.find('li').eq(0).height())
+          setTimeout(() => {
+            $recomContent.height($recomContent.find('li').eq(0).height())
+          }, 600)
           getData = () => {
             recommendLunbo.play(1)
             this.getAuto()
               .done(data => {
+                data = data.data
                 this.setAuto(data)
               })
           }
@@ -279,14 +327,20 @@
         }
       }
       // 下拉刷新
-      new RefreshControl({
+      this.refreshControl = new RefreshControl({
         id: 'refresh-control',
         height: FontSize * 1.5,
         getData: getData
-      }).init()
+      })
+      this.refreshControl.init()
     },
     // 获得 自动推荐数据
     getAuto: function () {
+      // $('footer').css('display', 'block')
+      // console.log(this.autoUrl)
+      this.autoUrl = this.homeFlag ? `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`
+                                    : `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
+      // console.log(this.autoUrl)
       this.autoData = []
       if (!this.loading) {
         console.info('加载数据')
@@ -296,30 +350,23 @@
           url: this.autoUrl,
           dataType: 'jsonp'
         })
-        $refresh.css('-webkit-transform', `-webkit-translatey(${1.2 * FontSize}px)`)
-        $refresh.css('transform', `translatey(${1.2 * FontSize}px)`)
-        $refreshIcon.css('transition', 'all 10s linear .1s')
-        $refreshIcon.css('-webkit-transition', 'all 10s linear .1s')
-        $refreshIcon.css('stroke-dashoffset', 40000)
-        $('#refresh-text').text('正在加载中')
+        // $('#footer-text').text('正在加载中')
         ajaxBack
           .done(data => {
-            $refresh.css('-webkit-transform', `-webkit-translatey(0px)`)
-            $refresh.css('transform', `translatey(0px)`)
-            $refreshIcon.css('-webkit-transition', 'none')
-            $refreshIcon.css('transition', 'none')
-            $refreshIcon.css('stroke-dashoffset', 0)
-            setTimeout(() => {
-              $('#refresh-text').text('下拉刷新')
-            }, 300)
+            if (!this.homeFlag) {
+              data = data.data
+            }
+            if (!data.length || data.length === 0) {
+              this.loading = true
+              // $('#footer-text').text('没有更多数据了，请稍候再试~')
+              // $('footer').css('display', 'block')
+              return
+            }
+            this.times++
+            this.date = data[data.length - 1].date
           })
           .fail(() => {
-            $refresh.css('-webkit-transform', `-webkit-translatey(0px)`)
-            $refresh.css('transform', `translatey(0px)`)
-            $refreshIcon.css('transition', 'none')
-            $refreshIcon.css('-webkit-transition', 'none')
-            $refreshIcon.css('stroke-dashoffset', 0)
-            $('#refresh-text').text('加载失败，请重试~')
+            // $('#footer-text').text('加载失败，请稍后重试~')
             this.loading = false
             console.error('加载数据出错，将重试~')
           })
@@ -329,7 +376,14 @@
     },
     // 设置 自动推荐数据
     setAuto: function (data) {
+      if (!this.homeFlag) {
+        data = data.data
+      }
       this.autoData = data
+      this.loading = false
+      setTimeout(() => {
+        this.refreshControl.hidden()
+      }, 500)
       // 首页情况
       if (this.homeFlag) {
         let $autoBlock = $('#' + autoBlockID)
@@ -339,10 +393,14 @@
           $autoBlock = $('#' + autoBlockID)
           for (let item in this.autoData) {
             $autoBlock.append(Generate.newsHtml(this.autoData[item]))
+            this.count++
+            Generate.indexAdString[this.count] && $autoBlock.append(Generate.indexAdString[this.count])
           }
         } else {
           for (let item in this.autoData) {
             $autoBlock.append(Generate.newsHtml(this.autoData[item]))
+            this.count++
+            Generate.indexAdString[this.count] && $autoBlock.append(Generate.indexAdString[this.count])
           }
         }
         // 微信热点
@@ -363,9 +421,10 @@
       } else {
         for (let item in this.autoData) {
           $content.append(Generate.newsHtml(this.autoData[item]))
+          this.count++
+          Generate.adString[this.count] && $content.append(Generate.adString[this.count])
         }
       }
-      this.loading = false
       // if (this.autoData.length > 0) {
       //   $('#auto-info p').text(`为您推荐${this.autoData.length}条新闻`)
       // } else {
@@ -395,7 +454,7 @@
       window.onhashchange = () => {
         $content[0].innerHTML = ''
         this.setChannel()
-        // this.setNavPos()
+        this.setNavPos()
         this.getManual()
         .done(data => {
           this.setManual(data)

@@ -15,7 +15,6 @@
   // 全局变量
   const $content = $('#content')                            // app content
   const FontSize = parseFloat($('html').css('font-size'))   // 1rem = FontSize px
-
   const $refresh = $('#refresh-control')                    // 下拉刷新
   const $refreshIcon = $('#transform-icon')                 // 下拉动画
 
@@ -45,7 +44,6 @@
     times: 0,                                                 // 请求次数
     date: '',                                                 // 最后一条新闻时间
     count: 0,                                                 // 自动列表新闻数量统计
-    // adPos: [4, 10, 16, 22, 28, 34, 40, 46]                    // 广告位置
     // 初始化 导航点击事件、导航更多功能，调用 设置导航位置方法
     initNav: function () {
       // nav更多点击事件
@@ -71,15 +69,13 @@
         }
       })
       // nav点击事件
-      $('.nav-main .nav-item').on('tap', function () {
-        $(this).siblings().removeClass('active')
-        $(this).addClass('active')
-      })
-      $('#nav-more .nav-item').on('tap', (event) => {
-        let channel = $(event.target).attr('href').split('=')[1]
-        this.channel = channel
-        this.setNavPos()
-      })
+      // $('.nav-main .nav-item').on('tap', function (event) {
+      //   $(this).siblings().removeClass('active')
+      //   $(this).addClass('active')
+      //   // $(this).find('a').css('color', '#4a4a4a!important')
+      // })
+      // $('#nav-more .nav-item').on('tap', (event) => {
+      // })
       // nav阻止滚动
       $('#nav-more').on('touchmove', function (event) {
         // 阻止滚动
@@ -99,13 +95,11 @@
     // 设置 导航位置
     setNavPos: function () {
       const $scrollNav = $('.nav-main')
+      let currLeft = $scrollNav.scrollLeft()
       // nav位置
       if (this.channel !== '') {
-        $('.nav-item').removeClass('active')
-        $('.nav-main').find(`[href="#channel=${this.channel}"]`).parent().addClass('active')
         const $activeNav = $scrollNav.find('.active')
         const $smallNav = $scrollNav.find('.small')
-
         const activeIndex = $activeNav.index()
         const smallNum = (($navs, activeIndex) => {
           let i = 0
@@ -120,8 +114,6 @@
         const navLeft = (activeIndex - smallNum) * (FontSize * 1.75) + smallNum * (FontSize * 3)
         $scrollNav.scrollLeft(navLeft)
       } else {
-        $('.nav-main .nav-item').removeClass('active')
-        $('.nav-main [href="#channel="]').parent().addClass('active')
         $scrollNav.scrollLeft(0)
       }
     },
@@ -157,6 +149,12 @@
                                 : `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
       this.autoUrl = this.homeFlag ? `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=index&times=${this.times}&date=${this.date}`
                                     : `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
+      $('.nav-main .nav-item').removeClass('active')
+      if (this.channel === '') {
+        $('#index').addClass('active')
+      } else {
+        $('#' + this.channel).addClass('active')
+      }
       if (this.homeFlag) {
         $('body').css('background', '#f0f0f0')
       } else {
@@ -204,23 +202,28 @@
         dataType: 'jsonp'
       })
       // 加载中提示
-      $refresh.css('-webkit-transform', `-webkit-translate3d(0, ${1.2 * FontSize}px), 0`)
-      $refresh.css('transform', `translate3d(0, ${1.2 * FontSize}px), 0`)
+      $refresh.css('-webkit-transform', `translate3d(0, ${1.2 * FontSize}px, 0)`)
+      $refresh.css('transform', `translate3d(0, ${1.2 * FontSize}px, 0)`)
       $refreshIcon.css('transition', 'all 10s linear .1s')
       $refreshIcon.css('-webkit-transition', 'all 10s linear .1s')
       $refreshIcon.css('stroke-dashoffset', 40000)
-      $('#refresh-text').text('正在加载中')
+      $('#refresh-text').text('刷新中...')
       ajaxBack
         .done(data => {
           // 加载完成提示
-          $refresh.css('-webkit-transform', `-webkit-translate3d(0, 0, 0)`)
-          $refresh.css('transform', `translate3d(0, 0, 0)`)
-          $refreshIcon.css('-webkit-transition', 'none')
-          $refreshIcon.css('transition', 'none')
-          $refreshIcon.css('stroke-dashoffset', 0)
+          // setTimeout(() => {
+          //   $refresh.css('-webkit-transform', `-webkit-translate3d(0, 0, 0)`)
+          //   $refresh.css('transform', `translate3d(0, 0, 0)`)
+          //   $refreshIcon.css('-webkit-transition', 'none')
+          //   $refreshIcon.css('transition', 'none')
+          //   $refreshIcon.css('stroke-dashoffset', 0)
+          //   setTimeout(() => {
+          //     $('#refresh-text').text('下拉刷新')
+          //   }, 300)
+          // }, 500)
           setTimeout(() => {
-            $('#refresh-text').text('下拉刷新')
-          }, 300)
+            this.refreshControl.hidden()
+          }, 1500)
         })
         .fail(() => {
           console.error('加载数据出错，正在重试~')
@@ -236,9 +239,12 @@
       this.positionData = data.position
       this.wechatData = data.wechat
       // 设置 轮播图
-      if (!this.picChannelFlag && !this.videoChannelFlag) {
+      if (!this.picChannelFlag && !this.videoChannelFlag && this.swiperData['0'] !== undefined) {
         $content[0].innerHTML = ''
         $content.append(Generate.lunboHtml(lunboBlockID, this.swiperData))
+        // 轮播图广告
+        let lunboAd = this.homeFlag ? Generate.lunboAdString.index : Generate.lunboAdString.channels
+        Insert.insertLunboAd($content, 1, lunboAd)
         new Lunbo({
           id: lunboBlockID,
           hasArrow: false,
@@ -285,7 +291,7 @@
           // 重置一个高度
           setTimeout(() => {
             $recomContent.height($recomContent.find('li').eq(0).height())
-          }, 100)
+          }, 600)
           getData = () => {
             recommendLunbo.play(1)
             this.getAuto()
@@ -312,15 +318,16 @@
         }
       }
       // 下拉刷新
-      new RefreshControl({
+      this.refreshControl = new RefreshControl({
         id: 'refresh-control',
         height: FontSize * 1.5,
         getData: getData
-      }).init()
+      })
+      this.refreshControl.init()
     },
     // 获得 自动推荐数据
     getAuto: function () {
-      $('footer').css('display', 'block')
+      // $('footer').css('display', 'block')
       this.autoUrl = this.homeFlag ? `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=index&times=${this.times}&date=${this.date}`
                                     : `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
       this.autoData = []
@@ -332,22 +339,22 @@
           url: this.autoUrl,
           dataType: 'jsonp'
         })
-        $('#footer-text').text('正在加载中')
+        // $('#footer-text').text('正在加载中')
         ajaxBack
           .done(data => {
-            $('footer').css('display', 'none')
+            // $('footer').css('display', 'none')
             data = data.data
             if (!data.length || data.length === 0) {
               this.loading = true
-              $('#footer-text').text('没有更多数据了，请稍候再试~')
-              $('footer').css('display', 'block')
+              // $('#footer-text').text('没有更多数据了，请稍候再试~')
+              // $('footer').css('display', 'block')
               return
             }
             this.times++
             this.date = data[data.length - 1].date
           })
           .fail(() => {
-            $('#footer-text').text('加载失败，请稍后重试~')
+            // $('#footer-text').text('加载失败，请稍后重试~')
             this.loading = false
             console.error('加载数据出错，将重试~')
           })
@@ -359,6 +366,9 @@
     setAuto: function (data) {
       this.autoData = data
       this.loading = false
+      setTimeout(() => {
+        this.refreshControl.hidden()
+      }, 500)
       // 首页情况
       if (this.homeFlag) {
         let $autoBlock = $('#' + autoBlockID)
@@ -369,15 +379,13 @@
           for (let item in this.autoData) {
             $autoBlock.append(Generate.newsHtml(this.autoData[item]))
             this.count++
-              $autoBlock.append(Generate.indexAdString[this.count] || '')
-            console.log(this.count)
+            Generate.indexAdString[this.count] && $autoBlock.append(Generate.indexAdString[this.count])
           }
         } else {
           for (let item in this.autoData) {
             $autoBlock.append(Generate.newsHtml(this.autoData[item]))
             this.count++
-              $autoBlock.append(Generate.indexAdString[this.count] || '')
-            console.log(this.count)
+            Generate.indexAdString[this.count] && $autoBlock.append(Generate.indexAdString[this.count])
           }
         }
         // 微信热点
@@ -388,22 +396,18 @@
       } else if (this.picChannelFlag) {
         for (let item in this.autoData) {
           $content.append(Generate.picChannelHtml(this.autoData[item]))
-          this.count++
-          console.log(this.count)
         }
       // 视频
       } else if (this.videoChannelFlag) {
         for (let item in this.autoData) {
           $content.append(Generate.videoChannelHtml(this.autoData[item]))
-          this.count++
-          console.log(this.count)
         }
       // 其他
       } else {
         for (let item in this.autoData) {
           $content.append(Generate.newsHtml(this.autoData[item]))
           this.count++
-          console.log(this.count)
+          Generate.adString[this.count] && $content.append(Generate.adString[this.count])
         }
       }
       // if (this.autoData.length > 0) {
@@ -436,7 +440,7 @@
       window.onhashchange = () => {
         $content[0].innerHTML = ''
         this.setChannel()
-        // this.setNavPos()
+        this.setNavPos()
         this.getManual()
         .done(data => {
           this.setManual(data)

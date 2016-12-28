@@ -4,24 +4,23 @@ const Util = require('./Util.js')
 const Generate = {
   // ad string
   indexAdString: {
-    4: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41788" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41788");</script></section>',
-    10: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41789" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41789");</script></section>',
-    16: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41790" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41790");</script></section>',
-    22: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41791" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41791");</script></section>',
-    28: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41792" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41792");</script></section>',
-    34: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41793" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41793");</script></section>',
-    40: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41794" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41794");</script></section>',
-    46: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41795" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41795");</script></section>'
+    3: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41788" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41788");</script></section>',
+    8: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41789" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41789");</script></section>',
+    13: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41790" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41790");</script></section>',
+    18: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41791" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41791");</script></section>',
+    23: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41792" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41792");</script></section>',
+    28: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41793" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41793");</script></section>',
+    33: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41794" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41794");</script></section>',
+    38: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41795" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41795");</script></section>'
   },
   adString: {
-    4: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41562" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41562");</script></section>',
-    10: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41558" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41558");</script></section>',
-    16: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41559" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41559");</script></section>',
-    22: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41560" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41560");</script></section>',
-    28: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41561" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41561");</script></section>',
-    34: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41563" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41563");</script></section>',
-    40: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41");</script></section>',
-    46: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41795" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41795");</script></section>'
+    3: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41559" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41559");</script></section>',
+    8: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41560" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41560");</script></section>',
+    13: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41561" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41561");</script></section>'
+  },
+  lunboAdString: {
+    index: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41197" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41197");</script></section>',
+    channels: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41562" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41562");</script></section>'
   },
   // return 轮播图
   lunboHtml: (id, data) => {
@@ -31,7 +30,7 @@ const Generate = {
       str += `
         <li class="lunbo-page">
           <a href="${data[item].url}">
-            <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" src="${data[item].pic}" alt="">
+            <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/lunbo_image.png';" src="${data[item].pic}" alt="">
             <div class="lunbo-title-bg">
               <p class="lunbo-title">${data[item].title}</p>
             </div>
@@ -102,7 +101,7 @@ const Generate = {
                 </div>
               </div>
               <div class="news-imgs">
-                  <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
+                  <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/one_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
               </div>
             </a>
           </section>
@@ -113,7 +112,7 @@ const Generate = {
             <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
               <p class="news-title">${data.title}</p>
               <div class="video-img">
-                <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" src="${data.pic[0]}" alt="">
+                <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
                 <div class="video-btn">
                   <svg>
                     <use xlink:href="#video-icon" />
@@ -135,9 +134,9 @@ const Generate = {
           <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
             <p class="news-title">${data.title}</p>
             <div class="news-imgs">
-              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
-              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[1] : 'src="' + data.pic[1]}" alt="">
-              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[2] : 'src="' + data.pic[2]}" alt="">
+              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
+              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[1] : 'src="' + data.pic[1]}" alt="">
+              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[2] : 'src="' + data.pic[2]}" alt="">
             </div>
           </a>
           <div class="news-info">
@@ -153,6 +152,7 @@ const Generate = {
           ${data.data}
         </section>
       `
+      // console.log(str)
     }
     return str
   },
@@ -168,7 +168,7 @@ const Generate = {
   // return 首页新闻列表HTML字符串
   homeNewsHtml: (data) => {
     let str = '<div class="block-content" id="recommend-content"><ul class="lunbo-wrapper"><li class="lunbo-page">'
-    // str += '<section><div id="AD_SURVEY_POSITION_SIMPLE_41681" style="display:none;"></div><script type="text/javascript">AD_SURVEY_Add_AdPos_Simple("41681");</script></section>'
+    // str += '<section><div id="AD_SURVEY_POSITION_SIMPLE_41681" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41681");</script></section>'
     for (let item in data) {
       if (item % 14 === 0 && +item !== 0) {
         str += '</li><li class="lunbo-page">'
@@ -183,7 +183,7 @@ const Generate = {
     let str = `
       <section class="pic-block">
         <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
-          <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" src="${data.pic}"" alt="" />
+          <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic}"" alt="" />
           <p class="pic-title">${data.title}</p>
         </a>
       </section>
@@ -196,7 +196,7 @@ const Generate = {
       <section class="pic-block">
         <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
           <div class="video-img">
-            <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/default.png';" src="${data.pic}" alt="">
+            <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic}" alt="">
             <div class="video-btn">
               <svg>
                 <use xlink:href="#video-icon" />

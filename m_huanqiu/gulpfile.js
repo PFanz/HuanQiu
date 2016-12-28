@@ -13,6 +13,7 @@ var postcss = require('gulp-postcss')
 var webpack = require('webpack-stream')
 var imagemin = require('gulp-imagemin')
 var browserSync = require('browser-sync').create()
+var filter = require('gulp-filter')
 
 // 出错回调函数
 var errorHandler = (e) => {
@@ -48,6 +49,7 @@ gulp.task('sassTask', function () {
     .pipe(cleanCSS())
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist/css'))
+    .pipe(filter('**/*.css'))
     .pipe(browserSync.reload({stream: true}))
 })
 

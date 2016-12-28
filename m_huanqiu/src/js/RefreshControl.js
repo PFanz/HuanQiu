@@ -1,4 +1,5 @@
 const Event = require('./Event.js')
+const TouchMove = Event.TouchMove
 
 const RefreshControl = function (config) {
   // 默认配置
@@ -29,11 +30,14 @@ const RefreshControl = function (config) {
 }
 
 RefreshControl.prototype.touchStart = function (event) {
+  TouchMove.getDirection.start(event)
   if (window.scrollY <= 5) {
     this.refreshControlFlag = true
   } else {
     return
   }
+  this.refreshIcon.style.transition = 'none'
+  this.refreshIcon.style.webkitTransition = 'none'
   this.controlElem.style.transition = 'none'
   this.controlElem.style.webkitTransition = 'none'
   this.startX = event.touches[0].clientX
@@ -41,6 +45,10 @@ RefreshControl.prototype.touchStart = function (event) {
 }
 
 RefreshControl.prototype.touchMoving = function (event) {
+  let direction = TouchMove.getDirection.move(event)
+  if (direction === 'right' || direction === 'left') {
+    event.preventDefault()
+  }
   if (!this.refreshControlFlag) {
     return
   }
@@ -83,20 +91,30 @@ RefreshControl.prototype.touchEnd = function (event) {
   // 大于一定范围，发送请求
   if (event.changedTouches[0].clientY - this.startY > this.height * 2 / 3) {
     this.getData()
+    document.getElementById('refresh-text').innerHTML = '刷新中...'
+    this.refreshIcon.style.transition = 'all 10s linear .1s'
+    this.refreshIcon.style.webkitTransition = 'all 10s linear .1s'
+    this.refreshIcon.style.strokeDashoffset = 40000
     // this.controlElem.style.transform = 'translateY(0)'
     // this.controlElem.style.webkitTransform = 'translateY(0)'
   } else {
-    this.controlElem.style.transform = 'translateY(0)'
+    this.controlElem.style.transform = 'translate3d(0, 0, 0)'
     // this.controlElem.style.webkitTransform = 'translateY(0)'
   }
-  this.hidden()
+  // this.hidden()
 }
 
 RefreshControl.prototype.hidden = function () {
+  this.refreshIcon.style.transition = 'none'
+  this.refreshIcon.style.webkitTransition = 'none'
   this.controlElem.style.transition = 'all 0.2s ease-in 0.1s'
   this.controlElem.style.webkitTransition = 'all 0.2s ease-in 0.1s'
   this.controlElem.style.transform = 'translate3d(0, 0, 0)'
   this.controlElem.style.webkitTransform = 'translate3d(0, 0, 0)'
+  setTimeout(() => {
+    document.getElementById('refresh-text').innerHTML = '下拉刷新'
+  }, 300)
+  this.refreshIcon.style.strokeDashoffset = 0
 }
 
 RefreshControl.prototype.init = function () {
