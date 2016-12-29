@@ -4,19 +4,19 @@ const Util = require('./Util.js')
 const Generate = {
   // ad string
   indexAdString: {
-    3: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41788" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41788");</script></section>',
-    8: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41789" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41789");</script></section>',
-    13: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41790" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41790");</script></section>',
-    18: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41791" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41791");</script></section>',
-    23: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41792" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41792");</script></section>',
-    28: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41793" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41793");</script></section>',
-    33: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41794" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41794");</script></section>',
-    38: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41795" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41795");</script></section>'
+    3: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41788" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41788");</script></section>',
+    8: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41789" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41789");</script></section>',
+    13: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41790" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41790");</script></section>',
+    18: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41791" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41791");</script></section>',
+    23: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41792" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41792");</script></section>',
+    28: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41793" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41793");</script></section>',
+    33: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41794" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41794");</script></section>',
+    38: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41795" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41795");</script></section>'
   },
   adString: {
-    3: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41559" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41559");</script></section>',
-    8: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41560" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41560");</script></section>',
-    13: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41561" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41561");</script></section>'
+    3: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41559" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41559");</script></section>',
+    8: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41560" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41560");</script></section>',
+    13: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41561" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41561");</script></section>'
   },
   lunboAdString: {
     index: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41197" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41197");</script></section>',
@@ -148,6 +148,7 @@ const Generate = {
     } else if (data.mediaType === 'advert') {
       // 广告
       str += `
+        <div class="mock-line"></div>
         <section>
           ${data.data}
         </section>

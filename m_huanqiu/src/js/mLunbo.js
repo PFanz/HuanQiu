@@ -95,6 +95,14 @@ Lunbo.prototype.setIndex = function (n) {
 // 根据当前this._n滚动轮播
 Lunbo.prototype.play = function () {
   this.setSlidePos(this.getSlidePos(), this.speed)
+  // 修改dot active
+  if (this.hasDot) {
+    this.dotNodes = this.dotContainer.querySelectorAll('.dot')
+    for (let i = 0; i < this.len; i++) {
+      this.dotNodes[i].className = 'dot'
+    }
+    this.dotNodes[this._n].className = 'dot active'
+  }
 }
 
 Lunbo.prototype.getSlidePos = function () {
@@ -121,7 +129,7 @@ Lunbo.prototype.touch = function () {
     TouchMove.getDirection.start(event)
     this.startX = event.touches[0].pageX
     this.startTime = +new Date()
-  })
+  }, {passive: true})
   // swiping
   this.container.addEventListener('touchmove', (event) => {
     director = director || TouchMove.getDirection.move(event)
@@ -140,20 +148,22 @@ Lunbo.prototype.touch = function () {
   })
   // swipe end
   this.container.addEventListener('touchend', (event) => {
-    director = TouchMove.getDirection.end()
-    let diffTime = +new Date() - this.startTime
-    let diffX = this.startX - event.changedTouches[0].pageX
-    if (diffX > this.oneWidth / 5 || diffX / diffTime > 0.2) {
-      if (this._n !== this.len - 1) {
-        this.setIndex(1)
+    if (director === 'right' || director === 'left') {
+      let diffTime = +new Date() - this.startTime
+      let diffX = this.startX - event.changedTouches[0].pageX
+      if (diffX > this.oneWidth / 5 || (diffX > this.oneWidth / 7 && diffX / diffTime > 0.2)) {
+        if (this._n !== this.len - 1) {
+          this.setIndex(1)
+        }
+      } else if (-diffX > this.oneWidth / 5 || (-diffX > this.oneWidth / 7 && -diffX / diffTime > 0.2)) {
+        if (this._n !== 0) {
+          this.setIndex(-1)
+        }
       }
-    } else if (-diffX > this.oneWidth / 5 || -diffX / diffTime > 0.2) {
-      if (this._n !== 0) {
-        this.setIndex(-1)
-      }
+      this.play()
     }
-    this.play()
-  })
+    director = TouchMove.getDirection.end()
+  }, {passive: true})
 }
 
 Lunbo.prototype.init = function () {

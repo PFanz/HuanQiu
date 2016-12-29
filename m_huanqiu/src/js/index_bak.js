@@ -1,3 +1,5 @@
+// 手动列表 公司接口
+// 首页自动列表 优路接口    频道页自动列表 公司接口
 // 依赖zepto
 (function () {
   // 依赖
@@ -47,7 +49,7 @@
     // 初始化 导航点击事件、导航更多功能，调用 设置导航位置方法
     initNav: function () {
       // nav更多点击事件
-      $('#nav-more-btn').on('tap', function (event) {
+      $('#nav-more-btn').on('click', function (event) {
         let $this = $(this)
         event.preventDefault()
         if (!$this.hasClass('active')) {
@@ -302,7 +304,8 @@
             $recomContent.height($recomContent.find('li').eq(0).height())
           }, 600)
           getData = () => {
-            recommendLunbo.play(1)
+            recommendLunbo.setIndex(1)
+            recommendLunbo.play()
             this.getAuto()
               .done(data => {
                 data = data.data
