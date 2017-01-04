@@ -43,8 +43,8 @@
     positionData: '',                                           // 人工推荐数据
     wechatData: '',                                           // 微信热点数据
     autoData: '',                                             // 自动推荐数据
-    // times: 0,                                                 // 请求次数
-    // date: '',                                                 // 最后一条新闻时间
+    times: 0,                                                 // 请求次数
+    date: '',                                                 // 最后一条新闻时间
     count: 0,                                                 // 自动列表新闻数量统计
     // 初始化 导航点击事件、导航更多功能，调用 设置导航位置方法
     initNav: function () {
@@ -80,7 +80,6 @@
       // })
       // nav阻止滚动
       $('#nav-more').on('touchmove', function (event) {
-        // 阻止滚动
         event.preventDefault()
         event.stopPropagation()
       })
@@ -137,9 +136,7 @@
     },
     // 设置 当前频道，调用 设置导航位置方法
     setChannel: function () {
-      if ($('#nav-more').height() > 50) {
-        $('#nav-more-btn').trigger('tap')
-      }
+      // 频道相关属性设置
       this.channel = Util.getHash().channel || ''
       this.homeFlag = !this.channel
       this.picChannelFlag = this.channel === 'picture'
@@ -154,9 +151,10 @@
         this.url = `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
         this.autoUrl = `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
       }
-      // this.url = this.homeFlag ? 'http://w.huanqiu.com/apps/huanqiu/mindex.php'
-      //                           : `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
-      // this.autoUrl = `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=${this.channel}`
+      // 折叠更多频道显示、修改导航样式等等频道相关UI设置
+      if ($('#nav-more').height() > 50) {
+        $('#nav-more-btn').trigger('click')
+      }
       $('.nav-main .nav-item').removeClass('active')
       if (this.channel === '') {
         $('#index').addClass('active')
@@ -191,6 +189,7 @@
       $('#content').on('click', '.link-flag', function (event) {
         let id = $(this).attr('data-id')
         let parameter = $(this).attr('data-parameter')
+        Util.setCookie('bodyTop', window.scrollY, 1)
         if (id === 'undefined' || parameter === 'undefined') {
           return
         }
@@ -202,6 +201,7 @@
       })
     },
     // 获得 人工推荐接口数据
+    // 目前该函数每次调用是，必须在done回调中调用setManual
     getManual: function () {
       let delay = 5
       this.swiperData = null
@@ -339,11 +339,8 @@
     },
     // 获得 自动推荐数据
     getAuto: function () {
-      // $('footer').css('display', 'block')
-      // console.log(this.autoUrl)
       this.autoUrl = this.homeFlag ? `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`
                                     : `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
-      // console.log(this.autoUrl)
       this.autoData = []
       if (!this.loading) {
         console.info('加载数据')
@@ -358,6 +355,12 @@
           .done(data => {
             if (!this.homeFlag) {
               data = data.data
+            }
+            let storage = sessionStorage.getItem('newsList')
+            if (storage === 'null' || storage === null) {
+              sessionStorage.setItem('newsList', JSON.stringify(data))
+            } else {
+              sessionStorage.setItem('newsList', storage.slice(0, -1) + ',' + JSON.stringify(data).substr(1))
             }
             if (!data.length || data.length === 0) {
               this.loading = true
@@ -384,6 +387,7 @@
       }
       this.autoData = data
       this.loading = false
+
       setTimeout(() => {
         this.refreshControl.hidden()
       }, 500)
@@ -447,10 +451,25 @@
       this.getManual()
         .done(data => {
           this.setManual(data)
-          this.getAuto()
-            .done(data => {
+          // 加载缓存
+          if (this.homeFlag && performance && performance.navigation.type === 2) {
+            if (sessionStorage.getItem('newsList') !== 'null') {
+              let data = JSON.parse(sessionStorage.getItem('newsList'))
               this.setAuto(data)
-            })
+            }
+            // 根据cookie滚动到上次浏览新闻
+            // console.log($(`[href="${Util.getCookie('backUrl')}"]`).offset().top)
+            window.scroll(0, Util.getCookie('bodyTop'))
+            // setTimeout(function () {
+              // console.log($(`[href="${Util.getCookie('backUrl')}"]`).offset().top)
+            // }, 2000)
+          } else {
+            sessionStorage.setItem('newsList', null)
+            this.getAuto()
+              .done(data => {
+                this.setAuto(data)
+              })
+          }
         })
       this.initRefreshScroll()
       this.initLink()
@@ -469,6 +488,5 @@
       }
     }
   }
-
   App.init()
 })()
