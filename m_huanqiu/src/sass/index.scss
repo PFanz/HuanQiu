@@ -240,6 +240,7 @@ footer {
   .transform-icon {
     stroke-dasharray: 680;
     stroke-dashoffset: 0;
+    transform: translateZ(0);
   }
 }
 
@@ -433,6 +434,17 @@ footer {
 //     color: #910910;
 //   }
 // }
+
+// 今日要闻
+#recommend-content {
+  .lunbo-page {
+    height: 0;
+
+    &:first-child {
+      height: auto;
+    }
+  }
+}
 
 .list-indicator {
   float: right;

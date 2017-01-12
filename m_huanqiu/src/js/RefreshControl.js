@@ -57,13 +57,11 @@ RefreshControl.prototype.touchMoving = function (event) {
     event.preventDefault()
     event.stopPropagation()
     let movedY = movingY - this.startY
-    if (movedY < this.height) {
-      this.controlElem.style.transform = `translate3d(0, ${movedY}px, 0)`
-      this.controlElem.style.webkitTransform = `translate3d(0, ${movedY}px, 0)`
-      // Icon定制
-      this.refreshIcon.style.strokeDashoffset = movedY * 25.5
-    }
-    if (movedY > this.height * 2 / 3) {
+    this.controlElem.style.transform = `translate3d(0, ${Math.pow(movedY, 0.9)}px, 0)`
+    this.controlElem.style.webkitTransform = `translate3d(0, ${Math.pow(movedY, 0.9)}px, 0)`
+    // Icon定制
+    this.refreshIcon.style.strokeDashoffset = movedY * 25.5
+    if (movedY > this.height) {
       document.getElementById('refresh-text').innerHTML = '松开刷新'
     } else {
       document.getElementById('refresh-text').innerHTML = '下拉刷新'
@@ -89,7 +87,7 @@ RefreshControl.prototype.touchEnd = function (event) {
   // this.controlElem.style.transition = `all .2s ease-in .1s`
   // this.controlElem.style.webkitTransition = `all .2s ease-in .1s`
   // 大于一定范围，发送请求
-  if (event.changedTouches[0].clientY - this.startY > this.height * 2 / 3) {
+  if (event.changedTouches[0].clientY - this.startY > this.height) {
     this.getData()
     document.getElementById('refresh-text').innerHTML = '刷新中...'
     this.refreshIcon.style.transition = 'all 10s linear .1s'

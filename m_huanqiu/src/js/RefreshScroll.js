@@ -18,7 +18,6 @@ const RefreshScroll = function (config) {
 }
 
 RefreshScroll.prototype.watch = function () {
-  // console.log(window.scrollY, this.bodyHeight, this.screenHeight)
   this.bodyHeight = document.body.clientHeight
   if (window.scrollY > this.bodyHeight - this.screenHeight * 1.2) {
     this.getData()

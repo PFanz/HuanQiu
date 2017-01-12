@@ -67,8 +67,8 @@ const Generate = {
   // return 单个新闻HTML字符串 针对公司接口
   newsHtml: (data, imgDisable = false) => {
     let str = ''
-    data.title = Util.generateTitle(data.title, 28)
-    data.date = Util.generateTime(data.date)
+    let title = Util.generateTitle(data.title, 28)
+    let date = Util.generateTime(data.date)
     if (typeof data.pic === 'undefined' && data.mediaType !== 'advert') {
       return ''
     }
@@ -78,10 +78,10 @@ const Generate = {
         <section class="news-style-0">
           <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
             <div class="news-content">
-              <div class="news-title">${data.title}</div>
+              <div class="news-title">${title}</div>
               <div class="news-info">
                 <span class="news-from">${data.source}</span>
-                <span class="news-date">${data.date}</span>
+                <span class="news-date">${date}</span>
               </div>
             </div>
           </a>
@@ -94,10 +94,10 @@ const Generate = {
           <section class="news-style-1">
             <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
               <div class="news-content">
-                <div class="news-title">${data.title}</div>
+                <div class="news-title">${title}</div>
                 <div class="news-info">
                   <span class="news-from">${data.source}</span>
-                  <span class="news-date">${data.date}</span>
+                  <span class="news-date">${date}</span>
                 </div>
               </div>
               <div class="news-imgs">
@@ -110,7 +110,7 @@ const Generate = {
         str += `
           <section class="news-video">
             <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
-              <p class="news-title">${data.title}</p>
+              <p class="news-title">${title}</p>
               <div class="video-img">
                 <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
                 <div class="video-btn">
@@ -121,18 +121,33 @@ const Generate = {
               </div>
               <div class="news-info">
                 <span class="news-from">${data.source}</span>
-                <span class="news-date">${data.date}</span>
+                <span class="news-date">${date}</span>
               </div>
             </a>
           </section>
           `
+      } else if (data.contentType === 'content_picture') {
+        str += `
+          <section class="news-video">
+            <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
+              <p class="news-title">${title}</p>
+              <div class="video-img">
+                <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
+              </div>
+              <div class="news-info">
+                <span class="news-from">${data.source}</span>
+                <span class="news-date">${date}</span>
+              </div>
+            </a>
+          </section>
+        `
       }
     } else if (data.mediaType === 'moreImg') {
       // 多图
       str += `
         <section class="news-style-2">
           <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
-            <p class="news-title">${data.title}</p>
+            <p class="news-title">${title}</p>
             <div class="news-imgs">
               <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
               <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[1] : 'src="' + data.pic[1]}" alt="">
@@ -141,7 +156,7 @@ const Generate = {
           </a>
           <div class="news-info">
             <span class="news-from">${data.source}</span>
-            <span class="news-date">${data.date}</span>
+            <span class="news-date">${date}</span>
           </div>
         </section>
       `
@@ -184,7 +199,7 @@ const Generate = {
     let str = `
       <section class="pic-block">
         <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
-          <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic}"" alt="" />
+          <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}"" alt="" />
           <p class="pic-title">${data.title}</p>
         </a>
       </section>
@@ -197,7 +212,7 @@ const Generate = {
       <section class="pic-block">
         <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
           <div class="video-img">
-            <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic}" alt="">
+            <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
             <div class="video-btn">
               <svg>
                 <use xlink:href="#video-icon" />

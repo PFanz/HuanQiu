@@ -1,10 +1,10 @@
 // 手动列表 公司接口
-// 首页自动列表 优路接口    频道页自动列表 公司接口
+// 自动列表 公司接口
 // 依赖zepto
 (function () {
   // 依赖
   const Lunbo = require('./mLunbo.js')                       // 轮播图
-  const RefreshControl = require('./RefreshControl.js')     // 下拉刷新
+  const RefreshControl = require('./mRefreshControl.js')     // 下拉刷新
   const RefreshScroll = require('./RefreshScroll.js')       // 滚动条自动列表
   const Util = require('./Util.js')                         // 多种工具
   const Generate = require('./generateHtml.js')             // 用于生成html代码
@@ -35,18 +35,18 @@
     homeFlag: true,                                           // 是否首页
     picChannelFlag: false,                                    // 是否图集页样式
     videoChannelFlag: false,                                  // 是否视频频道
+    times: 0,                                                 // 请求次数
+    date: '',                                                 // 最后一条新闻时间
     url: 'http://w.huanqiu.com/apps/huanqiu/mindex.php', // 首页接口
-    autoUrl: `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`, // 首页自动接口
+    autoUrl: `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=index&times=0&date=`, // 首页自动接口
     loading: false,                                           // 是否正在加载
     lazyFlag: false,                                          // 简易懒加载标志
     swiperData: '',                                            // 轮播图数据
     positionData: '',                                           // 人工推荐数据
     wechatData: '',                                           // 微信热点数据
     autoData: '',                                             // 自动推荐数据
-    times: 0,                                                 // 请求次数
-    date: '',                                                 // 最后一条新闻时间
     count: 0,                                                 // 自动列表新闻数量统计
-    // 初始化 导航点击事件、导航更多功能，调用 设置导航位置方法
+    // 初始化 导航点击事件、导航更多功能
     initNav: function () {
       // nav更多点击事件
       $('#nav-more-btn').on('click', function (event) {
@@ -144,12 +144,11 @@
       this.times = 0
       this.date = ''
       this.count = 0
+      this.autoUrl = `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
       if (this.homeFlag) {
         this.url = 'http://w.huanqiu.com/apps/huanqiu/mindex.php'
-        this.autoUrl = `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`
       } else {
         this.url = `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
-        this.autoUrl = `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
       }
       // 折叠更多频道显示、修改导航样式等等频道相关UI设置
       if ($('#nav-more').height() > 50) {
@@ -187,17 +186,17 @@
     // 初始化 所有链接，添加优路回调方法
     initLink: function () {
       $('#content').on('click', '.link-flag', function (event) {
-        let id = $(this).attr('data-id')
-        let parameter = $(this).attr('data-parameter')
+        // let id = $(this).attr('data-id')
+        // let parameter = $(this).attr('data-parameter')
         Util.setCookie('bodyTop', window.scrollY, 1)
-        if (id === 'undefined' || parameter === 'undefined') {
-          return
-        }
-        $.ajax({
-          type: 'GET',
-          url: `http://uluai.com.cn/rcmd/rec/falls/click?siteId=5011&recId=${id}&parameter=${parameter}&cki=${userID}`,
-          dataType: 'jsonp'
-        })
+        // if (id === 'undefined' || parameter === 'undefined') {
+        //   return
+        // }
+        // $.ajax({
+        //   type: 'GET',
+        //   url: `http://uluai.com.cn/rcmd/rec/falls/click?siteId=5011&recId=${id}&parameter=${parameter}&cki=${userID}`,
+        //   dataType: 'jsonp'
+        // })
       })
     },
     // 获得 人工推荐接口数据
@@ -217,7 +216,7 @@
       $refresh.css('transform', `translate3d(0, ${1.2 * FontSize}px, 0)`)
       $refreshIcon.css('transition', 'all 10s linear .1s')
       $refreshIcon.css('-webkit-transition', 'all 10s linear .1s')
-      $refreshIcon.css('stroke-dashoffset', 40000)
+      $refreshIcon.css('stroke-dashoffset', 30000)
       $('#refresh-text').text('刷新中...')
       ajaxBack
         .done(data => {
@@ -232,6 +231,8 @@
           //     $('#refresh-text').text('下拉刷新')
           //   }, 300)
           // }, 500)
+          // 存储缓存
+          sessionStorage.setItem(this.channel + 'manualData', JSON.stringify(data))
           setTimeout(() => {
             this.refreshControl.hidden()
           }, 1500)
@@ -251,8 +252,7 @@
       this.wechatData = data.wechat
       // 设置 轮播图
       if (!this.picChannelFlag && !this.videoChannelFlag && this.swiperData['0'] !== undefined) {
-        $content[0].innerHTML = ''
-        $content.append(Generate.lunboHtml(lunboBlockID, this.swiperData))
+        $content.prepend(Generate.lunboHtml(lunboBlockID, this.swiperData))
         // 轮播图广告
         let lunboAd = this.homeFlag ? Generate.lunboAdString.index : Generate.lunboAdString.channels
         Insert.insertLunboAd($content, 1, lunboAd)
@@ -264,9 +264,16 @@
       }
       // 设置 今日要闻
       let getData = () => {
+        this.times = 0
+        this.date = ''
+        this.count = 0
+        $content[0].innerHTML = ''
+        this.setManual({
+          swiper: this.swiperData,
+          position: this.positionData
+        })
         this.getAuto()
           .done(data => {
-            data = data.data
             this.setAuto(data)
           })
       }
@@ -275,7 +282,7 @@
         const indicatorID = 'recommend-index-curr'
         const pagesNum = Math.ceil(this.positionData.length / 14)
         const todayHeader = Generate.headerHtml('今日要闻', Generate.listIndicator(pagesNum, indicatorID))
-        $content.append(Generate.newsBlock(todayBlockID, todayHeader))
+        $('#' + lunboBlockID).after(Generate.newsBlock(todayBlockID, todayHeader))
         $('#' + todayBlockID).append(Generate.homeNewsHtml(this.positionData))
         if (pagesNum > 1) {
           let $recomContent = $('#recommend-content')
@@ -286,12 +293,14 @@
           })
           // 改变后期添加的指示器
           recommendLunbo.play = function (n) {
+            // 设置每一页的高度
+            $('.lunbo-page').css('height', 'auto')
+            $recomContent.height($recomContent.find('li').eq(this._n).height())
             Lunbo.prototype.play.bind(this, n)()
             // 依赖于Lunbo中的全局变量this._n
             if ($('#' + indicatorID).length !== 0) {
               $('#' + indicatorID)[0].innerHTML = this._n + 1
             }
-            $recomContent.height($recomContent.find('li').eq(this._n).height())
             // 懒加载
             if (!this.lazyFlag) {
               Util.setImgUrl($content)
@@ -300,15 +309,19 @@
           }
           recommendLunbo.init()
           // 重置一个高度
-          setTimeout(() => {
-            $recomContent.height($recomContent.find('li').eq(0).height())
-          }, 600)
+          // setTimeout(() => {
+          //   $recomContent.height($recomContent.find('li').eq(0).height())
+          // }, 600)
           getData = () => {
+            this.times = 0
+            this.date = ''
+            this.count = 0
+            $('#' + autoBlockID).remove()
+            sessionStorage.clear()
             recommendLunbo.setIndex(1)
             recommendLunbo.play()
             this.getAuto()
               .done(data => {
-                data = data.data
                 this.setAuto(data)
               })
           }
@@ -333,13 +346,13 @@
       this.refreshControl = new RefreshControl({
         id: 'refresh-control',
         height: FontSize * 1.5,
-        getData: getData
+        hookFunc: getData
       })
       this.refreshControl.init()
     },
     // 获得 自动推荐数据
     getAuto: function () {
-      this.autoUrl = this.homeFlag ? `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`
+      this.autoUrl = this.homeFlag ? `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=index&times=${this.times}&date=${this.date}`
                                     : `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
       this.autoData = []
       if (!this.loading) {
@@ -353,23 +366,30 @@
         // $('#footer-text').text('正在加载中')
         ajaxBack
           .done(data => {
-            if (!this.homeFlag) {
-              data = data.data
+            try {
+              if (typeof data.data !== 'undefined') {
+                data = data.data
+              }
+              // if (data === null || !data.length) {
+              //   this.loading = false
+              //   // $('#footer-text').text('没有更多数据了，请稍候再试~')
+              //   // $('footer').css('display', 'block')
+              //   return
+              // }
+              // 存储缓存
+              let storage = sessionStorage.getItem(this.channel + 'autoData')
+              if ('' + storage === 'null') {
+                sessionStorage.setItem(this.channel + 'autoData', JSON.stringify(data))
+              } else {
+                sessionStorage.setItem(this.channel + 'autoData', storage.slice(0, -1) + ',' + JSON.stringify(data).substr(1))
+              }
+              this.times++
+              this.date = data[data.length - 1].date
+            } catch (err) {
+              console.error(err)
+            } finally {
+              this.loading = false
             }
-            let storage = sessionStorage.getItem('newsList')
-            if (storage === 'null' || storage === null) {
-              sessionStorage.setItem('newsList', JSON.stringify(data))
-            } else {
-              sessionStorage.setItem('newsList', storage.slice(0, -1) + ',' + JSON.stringify(data).substr(1))
-            }
-            if (!data.length || data.length === 0) {
-              this.loading = true
-              // $('#footer-text').text('没有更多数据了，请稍候再试~')
-              // $('footer').css('display', 'block')
-              return
-            }
-            this.times++
-            this.date = data[data.length - 1].date
           })
           .fail(() => {
             // $('#footer-text').text('加载失败，请稍后重试~')
@@ -382,7 +402,7 @@
     },
     // 设置 自动推荐数据
     setAuto: function (data) {
-      if (!this.homeFlag) {
+      if (typeof data.data !== 'undefined') {
         data = data.data
       }
       this.autoData = data
@@ -448,33 +468,48 @@
       this.setChannel()
       this.initNav()
       this.initTip()
-      this.getManual()
-        .done(data => {
-          this.setManual(data)
-          // 加载缓存
-          if (this.homeFlag && performance && performance.navigation.type === 2) {
-            if (sessionStorage.getItem('newsList') !== 'null') {
-              let data = JSON.parse(sessionStorage.getItem('newsList'))
-              this.setAuto(data)
+      if (performance && performance.navigation.type === 2) {
+        let manualData = sessionStorage.getItem(this.channel + 'manualData')
+        let autoData = sessionStorage.getItem(this.channel + 'autoData')
+        if ('' + manualData !== 'null' && '' + autoData !== 'null') {
+          this.setManual(JSON.parse(manualData))
+          this.setAuto(JSON.parse(autoData))
+          // 根据cookie滚动到上次浏览新闻
+          let startTime = +new Date()
+          let watchFlag = setInterval(function () {
+            if ($content.find('section').length > 20 || +new Date() - startTime > 3000) {
+              clearInterval(watchFlag)
+              window.scroll(0, Util.getCookie('bodyTop'))
             }
-            // 根据cookie滚动到上次浏览新闻
-            // console.log($(`[href="${Util.getCookie('backUrl')}"]`).offset().top)
-            window.scroll(0, Util.getCookie('bodyTop'))
-            // setTimeout(function () {
-              // console.log($(`[href="${Util.getCookie('backUrl')}"]`).offset().top)
-            // }, 2000)
-          } else {
-            sessionStorage.setItem('newsList', null)
+          }, 50)
+        } else {
+          sessionStorage.clear()
+          this.getManual()
+            .done(data => {
+              this.setManual(data)
+              this.getAuto()
+                .done(data => {
+                  this.setAuto(data)
+                })
+            })
+        }
+      } else {
+        sessionStorage.clear()
+        this.getManual()
+          .done(data => {
+            this.setManual(data)
             this.getAuto()
               .done(data => {
                 this.setAuto(data)
               })
-          }
-        })
+          })
+      }
       this.initRefreshScroll()
       this.initLink()
       window.onhashchange = () => {
+        window.scroll(0, 0)
         $content[0].innerHTML = ''
+        sessionStorage.clear()
         this.setChannel()
         this.setNavPos()
         this.getManual()
