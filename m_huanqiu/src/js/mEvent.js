@@ -22,6 +22,7 @@ const Event = {
       },
       end: function () {
         this.startPos = {}
+        return undefined
       }
     }
   }

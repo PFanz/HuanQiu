@@ -438,6 +438,7 @@ footer {
 // 今日要闻
 #recommend-content {
   .lunbo-page {
+    // 为了防止第一页被撑大
     height: 0;
 
     &:first-child {

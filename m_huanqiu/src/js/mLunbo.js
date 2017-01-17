@@ -126,6 +126,7 @@ Lunbo.prototype.touch = function () {
   let director = ''
   // swipe start
   this.container.addEventListener('touchstart', (event) => {
+    director = ''
     TouchMove.getDirection.start(event)
     this.startX = event.touches[0].pageX
     this.startTime = +new Date()

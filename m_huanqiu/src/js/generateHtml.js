@@ -184,7 +184,6 @@ const Generate = {
   // return 首页新闻列表HTML字符串
   homeNewsHtml: (data) => {
     let str = '<div class="block-content" id="recommend-content"><ul class="lunbo-wrapper"><li class="lunbo-page">'
-    // str += '<section><div id="AD_SURVEY_POSITION_SIMPLE_41681" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41681");</script></section>'
     for (let item in data) {
       if (item % 14 === 0 && +item !== 0) {
         str += '</li><li class="lunbo-page">'
@@ -193,6 +192,25 @@ const Generate = {
     }
     str += '</li></div>'
     return str
+    // let $blockContent = $('<div class="block-content" id="recommend-content"><ul class="lunbo-wrapper"></ul></div>')
+    // let $ulContent = $blockContent.find('ul')
+    // let newList = []
+    // for (let item in data) {
+    //   newList.push($(Generate.newsHtml(data[item], !!(item > 14))))
+    // }
+    // let $lunboPage = $('<li class="lunbo-page"></li>')
+    // let index = 0
+    // while (newList.length > 0) {
+    //   if (index === 14) {
+    //     $ulContent.append($lunboPage)
+    //     $lunboPage = $('<li class="lunbo-page"></li>')
+    //     index = 0
+    //   }
+    //   $lunboPage.append(newList.shift())
+    //   index++
+    // }
+    // $ulContent.append($lunboPage)
+    // return $blockContent
   },
   // return 图片频道
   picChannelHtml: (data) => {
