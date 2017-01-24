@@ -39,7 +39,7 @@
     loading: false,                                           // 是否正在加载
     lazyFlag: false,                                          // 简易懒加载标志
     // apiFlag: false,                                           // true: 公司接口  false: 优路接口
-    apiCount: 0,                                              // api出错计数，>=3: 使用公司接口
+    apiCount: 4,                                              // api出错计数，>=3: 使用公司接口
     swiperData: '',                                           // 轮播图数据
     positionData: '',                                         // 人工推荐数据
     wechatData: '',                                           // 微信热点数据
@@ -179,11 +179,19 @@
     },
     // 初始化 所有链接，添加优路回调方法
     initLink: function () {
-      $('#content').on('click', '.link-flag', function (event) {
-        let id = $(this).attr('data-id')
-        let parameter = $(this).attr('data-parameter')
+      $('#content').on('click', '.link-flag', (event) => {
+        let target = event.target || event.srcElement
+        let $trigger = $(target).parents('.link-flag')
+        let id = $trigger.attr('data-id')
+        let parameter = $trigger.attr('data-parameter')
         Util.setCookie('bodyTop', window.scrollY, 1)
         if (id === 'undefined' || parameter === 'undefined') {
+          if ($trigger.parents('#interesting-news').length > 0) {
+            $.ajax({
+              type: 'GET',
+              url: `http://w.huanqiu.com/apps/huanqiu/addhit.php?chan=index`
+            })
+          }
           return
         }
         $.ajax({
@@ -262,7 +270,10 @@
         const pagesNum = Math.ceil(this.positionData.length / 14)
         const todayHeader = Generate.headerHtml('今日要闻', Generate.listIndicator(pagesNum, indicatorID))
         $('#' + lunboBlockID).after(Generate.newsBlock(todayBlockID, todayHeader))
-        $('#' + todayBlockID).append(Generate.homeNewsHtml(this.positionData))
+        let homeNewsHtml = Generate.homeNewsHtml(this.positionData)
+        // $('#' + todayBlockID)[0].innerHTML += homeNewsHtml
+        $('#' + todayBlockID).append(homeNewsHtml)
+        // this.positionData = null
         if (pagesNum > 1) {
           let $recomContent = $('#recommend-content')
           const recommendLunbo = new Lunbo({
@@ -339,8 +350,10 @@
       if (this.homeFlag) {
         this.autoUrl = this.apiCount >= 3 ? `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=index&times=${this.times}&date=${this.date}`
                                         : `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`
+         // _czc.push(['_trackPageview',`/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`, '//uluai.com.cn/rcmd/'])
       } else {
         this.autoUrl = `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
+         // _czc.push(['_trackPageview',`/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`, '//w.huanqiu.com/apps/'])
       }
       this.autoData = []
       if (!this.loading) {
@@ -445,7 +458,7 @@
       this.setChannel()
       this.initNav()
       this.initTip()
-      if (performance && performance.navigation.type === 2) {
+      if (typeof performance === 'object' && performance.navigation.type === 2) {
         let manualData = sessionStorage.getItem(this.channel + 'manualData')
         let autoData = sessionStorage.getItem(this.channel + 'autoData')
         if ('' + manualData !== 'null' && '' + autoData !== 'null') {

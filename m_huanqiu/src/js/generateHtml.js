@@ -190,7 +190,7 @@ const Generate = {
       }
       str += Generate.newsHtml(data[item], !!(item > 14))
     }
-    str += '</li></div>'
+    str += '</li></ul></div>'
     return str
     // let $blockContent = $('<div class="block-content" id="recommend-content"><ul class="lunbo-wrapper"></ul></div>')
     // let $ulContent = $blockContent.find('ul')

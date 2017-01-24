@@ -49,7 +49,6 @@
     autoAjax: null,
     // 初始化 导航点击事件、导航更多功能
     initNav: function () {
-      console.log('initNav')
       // nav更多点击事件
       $('#nav-more-btn').on('click', function (event) {
         let $this = $(this)
@@ -89,7 +88,6 @@
     },
     // 设置 导航位置
     setNavPos: function () {
-      console.log('setNavPos')
       const $scrollNav = $('.nav-main')
       let currLeft = $scrollNav.scrollLeft()
       // nav位置
@@ -115,7 +113,6 @@
     },
     // 初始化 添加主屏提示 是否可见
     initTip: function () {
-      console.log('initTip')
       let userAgent = navigator.userAgent
       // 添加到屏幕tip
       if (tipEnable && userAgent.indexOf('Safari') !== -1 &&
@@ -130,39 +127,8 @@
         Util.setCookie('tipDisable', true, 1)
       })
     },
-    // 初始化 UI
-    /**
-    * 折叠更多频道显示
-    * 修改导航样式
-    * 修改特殊频道背景
-    **/
-    initUI: function () {
-      console.log('initUI')
-      // 折叠更多频道显示
-      if ($('#nav-more-btn').hasClass('active')) {
-        $('#nav-more-btn').trigger('click')
-      }
-      // 修改导航样式
-      $('.nav-main .nav-item').removeClass('active')
-      if (this.channel === '') {
-        $('#index').addClass('active')
-      } else {
-        $('#' + this.channel).addClass('active')
-      }
-      this.setNavPos()
-      // 修改特殊频道背景
-      if (this.homeFlag) {
-        $('body').css('background', '#f0f0f0')
-      } else {
-        $('body').css('background', '#fff')
-      }
-      window.scroll(0, 0)
-      $content[0].innerHTML = ''
-      $content.append('<div id="manual-block"></div><div id="auto-block"></div>')
-    },
     // 设置 当前频道，调用 设置导航位置方法
     setChannel: function () {
-      console.log('setChannel')
       // 频道相关属性设置
       this.channel = Util.getHash().channel || ''
       this.homeFlag = !this.channel
@@ -178,10 +144,30 @@
         this.url = `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
         this.autoUrl = `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
       }
+      // 折叠更多频道显示、修改导航样式等等频道相关UI设置
+      if ($('#nav-more').height() > 50) {
+        $('#nav-more-btn').trigger('click')
+      }
+      $('.nav-main .nav-item').removeClass('active')
+      if (this.channel === '') {
+        $('#index').addClass('active')
+      } else {
+        $('#' + this.channel).addClass('active')
+      }
+      if (this.homeFlag) {
+        $('body').css('background', '#f0f0f0')
+      } else {
+        $('body').css('background', '#fff')
+      }
     },
+    // initVote: function () {
+    //   // 第一话题，设置正方比例
+    //   let votePercent = $('#topic-vote-bar').attr('data-percent')
+    //   $('#topic-vote-bar').css('background-image', `linear-gradient(to right, #d0021b 0%, #d0021b ${votePercent}, #4a90e2 ${votePercent}, #4a90e2`)
+    //   $('#topic-vote-bar').css('background-image', `-webkit-linear-gradient(to right, #d0021b 0%, #d0021b ${votePercent}, #4a90e2 ${votePercent}, #4a90e2`)
+    // },
     // 初始化 滚动刷新
     initRefreshScroll: function () {
-      console.log('initRefreshScroll')
       new RefreshScroll({
         getData: () => {
           this.getAuto()
@@ -191,44 +177,8 @@
         }
       }).init()
     },
-    // 返回下拉回调函数
-    getRefreshHook: function () {
-      return this.homeFlag ? () => {
-        this.times = 0
-        this.date = ''
-        this.count = 0
-        $('#' + autoBlockID).remove()
-        sessionStorage.clear()
-        this.recommendLunbo.setIndex(1)
-        this.recommendLunbo.play()
-        this.getAuto()
-          .done(data => {
-            this.setAuto(data)
-            setTimeout(() => {
-              this.refreshControl.hidden()
-            }, 500)
-          })
-      } : () => {
-        this.times = 0
-        this.date = ''
-        this.count = 0
-        this.initUI()
-        this.setManual({
-          swiper: this.swiperData,
-          position: this.positionData
-        })
-        this.getAuto()
-          .done((data, status, xhr) => {
-            this.setAuto(data)
-            setTimeout(() => {
-              this.refreshControl.hidden()
-            }, 500)
-          })
-      }
-    },
     // 初始化 所有链接，添加优路回调方法
     initLink: function () {
-      console.log('initLink')
       $('#content').on('click', '.link-flag', function (event) {
         let id = $(this).attr('data-id')
         let parameter = $(this).attr('data-parameter')
@@ -246,7 +196,6 @@
     // 获得 人工推荐接口数据
     // 目前该函数每次调用是，必须在done回调中调用setManual
     getManual: function () {
-      console.log('getManual')
       this.swiperData = null
       this.positionData = null
       this.wechatData = null
@@ -277,7 +226,6 @@
     },
     // 设置 手工推荐位，包括 轮播图，今日要闻等
     setManual: function (data) {
-      console.log('setManual')
       this.swiperData = data.swiper
       this.positionData = data.position
       this.wechatData = data.wechat
@@ -294,36 +242,40 @@
         }).init()
       }
       // 设置 今日要闻
-      // let getData = () => {
-      //   this.times = 0
-      //   this.date = ''
-      //   this.count = 0
-      //   this.initUI()
-      //   this.setManual({
-      //     swiper: this.swiperData,
-      //     position: this.positionData
-      //   })
-      //   this.getAuto()
-      //     .done((data, status, xhr) => {
-      //       this.setAuto(data)
-      //     })
-      // }
+      let getData = () => {
+        this.times = 0
+        this.date = ''
+        this.count = 0
+        sessionStorage.clear()
+        this.getManual()
+          .done((data, status, xhr) => {
+            $content[0].innerHTML = ''
+            this.setManual(data)
+            this.getAuto()
+              .done(data => {
+                this.setAuto(data)
+              })
+          })
+      }
       // 首页样式
       if (this.homeFlag) {
         const indicatorID = 'recommend-index-curr'
         const pagesNum = Math.ceil(this.positionData.length / 14)
         const todayHeader = Generate.headerHtml('今日要闻', Generate.listIndicator(pagesNum, indicatorID))
         $('#' + lunboBlockID).after(Generate.newsBlock(todayBlockID, todayHeader))
-        $('#' + todayBlockID).append(Generate.homeNewsHtml(this.positionData))
+        let homeNewsHtml = Generate.homeNewsHtml(this.positionData)
+        // $('#' + todayBlockID)[0].innerHTML += homeNewsHtml
+        $('#' + todayBlockID).append(homeNewsHtml)
+        // this.positionData = null
         if (pagesNum > 1) {
           let $recomContent = $('#recommend-content')
-          this.recommendLunbo = new Lunbo({
+          const recommendLunbo = new Lunbo({
             id: 'recommend-content',
             hasArrow: false,
             auto: false
           })
           // 改变后期添加的指示器
-          this.recommendLunbo.play = function (n) {
+          recommendLunbo.play = function (n) {
             // 设置每一页的高度
             $('.lunbo-page').css('height', 'auto')
             $recomContent.height($recomContent.find('li').eq(this._n).height())
@@ -338,21 +290,7 @@
               this.lazyFlag = true
             }
           }
-          this.recommendLunbo.init()
-
-          // getData = () => {
-          //   this.times = 0
-          //   this.date = ''
-          //   this.count = 0
-          //   $('#' + autoBlockID).remove()
-          //   sessionStorage.clear()
-          //   this.recommendLunbo.setIndex(1)
-          //   this.recommendLunbo.play()
-          //   this.getAuto()
-          //     .done(data => {
-          //       this.setAuto(data)
-          //     })
-          // }
+          recommendLunbo.init()
         }
       // 图集页样式
       } else if (this.picChannelFlag) {
@@ -369,20 +307,22 @@
         let str = ''
         for (let item in this.positionData) {
           str += Generate.newsHtml(this.positionData[item])
+          // $content.append(Generate.newsHtml(this.positionData[item]))
         }
-        $('#manual-block').append(str)
+        if (!$('#' + lunboBlockID).after(str)) {
+          $content.prepend(str)
+        }
       }
       // 下拉刷新
-      // this.refreshControl = new RefreshControl({
-      //   id: 'refresh-control',
-      //   height: FontSize * 1.5,
-      //   hookFunc: getData
-      // })
-      // this.refreshControl.init()
+      this.refreshControl = new RefreshControl({
+        id: 'refresh-control',
+        height: FontSize * 1.5,
+        hookFunc: getData
+      })
+      this.refreshControl.init()
     },
     // 获得 自动推荐数据
     getAuto: function () {
-      console.log('getAuto')
       if (this.homeFlag) {
         this.autoUrl = this.apiCount >= 3 ? `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=index&times=${this.times}&date=${this.date}`
                                         : `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`
@@ -436,16 +376,15 @@
     },
     // 设置 自动推荐数据
     setAuto: function (data) {
-      console.log('setAuto')
       if (typeof data.data !== 'undefined') {
         data = data.data
       }
       this.autoData = data
       this.loading = false
 
-      // setTimeout(() => {
-      //   this.refreshControl.hidden()
-      // }, 500)
+      setTimeout(() => {
+        this.refreshControl.hidden()
+      }, 500)
       // 首页情况
       if (this.homeFlag) {
         let $autoBlock = $('#' + autoBlockID)
@@ -482,64 +421,55 @@
       // 其他
       } else {
         for (let item in this.autoData) {
-          $('#auto-block').append(Generate.newsHtml(this.autoData[item]))
+          $content.append(Generate.newsHtml(this.autoData[item]))
           this.count++
-          Generate.adString[this.count] && $('#auto-block').append(Generate.adString[this.count])
+          Generate.adString[this.count] && $content.append(Generate.adString[this.count])
         }
       }
     },
     // 初始化
     init: function () {
-      console.log('init')
+      this.setChannel()
       this.initNav()
       this.initTip()
-      this.setChannel()
-      // 下拉回调函数
-      this.refreshControl = new RefreshControl({
-        id: 'refresh-control',
-        height: FontSize * 1.5,
-        hookFunc: this.getRefreshHook()
-      })
-      this.refreshControl.init()
-      this.initUI()
-      // if (performance && performance.navigation.type === 2) {
-      //   let manualData = sessionStorage.getItem(this.channel + 'manualData')
-      //   let autoData = sessionStorage.getItem(this.channel + 'autoData')
-      //   if ('' + manualData !== 'null' && '' + autoData !== 'null') {
-      //     this.setManual(JSON.parse(manualData))
-      //     this.setAuto(JSON.parse(autoData))
-      //     // 根据cookie滚动到上次浏览新闻
-      //     let startTime = +new Date()
-      //     let watchFlag = setInterval(function () {
-      //       if ($content.find('section').length > 20 || +new Date() - startTime > 3000) {
-      //         clearInterval(watchFlag)
-      //         window.scroll(0, Util.getCookie('bodyTop'))
-      //       }
-      //     }, 50)
-      //   } else {
-      //     sessionStorage.clear()
-      //     this.getManual()
-      //       .done((data, status, xhr) => {
-      //         this.setManual(data)
-      //         this.getAuto()
-      //           .done(data => {
-      //             this.setAuto(data)
-      //           })
-      //       })
-      //   }
-      // } else {
-      sessionStorage.clear()
-      this.getManual()
-        .done((data, status, xhr) => {
-          this.setManual(data)
-        })
-      this.getAuto()
-        .done(data => {
-          this.setAuto(data)
-        })
-      // }
-      // this.initRefreshScroll()
-      // this.initLink()
+      if (typeof performance === 'object' && performance.navigation.type === 2) {
+        let manualData = sessionStorage.getItem(this.channel + 'manualData')
+        let autoData = sessionStorage.getItem(this.channel + 'autoData')
+        if ('' + manualData !== 'null' && '' + autoData !== 'null') {
+          this.setManual(JSON.parse(manualData))
+          this.setAuto(JSON.parse(autoData))
+          // 根据cookie滚动到上次浏览新闻
+          let startTime = +new Date()
+          let watchFlag = setInterval(function () {
+            if ($content.find('section').length > 20 || +new Date() - startTime > 3000) {
+              clearInterval(watchFlag)
+              window.scroll(0, Util.getCookie('bodyTop'))
+            }
+          }, 50)
+        } else {
+          sessionStorage.clear()
+          this.getManual()
+            .done((data, status, xhr) => {
+              this.setManual(data)
+              this.getAuto()
+                .done(data => {
+                  this.setAuto(data)
+                })
+            })
+        }
+      } else {
+        sessionStorage.clear()
+        this.getManual()
+          .done((data, status, xhr) => {
+            this.setManual(data)
+            this.getAuto()
+              .done(data => {
+                this.setAuto(data)
+              })
+          })
+      }
+      this.initRefreshScroll()
+      this.initLink()
       window.onhashchange = () => {
         try {
           this.manualAjax.abort()
@@ -548,10 +478,11 @@
 
         }
         Util.setCookie('bodyTop', 0)
-        this.refreshControl.hookFunc = this.getRefreshHook()
+        window.scroll(0, 0)
+        $content[0].innerHTML = ''
         sessionStorage.clear()
         this.setChannel()
-        this.initUI()
+        this.setNavPos()
         this.getManual()
         .done((data, status, xhr) => {
           this.setManual(data)

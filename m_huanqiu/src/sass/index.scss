@@ -112,6 +112,7 @@ nav {
 }
 
 .nav-scroll {
+  height: 1.25rem;
   height: calc(1.25rem - 2px);
   overflow: hidden;
 }
@@ -166,6 +167,7 @@ nav {
   right: 0;
   box-sizing: border-box;
   padding: (32rem/64) (23rem/64) (24rem/64);
+  height: 1.25rem;
   height: calc(1.25rem - 2px);
   width: 1.25rem;
   background: #fff url(../images/nav_more_btn.png) no-repeat;
@@ -209,7 +211,7 @@ nav {
 }
 
 footer {
-  display: none;
+  // display: none;
   background: #ccc;
 }
 
