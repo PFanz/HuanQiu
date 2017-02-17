@@ -1,0 +1,195 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$-icon-more-name: 'Icon More';
+$-icon-more-x: 464px;
+$-icon-more-y: 86px;
+$-icon-more-offset-x: -464px;
+$-icon-more-offset-y: -86px;
+$-icon-more-width: 8px;
+$-icon-more-height: 9px;
+$-icon-more-total-width: 1000px;
+$-icon-more-total-height: 176px;
+$-icon-more-image: '../images/sprite.png';
+$-icon-more: (464px, 86px, -464px, -86px, 8px, 9px, 1000px, 176px, '../images/sprite.png', 'Icon More', );
+$actual-name: 'actual';
+$actual-x: 0px;
+$actual-y: 42px;
+$actual-offset-x: 0px;
+$actual-offset-y: -42px;
+$actual-width: 1000px;
+$actual-height: 22px;
+$actual-total-width: 1000px;
+$actual-total-height: 176px;
+$actual-image: '../images/sprite.png';
+$actual: (0px, 42px, 0px, -42px, 1000px, 22px, 1000px, 176px, '../images/sprite.png', 'actual', );
+$btn-next-name: 'btn_next';
+$btn-next-x: 0px;
+$btn-next-y: 86px;
+$btn-next-offset-x: 0px;
+$btn-next-offset-y: -86px;
+$btn-next-width: 29px;
+$btn-next-height: 90px;
+$btn-next-total-width: 1000px;
+$btn-next-total-height: 176px;
+$btn-next-image: '../images/sprite.png';
+$btn-next: (0px, 86px, 0px, -86px, 29px, 90px, 1000px, 176px, '../images/sprite.png', 'btn_next', );
+$btn-pre-name: 'btn_pre';
+$btn-pre-x: 29px;
+$btn-pre-y: 86px;
+$btn-pre-offset-x: -29px;
+$btn-pre-offset-y: -86px;
+$btn-pre-width: 29px;
+$btn-pre-height: 90px;
+$btn-pre-total-width: 1000px;
+$btn-pre-total-height: 176px;
+$btn-pre-image: '../images/sprite.png';
+$btn-pre: (29px, 86px, -29px, -86px, 29px, 90px, 1000px, 176px, '../images/sprite.png', 'btn_pre', );
+$company-name: 'company';
+$company-x: 0px;
+$company-y: 0px;
+$company-offset-x: 0px;
+$company-offset-y: 0px;
+$company-width: 1000px;
+$company-height: 42px;
+$company-total-width: 1000px;
+$company-total-height: 176px;
+$company-image: '../images/sprite.png';
+$company: (0px, 0px, 0px, 0px, 1000px, 42px, 1000px, 176px, '../images/sprite.png', 'company', );
+$finance-name: 'finance';
+$finance-x: 0px;
+$finance-y: 64px;
+$finance-offset-x: 0px;
+$finance-offset-y: -64px;
+$finance-width: 1000px;
+$finance-height: 22px;
+$finance-total-width: 1000px;
+$finance-total-height: 176px;
+$finance-image: '../images/sprite.png';
+$finance: (0px, 64px, 0px, -64px, 1000px, 22px, 1000px, 176px, '../images/sprite.png', 'finance', );
+$images-name: 'images';
+$images-x: 278px;
+$images-y: 86px;
+$images-offset-x: -278px;
+$images-offset-y: -86px;
+$images-width: 93px;
+$images-height: 20px;
+$images-total-width: 1000px;
+$images-total-height: 176px;
+$images-image: '../images/sprite.png';
+$images: (278px, 86px, -278px, -86px, 93px, 20px, 1000px, 176px, '../images/sprite.png', 'images', );
+$interview-name: 'interview';
+$interview-x: 371px;
+$interview-y: 86px;
+$interview-offset-x: -371px;
+$interview-offset-y: -86px;
+$interview-width: 93px;
+$interview-height: 20px;
+$interview-total-width: 1000px;
+$interview-total-height: 176px;
+$interview-image: '../images/sprite.png';
+$interview: (371px, 86px, -371px, -86px, 93px, 20px, 1000px, 176px, '../images/sprite.png', 'interview', );
+$report-name: 'report';
+$report-x: 58px;
+$report-y: 86px;
+$report-offset-x: -58px;
+$report-offset-y: -86px;
+$report-width: 110px;
+$report-height: 22px;
+$report-total-width: 1000px;
+$report-total-height: 176px;
+$report-image: '../images/sprite.png';
+$report: (58px, 86px, -58px, -86px, 110px, 22px, 1000px, 176px, '../images/sprite.png', 'report', );
+$talk-name: 'talk';
+$talk-x: 168px;
+$talk-y: 86px;
+$talk-offset-x: -168px;
+$talk-offset-y: -86px;
+$talk-width: 110px;
+$talk-height: 22px;
+$talk-total-width: 1000px;
+$talk-total-height: 176px;
+$talk-image: '../images/sprite.png';
+$talk: (168px, 86px, -168px, -86px, 110px, 22px, 1000px, 176px, '../images/sprite.png', 'talk', );
+$spritesheet-width: 1000px;
+$spritesheet-height: 176px;
+$spritesheet-image: '../images/sprite.png';
+$spritesheet-sprites: ($-icon-more, $actual, $btn-next, $btn-pre, $company, $finance, $images, $interview, $report, $talk, );
+$spritesheet: (1000px, 176px, '../images/sprite.png', $spritesheet-sprites, );
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

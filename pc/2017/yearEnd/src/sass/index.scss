@@ -1,0 +1,149 @@
+html,
+body,
+ul,
+li,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/*********** 图片引用区 **********/
+
+body {
+    font-family: "MicrosoftYaHei";
+    background: url(../images/bj_repeat.jpg);
+}
+
+.icon {
+    background: url(http://himg2.huanqiu.com/attach/photo/2015hqShunjian/icon.png);
+}
+
+
+/*********** 内容区 **********/
+
+.wrap {
+    margin-bottom: 130px;
+    padding-top: 400px;
+    min-width: 1000px;
+    background: url(../images/bj.jpg) top center no-repeat;
+}
+
+.wrapCon {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.icon {
+    display: inline-block;
+    width: 52px;
+    height: 25px;
+    margin-right: 10px;
+    float: left;
+}
+
+.line {
+    display: inline-block;
+    width: 10px;
+    height: 18px;
+    border-left: #efd840 1px solid;
+    float: left;
+    margin-top: 4px;
+}
+
+
+/*********** 顶部文字 **********/
+
+.txtTopArea {
+    padding: 0 15px;
+    width: 924px;
+    line-height: 18px;
+    position: relative;
+    font-size: 14px;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.one {
+    text-indent: 35px;
+}
+
+.two {
+    margin-top: 25px;
+    text-align: center;
+}
+
+
+/**/
+
+.viewBox {
+    margin-top: 50px;
+}
+
+.viewBox ul {
+    font-size: 0;
+    overflow: hidden;
+}
+
+.viewBox li {
+    display: inline-block;
+    margin: 0 11.5px;
+    width: 310px;
+    height: 495px;
+    float: left;
+}
+
+.viewBox li img {
+    width: 310px;
+    height: 280px;
+    box-shadow: 1px 1px 5px #fff;
+}
+
+.viewBox li h4 {
+    margin: 20px 0 15px;
+    font-size: 22px;
+    font-weight: normal;
+    color: #cbedfd;
+    text-align: center;
+    background: url(../images/title.png) center no-repeat;
+}
+
+.viewBox li h5 {
+    padding: 0 10px;
+    line-height: 20px;
+    color: #fff;
+    font-size: 14px;
+}
+
+a:hover h5 {
+    color: rgb(252, 251, 207);
+}
+
+#HQgotoTop {
+    display: none !important
+}
+
+
+/*********** 尾巴 **********/
+
+.footer {
+    padding: 15px 0;
+    color: #ccc;
+    text-align: center;
+    background-color: #666;
+    font-size: 12px;
+}
+
+.footer a {
+    color: #aeaeae;
+    margin: 0 3px;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

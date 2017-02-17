@@ -1,0 +1,695 @@
+html,
+body,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+.swiper-container-vertical {
+  height: 100%;
+}
+
+body {
+  background: url(../images/bg_body.jpg);
+}
+
+// 音乐按钮
+.music-btn {
+  position: absolute;
+  top: 1rem;
+  right: .5rem;
+  width: 1rem;
+  height: 1rem;
+  background: url(../images/music_enable.png) no-repeat;
+  background-size: cover;
+  animation: rotating 3s linear infinite;
+  z-index: 11;
+
+  &.disable {
+    background-image: url(../images/music_disable.png);
+    animation-play-state: paused;
+  }
+}
+
+.swiper-slide {
+  overflow: hidden;
+}
+
+// 返回按钮
+.return-btn {
+  // display: none;
+  position: absolute;
+  bottom: .5rem;
+  right: 1.2rem;
+  width: 1.4rem;
+  height: .375rem;
+  z-index: 2;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// 分享
+.share-cover {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .7);
+  z-index: 11111;
+}
+
+.share-tip {
+  float: right;
+  margin-top: .5rem;
+  margin-right: .7rem;
+  width: 2.5rem;
+  height: 2.6rem;
+}
+
+// 下翻提示
+.next-tip {
+  position: absolute;
+  bottom: .5rem;
+  left: 50%;
+  margin-left: -9px;
+  animation: tipSwing .5s linear .1s infinite alternate;
+}
+
+@keyframes tipSwing {
+  0% {
+    transform: translateY(20%)
+  }
+  100% {
+    transform: traslateY(0)
+  }
+}
+
+// 第一页
+.page-v1-pic {
+  margin-top: 1.3rem;
+  width: 10rem;
+  height: 9rem;
+
+  img {
+    width: 100%;
+  }
+}
+
+.symbol-loop {
+  position: absolute;
+  top: 1.3rem;
+  left: 0;
+  opacity: 0;
+  animation: loopShow 4s linear .5s forwards;
+}
+
+.symbol-flag {
+  // display: none;
+  position: absolute;
+  top: 1.3rem;
+  left: 0;
+  opacity: 0;
+  animation: flagShow 4s linear .5s forwards;
+}
+
+@keyframes flagShow {
+  0% {
+    transform: scale(3);
+    top: 33.33%;
+    opacity: 0;
+  }
+  25% {
+    transform: scale(3);
+    top: 33.33%;
+    opacity: 1
+  }
+  100% {
+    top: 1.3rem;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes loopShow {
+  0% {
+    transform: scale(3);
+    top: 33.33%;
+    opacity: 0;
+  }
+  25% {
+    transform: scale(3);
+    top: 33.33%;
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    top: 1.3rem;
+    opacity: 1;
+  }
+}
+
+.page-v1-bottom {
+  margin: 0 auto;
+  width: 8.125rem;
+  height: 4.5rem;
+  opacity: 0;
+  background: url(../images/page_1.png) no-repeat;
+  background-size: contain;
+  animation: bottomShow 4s linear .5s forwards;
+}
+
+@keyframes bottomShow {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// 第二页 目录
+.page-v2-pic {
+  box-sizing: border-box;
+  margin: 2.3rem auto 0;
+  padding-top: 1.5rem;
+  height: 11.5rem;
+  width: 7.2rem;
+  font-size: 0;
+  text-indent: -999;
+  background: url(../images/page_2.png) no-repeat;
+  background-size: cover;
+
+  a {
+    display: inline-block;
+    width: 3.6rem;
+    height: 2rem;
+  }
+}
+
+// 第三页 嘉宾风采
+.page-title {
+  margin-top: .4rem;
+  width: 5rem;
+  height: 1.4rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.page-wrapper {
+  margin-top: .54rem;
+  height: 11.6rem;
+}
+
+.page-cellular-pic {
+  background: url(../images/page_3.png) no-repeat;
+  background-size: cover;
+}
+
+.swiper-pagination-cellular {
+  margin-top: .35rem;
+  text-align: center;
+
+  .swiper-pagination-bullet {
+    margin: 0 10px;
+    border: 1px solid #c4ab60;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #c4ab60;
+  }
+}
+
+.cellular-1,
+.cellular-2,
+.cellular-3,
+.cellular-4,
+.cellular-5 {
+  position: absolute;
+  width: 3.9rem;
+  height: 3.4rem;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.cellular-1 {
+  top: .15rem;
+  left: 1.33rem;
+}
+
+.cellular-2 {
+  top: 4.07rem;
+  left: 1.35rem;
+}
+
+.cellular-3 {
+  top: 8rem;
+  left: 1.36rem;
+}
+
+.cellular-4 {
+  top: 2.1rem;
+  left: 4.88rem;
+}
+
+.cellular-5 {
+  top: 6.025rem;
+  left: 4.89rem;
+}
+
+.cover {
+  .cellular-cover {
+    display: block;
+  }
+}
+
+.cellular-cover {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 .95rem;
+  width: 2rem;
+  height: 3.4rem;
+  background: #e6c250;
+  z-index: 111;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -.93rem;
+    border-top: 1.7rem solid transparent;
+    border-bottom: 1.7rem solid transparent;
+    border-right: .95rem solid #e6c250;
+    z-index: -1;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -.93rem;
+    border-top: 1.7rem solid transparent;
+    border-bottom: 1.7rem solid transparent;
+    border-left: .95rem solid #e6c250;
+    z-index: -1;
+  }
+}
+
+.cover-title {
+  padding: .25rem 0 .2rem;
+  text-align: center;
+  font-size: .375rem;
+  color: #402e14;
+}
+
+.cover-intro {
+  margin-left: -.45rem;
+  width: 3rem;
+  height: 1.7rem;
+  line-height: 1.7rem;
+  font-size: .28rem;
+  color: #402e14;
+  overflow: hidden;
+
+  span {
+    display: inline-block;
+    line-height: .45rem;
+    vertical-align: middle;
+  }
+}
+
+// 第四页 风尚领秀
+.page-vertical-pic {
+  text-align: center;
+
+  img {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 5.86rem;
+    height: 7.67rem;
+    border: 1px solid #c4ab60;
+    box-shadow: 6.359px 10.177px 16px 0px rgba(13, 56, 26, 0.44);
+  }
+}
+
+.page-vertical-preBtn {
+  position: absolute;
+  top: 2.25rem;
+  left: 0;
+  // width: 1.85rem;
+  margin: 0 .425rem;
+  width: 1rem;
+  height: 8.15rem;
+  background: url(../images/preBtn.png) center no-repeat;
+  background-size: contain;
+  z-index: 111;
+}
+
+.page-vertical-nextBtn {
+  position: absolute;
+  top: 2.25rem;
+  right: 0;
+  // width: 1.85rem;
+  margin: 0 .425rem;
+  width: 1rem;
+  height: 8.15rem;
+  background: url(../images/nextBtn.png) center no-repeat;
+  background-size: contain;
+  z-index: 111;
+}
+
+.page-vertical-content {
+  padding: 0 1rem;
+}
+
+.page-vertical-title {
+  margin: .5rem auto .3rem;
+  font-size: 0.56rem;
+  font-weight: 900;
+  color: #c4ab60;
+  text-shadow: 6.359px 10.177px 16px rgba(13, 56, 26, 0.44);
+}
+
+.page-vertical-intro {
+  line-height: 2;
+  font-size: .3rem;
+  text-align: left;
+  color: #c4ab60;
+}
+
+#page-preBtn-1,
+#page-preBtn-5,
+#page-preBtn-7,
+#page-preBtn-8,
+#page-preBtn-11 {
+  display: none;
+}
+
+// 第五页 风尚榜样
+.page-horizontal-pic {
+  margin-top: .9rem;
+  text-align: center;
+
+  img {
+    box-sizing: border-box;
+    width: 7.72rem;
+    height: 5.42rem;
+    border: 1px solid #c4ab60;
+    box-shadow: 6.359px 10.177px 16px 0px rgba(13, 56, 26, 0.44);
+  }
+}
+
+.page-horizontal-preBtn,
+.page-horizontal-nextBtn {
+  position: absolute;
+  top: 3.15rem;
+  margin: 0 .12rem;
+  height: 5.42rem;
+  width: .9rem;
+  z-index: 111;
+}
+
+.page-horizontal-preBtn {
+  left: 0;
+  background: url(../images/preBtn_small.png) center no-repeat;
+  background-size: contain;
+}
+
+.page-horizontal-nextBtn {
+  right: 0;
+  background: url(../images/nextBtn_small.png) center no-repeat;
+  background-size: contain;
+}
+
+.page-horizontal-content {
+  padding: 0 1rem;
+}
+
+.page-horizontal-title {
+  margin: .6rem auto .3rem;
+  font-size: .56rem;
+  font-weight: 900;
+  color: #c4ab60;
+  text-shadow: 6.359px 10.177px 16px rgba(13, 56, 26, 0.44);
+}
+
+.page-horizontal-intro {
+  line-height: 2;
+  font-size: .3rem;
+  text-align: left;
+  color: #c4ab60;
+}
+
+// 第六页 风尚潜力奖
+.page-wrapper-full {
+  margin-top: -1rem;
+  width: 10rem;
+  height: 13.6rem;
+  background: url(../images/page_6.png) no-repeat;
+  background-size: cover;
+}
+
+.cellular-6-1,
+.cellular-6-2,
+.cellular-6-3,
+.cellular-6-4,
+.cellular-6-5,
+.cellular-6-6 {
+  position: absolute;
+  width: 3.9rem;
+  height: 3.4rem;
+
+  img {
+    height: 100%;
+  }
+}
+
+.cellular-6-1 {
+  top: 2.88rem;
+  left: 1.19rem;
+}
+.cellular-6-2 {
+  top: 6.83rem;
+  left: 1.2rem;
+}
+.cellular-6-3 {
+  top: 10.78rem;
+  left: 1.21rem;
+}
+.cellular-6-4 {
+  top: .93rem;
+  left: 4.74rem;
+}
+.cellular-6-5 {
+  top: 4.85rem;
+  left: 4.74rem;
+}
+.cellular-6-6 {
+  top: 8.79rem;
+  left: 4.74rem;
+}
+
+// 第八页 特别企业
+.page-title-big {
+  margin-top: .4rem;
+  width: 6.5rem;
+  height: 1.625rem;
+
+  img {
+    height: 100%;
+  }
+}
+
+// 第十页 精彩瞬间
+.left-1-pic {
+  float: left;
+  margin-top: .55rem;
+  margin-left: .625rem;
+  box-sizing: border-box;
+  width: 4.2rem;
+  height: 3.1rem;
+  border: 1px solid #c4ab60;
+  box-shadow: 2.237px 3.316px 6.37px 0.63px rgba(40, 30, 1, 0.58);
+}
+
+.right-1-pic {
+  float: right;
+  margin-top: .55rem;
+  margin-right: .625rem;
+  box-sizing: border-box;
+  width: 4.2rem;
+  height: 6.5rem;
+  border: 1px solid #c4ab60;
+  box-shadow: 2.237px 3.316px 6.37px 0.63px rgba(40, 30, 1, 0.58);
+}
+
+.left-2-pic {
+  float: left;
+  margin-top: .15rem;
+  margin-left: .625rem;
+  box-sizing: border-box;
+  width: 4.2rem;
+  height: 6.5rem;
+  border: 1px solid #c4ab60;
+  box-shadow: 2.237px 3.316px 6.37px 0.63px rgba(40, 30, 1, 0.58);
+}
+
+.right-2-pic {
+  float: right;
+  margin-top: .15rem;
+  margin-right: .625rem;
+  box-sizing: border-box;
+  width: 4.2rem;
+  height: 3.1rem;
+  border: 1px solid #c4ab60;
+  box-shadow: 2.237px 3.316px 6.37px 0.63px rgba(40, 30, 1, 0.58);
+}
+
+.left-1-pic,
+.left-2-pic,
+.right-1-pic,
+.right-2-pic {
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .pic-title {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: calc(4.2rem - 2px);
+    height: .6rem;
+    line-height: .65rem;
+    font-size: .35rem;
+    color: #fff;
+    background: rgba(0, 0, 0, .8);
+    text-align: center;
+    overflow: hidden;
+  }
+}
+
+.pic-text {
+  display: none;
+  font-size: 0;
+}
+
+.full-image-cover {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .95);
+  z-index: 11111;
+}
+
+.full-image {
+  vertical-align: middle;
+  width: 100%;
+}
+
+.full-image-text {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-height: 3.3rem;
+  width: 9.1rem;
+  color: #fff;
+  font-size: .45rem;
+  line-height: .7rem;
+  padding: .45rem;
+  background: rgba(0, 0, 0, .6);
+  overflow: hidden;
+}
+
+.full-text-content {
+  max-height: 3.3rem;
+  overflow: hidden; 
+}
+
+// 第十一页 合作伙伴
+.page-11-pic {
+  margin: 1.5rem auto 0;
+  text-align: center;
+
+  img {
+    width: 7.25rem;
+  }
+}
+
+// 第十二页 联系我们
+.page-title-logo {
+  margin-top: .55rem;
+  width: 4.7rem;
+  height: 2rem;
+
+  img {
+    width: 100%;
+  }
+}
+
+.code-container {
+  margin: 2rem auto 0;
+  width: 3.6rem;
+  height: 4.7rem;
+
+  img {
+    width: 100%;
+  }
+}
+
+.contact-container {
+  margin: .7rem auto 0;
+  width: 7.23rem;
+  height: 1.17rem;
+
+  img {
+    width: 100%;
+  }
+}
+
+.share-btn {
+  margin: 1.1rem auto 0;
+  width: 3.5rem;
+  height: 1rem;
+
+  img {
+    width: 100%;
+  }
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg); 
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg); 
+  } 
+}

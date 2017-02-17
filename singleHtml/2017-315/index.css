@@ -1,0 +1,770 @@
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    margin: 0;
+    min-width: 1000px;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+    display: block
+}
+
+audio,
+canvas,
+progress,
+video {
+    display: inline-block;
+    vertical-align: baseline
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0
+}
+
+[hidden],
+template {
+    display: none
+}
+
+a {
+    background-color: transparent
+}
+
+a:active,
+a:hover {
+    outline: 0
+}
+
+abbr[title] {
+    border-bottom: 1px dotted
+}
+
+b,
+strong {
+    font-weight: 700
+}
+
+dfn {
+    font-style: italic
+}
+
+h1 {
+    font-size: 2em;
+    margin: .67em 0
+}
+
+mark {
+    background: #ff0;
+    color: #000
+}
+
+small {
+    font-size: 80%
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
+}
+
+sup {
+    top: -.5em
+}
+
+sub {
+    bottom: -.25em
+}
+
+img {
+    border: 0
+}
+
+svg:not(:root) {
+    overflow: hidden
+}
+
+figure {
+    margin: 1em 40px
+}
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0
+}
+
+pre {
+    overflow: auto
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0
+}
+
+button {
+    overflow: visible
+}
+
+button,
+select {
+    text-transform: none
+}
+
+button,
+html input[type=button],
+input[type=reset],
+input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer
+}
+
+button[disabled],
+html input[disabled] {
+    cursor: default
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0
+}
+
+input {
+    line-height: normal
+}
+
+input[type=checkbox],
+input[type=radio] {
+    box-sizing: border-box;
+    padding: 0
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    height: auto
+}
+
+input[type=search] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+
+fieldset {
+    border: 1px solid silver;
+    margin: 0 2px;
+    padding: .35em .625em .75em
+}
+
+legend {
+    border: 0;
+    padding: 0
+}
+
+textarea {
+    overflow: auto
+}
+
+optgroup {
+    font-weight: 700
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+td,
+th {
+    padding: 0
+}
+
+
+/*footer*/
+
+.footer {
+    padding: 15px 0;
+    color: #ccc;
+    text-align: center;
+    background-color: #666;
+    font-size: 12px;
+    font-family: "SimSun";
+}
+
+.footer .b {
+    margin-top: 10px;
+}
+
+.footer a {
+    color: #aeaeae;
+    margin: 0 3px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    color: #ccc;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+
+.clearfix {
+    *+height: 1%;
+}
+
+.container {
+    background-color: #3aa8ed;
+    max-width: 1920px;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+
+/*.hdbg {
+    width: 100%;
+    height: 843px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #3aa8ed;
+}*/
+
+.hd {
+    position: relative;
+    height: 300px;
+    background: url(./images/header_bg.jpg) top center no-repeat;
+}
+
+
+/*
+.content{width: 1000px; position: relative; margin: 0 auto;z-index: 10;}
+.content a{text-decoration: none;}
+*/
+
+.container .content_only {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.content a {
+    text-decoration: none;
+}
+
+.container .content_only a {
+    text-decoration: none;
+}
+
+.topTopic a,
+.main_news a,
+.scrollNews a {
+    color: #333;
+}
+
+.part_2,
+.part_3,
+.part_4,
+.part_5,
+.part_6 {
+    margin-top: 33px;
+}
+
+.part_3 p,
+.part_4 p {
+    padding-top: 24px;
+}
+
+.part_3 p,
+.part_4 p,
+.part_2 p,
+.part_5 p {
+    +padding-top: 0;
+    +position: relative;
+    +top: 24px;
+    +margin-bottom: 40px;
+}
+
+.part_1 {
+    /*margin-top: -85px;*/
+}
+
+.topTopic {
+    width: 423px;
+    height: 398px;
+    float: left;
+    background: url(./images/topic_bg.png) no-repeat center center;
+}
+
+.topTopic ul {
+    height: 340px;
+    padding-left: 0;
+    margin: 30px 0;
+    text-align: left;
+    color: #333333;
+    list-style: none;
+    overflow: hidden;
+}
+
+.topTopic li {
+    width: 379px;
+    margin: 0 auto;
+}
+
+.topTopic li:nth-of-type(even) {
+    font-family: SimSun;
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 8px;
+    margin-bottom: 25px;
+}
+
+.topTopic li:nth-of-type(odd) {
+    font-family: MicrosoftYaHei;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+.topTopic .li_content {
+    font-family: SimSun;
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.topTopic .li_head {
+    font-family: MicrosoftYaHei;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+.topTopic li span {
+    width: 42px;
+    height: 34px;
+    background-color: #0c7df3;
+    line-height: 34px;
+    font-size: 14px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 5px;
+    margin-right: 12px;
+    color: #fff;
+}
+
+.topSlide {
+    margin-left: 20px;
+    width: 548px;
+    height: 398px;
+    background-color: #007321;
+    background: url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/finance315/imgs/line.png) repeat-y center center;
+    border-radius: 5px;
+    float: right;
+}
+
+.topSlide .swiper-container {
+    width: 490px;
+    height: 345px;
+    margin: 26px auto;
+}
+
+.topSlide .swiper-pagination {
+    height: 50px;
+    line-height: 50px;
+    bottom: 0 !important;
+    text-align: right;
+}
+
+.topSlide .swiper-pagination-bullet {
+    background: #fff;
+    border-radius: 0;
+    opacity: 0.8;
+}
+
+.topSlide .swiper-pagination-bullet:last-child {
+    margin-right: 20px !important;
+}
+
+.topSlide .swiper-pagination-bullet-active {
+    background: #55da38;
+}
+
+.topSlide .slide_btm {
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    line-height: 50px;
+    font-family: MicrosoftYaHei;
+    font-size: 18px;
+    color: #fff;
+    text-align: left;
+    z-index: 20;
+    background-color: #454545;
+    opacity: 0.8;
+}
+
+.topSlide .slide_btm span {
+    margin-left: 12px;
+}
+
+.main_news {
+    width: 416px;
+    height: 392px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fcfcf3;
+    background: url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/finance315/imgs/mnLine.png) repeat-y center center;
+    float: left;
+    position: relative;
+}
+
+.main_news li,
+.scrollNews li {
+    font-family: SimSun;
+    font-size: 14px;
+    line-height: 28px;
+    text-align: left;
+}
+
+.complains {
+    width: 549px;
+    height: 392px;
+    background-color: #fbe9bd;
+    background: url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/finance315/imgs/snLine.png) repeat-y center center;
+    border-radius: 5px;
+    overflow: hidden;
+    float: right;
+    position: relative;
+}
+
+.complains ul {
+    list-style: none;
+    padding-left: 30px;
+    +padding-left: 0;
+    text-align: left;
+}
+
+.complains li {
+    margin-bottom: 8px;
+    height: 92px;
+}
+
+.complains li img {
+    float: left;
+    margin-right: 12px;
+}
+
+.complains .details {
+    float: left;
+    width: 347px;
+    height: 92px;
+    overflow: hidden;
+}
+
+.complains li span {
+    font-family: MicrosoftYaHei;
+    display: block;
+    font-size: 16px;
+    line-height: 42px;
+    color: #7c3f2e;
+}
+
+.complains li p {
+    font-family: SimSun;
+    font-size: 14px;
+    line-height: 22px;
+    padding-top: 0;
+    margin-top: 0;
+    +margin-top: -28px;
+}
+
+.part_3 {
+    height: 429px;
+    background-color: #fbe9bd;
+    background: url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/finance315/imgs/cmt_line.png) repeat-y center center;
+    border-radius: 5px;
+}
+
+.imgArea img {
+  width: 100%;
+  height: 100%;
+}
+
+.part_3 .imgArea div {
+    width: 186px;
+    height: 130px;
+    float: left;
+    margin: 0 0 10px 8px;
+    border-bottom: solid 30px #565656;
+}
+
+.part_3 .imgArea div:hover {
+    border-bottom-color: #c99b65;
+}
+
+.part_3 .imgArea div a {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+}
+
+.part_3 .imgArea div:nth-of-type(1) {
+    width: 580px;
+    height: 300px;
+    margin: 0;
+    margin-left: 15px;
+}
+
+.part_3 .imgArea .img1st {
+    width: 580px;
+    height: 300px;
+    margin: 0;
+    margin-left: 15px;
+}
+
+.part_3 .imgArea div span {
+    position: absolute;
+    bottom: -28px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    height: 30px;
+    line-height: 30px;
+    font-family: MicrosoftYaHei;
+    font-size: 14px;
+}
+
+.part_3 .imgArea div:nth-of-type(1) span {
+    display: inline-block;
+    font-size: 18px;
+    text-align: left;
+    margin-left: 12px;
+}
+
+.part_3 .imgArea .img1st span {
+    font-size: 18px;
+    text-align: left;
+    margin-left: 12px;
+}
+
+.part_4 {
+    height: 494px;
+    background-color: #fbecc6;
+    background: url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/finance315/imgs/cmt_line.png) repeat-y center center;
+    border-radius: 5px;
+}
+
+
+/*
+.part_4 .iframeArea{width: 955px;height: 399px;margin: 0 auto;}
+.part_4 .iframeArea iframe{width: 100%;height: 100%;border-width: 0;}
+*/
+
+.part_4 .iframeArea {
+    width: 970px;
+    height: 399px;
+    margin: 0 auto;
+    margin-left: 30px;
+    overflow: hidden;
+}
+
+.part_4 #content-7.content {
+    width: 100%;
+    height: 399px;
+}
+
+.content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.part_5 .videoArea {
+    width: 416px;
+    height: 353px;
+    background-color: #fbecc6;
+    background: url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/finance315/imgs/mnLine.png) repeat-y center center;
+    border-radius: 5px;
+    float: left;
+}
+
+.part_5 .videoArea div {
+    width: 186px;
+    height: 90px;
+    float: left;
+    margin: 0 0 8px 6px;
+    border-bottom: solid 30px #565656;
+}
+
+.videoArea a img {
+  width: 100%;
+  height: 100%;
+}
+
+.part_5 .videoArea div:hover {
+    border-bottom-color: #058a28;
+}
+
+.part_5 .videoArea div a {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+}
+
+.part_5 .videoArea div:nth-of-type(odd) {
+    margin-left: 19px;
+}
+
+.part_5 .videoArea .v_left {
+    margin-left: 19px;
+}
+
+.part_5 .videoArea a span {
+    position: absolute;
+    bottom: -28px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-family: MicrosoftYaHei;
+    font-size: 14px;
+}
+
+.scrollNews {
+    width: 549px;
+    height: 353px;
+    float: right;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fcfcf3;
+    background: url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/finance315/imgs/snLine.png) repeat-y center center;
+    position: relative;
+}
+
+.scrollNews ul {
+    height: 257px;
+    overflow: hidden;
+}
+
+.scrollNews li {
+    line-height: 26px;
+}
+
+.part_6 {
+    height: 494px;
+    background-color: #fbe9be;
+    background: url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/finance315/imgs/cmt_line.png) repeat-y center center;
+    border-radius: 5px;
+    margin-bottom: 33px;
+}
+
+#huanqiu-tieInner {
+    padding: 0 20px !important;
+    margin: 0 auto !important;
+}
+
+#huanqiu-tiePost .tit-inner {
+    text-align: left;
+}
+
+
+/*.part_6 { background:url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/finance315/imgs/pl_bg.png) repeat-x !important; }*/
+
+.pagination {
+    position: absolute;
+    z-index: 20;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: right;
+}
+
+.swiper-pagination-switch {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #555;
+    margin: 0 5px;
+    opacity: 0.8;
+    border: 1px solid #fff;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.swiper-active-switch {
+    background: #0c7df3;
+}
+
+.topSlide .swiper-pagination-switch:last-child {
+    margin-right: 20px;
+}
+
+.more-link {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 31px;
+    color: #1b9324!important;
+    font-size: 14px;
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar, .mCS-3d-thick.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar, .mCS-3d-thick.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar, .mCS-3d-thick.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #3c9df5!important;
+}
+
+.sub-title {
+  position: absolute;
+  left: 43%;
+  top: 50%;
+}

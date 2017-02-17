@@ -1,0 +1,663 @@
+@import './sprite.scss';
+
+html,
+body,
+p,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  font-family: "MicrosoftYaHei";
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border: none;
+    outline: none;
+}
+
+.clear {
+  clear: both;
+}
+
+.banner {
+  min-width: 1000px;
+  height: 320px;
+  background: url(../images/banner.jpg) top center no-repeat;
+}
+
+.container {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+// 第一块
+.mod-block-0 {
+  overflow: hidden;
+}
+
+// 轮播图
+.mod-focus {
+  position: relative;
+  margin-top: 40px;
+  float: left;
+  width: 540px;
+  height: 360px;
+  overflow: hidden;
+}
+
+.focus_thumbs {
+  position: absolute;
+  left: 0;
+  height: 406px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  li,
+  .items {
+    position: relative;
+    float: left;
+    width: 540px;
+    height: 360px;
+  }
+}
+
+.title {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    height: 54px;
+    width: 400px;
+    line-height: 54px;
+    font-size: 16px;
+    color: #fff;
+    overflow: hidden;
+  }
+
+.title-bg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    background-image: linear-gradient( 0deg, rgb(0,0,0) 0%, rgba(0,0,0,0) 100%);
+  }
+
+.focus-dots-content {
+  position: absolute;
+  bottom: 21px;
+  right: 19px;
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 12px;
+  vertical-align: bottom;
+  background: rgb(171, 171, 171);
+}
+
+.dot.active {
+  background: #fff;
+}
+
+.focus-arrows-content {
+  position: absolute;
+  top: 50%;
+  margin-top: -28px;
+  width: 540px;
+  height: 56px;
+}
+
+.focus-arrow-pre {
+  float: left;
+  @include sprite($btn_pre);
+}
+
+.focus-arrow-next {
+  float: right;
+  @include sprite($btn_next);
+}
+
+// 报道
+.mod-reports {
+  position: relative;
+  float: right;
+  margin: 40px 0 0 30px;
+  padding-right: 18px;
+  width: 410px;
+  height: 360px;
+  border-right: 2px solid rgb(229, 235, 242);
+}
+
+.report-block {
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px dotted #000;
+}
+
+.report-title {
+  line-height: 30px;
+  font-size: 18px;
+  color: rgb(41, 55, 67);
+  font-weight: bold;
+}
+
+.report-text {
+  margin-top: 9px;
+  height: 60px;
+  line-height: 20px;
+  font-size: 14px;
+  color: rgb(51, 51, 51);
+  overflow: hidden;
+}
+
+a.reports-more {
+  position: absolute;
+  font-size: 16px;
+  color: #004b82;
+  right: 20px;
+  bottom: 24px;
+}
+
+// 热议两会 + 报告解读
+.mod-block-1 {
+  margin-top: 40px;
+  overflow: hidden;
+}
+
+.main-left {
+  float: left;
+  width: 600px;
+}
+
+.main-header {
+  height: 40px;
+  line-height: 40px;
+  border-top: 3px solid rgb(239, 239, 239);
+  overflow: hidden;
+}
+
+.header-title {
+  display: inline-block;
+  vertical-align: middle;
+  @include sprite($talk);
+}
+
+.sub-title {
+  display: inline-block;
+  line-height: 30px;
+  height: 20px;
+  font-size: 14px;
+  color: rgb(42, 185, 252);
+  vertical-align: middle;
+}
+
+.more-icon {
+  float: right;
+  margin: 15.5px 0;
+  @include sprite($-icon-more);
+}
+
+.more {
+  float: right;
+  margin: 16px 7px 12px;
+  line-height: 12px;
+  font-size: 12px;
+  color: rgb(18, 158, 246);
+}
+
+.main-bg {
+  margin-top: 9px;
+  padding: 20px 20px 12px;
+  overflow: hidden;
+}
+
+.main-news-title {
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(41, 55, 67);
+}
+
+.main-news-img {
+  float: left;
+  margin-top: 15px;
+  width: 200px;
+  height: 133px;
+}
+
+.main-news-text {
+  float: left;
+  margin-top: 15px;
+  margin-left: 20px;
+  width: 340px;
+  height: 120px;
+  line-height: 24px;
+  font-size: 14px;
+  color: rgb(102, 102, 102);
+  overflow: hidden;
+}
+
+.more-news {
+  padding-left: 20px;
+  list-style: square;
+  color: #ffd322;
+}
+
+.more-news-item {
+  line-height: 35px;
+  font-size: 16px;
+  list-style: square;
+
+  a {
+    color: rgb(51, 51, 51);
+  }
+}
+
+// 报告解读
+.sub-right {
+  float: right;
+  width: 370px;
+  overflow: hidden;
+
+  .main-header {
+    border-color: #ffd322;
+  }
+
+  .header-title {
+    @include sprite-position($report);
+  }
+}
+
+.sub-bg {
+  margin-top: 9px;
+  padding: 8px 6px 6px;
+  background-color: #f9f9f9;
+}
+
+.sub-block {
+  margin-top: 6px;
+  padding-bottom: 20px;
+  border: 1px solid rgb(233, 233, 233);
+  background: #fff;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.sub-block-header {
+  position: relative;
+  left: -6px;
+  overflow: hidden;
+}
+
+.sub-block-title {
+    position: absolute;
+    top: 6.5px;
+    left: 0;
+    padding: 0 12.9px;
+    height: 27px;
+    line-height: 27px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    border-radius: 2px;
+    background-color: rgb(255, 211, 34);
+    box-shadow: 2.828px 2.828px 0 0 rgba(249, 249, 249, .004);
+}
+
+.single-title {
+  margin-top: 7px;
+  padding: 0 15px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 14px;
+  color: rgb(175, 29, 0);
+  overflow: hidden;
+}
+
+.single-text {
+  margin-top: 8px;
+  padding: 0 15px;
+  height: 40px;
+  line-height: 20px;
+  font-size: 12px;
+  color: rgb(102, 102, 102);
+  overflow: hidden;
+}
+
+.sub-img-title {
+  margin-top: 15px;
+  padding: 0 15px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 16px;
+  color: rgb(41, 55, 67);
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.sub-img {
+  margin-top: 10px;
+  margin-left: 15px;
+  float: left;
+  width: 100px;
+  height: 120px;
+  box-shadow: 3.536px 3.536px 0px 0px rgba(243, 243, 243, 0.004);
+}
+
+.sub-img-text {
+  float: right;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 218px;
+  height: 120px;
+  line-height: 20px;
+  font-size: 12px;
+  color: rgb(102, 102, 102);
+  overflow: hidden;
+}
+
+.sub-link {
+  display: inline-block;
+}
+
+.ad-container {
+  margin-top: 35px;
+}
+
+// 环球财访
+.block-header {
+  margin: 40px auto 10px;
+
+  &.finance {
+    @include sprite($finance);
+  }
+
+  &.actual {
+    @include sprite($actual);
+  }
+}
+
+.block-container {
+  position: relative;
+  padding: 29px 29px 25px;
+  border: 1px solid rgb(242, 242, 242);
+}
+
+.block-img {
+  float: left;
+  box-shadow: 3.536px 3.536px 0px 0px rgba(243, 243, 243, 0.004);
+  width: 240px;
+  height: 360px;
+}
+
+.block-finance {
+  float: left;
+  margin-left: 30px;
+  width: 320px;
+}
+
+.block-finance-header {
+  height: 34px;
+  line-height: 34px;
+  font-size: 18px;
+  color: rgb(102, 102, 102);
+  font-weight: bold;
+  text-align: center;
+  background-color: rgb(242, 242, 242);
+}
+
+.finance-container {
+  margin-top: 19px;
+  padding-top: 15px;
+  height: 77px;
+  border-top: 1px dotted #000;
+  overflow: hidden;
+
+  &.first {
+    padding-top: 0;
+    border-top: none;
+  }
+}
+
+.sort-num {
+  float: left;
+  border-radius: 2px;
+  background-color: rgb(204, 0, 0);
+  width: 48px;
+  height: 19px;
+  text-align: center;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  line-height: 20px;
+}
+
+.finance-title {
+  float: right;
+  width: 237px;
+  line-height: 18px;
+  font-size: 14px;
+  color: rgb(41, 55, 67);
+  font-weight: bold;
+}
+
+.finance-text {
+  float: right;
+  margin-top: 5px;
+  width: 237px;
+  font-size: 12px;
+  color: rgb(102, 102, 102);
+  line-height: 18px;
+}
+
+.tabs {
+  position: absolute;
+  top: 21px;
+  left: -5px;
+  width: 90px;
+}
+
+.tabs-item {
+  display: inline-block;
+  margin-top: 8px;
+  border-radius: 3px;
+  background-color: #5fabec;
+  box-shadow: 3.536px 3.536px 0px 0px rgba(247, 247, 247, 0.004);
+  width: 90px;
+  height: 40px;
+  font-size: 18px;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+
+  &.active {
+    font-weight: bolder;
+    color: #000;
+    background-color: rgb(255, 211, 34);
+
+    &:before {
+      content: '';
+      position: relative;
+      left: -20px;
+      top: -1px;
+      display: inline-block;
+      width: 3px;
+      height: 18px;
+      background: #fff;
+      vertical-align: middle;
+    }
+  }
+}
+
+.lianghui-img {
+  float: left;
+  margin-left: 80px;
+  box-shadow: 3.536px 3.536px 0px 0px rgba(243, 243, 243, 0.004);
+  width: 220px;
+  height: 330px;
+}
+
+.lianghui-container {
+  float: right;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  width: 605px;
+  height: 82px;
+  border-top: 1px dotted #000;
+  overflow: hidden;
+
+  &.first {
+    padding-top: 0;
+    border-top: none;
+  }
+}
+
+.lianghui-title {
+  font-size: 18px;
+  color: rgb(41, 55, 67);
+  font-weight: bold;
+  line-height: 24px;
+}
+
+.lianghui-text {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgb(102, 102, 102);
+  line-height: 24px;
+}
+
+// 图解两会
+#lunbo-1 {
+  position: relative;
+  overflow: hidden;
+
+  .focus-arrows-content {
+    width: 600px;
+  }
+}
+
+.lunbo-page {
+  position: relative;
+  float: left;
+  width: 600px;
+  height: 338px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.images-title {
+  display: inline-block;
+  vertical-align: middle;
+  @include sprite($images);
+}
+
+.interview-title {
+  display: inline-block;
+  vertical-align: middle;
+  @include sprite($interview);
+}
+
+.images-content {
+  position: relative;
+  float: left;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover .images-content-cover{
+    display: block;
+  }
+}
+
+.images-content-cover {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 13px 10px;
+  font-size: 18px;
+  color: #fff;
+  line-height: 30px;
+  background: rgba(0, 0, 0, .5);
+  border-top: 5px solid #5fabec;
+  overflow: hidden;
+}
+
+.image-0 {
+  width: 225px;
+  height: 170px;
+}
+
+.image-1 {
+  float: right;
+  width: 140px;
+  height: 170px;
+}
+
+.image-2 {
+  margin-top: 5px;
+  width: 110px;
+  height: 163px;
+}
+
+.image-3 {
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 140px;
+  height: 163px;
+}
+
+.image-4 {
+  margin-top: 5px;
+  float: right;
+  width: 110px;
+  height: 163px;
+}
+
+// 合作伙伴
+.company {
+  @include sprite($company);
+}
+
+.company-container {
+  margin-bottom: 40px;
+  padding: 20px;
+  border-top: none;
+  overflow: hidden;
+}
+
+.company-item {
+  float: left;
+  margin: 10px;
+  width: 140px;
+  height: 50px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}

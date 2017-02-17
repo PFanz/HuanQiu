@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="306px" height="307px" viewBox="0 0 306 307" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="152" cy="147" r="147"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-6" y="-6" width="306" height="306">
+            <rect x="-1" y="-6" width="306" height="306" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+        <path d="M17.2745523,205.526628 L153.715988,150.40071 L16.570032,92.1857058 L11.0044536,105.297387 C0.934411136,139.363006 3.85205106,174.722474 17.2745523,205.526628 Z M211.404426,281.263944 L154.805584,147.925428 L99.7533747,284.184429 C137.288699,298.48263 177.193474,296.368248 211.404426,281.263944 Z M210.283422,11.8491648 L156.802184,151.172553 L288.61153,92.4872508 C274.686604,57.4840692 247.411154,27.8575934 210.283422,11.8491648 Z" id="path-3"></path>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="287.616313" height="285.981522">
+            <rect x="2.99521741" y="9.84916485" width="287.616313" height="285.981522" fill="white"></rect>
+            <use xlink:href="#path-3" fill="black"></use>
+        </mask>
+        <path d="M157.429534,254.082241 L55.002515,151.655222 L55.002515,298.615288 C95.1608622,297.811369 131.367864,280.902356 157.429534,254.082241 Z" id="path-5"></path>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="106.427019" height="150.960066">
+            <rect x="53.002515" y="149.655222" width="106.427019" height="150.960066" fill="white"></rect>
+            <use xlink:href="#path-5" fill="black"></use>
+        </mask>
+        <path d="M261.197367,144.329684 L158.770348,246.756703 L302.760618,246.756703 C302.760618,206.929461 286.92087,170.80179 261.197367,144.329684 Z" id="path-7"></path>
+        <mask id="mask-8" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="147.99027" height="106.427019">
+            <rect x="156.770348" y="142.329684" width="147.99027" height="106.427019" fill="white"></rect>
+            <use xlink:href="#path-7" fill="black"></use>
+        </mask>
+        <path d="M46.9301575,154.019235 L152.356974,48.5924179 L3.36704199,48.5924179 L3.36704199,65.8292001 C7.39000212,100.271121 23.3196303,131.076388 46.9301575,154.019235 Z" id="path-9"></path>
+        <mask id="mask-10" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="152.989932" height="109.426817">
+            <rect x="1.36704199" y="46.5924179" width="152.989932" height="109.426817" fill="white"></rect>
+            <use xlink:href="#path-9" fill="black"></use>
+        </mask>
+        <path d="M288.142311,91.4919083 L155.193269,147.925428 L288.437358,201.759534 C295.237889,184.833066 298.980135,166.348591 298.980135,146.990067 C298.980135,127.353377 295.12957,108.616035 288.142311,91.4919083 Z" id="path-11"></path>
+        <mask id="mask-12" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="147.786865" height="114.267626">
+            <rect x="153.193269" y="89.4919083" width="147.786865" height="114.267626" fill="white"></rect>
+            <use xlink:href="#path-11" fill="black"></use>
+        </mask>
+        <path d="M97.6532919,11.3697364 L155.193269,146.925428 L209.443211,12.6521116 C191.794072,5.1503131 172.376749,1 151.990067,1 C132.796369,1 114.461898,4.67879117 97.6532919,11.3697364 Z" id="path-13"></path>
+        <mask id="mask-14" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="115.789919" height="149.925428">
+            <rect x="95.6532919" y="-1" width="115.789919" height="149.925428" fill="white"></rect>
+            <use xlink:href="#path-13" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="抽奖页" transform="translate(-39.000000, -136.000000)">
+            <g id="抽奖盘" transform="translate(28.000000, 122.000000)">
+                <g id="Group" transform="translate(10.000000, 13.000000)">
+                    <g id="转盘背景">
+                        <g transform="translate(2.000000, 7.000000)">
+                            <g id="Oval">
+                                <use fill="#FFEAA8" fill-rule="evenodd" xlink:href="#path-1"></use>
+                                <use stroke="#3F0414" mask="url(#mask-2)" stroke-width="12" xlink:href="#path-1"></use>
+                            </g>
+                            <g id="Combined-Shape">
+                                <use fill="#FFBAD0" fill-rule="evenodd" xlink:href="#path-3"></use>
+                                <use stroke="#323232" mask="url(#mask-4)" stroke-width="4" xlink:href="#path-3"></use>
+                            </g>
+                            <g id="Combined-Shape" transform="translate(106.216025, 225.135255) rotate(67.000000) translate(-106.216025, -225.135255) ">
+                                <use fill="#FFEAA7" fill-rule="evenodd" xlink:href="#path-5"></use>
+                                <use stroke="#323232" mask="url(#mask-6)" stroke-width="4" xlink:href="#path-5"></use>
+                            </g>
+                            <g id="Combined-Shape" transform="translate(230.765483, 195.543193) rotate(67.000000) translate(-230.765483, -195.543193) ">
+                                <use fill="#BAEAFF" fill-rule="evenodd" xlink:href="#path-7"></use>
+                                <use stroke="#323232" mask="url(#mask-8)" stroke-width="4" xlink:href="#path-7"></use>
+                            </g>
+                            <g id="Combined-Shape" transform="translate(77.862008, 101.305826) rotate(67.000000) translate(-77.862008, -101.305826) ">
+                                <use fill="#D8FFBA" fill-rule="evenodd" xlink:href="#path-9"></use>
+                                <use stroke="#323232" mask="url(#mask-10)" stroke-width="4" xlink:href="#path-9"></use>
+                            </g>
+                            <g id="Combined-Shape">
+                                <use fill="#BAFFF6" fill-rule="evenodd" xlink:href="#path-11"></use>
+                                <use stroke="#323232" mask="url(#mask-12)" stroke-width="4" xlink:href="#path-11"></use>
+                            </g>
+                            <g id="Combined-Shape">
+                                <use fill="#D1BAFF" fill-rule="evenodd" xlink:href="#path-13"></use>
+                                <use stroke="#323232" mask="url(#mask-14)" stroke-width="4" xlink:href="#path-13"></use>
+                            </g>
+                        </g>
+                    </g>
+                    <text id="三等奖" fill="#000000" font-family="FZLTZHK--GBK1-0, FZLanTingHei-DB-GBK" font-size="17" font-weight="normal" line-spacing="18">
+                        <tspan x="145.439154" y="54.6022844">三</tspan>
+                        <tspan x="145.439154" y="72.6022844">等</tspan>
+                        <tspan x="145.439154" y="90.6022844">奖</tspan>
+                    </text>
+                    <text id="二等奖" fill="#000000" transform="translate(85.988394, 94.488394) rotate(-45.000000) translate(-85.988394, -94.488394) " font-family="FZLTZHK--GBK1-0, FZLanTingHei-DB-GBK" font-size="17" font-weight="normal" line-spacing="18">
+                        <tspan x="76.2930813" y="81.2813626">二</tspan>
+                        <tspan x="76.2930813" y="99.2813626">等</tspan>
+                        <tspan x="76.2930813" y="117.281363">奖</tspan>
+                    </text>
+                    <text id="四等奖" fill="#000000" transform="translate(241.500000, 155.415064) rotate(90.000000) translate(-241.500000, -155.415064) " font-family="FZLTZHK--GBK1-0, FZLanTingHei-DB-GBK" font-size="17" font-weight="normal" line-spacing="18">
+                        <tspan x="231.804687" y="142.208032">四</tspan>
+                        <tspan x="231.804687" y="160.208032">等</tspan>
+                        <tspan x="231.804687" y="178.208032">奖</tspan>
+                    </text>
+                    <text id="参与奖" fill="#000000" transform="translate(221.107877, 220.416323) rotate(135.000000) translate(-221.107877, -220.416323) " font-family="FZLTZHK--GBK1-0, FZLanTingHei-DB-GBK" font-size="17" font-weight="normal" line-spacing="18">
+                        <tspan x="211.412565" y="207.209291">参</tspan>
+                        <tspan x="211.412565" y="225.209291">与</tspan>
+                        <tspan x="211.412565" y="243.209291">奖</tspan>
+                    </text>
+                    <text id="感谢参与" fill="#000000" transform="translate(209.030011, 91.870748) rotate(45.000000) translate(-209.030011, -91.870748) " font-family="FZLTZHK--GBK1-0, FZLanTingHei-DB-GBK" font-size="17" font-weight="normal" line-spacing="18">
+                        <tspan x="206.190447" y="70.8707475">感</tspan>
+                        <tspan x="206.190447" y="88.8707475">谢</tspan>
+                        <tspan x="206.190447" y="106.870748">参</tspan>
+                        <tspan x="206.190447" y="124.870748">与</tspan>
+                    </text>
+                    <text id="感谢参与" fill="#000000" transform="translate(161.459134, 241.389545) rotate(180.000000) translate(-161.459134, -241.389545) " font-family="FZLTZHK--GBK1-0, FZLanTingHei-DB-GBK" font-size="17" font-weight="normal" line-spacing="18">
+                        <tspan x="158.619571" y="220.389545">感</tspan>
+                        <tspan x="158.619571" y="238.389545">谢</tspan>
+                        <tspan x="158.619571" y="256.389545">参</tspan>
+                        <tspan x="158.619571" y="274.389545">与</tspan>
+                    </text>
+                    <text id="感谢参与" fill="#000000" transform="translate(68.000000, 162.839564) rotate(270.000000) translate(-68.000000, -162.839564) " font-family="FZLTZHK--GBK1-0, FZLanTingHei-DB-GBK" font-size="17" font-weight="normal" line-spacing="18">
+                        <tspan x="65.1604362" y="141.839564">感</tspan>
+                        <tspan x="65.1604362" y="159.839564">谢</tspan>
+                        <tspan x="65.1604362" y="177.839564">参</tspan>
+                        <tspan x="65.1604362" y="195.839564">与</tspan>
+                    </text>
+                    <text id="一等奖" fill="#000000" transform="translate(89.039098, 228.539098) rotate(225.000000) translate(-89.039098, -228.539098) " font-family="FZLTZHK--GBK1-0, FZLanTingHei-DB-GBK" font-size="17" font-weight="normal" line-spacing="18">
+                        <tspan x="86.1995339" y="216.539098">一</tspan>
+                        <tspan x="86.1995339" y="234.539098">等</tspan>
+                        <tspan x="86.1995339" y="252.539098">奖</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

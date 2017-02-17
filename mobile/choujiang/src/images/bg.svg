@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="375px" height="668px" viewBox="0 0 375 668" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="背景">
+            <g id="Group-3">
+                <rect id="Rectangle" fill="#FF506B" x="0" y="0" width="375" height="668"></rect>
+                <g id="Group-2" transform="translate(48.000000, 139.000000)" fill="#FF9E12">
+                    <polygon id="Triangle-Copy-2" transform="translate(255.698747, 305.445343) rotate(-24.000000) translate(-255.698747, -305.445343) " points="255.698747 298.445343 263.198747 312.445343 248.198747 312.445343"></polygon>
+                    <polygon id="Triangle-Copy" transform="translate(241.104061, 61.202471) rotate(53.000000) translate(-241.104061, -61.202471) " points="241.104061 54.2024715 248.604061 68.2024715 233.604061 68.2024715"></polygon>
+                    <polygon id="Path-13" transform="translate(246.450549, 19.500000) rotate(-6.000000) translate(-246.450549, -19.500000) " points="242 15 250.901099 24 249.417582 15"></polygon>
+                    <polygon id="Path-13-Copy" transform="translate(8.168405, 188.122545) rotate(72.000000) translate(-8.168405, -188.122545) " points="1.73983375 188.122545 14.5969766 194.622545 12.4541195 181.622545"></polygon>
+                    <polygon id="Triangle" points="5 0 10 9.33333333 0 9.33333333"></polygon>
+                </g>
+                <g id="Group-2-Copy" transform="translate(114.002161, 379.178418) rotate(100.000000) translate(-114.002161, -379.178418) translate(-32.997839, 323.178418)" fill="#FF9E12">
+                    <polygon id="Triangle-Copy-2" transform="translate(287.705227, 106.721747) rotate(-24.000000) translate(-287.705227, -106.721747) " points="287.705227 102.965574 292.134525 110.47792 283.275929 110.47792"></polygon>
+                    <polygon id="Triangle-Copy" transform="translate(160.248148, 55.597624) rotate(53.000000) translate(-160.248148, -55.597624) " points="160.248148 51.8414509 164.677445 59.3537967 155.81885 59.3537967"></polygon>
+                    <polygon id="Path-13" points="166.092422 27.5859795 166.092422 31.0738544 173.685504 34.5617292 172.41999 27.5859795"></polygon>
+                    <polygon id="Path-13-Copy" transform="translate(13.824040, 97.945830) rotate(72.000000) translate(-13.824040, -97.945830) " points="10.0274989 94.4579552 10.0274989 97.9458301 17.6205805 101.433705 16.3550669 94.4579552"></polygon>
+                    <polygon id="Triangle" points="4.42929762 1.5063506e-12 8.85859523 7.51234585 -1.13686838e-11 7.51234585"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

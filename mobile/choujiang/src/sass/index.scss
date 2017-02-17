@@ -1,0 +1,382 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0 auto;
+    width: 10rem;
+    background: url(../images/bg.svg) no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+p,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #000;
+}
+
+label {
+    font-size: .4rem;
+}
+
+input {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #000;
+    width: 3.3rem;
+    height: .667rem;
+    line-height: .667rem;
+    font-size: .36rem;
+}
+
+// 首页
+.page {
+    // display: none;
+    position: absolute;
+    height: 100%;
+    width: 10rem;
+}
+
+.logo {
+    margin: .375rem;
+    width: 1.87rem;
+}
+
+.container {
+    text-align: center;
+}
+
+.title {
+    margin: .4rem auto 0;
+    width: 7.33rem;
+}
+
+.daishu {
+    margin-top: .15rem;
+}
+
+.footer {
+    position: absolute;
+    bottom: .7rem;
+    width: 10rem;
+    text-align: center;
+}
+
+.fly-logo {
+    margin-top: .6rem;
+    width: 2.67rem;
+}
+
+.link {
+    margin-top: .4rem;
+    text-decoration: underline;
+}
+
+.login-btn {
+    display: inline-block;
+    width: 6.13rem;
+    height: .826rem;
+    line-height: .826rem;
+    font-size: .453rem;
+    color: #fff;
+    background: #991b6c;
+    border-radius: .413rem;
+    font-family: FZLTHK--GBK1-0;
+    letter-spacing: 0px;
+    font-weight: 100;
+}
+
+// 活动介绍页面
+.time {
+    margin: .5rem 0;
+    font-size: 0.4rem;
+    text-align: center;
+}
+
+.main {
+    margin-top: .25rem;
+    padding: 0 .773rem;
+    font-size: .4rem;
+}
+
+.small {
+    margin-top: .05rem;
+    padding: 0 .773rem;
+}
+
+.thank {
+    margin-top: .4rem;
+    padding: 0 1.33rem;
+}
+
+// 抽奖页
+.names {
+    box-sizing: border-box;
+    margin-top: 1rem;
+    padding: 0 1.3rem;
+    height: .4rem;
+    line-height: .4rem;
+    font-size: .35rem;
+    width: 10rem;
+    overflow: hidden;
+
+    span {
+        float: left;
+        width: 2rem;
+    }
+
+    ul {
+        float: left;
+        height: .4rem;
+        white-space: nowrap;
+        animation: scrollAnim 150s linear 0.1s infinite;
+    }
+
+    li {
+        display: inline-block;
+        margin-left: 1rem;
+        width: 3rem;
+    }
+}
+
+@keyframes scrollAnim {
+    0% {
+        transform: translateX(0)
+    }
+    100% {
+        transform: translateX(-100%)
+    }
+}
+
+.name-over {
+    float: left;
+    width: 5rem;
+    height: .4rem;
+    overflow: hidden;
+}
+
+.zhuanpan {
+    margin-top: 0.55rem;
+    text-align: center;
+}
+
+.arrow {
+    position: absolute;
+    left: 50%;
+    margin-left: -21.5px;
+    margin-top: -.35rem;
+}
+
+.circle {
+    position: relative;
+    margin: 0 auto;
+    width: 8.5rem;
+    background: url(../images/dot_active.svg) center no-repeat;
+    background-size: 100%;
+    // animation: changeBg 1s linear infinite;
+}
+
+#start-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -1.1rem;
+    margin-top: -1.1rem;
+    display: inline-block;
+    width: 2.2rem;
+    height: 2.2rem;
+    background: url(../images/start.svg) no-repeat;
+    background-size: contain;
+}
+
+#circle {
+    position: relative;
+    top: -.15rem;
+    width: 8.16rem;
+    transform: rotate(0);
+    z-index: -1;
+}
+
+.zhuanpan.active {
+    #start-btn {
+        background-image: url(../images/start_active.svg);
+    }
+
+    #circle {
+        transition: transform 3s ease-in .1s;
+        // transform: rotate(3690deg)
+    }
+}
+
+@keyframes changeBg {
+    0% {
+        background-image: url(../images/dot_active.svg);
+    }
+    50% {
+        background-image: url(../images/dot.svg);
+    }
+    100% {
+        background-image: url(../images/dot_active.svg);
+    }
+}
+
+#info {
+    display: none;
+    margin-top: .5rem;
+    font-size: 0.4rem;
+    color: rgb(246, 255, 55);
+}
+
+#info-small {
+    display: none;
+}
+
+.result {
+    text-align: center;
+
+    .small {
+        margin-top: .25rem;
+    }
+}
+
+#share-btn {
+    display: inline-block;
+    width: 6.13rem;
+    height: .826rem;
+    line-height: .826rem;
+    font-size: .453rem;
+    color: #fff;
+    background: #991b6c;
+    border-radius: .413rem;
+    font-family: FZLTHK--GBK1-0;
+    letter-spacing: 0px;
+    font-weight: 100;
+}
+
+// 登陆页面
+.page-3 {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .69);
+    z-index: 2;
+}
+
+.form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -3.8rem;
+    margin-left: -4rem;
+    box-sizing: border-box;
+    padding: .75rem .4rem .4rem;
+    width: 8rem;
+    font-size: 0;
+    background: #ff506b;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-top: .15rem;
+
+    label {
+        display: inline-block;
+        width: 1.7rem;
+    }
+}
+
+#code-btn:disabled {
+    border-color: gray;
+}
+
+#code-btn {
+    box-sizing: border-box;
+    margin: 0;
+    margin-left: .2rem;
+    padding: 0;
+    width: 1.94rem;
+    height: .75rem;
+    line-height: .666rem;
+    font-size: .31rem;
+    border: 1px solid #000;
+    background-color: transparent;
+    vertical-align: bottom;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#login-info {
+    display: none;
+    margin-top: .25rem;
+    text-align: center;
+    font-family: PingFangSC-Regular;
+    font-size: .35rem;
+    color: #ffffff;
+}
+
+.login-prompt {
+    margin-top: .25rem;
+    font-size: .35rem;
+}
+
+.btn-group {
+    margin-top: .35rem;
+    text-align: center;
+}
+
+#cancle,
+#submit {
+    border: 0;
+    height: .85rem;
+    width: 3rem;
+    font-size: .4rem;
+    color: #fff;
+    border-radius: .5rem;
+}
+
+#cancle {
+    background: #991b6c;
+}
+
+#submit {
+    margin-left: .45rem;
+    background: #aa2727;
+}
+
+// 分享
+.share-cover {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .7);
+  z-index: 11111;
+}
+
+.share-tip {
+  float: right;
+  margin-top: .5rem;
+  margin-right: .7rem;
+  width: 2.5rem;
+  height: 2.6rem;
+}
+
+#page-1,
+#page-2,
+#page-3 {
+    display: none;
+}

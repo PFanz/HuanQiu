@@ -1,0 +1,335 @@
+@import './sprite.scss';
+
+html,
+body,
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  font-family: "MicrosoftYaHei";
+}
+
+.banner {
+  min-width: 1000px;
+  height: 300px;
+  background: url(../images/banner.jpg) top center no-repeat;
+}
+
+.container {
+  margin: 0 auto;
+  padding-bottom: 50px;
+  width: 1000px;
+  overflow: hidden;
+}
+
+.introduction {
+  margin-top:49px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.introduction-icon-container {
+  float: left;
+  width: 159px;
+  height: 150px;
+  border-right: 1px solid rgb(221, 221, 221);
+}
+
+.introduction-icon {
+  float: left;
+  @include sprite($introduction);
+}
+
+.introduction-content {
+  float: left;
+  padding: 0 20px;
+  width: 800px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.introduction-text {
+  margin-top: 30px;
+  line-height: 24px;
+  font-size: 16px;
+  color: #000;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  a {
+    color: #3b6bd9;
+  }
+}
+
+// 一线政策
+.header {
+  overflow: hidden;
+}
+
+$i: 0;
+@each $title in $title-0, $title-1, $title-2, $title-3, $title-4 {
+  .header-title-#{$i} {
+    float: left;
+    margin-top: 40px;
+    @include sprite($title)
+  }
+  $i: $i + 1;
+}
+
+$j: 1;
+@each $num in $num-1, $num-2, $num-3, $num-4, $num-5 {
+  .num-#{$j} {
+    display: inline-block;
+    margin-right: 20px;
+    @if $j == 1 { margin-right: 24px }
+    @include sprite($num);
+  }
+  $j: $j + 1;
+}
+
+.block-container {
+  margin-top: 30px;
+  overflow: hidden;
+}
+
+.block-img-container {
+  width: 248px;
+  height: 186px;
+}
+
+.block-img {
+  width: 100%;
+  height: 100%;
+}
+
+.tabs-container {
+  float: left;
+  margin-left: 40px;
+  width: 440px;
+  height: 185px;
+  font-size: 18px;
+  overflow: hidden;
+}
+
+.tabs-item {
+  height: 37px;
+  line-height: 37px;
+  overflow: hidden;
+
+  &.active {
+    font-weight: bolder;
+
+    .triangle {
+      visibility: visible;
+    }
+  }
+}
+
+.contents-container {
+  float: left;
+  width: 250px;
+}
+
+.content-item {
+  position: relative;
+  padding: 16px 25px;
+  height: 154px;
+  line-height: 22px;
+  font-size: 13px;
+  color: #fff;
+  background: #55549f;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.content-item-more {
+  position: absolute;
+  right: 25px;
+  bottom: 16px;
+  color: #ffea00;
+  background: #55549f;
+}
+
+.triangle {
+  visibility: hidden;
+  float: right;
+  margin-top: 8px;
+  margin-right: -1px;
+  @include sprite($triangle);
+}
+
+.small-banner {
+  margin-top: 40px;
+}
+
+.policy {
+  .block-img-container {
+    float: left;
+  }
+}
+
+.event {
+  .block-img-container {
+    float: right;
+  }
+
+  .tabs-container {
+    margin-left: 0;
+  }
+}
+
+.focus {
+  .block-img-container {
+    float: right;
+  }
+  .tabs-container {
+    float: none;
+    margin-left: 250px;
+    margin-right: 248px;
+    width: 460px;
+  }
+  .tabs-item {
+  }
+  .triangle {
+    float: left;
+    margin-right: 20px;
+    margin-left: -1px;
+    @include sprite-position($triangle-rotate)
+  }
+}
+
+// 人物
+.block-container.hot {
+  margin-left: -20px;
+}
+
+.people {
+  position: relative;
+  float: left;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 320px;
+  height: 240px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.txtBox {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  width: 290px;
+  height: 40px;
+  background-color: rgba(255, 234, 0, .85);
+  overflow: hidden;
+}
+
+.name {
+  height: 26px;
+  font-size: 20px;
+  font-weight: bolder;
+  line-height: 26px;
+  overflow: hidden;
+}
+
+.info {
+  height: 26px;
+  height: 26px;
+  overflow: hidden;
+  font-size: 14px;
+  color: rgb(68, 68, 68);
+  line-height: 26px;
+  overflow: hidden;
+}
+
+.text {
+  max-height: 144px;
+  font-size: 12px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+// 曝光平台
+.block-container.exposure {
+  margin-left: -30px;
+  margin-top: 0;
+}
+
+.exposure-container {
+  float: left;
+  margin-top: 30px;
+  margin-left: 30px;
+  overflow: hidden;
+}
+
+.exposure-img {
+  float: left;
+  width: 248px;
+  height: 186px;
+}
+
+.exposure-content {
+  float: left;
+  margin-left: 20px;
+  width: 200px;
+  height: 186px;
+  overflow: hidden;
+}
+
+.exposure-title {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.exposure-text {
+  position: relative;
+  margin-top: 8px;
+  font-size: 14px;
+  color: rgb(128, 128, 128);
+  line-height: 26px;
+}
+
+.exposure-more {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #3b6bd9;
+}
+
+// 合作伙伴
+.company-header {
+  margin-top: 40px;
+  @include sprite($company);
+}
+
+.block-container.company {
+  padding: 0 125px;
+}
+
+.company-item {
+  float: left;
+  width: 125px;
+  text-align: center;
+
+  a {
+    color: #000;
+  }
+}

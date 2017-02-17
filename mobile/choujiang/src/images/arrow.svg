@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="43px" height="48px" viewBox="0 0 43 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch -->
+    <title>箭头</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M26.0386369,23.0150018 C29.7022058,22.3863403 32.629322,21.3462797 33.8041609,19.9240258 C36.0059718,17.2585247 32.3941831,12.2898171 28.1707317,7.65957447 C24.6806167,3.8333012 21.0694559,0 17.3461151,0 C13.4836306,2.86316542e-16 10.4072264,3.68692294 6.82926829,7.65957447 C2.78438709,12.1506566 -1.41686914,17.133679 0.888069443,19.9240258 C2.19470024,21.5058263 5.32972824,22.5764909 9.18440032,23.1678973 C11.3572905,31.1382284 14.4740053,40 17.5907201,40 C20.7273789,40 23.8640377,31.0244517 26.0386369,23.0150018 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-4" y="-4" width="42.2379455" height="48">
+            <rect x="-3.76759035" y="-4" width="42.2379455" height="48" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="抽奖页" transform="translate(-169.000000, -124.000000)">
+            <g id="抽奖盘" transform="translate(28.000000, 122.000000)">
+                <g id="箭头" transform="translate(140.000000, 0.000000)">
+                    <g transform="translate(5.000000, 6.000000)">
+                        <g id="Combined-Shape" transform="translate(17.351382, 20.000000) scale(1, -1) translate(-17.351382, -20.000000) ">
+                            <use fill="#FFE749" fill-rule="evenodd" xlink:href="#path-1"></use>
+                            <use stroke="#323232" mask="url(#mask-2)" stroke-width="8" xlink:href="#path-1"></use>
+                        </g>
+                        <ellipse id="Oval-2" fill="#E75233" cx="17.9268293" cy="26.3829787" rx="3.41463415" ry="3.40425532"></ellipse>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

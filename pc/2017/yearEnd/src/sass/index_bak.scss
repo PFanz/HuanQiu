@@ -1,0 +1,200 @@
+@import './sprite.scss';
+html,
+body,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+body {
+    background-color: #73bfae;
+}
+
+.clear {
+    clear: both;
+}
+
+
+/*********** 内容区 **********/
+
+.wrap {
+    padding-top: 545px;
+    margin-bottom: 35px;
+    min-width: 970px;
+    background: #73bfae url(../images/bg.jpg) top center no-repeat;
+}
+
+.wrapCon {
+    margin: 0 auto;
+    width: 975px;
+}
+
+
+/*********** 顶部文字 **********/
+
+.txtTopArea {
+    position: relative;
+    font-family: Microsoft YaHei, SimHei;
+    font-size: 14px;
+    text-align: center;
+    p {
+        margin: 12px;
+        color: rgb(5, 60, 32);
+    }
+}
+
+
+/**/
+
+.caiBox {
+    position: relative;
+    font-size: 0;
+    margin-top: 8px;
+    ul {
+        margin-left: -20px;
+    }
+}
+
+.caiBox li {
+    position: relative;
+    float: left;
+    margin-top: 25px;
+    margin-left: 20px;
+    width: 475px;
+    box-shadow: 1px 1px 5px #000;
+    cursor: pointer;
+}
+
+.caiBox img {
+    width: 100%;
+}
+
+.cai-mask {
+    position: absolute;
+    left: -12px;
+    bottom: 50px;
+    display: inline-block;
+    width: 170px;
+    height: 63px;
+}
+
+.caiPic1 {
+    .cai-mask {
+        @include sprite($red);
+    }
+}
+
+.caiPic2 {
+    .cai-mask {
+        @include sprite($pink);
+    }
+}
+
+.caiPic3 {
+    .cai-mask {
+        @include sprite($blue);
+    }
+}
+
+.caiPic4 {
+    .cai-mask {
+        @include sprite($white);
+    }
+}
+
+.caiPic5 {
+    .cai-mask {
+        @include sprite($orange);
+    }
+}
+
+.caiPic6 {
+    .cai-mask {
+        @include sprite($purple);
+    }
+}
+
+.caiPic7 {
+    .cai-mask {
+        @include sprite($green);
+    }
+}
+
+.caiPic8 {
+    .cai-mask {
+        @include sprite($color);
+    }
+}
+
+.caiPic1 img {
+    height: 525px;
+    cursor: pointer;
+}
+
+.caiPic2 img {
+    height: 255px;
+}
+
+li.caiPic3,
+li.caiPic4,
+li.caiPic5,
+li.caiPic7 {
+    margin-top: 15px;
+}
+
+.caiPic3 img {
+    height: 255px;
+}
+
+.caiPic4 img {
+    height: 265px;
+}
+
+.caiPic5 img {
+    height: 265px;
+}
+
+li.caiPic6 {
+    float: right;
+}
+
+.caiPic6 img {
+    height: 255px;
+}
+
+li.caiPic7 {
+    float: right;
+}
+
+.caiPic7 img {
+    height: 255px;
+}
+
+li.caiPic8 {
+    float: right;
+}
+
+.caiPic8 img {
+    height: 525px;
+}
+
+.footer {
+    padding: 15px 0;
+    color: #ccc;
+    text-align: center;
+    background-color: #666;
+    font-size: 12px;
+    font-family: "SimSun";
+}
+
+.footer a {
+    color: #aeaeae;
+    margin: 0 3px;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
