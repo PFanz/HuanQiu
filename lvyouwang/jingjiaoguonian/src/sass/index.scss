@@ -1,0 +1,190 @@
+/*头图背景*/
+
+body {
+    background: #ffb485;
+}
+
+.bannerbg {
+    width: 100%;
+    min-width: 980px;
+    height: 594px;
+    background: url(../images/banner.jpg) center center no-repeat;
+}
+
+
+/*日期颜色*/
+
+.banner .data p {
+    color: #fff;
+    background: #ffa86d;
+    font-family: "微软雅黑";
+    padding: 0px 10px;
+}
+
+
+/*导读颜色*/
+
+.lead {
+    width: 980px;
+    background: #6b54fc;
+    margin: 0 auto;
+    margin-top: 38px;
+}
+
+.lead p {
+    color: #fff;
+    padding: 15px 25px;
+    font-size: 14px;
+    line-height: 28px;
+    font-family: "微软雅黑";
+}
+
+
+/*模块颜色*/
+
+.weekly_tit01 {
+    width: 143px;
+    height: 360px;
+    background: #5d48da;
+    padding: 32px 18px 0px;
+    float: left;
+}
+
+.weekly_tit02 {
+    width: 143px;
+    height: 360px;
+    background: #25b756;
+    padding: 32px 18px 0px;
+    float: left;
+}
+
+.weekly_tit03 {
+    width: 143px;
+    height: 360px;
+    background: #2983f3;
+    padding: 32px 18px 0px;
+    float: left;
+}
+
+
+/*公用*/
+
+.banner {
+    width: 980px;
+    height: 585px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.banner .logo {
+    width: 155px;
+    height: 70px;
+    position: absolute;
+    left: 1px;
+    top: 20px;
+}
+
+.banner .data {
+    height: 30px;
+    position: absolute;
+    right: 0px;
+    top: 20px;
+}
+
+.weekly {
+    width: 980px;
+    height: 785px;
+    margin: 45px auto;
+}
+
+.weekly_Cn01 {
+    width: 980px;
+    height: 392px;
+}
+
+.weekly_Cn01 p {
+    font-size: 18px;
+    color: #fff;
+    font-family: "微软雅黑";
+    line-height: 30px;
+}
+
+.weekly_Cn01 h2 {
+    font: 100 32px "微软雅黑";
+    color: #fff;
+    line-height: 32px;
+    margin-top: 20px;
+}
+
+.weekly_img01 {
+    width: 511px;
+    height: 392px;
+    float: left;
+}
+
+.weekly_img02 {
+    width: 290px;
+    height: 392px;
+    float: left;
+}
+
+.weekly_img03 {
+    width: 410px;
+    height: 392px;
+    float: left;
+}
+
+.weekly_Cn02 {
+    width: 980px;
+    height: 392px;
+}
+
+.weekly_Cn02 p {
+    font-size: 14px;
+    color: #333;
+    line-height: 28px;
+    text-indent: 2em;
+}
+
+.weekly_Cn02 h2 {
+    font-size: 14px;
+    position: absolute;
+    bottom: 25px;
+    right: 20px;
+}
+
+.weekly_Cn02 h2 a {
+    color: #ff7f00;
+}
+
+.weekly_Cn02 h2 a:hover {
+    color: #c33;
+}
+
+.weekly_txt {
+    width: 240px;
+    height: 365px;
+    background: #fff;
+    padding: 27px 20px 0px;
+    float: left;
+    font-family: "宋体";
+    position: relative;
+}
+
+.bg-color-0 {
+    padding: 1px 0;
+    height: 997px;
+    background: url(../images/bg_color_0.png) repeat-x;
+}
+
+.bg-color-1 {
+    padding: 1px 0;
+    height: 877px;
+    background: url(../images/bg_color_1.png) repeat-x;
+}
+
+.bg-color-2 {
+    padding: 1px 0;
+    height: 873px;
+    background: url(../images/bg_color_2.jpg) repeat-x;
+}

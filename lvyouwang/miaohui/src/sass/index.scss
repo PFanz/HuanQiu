@@ -1,0 +1,130 @@
+body {
+    min-width: 1004px;
+    background: #b90000;
+}
+
+.banner {
+    width: 100%;
+    min-width: 1000px;
+    height: 550px;
+    background: #b90000 url(../images/banner.jpg) center no-repeat;
+}
+
+.warp {
+    margin: 0 auto;
+    padding-bottom: 120px;
+    width: 1000px;
+}
+
+.title {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.info {
+    padding: 20px 49px;
+    font-family: "FZLTHK";
+    color: rgb(254, 250, 180);
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+}
+
+// 轮播图
+.main-block {
+    position: relative;
+    margin-top: 10px;
+    width: 998px;
+    background: #a40000;
+    border: 1px solid rgb(253, 228, 111);
+}
+
+.lunbo-page {
+    margin-top: 20px;
+    position: relative;
+    width: 998px;
+    text-align: center;
+}
+
+.lunbo-link {
+    position: relative;
+    display: inline-block;
+    font-size: 0;
+    line-height: 500px;
+}
+
+.lunbo-image {
+    display: inline-block;
+    width: 900px;
+    height: 500px;
+    vertical-align: middle;
+}
+
+.lunbo-title {
+    position: absolute;
+    left: 0px;
+    bottom: 45px;
+    padding: 25px 35px;
+    font-size: 26px;
+    font-family: "FZLTHK";
+    color: rgb(253, 228, 111);
+    line-height: 30px;
+    background: rgba(0, 0, 0, .6);
+}
+
+.focus-arrow-pre {
+    position: absolute;
+    margin-top: -30px;
+    width: 38px;
+    height: 60px;
+    top: 50%;
+    left: 0;
+    background: url(../images/pre_btn.png) no-repeat;
+}
+
+.focus-arrow-next {
+    position: absolute;
+    margin-top: -30px;
+    width: 38px;
+    height: 60px;
+    top: 50%;
+    right: 0;
+    background: url(../images/next_btn.png) no-repeat;
+}
+
+// 四图
+.block {
+    float: left;
+    margin-top: 30px;
+}
+
+.content {
+    width: 488px;
+    height: 292px;
+    line-height: 292px;
+    text-align: center;
+    background: #a40000;
+    border: 1px solid rgb(229, 204, 109);
+}
+
+.block-title {
+    margin: 0;
+    padding: 20px 0;
+    font-family: "FZLTHK";
+    color: rgb(253, 228, 111);
+    font-size: 20px;
+    text-align: center;
+}
+
+.block.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.headbg,
+.foot {
+    min-width: 1000px;
+}

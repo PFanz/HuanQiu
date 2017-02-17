@@ -1,0 +1,210 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
+body {
+  min-width: 1000px;
+  background: #ffe0e5 url(../images/bg.png) top center;
+}
+
+.banner {
+  margin-bottom: -900px;
+  height: 1448px;
+  background: url(../images/banner.png) top center no-repeat;
+}
+
+.banner-bg {
+  height: 1448px;
+  background: url(../images/bg.png) top center;
+}
+
+.header {
+  margin-bottom: 20px;
+  height: 113px;
+  background: url(../images/header.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+.block {
+  margin: 0 auto;
+  height: 656px;
+  width: 987px;
+  background: url(../images/lace.png) no-repeat;
+  border: 1px solid transparent;
+}
+
+.block-content {
+  margin: 50px auto;
+  padding: 20px 45px;
+  width: 790px;
+  height: 510px;
+  background: #fff;
+}
+
+div.main-img {
+  float: left;
+  // margin-top: 20px;
+  // margin-left: 45px;
+  width: 325px;
+  height: 515px;
+  border: 1px solid #bdc367;
+}
+
+img.main-img {
+  margin: 18px 15px;
+  width: 295px;
+  height: 480px;
+}
+
+.text-content {
+  width: 435px;
+  overflow: hidden;
+}
+
+.block-title {
+  width: 410px;
+  font-size: 18px;
+}
+
+.block-text {
+  margin-top: 20px;
+  // width: 410px;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.more-btn {
+  margin-top: 30px;
+  display: inline-block;
+  width: 85px;
+  height: 30px;
+  line-height: 30px;
+  background: #fd5183;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+}
+
+img.sub-img {
+  float: left;
+  // margin: 52px 20px 0 0;
+  margin-top: 52px;
+  width: 208px;
+  height: 275px;
+}
+
+.sub-img+.sub-img {
+  margin-left: 20px;
+}
+
+div.block-header {
+  margin: 45px auto;
+  height: 64px;
+  background: url(../images/block_header.png) center no-repeat;
+}
+
+p.block-header {
+  text-align: center;
+  height: 64px;
+  line-height: 64px;
+  color: #fff;
+  font-size: 30px;
+  font-family: "Lantinghei SC";
+}
+
+img.half {
+  width: 282px;
+  height: 206px;
+}
+
+.half-top {
+  margin-top: 35px;
+  overflow: hidden;
+
+  &:first-child {
+    margin-top: 28px;
+  }
+}
+
+.half-text-content {
+  padding: 20px;
+  width: 188px;
+  height: 166px;
+  overflow: hidden;
+  background: #fac1c9;
+}
+
+.half-title {
+  font-size: 18px;
+}
+
+.half-text {
+  margin-top: 15px;
+  height: 100px;
+  line-height: 20px;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.img-top-content {
+  padding: 20px;
+  width: 212px;
+  background: #fac1c9;
+}
+
+div.img-top {
+  margin-top: 28px;
+  // margin-right: 43px;
+  font-size: 0;
+
+  .half-text {
+    height: 60px;
+  }
+}
+
+img.img-top {
+  width: 252px;
+  height: 280px;
+}
+
+.nav {
+  position: fixed;
+  top: 130px;
+  left: 50%;
+  margin-left: 500px;
+  width: 190px;
+  background: #fff;
+  box-shadow: 0px 5px 5px 0px rgba(10, 3, 5, 0.2);
+  overflow: hidden;
+}
+
+.nav-item {
+  float: left;
+  padding: 20px;
+  width: 150px;
+  height: 45px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  border-top: 2px dotted #999;
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}

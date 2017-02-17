@@ -1,0 +1,277 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+.banner {
+    position: relative;
+    width: 100%;
+    min-width: 1200px;
+    height: 723px;
+    background: url(../images/banner_1.jpg) center top no-repeat;
+}
+
+.foot {
+    min-width: 1200px;
+    border-top: 1px #9d8856 solid;
+    background: #9d8856;
+}
+
+.foot p {
+    color: #fff;
+}
+
+.foot p span {
+    color: #fff;
+}
+
+.foot p a {
+    color: #fff;
+}
+
+.foot p a:hover {
+    color: #000;
+}
+
+.navbg {
+    position: absolute;
+    top: 455px;
+    width: 100%;
+
+    a {
+      float: left;
+      width: 25%;
+      height: 200px;
+      font-size: 0;
+      text-indent: -999px;
+    }
+}
+
+// .nav li {
+//     float: left;
+// }
+
+// .nav li a {
+//     width: 136px;
+//     height: 42px;
+//     display: block;
+//     font: bold 18px "微软雅黑";
+//     text-align: center;
+//     line-height: 34px;
+//     text-align: center;
+//     background: url(../images/nav02.png) center top no-repeat;
+//     color: #631f1e;
+// }
+
+// .nav li a:hover {
+//     color: #fff;
+//     background: url(../images/nav01.png) center top no-repeat;
+// }
+
+// .nav li a.a01 {
+//     width: 136px;
+//     height: 34px;
+//     display: block;
+//     font: bold 18px "微软雅黑";
+//     text-align: center;
+//     line-height: 34px;
+//     text-align: center;
+//     background: url(../images/nav03.png) center top no-repeat;
+//     padding-top: 8px;
+//     color: #631f1e;
+// }
+
+// .nav li a.a01:hover {
+//     color: #fff;
+//     background: url(../images/nav04.png) center top no-repeat;
+// }
+
+// .nav li.li01 {
+//     margin-left: 315px;
+// }
+
+// .nav li.li02 {
+//     margin-left: 126px;
+//     margin-right: 300px;
+// }
+
+// .nav li.li03 {
+//     margin-left: 232px;
+//     margin-top: 90px;
+// }
+
+// .nav li.li04 {
+//     margin-left: 185px;
+//     margin-top: 90px;
+// }
+
+// .nav li.li05 {
+//     margin-left: 177px;
+//     margin-top: 92px;
+// }
+
+.warp {
+    width: 100%;
+    min-width: 1200px;
+    height: auto!important;
+    min-height: 400px;
+    height: 400px;
+    overflow: hidden;
+    _overflow: visible;
+    font-family: "微软雅黑";
+    padding-bottom: 60px;
+    background: #b8a370;
+}
+
+.warp h2 {
+    width: 240px;
+    height: 226px;
+    display: block;
+}
+
+.warp h3 {
+    color: #fff;
+    font: bold 36px "微软雅黑";
+    line-height: 56px;
+}
+
+.warp h4 {
+    color: #333;
+    font: 100 24px "微软雅黑";
+    line-height: 44px;
+}
+
+.warp h5 {
+    color: #333;
+    font: 100 18px "微软雅黑";
+    line-height: 30px;
+}
+
+.warp p {
+    color: #333;
+}
+
+.warp .text {
+    width: 620px;
+    height: 282px;
+    padding: 30px 50px 0px;
+    float: right;
+}
+
+.warp .text a {
+    width: 132px;
+    height: 32px;
+    display: block;
+    background: #fff;
+    text-align: center;
+    line-height: 32px;
+    margin-top: 25px;
+}
+
+.warp .text a:hover {
+    text-decoration: underline;
+}
+
+.index01 {
+    width: 1200px;
+    height: 538px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.index01 .fl {
+    width: 480px;
+    height: 538px;
+}
+
+.index01 .fr {
+    width: 720px;
+    height: 538px;
+}
+
+.index02 {
+    width: 1200px;
+    height: 538px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.index02 h2 {
+    float: right;
+}
+
+.index02 .fr {
+    width: 480px;
+    height: 538px;
+}
+
+.index02 .fl {
+    width: 720px;
+    height: 538px;
+}
+
+.js {
+    width: 480px;
+    height: 538px;
+    position: relative;
+}
+
+.js2 {
+    width: 480px;
+    height: 538px;
+    position: relative;
+}
+
+.js3 {
+    width: 480px;
+    height: 538px;
+    position: relative;
+}
+
+.js4 {
+    width: 480px;
+    height: 538px;
+    position: relative;
+}
+
+.js .jsNav,
+.js3 .jsNav {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    width: 90px;
+    height: 24px;
+}
+
+.js2 .jsNav,
+.js4 .jsNav {
+    position: absolute;
+    right: 0px;
+    top: 15px;
+    width: 90px;
+    height: 24px;
+}
+
+.jsNav a {
+    width: 24px;
+    float: left;
+    height: 24px;
+    background: #0999ef;
+    margin-left: 9px;
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    border-radius: 12px;
+    text-indent: -9999px;
+}
+
+.jsNav a.prevBtn {
+    display: none;
+}
+
+.jsNav a.nextBtn {
+    display: none;
+}
+
+.jsNav a.imgSelected {
+    background: #e7572d;
+}
