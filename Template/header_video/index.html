@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>header video</title>
+  <style type="text/css">
+    html,body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <style type="text/css">
+    .header-video {
+      min-width: 1000px;
+      background: url(http://himg2.huanqiu.com/statics/www/hqspecial/dist/talk-car/images/bg-head.png) top center no-repeat;
+    }
+    .video-container {
+      margin: 0 auto;
+      padding-top: 206px;
+      width: 1000px;
+    }
+    .video-title {
+      padding-left: 26px;
+      height: 56px;
+      line-height: 56px;
+      font-size: 32px;
+      color: #fff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- 内容区 -->
+  <div class="header-video">
+    <div class="video-container">
+      <div class="video-title">视频标题</div>
+      <div class="video-box">
+        <!-- 视频代码 -->
+        <script type="text/javascript" charset="utf-8" src="http://yuntv.letv.com/player/vod/bcloud.js"></script>
+        <script type="text/javascript">
+          var player = new CloudVodPlayer();
+          player.init({
+            "uu": "80146db3b5",
+            "vu": "88c4a1c477",
+            "auto_play": 1,
+            "gpcflag": 1,
+            "width": 1000,
+            "height": 564,
+            "lang": "zh_CN"
+          });
+        </script>
+        <!-- /视频代码 -->
+      </div>
+    </div>
+  </div>
+  <!-- /内容区 -->
+</body>
+</html>
