@@ -1,5 +1,6 @@
-// 手动列表 公司接口
-// 首页自动列表 优路接口    频道页自动列表 公司接口
+// 用于测试
+// 接口使用公司接口
+// 广告位测试广告位
 // 依赖zepto
 (function () {
   // 依赖
@@ -7,7 +8,7 @@
   const RefreshControl = require('./mRefreshControl.js')    // 下拉刷新
   const RefreshScroll = require('./RefreshScroll.js')       // 滚动条自动列表
   const Util = require('./Util.js')                         // 多种工具
-  const Generate = require('./generateHtml.js')             // 用于生成html代码
+  const Generate = require('./generateHtml_test.js')             // 用于生成html代码
   const Insert = require('./insertHtml.js')                 // 页面中插入html 用于插入广告
   // 配置项
   const lunboBlockID = 'lunbo'                              // 轮播图ID
@@ -34,12 +35,12 @@
     videoChannelFlag: false,                                  // 是否视频频道
     times: 0,                                                 // 请求次数
     date: '',                                                 // 最后一条新闻时间
-    url: 'http://w.huanqiu.com/apps/huanqiu/mindex.php', // 首页接口
+    url: 'http://w.huanqiu.com/apps/huanqiu/mindex_foo.php', // 首页接口
     autoUrl: `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`, // 首页自动接口
     loading: false,                                           // 是否正在加载
     lazyFlag: false,                                          // 简易懒加载标志
     // apiFlag: false,                                           // true: 公司接口  false: 优路接口
-    apiCount: 4,                                              // api出错计数，>=3: 使用公司接口
+    apiCount: 0,                                              // api出错计数，>=3: 使用公司接口
     swiperData: '',                                           // 轮播图数据
     positionData: '',                                         // 人工推荐数据
     wechatData: '',                                           // 微信热点数据
@@ -138,10 +139,10 @@
       this.date = ''
       this.count = 0
       if (this.homeFlag) {
-        this.url = 'http://w.huanqiu.com/apps/huanqiu/mindex.php'
+        this.url = 'http://w.huanqiu.com/apps/huanqiu/mindex_foo.php'
         this.autoUrl = `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`
       } else {
-        this.url = `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
+        this.url = `http://w.huanqiu.com/apps/huanqiu/category_foo.php?cname=${this.channel}`
         this.autoUrl = `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
       }
       // 折叠更多频道显示、修改导航样式等等频道相关UI设置

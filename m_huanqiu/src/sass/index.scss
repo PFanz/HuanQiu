@@ -686,6 +686,7 @@ footer {
 
 // 视频新闻
 .news-video {
+  font-size: 0;
   .news-title {
     height: auto;
   }
@@ -694,6 +695,7 @@ footer {
 .video-img {
   position: relative;
   margin-top: .25rem;
+  height: 5.3rem;
 
   img {
     width: 100%;

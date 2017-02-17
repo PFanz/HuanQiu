@@ -179,11 +179,19 @@
     },
     // 初始化 所有链接，添加优路回调方法
     initLink: function () {
-      $('#content').on('click', '.link-flag', function (event) {
-        let id = $(this).attr('data-id')
-        let parameter = $(this).attr('data-parameter')
+      $('#content').on('click', '.link-flag', (event) => {
+        let target = event.target || event.srcElement
+        let $trigger = $(target).parents('.link-flag')
+        let id = $trigger.attr('data-id')
+        let parameter = $trigger.attr('data-parameter')
         Util.setCookie('bodyTop', window.scrollY, 1)
         if (id === 'undefined' || parameter === 'undefined') {
+          if ($trigger.parents('#interesting-news').length > 0) {
+            $.ajax({
+              type: 'GET',
+              url: `http://w.huanqiu.com/apps/huanqiu/addhit.php?chan=index`
+            })
+          }
           return
         }
         $.ajax({
@@ -214,7 +222,11 @@
       this.manualAjax
         .done(data => {
           // 存储缓存
-          sessionStorage.setItem(this.channel + 'manualData', JSON.stringify(data))
+          try {
+            sessionStorage.setItem(this.channel + 'manualData', JSON.stringify(data))
+          } catch (err) {
+
+          }
           setTimeout(() => {
             this.refreshControl.hidden()
           }, 1500)
@@ -246,15 +258,14 @@
         this.times = 0
         this.date = ''
         this.count = 0
-        sessionStorage.clear()
-        this.getManual()
+        $content[0].innerHTML = ''
+        this.setManual({
+          swiper: this.swiperData,
+          position: this.positionData
+        })
+        this.getAuto()
           .done((data, status, xhr) => {
-            $content[0].innerHTML = ''
-            this.setManual(data)
-            this.getAuto()
-              .done(data => {
-                this.setAuto(data)
-              })
+            this.setAuto(data)
           })
       }
       // 首页样式
@@ -291,6 +302,23 @@
             }
           }
           recommendLunbo.init()
+          // 重置一个高度
+          // setTimeout(() => {
+          //   $recomContent.height($recomContent.find('li').eq(0).height())
+          // }, 600)
+          getData = () => {
+            this.times = 0
+            this.date = ''
+            this.count = 0
+            $('#' + autoBlockID).remove()
+            sessionStorage.clear()
+            recommendLunbo.setIndex(1)
+            recommendLunbo.play()
+            this.getAuto()
+              .done(data => {
+                this.setAuto(data)
+              })
+          }
         }
       // 图集页样式
       } else if (this.picChannelFlag) {
@@ -326,8 +354,10 @@
       if (this.homeFlag) {
         this.autoUrl = this.apiCount >= 3 ? `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=index&times=${this.times}&date=${this.date}`
                                         : `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`
+         // _czc.push(['_trackPageview',`/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`, '//uluai.com.cn/rcmd/'])
       } else {
         this.autoUrl = `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
+         // _czc.push(['_trackPageview',`/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`, '//w.huanqiu.com/apps/'])
       }
       this.autoData = []
       if (!this.loading) {
@@ -358,7 +388,6 @@
               if (this.homeFlag) {
                 this.apiCount ++
               }
-              console.error(err)
             } finally {
               this.loading = false
             }
