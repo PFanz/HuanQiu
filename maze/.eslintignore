@@ -1,0 +1,4 @@
+*.html
+src/libs/*.js
+node_modules/
+test/*.js
