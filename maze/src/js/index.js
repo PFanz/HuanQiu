@@ -34,3 +34,5 @@ for (let i = 1, len = route.length; i < len; i++) {
     Person.createPerson(ctx, route[i])
   }, i * 50)
 }
+
+window.Person = Person

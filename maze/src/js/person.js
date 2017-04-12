@@ -3,44 +3,67 @@ import Map from './map.js'
 
 const Person = {
   route: [],
-  crossRoute: [],
-  // isRoute: (site) => {
-  //   return Util.arrInArr(site, Person.route)
-  // },
-  isCrossSite: (site) => {
-    return Util.arrInArr(site, Person.crossSites)
+
+  crossRoute: [{
+    site: [],
+    disable: [[]]
+  }],
+
+  isRoute: (site) => {
+    return Util.arrInArr(site, Person.route)
   },
+
+  // isCrossSite: (site) => {
+  //   return Util.arrInArr(site, Person.crossSites)
+  // },
+
   isCompleted: (site) => {
+    if (!site) {
+      return false
+    }
     return site[0] === Map.width / Map.stoneSize - 1
   },
-  findNext: (site, preSite = []) => {
+
+  findNext: (site, disable = []) => {
     let nextRange = []
     Map.route.forEach(item => {
-      if ((preSite[0] !== item[0] || preSite[1] !== item[1]) && (
-            (Math.abs(site[0] - item[0]) === 1 && site[1] === item[1]) ||
-            (Math.abs(site[1] - item[1]) === 1 && site[0] === item[0]))) {
+      if ((site[0] - item[0] === -1 && site[1] === item[1]) ||
+            (Math.abs(site[1] - item[1]) === 1 && site[0] === item[0])) {
         nextRange.push(item)
       }
     })
+    nextRange = nextRange.filter(item => {
+      return !Util.arrInArr(item, disable)
+    })
     return nextRange
   },
-  findRoute: (site) => {
+
+  findRoute: (site, disable = []) => {
+    if (Person.isRoute(site)) {
+      return
+    }
     let route = []
-    let preSite = site
-    let nextRange = Person.findNext(site)
+    // let preSite = site
+    let nextRange = Person.findNext(site, disable)
+    // nextRange = nextRange.filter(item => {
+    //   return item[0] !== srcSite[0] || item[1] !== srcSite[1]
+    // })
     while (nextRange.length === 1) {
-      preSite = site
+      let disable = []
+      disable.push([site[0], site[1]])
       site = nextRange[0]
       route.push(site)
-      nextRange = Person.findNext(site, preSite)
-      console.log(nextRange)
+      nextRange = Person.findNext(site, disable)
     }
     // 没有路可以走
     // 返回之前的岔路处
     if (nextRange.length === 0) {
+      // 已完成，结束
+      if (Person.isCompleted(Person.route[Person.route.length - 1])) {
+        return
+      }
       // 退回之前
       Person.route.push(...route)
-      // 已完成，结束
       if (Person.isCompleted(site)) {
         return
       }
@@ -48,11 +71,14 @@ const Person = {
     } else {
       // 岔路口
       Person.route.push(...route)
+      let disable = []
+      disable.push(Person.route[Person.route.length - 1])
       nextRange.forEach(item => {
-        Person.findRoute(item)
+        Person.findRoute(item, disable)
       })
     }
   },
+
   createPerson: (ctx, site) => {
     ctx.save()
     ctx.fillStyle = 'green'
@@ -61,31 +87,6 @@ const Person = {
     ctx.fill()
     ctx.restore()
   }
-  // findRoute: (route) => {
-  //   // 对route进行排序
-  //   route.sort((pre, next) => {
-  //     return pre[0] > next[0]
-  //   })
-  //   // route[0]为第一个点
-  //   let site = route[0]
-  //   Person.route.push(site)
-  //   // site周围的点
-  //   let siteRange = Map.findRange(site)
-  //   let routeRange = Person.findRange(siteRange)
-
-  //   if (routeRange.length === 1) {
-  //     Person.route.push(routeRange[0])
-  //   }
-  // },
-  // findRange: (siteRange) => {
-  //   let range = []
-  //   siteRange.forEach(item => {
-  //     if (!Map.isOver(item) && Map.isRoute(item) && !Person.isRoute(item)) {
-  //       range.push(item)
-  //     }
-  //   })
-  //   return range
-  // }
 }
 
 export default Person
