@@ -1,0 +1,708 @@
+<aside class="sidebar bg-lighter padder clearfix" style="width: 260px;">
+    <div class="fn-Searchkey-Stats" style="margin-top: 100px; width: 265px;">
+        <section class="panel" style="margin-bottom: 0px; border-bottom: 0px; border-right: 0px;">
+            <header class="panel-heading text-right">
+                <ul class="nav nav-tabs pull-left">
+                    <li class="active">
+                        <a href="/#npt" data-toggle="tab"><i class="iconfont icon-newspaper text-default"></i>&nbsp;媒体分布</a>
+                    </li>
+                    <li class="">
+                        <a href="/#npd" data-toggle="tab"><i class="fa fa-clock-o fa-lg text-default"></i>&nbsp;时间刻度</a>
+                    </li>
+                    
+                </ul>
+                <button type="button" class="close" onclick="javascript:$('.fn-Searchkey-Stats').css('left', '-' + $('.fn-Searchkey-Stats').width() + 'px');" style="width: 40px; height: 40px;"><i class="fa fa-times text-danger"></i></button>
+            </header>
+
+            <div id="statInfoPanel" class="panel-body" style="height: 689px; overflow: auto;">
+                <div class="tab-content">
+                    <div class="tab-pane fade active in" id="npt">
+                        <span class="text-default text-center" style="width: 100%;">数据加载中...</span>
+                    </div>
+                    <div class="tab-pane fade" id="npd">
+                        <span class="text-default text-center" style="width: 100%;">数据加载中...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="fn-tag-left"></div>
+    <div class="fn-areatag-left"></div>
+    <div style="padding-top: 11px">
+        <h5><strong><i class="fa fa-search">&nbsp;<b style="font-family: 微软雅黑;">使用以下条件来搜索新闻</b></i></strong></h5>
+    </div>
+    <div style="border-top: 1px solid #e0e4e8; margin-left: -15px"></div>
+    <div id="leftnav" style="height: 100%; padding-top: 95px; margin-top: -95px; box-sizing: content-box">
+        <div onscroll="getAbsPoint()" style="height: 100%; padding-right: 15px; padding-top: 10px; margin-right: -15px; overflow: auto">
+            <div class="panel-group m-b" id="accordion">
+                
+                <input type="text" id="txtAllKey" name="txtAllKey" placeholder="包含全部关键词" class="input-sm form-control" ng-model="searchOptionItem.allKey" required />
+                <br>
+                
+                <input type="text" id="txtAnyKey" name="txtAnyKey" placeholder="包含任意关键词" class="input-sm form-control" ng-model="searchOptionItem.anyKey" />
+                <br>
+                
+                <input type="text" name="txtExceptKey" placeholder="不包含的关键词" class="input-sm form-control" ng-model="searchOptionItem.exceptKey" />
+                <br>
+                
+                <input type="text" name="txtOriginSource" placeholder="原发布来源" class="input-sm form-control" ng-model="searchOptionItem.originSource" />
+                <div class="line line-dashed"></div>
+                <br>
+                <div>
+                    <span id="daterange" ng-if=" searchOptionItem.startDate=='' " class="label bg-default" style="cursor: pointer;" date-range-picker>选择日期</span>
+                    <span id="daterange" ng-if=" searchOptionItem.startDate!='' " class="label bg-default" style="cursor: pointer;" date-range-picker="">{{searchOptionItem.startDate}} 至 {{searchOptionItem.endDate}}&nbsp;&nbsp;<i class="fa fa-times-circle fa-lg text-info" ng-click='$event.stopPropagation();' default-date-range></i></span>
+                </div>
+                <br>
+                <div class="line line-dashed"></div>
+                <div>
+                    <input type="radio" id="ra" name="a" ng-model="searchOptionItem.searchRange" value="1" checked="{{searchOptionItem.searchRange=='1'}}" />&nbsp;
+                        <label for="ra">
+                            <span><span></span></span>全文
+                        </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" id="rb" name="a" ng-model="searchOptionItem.searchRange" value="2" checked="{{searchOptionItem.searchRange!='1'}}" />&nbsp;
+                        <label for="rb">
+                            <span><span></span></span>标题
+                        </label>
+                </div>
+                <div class="line line-dashed"></div>
+                <div style="display: none;">
+                    <input type="radio" id="rs1" name="c" ng-model="searchOptionItem.searchResultType" value="0" checked="{{searchOptionItem.searchResultType=='0'}}" />&nbsp;
+                        <label for="rs1">
+                            <span><span></span></span>精准检索
+                        </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" id="rs2" name="c" ng-model="searchOptionItem.searchResultType" value="100" checked="{{searchOptionItem.searchResultType!='0'}}" />&nbsp;
+                        <label for="rs2">
+                            <span><span></span></span>模糊检索
+                        </label>
+                </div>
+                <!--<div class="line line-dashed"></div>-->
+
+                <div>
+                    <label class="text-info">
+                        地域
+                        <span class="text-default" style="font-weight: 300">（默认全部地区）</span>
+                    </label>
+                    <div class="fn-z-advchoosedcontent m-b" ng-click="showProvinceConten($event)">
+                        <div class="fn-z-advaddcity">点击选择城市</div>
+                        <ul class="fn-z-advchoosedresult">
+                            <li data-provincename="{{item.provincename}}" data-cityid="{{item.cityid}}" ng-style="{'margin-top': '10px'}" ng-repeat="item in citychoosed">
+                                <div class="btn btn-default btn-xs">
+                                    <span>{{item.cityname}}</span>&nbsp;
+                                    <span class="fn-z-advreducecity" ng-click="reducecity($event)" data-cityname="{{item.cityname}}" data-provincename="{{item.provincename}}">x</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="position: relative" id="displaymodal">
+                    <label class="text-info" style="cursor: pointer">
+                        媒体
+                     <span class="text-default" style="font-weight: 300">（默认全部媒体）</span>
+                    </label>
+                    <button type="button" class="btn btn-default btn-xs fn-clear-choosemedia" onclick="ClearMedia('.fn-result-chooseresults','.fn-result-choosedmedia')">清空选项</button>
+                    <div class="m-t-mini fn-clickmediablock" onclick="ShowMediaBlock('.fn-result-mediablock')" ng-click="stopBubbling($event)">
+                        <ul class="fn-result-chooseresults" style="height: auto; overflow: auto">
+                        </ul>
+                        <div class="text-default text-center fn-addmediabutton">
+                            <div style="font-size: 18px">点击选择媒体</div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <label for="rall">
+                        <input type="radio" id="rall" name="b" ng-model="searchOptionItem.searchType" value="" checked="{{searchOptionItem.searchType==''}}" />&nbsp;全部
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="rbz">
+                            <input type="radio" id="rbz" name="b" ng-model="searchOptionItem.searchType" value="news" checked="{{searchOptionItem.searchType=='news'}}" />&nbsp;报纸
+                        </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="rwz">
+                            <input type="radio" id="rwz" name="b" ng-model="searchOptionItem.searchType" value="website" checked="{{searchOptionItem.searchType=='website'}}" />&nbsp;网站
+                        </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="rwb">
+                            <input type="radio" id="rwb" name="b" ng-model="searchOptionItem.searchType" value="weibo" checked="{{searchOptionItem.searchType=='weibo'}}" />&nbsp;微博
+                        </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="rwx">
+                            <input type="radio" id="rwx" name="b" ng-model="searchOptionItem.searchType" value="weixin" checked="{{searchOptionItem.searchType=='weixin'}}" />&nbsp;微信
+                        </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="rlt">
+                            <input type="radio" id="rlt" name="b" ng-model="searchOptionItem.searchType" value="webbbs" checked="{{searchOptionItem.searchType=='webbbs'}}" />&nbsp;论坛
+                        </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="rapp">
+                            <input type="radio" id="rapp" name="b" ng-model="searchOptionItem.searchType" value="webapp" checked="{{searchOptionItem.searchType=='webapp'}}" />&nbsp;APP
+                        </label>
+                </div>
+                <div class="line line-dashed"></div>
+                <div>
+                    <label for="ryzall">
+                        <input type="radio" id="ryzall" name="d" ng-model="searchOptionItem.original" value="2" checked="{{searchOptionItem.original=='2'}}" />&nbsp;全部
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="ryc">
+                            <input type="radio" id="ryc" name="d" ng-model="searchOptionItem.original" value="1" checked="{{searchOptionItem.original=='1'}}" />&nbsp;原创
+                        </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="rzz">
+                            <input type="radio" id="rzz" name="d" ng-model="searchOptionItem.original" value="0" checked="{{searchOptionItem.original=='0'}}" />&nbsp;转载
+                        </label>
+                </div>
+                <div class="line line-dashed"></div>
+                <div>
+                    <label for="rzfmall">
+                        <input type="radio" id="rzfmall" name="e" ng-model="searchOptionItem.emotion" value="-1" checked="{{searchOptionItem.emotion=='-1'}}" />&nbsp;全部
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="rzm">
+                            <input type="radio" id="rzm" name="e" ng-model="searchOptionItem.emotion" value="51" checked="{{searchOptionItem.emotion=='51'}}" />&nbsp;正面
+                        </label>
+                    &nbsp;<a class="fa fa-filter text-default popover-normal filter1" title="正面值设置" data-toggle="popover" data-html="true" data-placement="top" data-content="<div id=&quot;mySlider1&quot; class=&quot;slider&quot; style=&quot;width:214px&quot;></div><input id=&quot;slider-value1&quot; style=&quot;width:30px;border:1px solid #eee;border-radius:2px;&quot; value=&quot;&quot;>"></a>&nbsp;&nbsp;
+                        <label for="rfm">
+                            <input type="radio" id="rfm" name="e" ng-model="searchOptionItem.emotion" value="1" checked="{{searchOptionItem.emotion=='1'}}" />&nbsp;负面
+                        </label>
+                    &nbsp;<a class="fa fa-filter text-default popover-normal filter2" title="负面值设置" data-toggle="popover" data-html="true" data-placement="top" data-content="<div id=&quot;mySlider2&quot; class=&quot;slider&quot; style=&quot;width:214px&quot;></div><input id=&quot;slider-value2&quot; style=&quot;width:30px;border:1px solid #eee;border-radius:2px;&quot; value=&quot;&quot;>"></a>&nbsp;&nbsp;
+                    
+                </div>
+                <div class="line line-dashed"></div>
+                <div>
+                    <label for="rtpall">
+                        <input type="radio" id="rtpall" name="f" ng-model="searchOptionItem.haveImage" value="-1" checked="{{searchOptionItem.haveImage=='-1'}}" />&nbsp;全部
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="rytp">
+                            <input type="radio" id="rytp" name="f" ng-model="searchOptionItem.haveImage" value="1" checked="{{searchOptionItem.haveImage=='1'}}" />&nbsp; 有图
+                        </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="rmtp">
+                            <input type="radio" id="rmtp" name="f" ng-model="searchOptionItem.haveImage" value="0" checked="{{searchOptionItem.haveImage=='0'}}" />&nbsp;无图
+                        </label>
+                </div>
+                <div class="line line-dashed"></div>
+                <div>
+                    <label for="wnrlall">
+                        <input type="radio" id="wnrlall" name="g" ng-model="searchOptionItem.wordNumFilter" value="0" checked="{{searchOptionItem.wordNumFilter=='0'}}" />&nbsp;不限字数
+                    </label>
+                    <br>
+                    <label for="wnrl">
+                        <input type="radio" id="wnrl" name="g" ng-model="searchOptionItem.wordNumFilter" value="1" checked="{{searchOptionItem.wordNumFilter=='1'}}" />&nbsp; 从&nbsp;
+                    </label>
+                    <input type="text" name="wordNumRangeStart" class="wordNumRangeBox" ng-model="searchOptionItem.wordNumRangeStart" />&nbsp;至&nbsp;
+                        <input type="text" name="wordNumRangeEnd" class="wordNumRangeBox" ng-model="searchOptionItem.wordNumRangeEnd" />&nbsp;字
+                </div>
+
+                <!--<br>-->
+                <!--<label class="text-info">数据源</label>-->
+                <!--<textarea placeholder="" rows="5" class="form-control parsley-validated" data-trigger="keyup" data-rangelength="[20,200]"></textarea>-->
+                <!--<div>-->
+                <!--* 默认全库搜索-->
+                <!--</div>-->
+
+            </div>
+        </div>
+    </div>
+    <div id="splitter1" class="splitter" style="position: absolute; z-index: 2; width: 5px; height: 100%; background-color: transparent; filter: alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.3; top: 0px; left: 260px;"></div>
+    <div style="border-top: 1px solid #e0e4e8; margin-left: -15px; padding-top: 10px"></div>
+    <div class="pull-right m-b-mini m-r-mini">
+        <button type="button" class="btn btn-sm btn-info" ng-click="newsList.InitPage();newsList.ShowPage();initStatInfo();">高级搜索</button>
+    </div>
+    <div class="fn-result-mediablock" ng-click="stopBubbling($event)">
+        <div class="fn-result-mediablock-miss" onclick="$('.fn-result-mediablock').hide();$('.fn-tag-left').hide()">
+            <button type="button" class="close text-danger" data-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+        <div class="input-group input-group-sm m-l-small">
+            <input type="text" class="form-control fn-result-mediablock-inputsearch" placeholder="搜索您想要的媒体名称" onkeydown="getMediaListWhenGlobalSearch(event,$('.fn-result-mediablock-inputsearch').val(),'.fn-result-chooseresults','.fn-result-choosedmedia')">
+            <span class="input-group-btn">
+                <button class="btn btn-default m-r" type="button" onclick="advAllMediaResults($('.fn-result-mediablock-inputsearch').val(),'.fn-result-chooseresults','.fn-result-choosedmedia')">
+                    搜索
+                </button>
+            </span>
+        </div>
+        <div class="fn-result-meidiablock-main">
+            <ul class="fn-result-choosedmedia">
+            </ul>
+        </div>
+    </div>
+    <!--这个是城市选择的弹出框 -->
+    <div class="fn-z-advsearcharearesult" ng-click="stopBubbling($event)">
+        <ul class="fn-z-advsearchareaprovince">
+            <li class="municipalities" ng-show="item.municipalities==1" ng-repeat="item in province" ng-click="addCity($event)" when-repeated="provinceRenderFinish()">
+                <a href="javascript:void(0)" data-cityid="{{item.cityID}}" data-provincename="{{item.name}}">{{item.name}}</a>
+            </li>
+            <li class="fn-z-advprovincename" ng-show="item.municipalities==0" ng-repeat="item in province" ng-click="showCity($event)">
+                <a href="javascript:void(0)" data-provincename="{{item.name}}">{{item.name}}</a>
+            </li>
+        </ul>
+        <ul class="fn-z-advsearchareacity">
+            <li class="fn-z-advcityname" ng-repeat="item in citydata" when-repeated="renderFinish()" ng-click="addCity($event)">
+                <a href="javascript:void(0)" data-cityname="{{item.city}}" data-cityid="{{item.cityID}}" data-provincename="{{item.provincename}}">{{item.city}}</a>
+            </li>
+            <button type="button" class="btn btn-xs btn-default fn-z-advreturnprovince" ng-click="returnprovince()">返回上一级</button>
+        </ul>
+        <div class="fn-z-advsearchareamiss" ng-click="searchAreaClose()">×</div>
+    </div>
+</aside>
+<aside id="vlist" class="sidebar sidebar-large">
+    <div class="header-bar bg clearfix">
+        
+        <div class="btn-group fn-stats">
+            
+            <div id="channelinfo" class="input-group padder m-t-mini m-b-mini fn-newslist-selection-navbar">
+                <!--<i class="fa fa-file-text text-info"></i><b class="text-info fn-s-channelName"></b> <b class="badge bg-danger fn-s-channelNum">…</b> &nbsp;-->
+                <b class="searchCount badge bg-danger">{{newsList.total}}</b><span style="font-size: 8px;">&nbsp;&nbsp;（用时 {{newsList.searchTime}}秒）</span>
+                <label class="btn btn-xs btn-white pull-right m-r" id="btn_export" ng-click="ExportToExcel()" data-toggle="tooltip" data-placement="top" title="导出搜索结果" data-original-title="导出搜索结果"><i class="fa fa-cloud-download"></i></label>
+                <label class="btn btn-xs btn-white pull-right m-r" id="btn_stat" ng-click="showStatInfo()" data-toggle="tooltip" data-placement="top" title="查看统计信息" data-original-title="查看统计信息"><i class="fa fa-bar-chart-o"></i></label>
+                <button type="button" class="btn btn-info btn-xs pull-right m-r" ng-click="FollowSearch($event)">跟踪</button>
+
+                
+                
+                
+                
+                
+                
+            </div>
+            <div class="input-group fn-newslist-selection-toolbar">
+                <ul>
+                    <li>
+                        <span class="text-default pull-left fn-x-info-statItem"></span>
+                    </li>
+                    <li id="fn-s-viewModel" class="pull-right fn-s-dropdown fn-overshow">
+                        <a>摘要查看</a>
+                        <ul class="fn-overshow-menu">
+                            <li class="viewM fn-nlAbsModel fn-overshow-menu-active" id="fn-nlAbsModel"><a href="javascript:void(0);" ng-click="changeShowTag($event)"><i class="fa fa-lg fa-th"></i>&nbsp;&nbsp;摘要查看</a></li>
+                            <li class="viewM fn-nlLiModel noline" id="fn-nlLiModel"><a href="javascript:void(0);" ng-click="changeShowTag($event)"><i class="fa fa-lg fa-bars"></i>&nbsp;&nbsp;列表查看</a></li>
+                            <li class="viewM fn-nlTitle noline" id="fn-nlTitleModel"><a href="javascript:void(0);" ng-click="changeShowTag($event)"><i class="fa fa-lg fa-list"></i>&nbsp;&nbsp;标题查看</a></li>
+                        </ul>
+                    </li>
+
+                    <li id="sortButton" class="fn-overshow pull-right"><a href="javascript:void(0);">排序▼</a>
+                        <ul class="fn-overshow-menu">
+                            <li class="relevance"><a href="javascript:void(0);" ng-click="$event.stopPropagation();newsList.SortNews($event,'score');newsList.ShowPage();">相关度排序</a></li>
+                            <li class="fn-overshow-menu-active date-desc"><a href="javascript:void(0);" ng-click="$event.stopPropagation();newsList.SortNews($event,'updatetime desc');newsList.ShowPage();">时间从先到后排序</a></li>
+                            <li class="date-asc"><a href="javascript:void(0);" ng-click="$event.stopPropagation();newsList.SortNews($event,'updatetime asc');newsList.ShowPage();">时间从后到先排序</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="fn-date-range-box">
+                <!--  For Scrolling Find Current News By Atul Starts -->
+                <div class="fn-select-news-contain" id="fnShowSelectNews" style="bottom: -45px;">
+                    <a>
+                        <img id="SelectImageZoom" src="images/selectIcon.png" style="margin: 0 auto;" border="0" /></a>
+                </div>
+                <!--  For Scrolling Find Current News By Atul End -->
+            </div>
+        </div>
+    </div>
+    <div id="newslist" class="list-group list-normal" ng-init="newsList.ShowPage()">
+        <div class="fn-nlAbstract" id="fn-nlAbstract" ng-show="showTag=='abstract'">
+            <div ng-class="{'list-group-item fn-list-group-item active':$index==0,'list-group-item fn-list-group-item':$index>0}" ng-click="ShowNewsDetail($event, news.title, news.articlesequenceid);closePopup()" ng-repeat="news in newsList.items">
+                <div class="fn-newsList-bayI clearfix fn-title-container">
+                    <div class="fn-news-pic pull-right" ng-if="(news.imagesource != null && news.imagesource != '')" style="background: url(&apos;{{ImgUrl(news)}}&apos; ); background-color: white; background-size: cover; background-position: center">
+                        
+                    </div>
+                    <div class="fn-newsTitle-top">
+                        <h4 class="fn-newsTitle">
+                            <div class="fn-s-button">
+                                <span class="fn-s-order">{{$index + 1}}</span>
+                                <input ng-if="ifReprint==true" class="fn-s-oCheckBox" data-id="{{news.articlesequenceid}}" type="checkbox" name="chooseArticle">
+                                <span class="label label-success fn-inlineBlock" ng-if="(news.viocesize>=1 && news.viocesize<=9)">原创</span>
+                                <span class="label label-default fn-inlineBlock" ng-if="(news.viocesize>=10 && news.viocesize<=50)">转载</span>
+                            </div>
+                            <span>{{news.title}}</span>
+                        </h4>
+                        <p class="fn-newsTitle-markInfo">{{news.markinfo}}</p>
+                    </div>
+                </div>
+                <div class="fn-newsList-bayII">
+                    <div class="fn-newspaper-source">
+                        <i ng-class="ShowIconByArticleType(news.articletype,news.articlesequenceid)"></i>&nbsp;<span>{{news.papername}}</span>
+                    </div>
+                    <div ng-mouseup="showWechatPVLine($event, news.articlesequenceid)" class="fn-x-pvchartcontainer" style="display: none;">
+                        <div style="position: relative;" data-toggle="tooltip" data-placement="bottom" title="点击这里您还能看到曲线图哦">
+                            <div id="hm_flag_{{news.articlesequenceid}}" class="pull-left m-r-mini"><i class="fa fa-bar-chart-o" style="color: #b0b0b0"></i></div>
+                            <div id="hm_loading_{{news.articlesequenceid}}" style="float: left; display: none; margin-right: 5px;">
+                                <img src="images/loader.gif" style="width: 12px; height: 12px;">
+                            </div>
+                            <div class="wechat-pv-number-{{news.articlesequenceid}}">
+                                <small class="text-primary">阅读&nbsp;0&nbsp;次</small>&nbsp;&nbsp;|&nbsp;&nbsp;<small class="text-primary">点赞&nbsp;0&nbsp;次</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fn-newsOtherDetails fn-relative">
+                        <span class="fn-timeago">{{GetTimeAbbr(news.updatetime).time}}</span>
+                        <div class="fn-newsTimes fn-absolute">
+                            <p class="fn-newsPubTime"><i class="fa fa-clock-o"></i>创建时间：{{news.articlesequenceid>1800010100000000000 && news.articlesequenceid < 2500000000000000000 ? news.paperdate : news.updatetime.substr(0, 19)}}</p>
+                            <p class="fn-newsFnTime"><i class="fa fa-clock-o"></i>发布时间：{{news.updatetime.substr(0,19)}}</p>
+                        </div>
+                        <ul class="fn-links pull-right fn-clearUl">
+                            <li class="text-success" ng-if="news.isreprinted">已推送</li>
+                            <li title="查看相似文章" ng-click="GetSameIdNewsList($event,news.articlesequenceid,news.same_id,news.same_count-1)" ng-if=" news.same_count != null && news.same_count > 0 "><i class="fa fa-files-o fa-lg"></i></li>
+                            <li title="查看原创文章" ng-click="GetOriginaldNewsList($event,news.articlesequenceid,news.sameid3)"><i class="fa fa-copyright fa-lg"></i></li>
+                            <li ng-if="news.sameid3" class="" title="查看传播图"><span data-sames="{{news.sameid1}}" data-source="{{news.papername}}" ng-click="ViewSpreadMap($event)" class="fa fa-asterisk fa-lg"></span></li>
+                            <li ng-click="FindHot($event,news.keyword)" title="发现" data-original-title="发现">
+                                <i class="fa fa-external-link fa-lg"></i>
+                                <div class="fn-z-findarrow" ng-click="StopBubbling($event)"></div>
+                            </li>
+                            <li title="收藏" class="fn-collection" ng-if="news.iscollection"><i class="fa fa-star fa-lg text-warning" sort-id="{{$index}}" ng-click="CollectNews($event,news.articlesequenceid);"></i></li>
+                            <li title="收藏" class="fn-collection" ng-if="!news.iscollection"><i class="fa fa-star-o fa-lg" sort-id="{{$index}}" ng-click="CollectNews($event,news.articlesequenceid);"></i></li>
+                        </ul>
+                        <div class="fn-simailarNews" style="display: none;"></div>
+                        <div class="fn-originalNews" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fn-nlList" id="fn-nlList" ng-show="showTag=='list'">
+            <div ng-class="{'list-group-item fn-list-group-item active':$index==0,'list-group-item fn-list-group-item':$index>0}" after-finish-render ng-click="ShowNewsDetail($event, news.title, news.articlesequenceid);closePopup()" ng-repeat="news in newsList.items" ng-init="checkFinished($last)">
+                <div class="fn-newsList-bayI clearfix fn-title-container">
+                    <div class="fn-newsTitle-top">
+                        <h4 class="fn-newsTitle">
+                            <div class="fn-s-button">
+                                <span class="fn-s-order">{{$index + 1}}</span>
+                                
+                                <input ng-if="ifReprint==true" class="fn-s-oCheckBox" data-id="{{news.articlesequenceid}}" type="checkbox" name="chooseArticle">
+                                <span class="label label-success fn-inlineBlock" ng-if="(news.viocesize>=1 && news.viocesize<=9)">原创</span>
+                                <span class="label label-default fn-inlineBlock" ng-if="(news.viocesize>=10 && news.viocesize<=50)">转载</span>
+                            </div>
+                            <span>{{news.title}}</span>
+                        </h4>
+                    </div>
+                </div>
+                <div class="fn-newsList-bayII">
+                    <div class="fn-newspaper-source">
+                        <i ng-class="ShowIconByArticleType(news.articletype,news.articlesequenceid)"></i>&nbsp;<span>{{news.papername}}</span>
+                    </div>
+                    <div class="fn-newsOtherDetails fn-relative">
+                        <span class="fn-timeago">{{GetTimeAbbr(news.updatetime).time}}</span>
+                        <div class="fn-newsTimes fn-absolute">
+                            <p class="fn-newsPubTime"><i class="fa fa-clock-o"></i>创建时间：{{news.articlesequenceid>1800010100000000000 && news.articlesequenceid < 2500000000000000000 ? news.paperdate : news.updatetime.substr(0, 19)}}</p>
+                            <p class="fn-newsFnTime"><i class="fa fa-clock-o"></i>发布时间：{{news.updatetime.substr(0,19)}}</p>
+                        </div>
+                        <ul class="fn-links pull-right fn-clearUl">
+                            <li class="text-success" ng-if="news.isreprinted">已推送</li>
+                            <li title="查看相似文章" ng-click="GetSameIdNewsList($event,news.articlesequenceid,news.same_id,news.same_count-1)" ng-if=" news.same_count != null && news.same_count > 0 "><i class="fa fa-files-o fa-lg"></i></li>
+                            <li title="查看原创文章" ng-click="GetOriginaldNewsList($event,news.articlesequenceid,news.sameid3)"><i class="fa fa-copyright fa-lg"></i></li>
+                            <li ng-if="news.sameid3" class="" title="查看传播图"><span data-sames="{{news.sameid1}}" data-source="{{news.papername}}" ng-click="ViewSpreadMap($event)" class="fa fa-asterisk fa-lg"></span></li>
+                            <li ng-click="FindHot($event,news.keyword)" data-toggle="tooltip" data-placement="top" title="发现" data-original-title="发现"><i class="fa fa-external-link fa-lg"></i></li>
+                            <li title="收藏" class="fn-collection" ng-if="news.iscollection"><i class="fa fa-star fa-lg text-warning" sort-id="{{$index}}" ng-click="CollectNews($event,news.articlesequenceid);"></i></li>
+                            <li title="收藏" class="fn-collection" ng-if="!news.iscollection"><i class="fa fa-star-o fa-lg" sort-id="{{$index}}" ng-click="CollectNews($event,news.articlesequenceid);"></i></li>
+                        </ul>
+                        <div class="fn-simailarNews" style="display: none;"></div>
+                        <div class="fn-originalNews" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fn-nlTitle" id="fn-nlTitle" ng-show="showTag=='title'">
+            <div ng-class="{'fn-s-titleLists fn-list-group-item active':$index==0, 'fn-s-titleLists fn-list-group-item':$index>0}" after-finish-render ng-click="ShowNewsDetail($event, news.title,news.articlesequenceid);closePopup()" ng-repeat="news in newsList.items" ng-init="checkFinished($last)">
+                <div class="fn-s-tlHead clearfix">
+                    <div class="fn-s-button">
+                        <span class="fn-s-order">{{$index + 1}}</span>
+                        
+                        <input ng-if="ifReprint==true" class="fn-s-oCheckBox" data-id="{{news.articlesequenceid}}" type="checkbox" name="chooseArticle">
+                        <span class="fn-s-label fn-s-labelS" ng-if="(news.viocesize>=1 && news.viocesize<=9)">原创</span>
+                        <span class="fn-s-label fn-s-labelD" ng-if="(news.viocesize>=10 && news.viocesize<=50)">转载</span>
+                    </div>
+                    <span class="fn-s-tlTitle">{{news.title}}</span>
+                    <time>{{GetTimeAbbr(news.updatetime).time}}</time>
+                    
+                </div>
+            </div>
+        </div>
+        <!--newslist end-->
+        <!--<a href="javascript:void(0);" id="morebtn" class="list-group-item bg-lighter text-center" ng-if=" IsMoreButton() " ng-click="newsList.ShowPage()">点击更多</a>-->
+
+        <div ng-show="busy" id="loader" ng-class="center" style="display: block; width: 100px; margin-left: auto; margin-right: auto; margin-top: 15px;">
+            <img src="images/ajax-loader.gif" style="margin-left: auto; margin-right: auto;" align="center" />
+        </div>
+        
+    </div>
+    <!--<div class="spacer" style="clear: both;"></div>-->
+    <div id="scrollTop" class="text-center" style="display: none; filter: alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.5; background-color: #000000; position: relative; z-index: 3; bottom: 50px; margin-bottom: -30px; right: 10px; float: right; width: 30px; height: 30px; border-radius: 2px; cursor: pointer;"><i class="fa fa-lg fa-sort-up" style="margin-top: 12px;"></i></div>
+
+    <!--  点击发现按钮出现类似于消息的文章列表，而非模态框 by zheng start-->
+    <div class="fn-z-findNews" ng-click="stopBubbling($event)">
+        <div class="fn-z-alertprompt alert alert-success">已加载<span>100</span>篇文章，其中<span class="fn-s-aSpant"></span>篇为相似文章，已合并！</div>
+        <div id="fn-z-findscrolltop" ng-click="returnTop()"><i class="fa fa-lg fa-sort-up"></i></div>
+        <div class="fn-z-hasNews">
+            <div class="fn-z-findNewstop">
+                <div class="fn-s-fountTitle">
+                    <span class="fn-s-spanOne">发现新闻：<a href="javascript:void(0)">{{findkeyshow}}</a></span>
+                    <span class="fn-s-spanTwo"><b class="badge bg-danger">{{totalnumber}}</b></span>
+                    <a class="fn-s-foundMore" href="" target="_self">更多</a>
+                </div>
+
+                <div class="fn-z-findNewslists">
+                    <ul id="fn-z-findNewsul">
+                        <li ng-if="imgshow" class="text-center">
+                            <img src="../v2/images/ajax-loader.gif" /></li>
+                        <!--<li id="fn-z-findtodaynews" ng-show="todaydata.length!=0" class="list-group-item bg-light no-border" ng-click="showToggle('fn-z-findtodaynews','nt')"><i class="fa fa-caret-down"></i>&nbsp;今天</li>
+                        <li class="fn-z-findNewslist clearfix {{item.date}} sameid_{{item.same_id}}" data-id="{{item.articlesequenceid}}" ng-repeat="item in todaydata" ng-click="findNewsDetails($event,item.articlesequenceid,item.updatetime)" when-repeated="">
+                            <div class="fn-z-findNewsBlock">
+                                <h4 class="fn-z-findNewstitle">
+                                    <span ng-if="item.viocesize >= 1 && item.viocesize <= 9" class="label label-success fn-inlineBlock">原创</span>
+                                    <span ng-if="item.viocesize>=10 && item.viocesize<=50" class="label label-default fn-inlineBlock">转载</span>
+                                    <span>{{item.title}}</span>
+                                </h4>
+                                <div class="fn-z-findNewscontent">
+                                    <p class="fn-z-findNewssource text-info" title="事件来源">
+                                        <i ng-show="{{item.at=='website'}}" class="fa fa-newspaper-o fn-text-default"></i>
+                                        <i ng-show="{{item.at=='news'}}" class="iconfont icon-newspaper text-muted"></i>
+                                        <i ng-show="{{item.at=='weibo'}}" class="fa fa-weibo fa-lg text-danger"></i>
+                                        <i ng-show="{{item.at=='weixin'}}" class="wechat icon-weixin text-success"></i>
+                                        <i ng-show="{{item.at=='app'}}" class="fa fa-mobile fa-lg text-danger fn-z-fontsize-fif"></i>
+                                        <i ng-show="{{item.at=='bbs'}}" class="fa fa-group text-info">&nbsp;</i>
+                                        <span>{{item.papername}}</span>
+                                    </p>
+                                    <div class="fn-s-taOut fn-relative">
+                                        <span class="fn-z-findNewstimeago" mouse-enter-out hover="hover">{{item.timeago}}</span>
+                                        <div class="fn-z-findNewstime" ng-show="hover">
+                                            <p class="fn-newsPubTime"><i class="fa fa-clock-o"></i>原文发布:{{item.newcreatetime}}</p>
+                                            <p class="fn-newsFnTime"><i class="fa fa-clock-o"></i>入库:{{item.newupdatetime}}</p>
+                                        </div>
+                                    </div>
+                                    <span class="pull-right m-r fn-z-findNewscollection">
+                                        <i class="fa fa-lg fa-files-o m-r-small" titile="查看相似文章" ng-show="item.ishassame" ng-click="findSameNews(item.same_id,$event)"></i>
+                                        <i class="fa fa-copyright fa-lg m-r-small" titile="查看原创文章" ng-show="item.sameid3" ng-click="findOriginNews(item.sameid3,$event)"></i>
+                                        <i class="fa fa-star-o fa-lg" ng-click="CollectNews($event,item.articlesequenceid);"></i>
+                                    </span>
+                                </div>
+                                <div class="fn-z-totalsimilar">
+                                    <p class="fn-originalNum">已匹配<span class="text-danger"></span>篇相似文章</p>
+                                    <similar-li></similar-li>
+                                </div>
+                                <div class="fn-z-totalorigin">
+                                    <p class="fn-originalNum">已匹配<span class="text-danger"></span>篇原创文章</p>
+                                    <origin-li></origin-li>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="fn-z-findyestodaynews" ng-show="yesterday.length!=0" class="list-group-item bg-light no-border" ng-click="showToggle('fn-z-findyestodaynews','ny')"><i class="fa fa-caret-down"></i>&nbsp;昨天</li>
+                        <li class="fn-z-findNewslist clearfix {{item.date}} sameid_{{item.same_id}}" data-id="{{item.articlesequenceid}}" ng-repeat="item in yesterday" ng-click="findNewsDetails($event,item.articlesequenceid,item.updatetime)" when-repeated>
+                            <div class="fn-z-findNewsBlock">
+                                <h4 class="fn-z-findNewstitle">
+                                    <span ng-if="item.viocesize >= 1 && item.viocesize <= 9" class="label label-success fn-inlineBlock">原创</span>
+                                    <span ng-if="item.viocesize>=10 && item.viocesize<=50" class="label label-default fn-inlineBlock">转载</span>
+                                    <span>{{item.title}}</span>
+                                </h4>
+                                <div class="fn-z-findNewscontent">
+                                    <p class="fn-z-findNewssource text-info" title="事件来源">
+                                        <i ng-show="{{item.at=='website'}}" class="fa fa-newspaper-o fn-text-default">&nbsp;</i>
+                                        <i ng-show="{{item.at=='news'}}" class="iconfont icon-newspaper text-muted">&nbsp;</i>
+                                        <i ng-show="{{item.at=='weibo'}}" class="fa fa-weibo fa-lg text-danger">&nbsp;</i>
+                                        <i ng-show="{{item.at=='weixin'}}" class="wechat icon-weixin text-success">&nbsp;</i>
+                                        <i ng-show="{{item.at=='app'}}" class="fa fa-mobile fa-lg text-danger fn-z-fontsize-fif">&nbsp;</i>
+                                        <i ng-show="{{item.at=='bbs'}}" class="fa fa-group text-info">&nbsp;</i>
+                                        <span>{{item.papername}}</span>
+                                    </p>
+                                    <div class="fn-s-taOut fn-relative">
+                                        <span class="fn-z-findNewstimeago" mouse-enter-out hover="hover">{{item.timeago}}</span>
+                                        <div class="fn-z-findNewstime" ng-show="hover">
+                                            <p class="fn-newsPubTime"><i class="fa fa-clock-o"></i>原文发布:{{item.newcreatetime}}</p>
+                                            <p class="fn-newsFnTime"><i class="fa fa-clock-o"></i>入库:{{item.newupdatetime}}</p>
+                                        </div>
+                                    </div>
+                                    <span class="pull-right m-r fn-z-findNewscollection">
+                                        <i class="fa fa-lg fa-files-o m-r-small" titile="查看相似文章" ng-show="item.ishassame" ng-click="findSameNews(item.same_id,$event)"></i>
+                                        <i class="fa fa-copyright fa-lg m-r-small" titile="查看原创文章" ng-show="item.sameid3" ng-click="findOriginNews(item.sameid3,$event)"></i>
+                                        <i class="fa fa-star-o fa-lg" ng-click="CollectNews($event,item.articlesequenceid);"></i>
+                                    </span>
+                                </div>
+                                <div class="fn-z-totalsimilar">
+                                    <p class="fn-originalNum">已匹配<span class="text-danger"></span>篇相似文章</p>
+                                    <similar-li></similar-li>
+                                </div>
+                                <div class="fn-z-totalorigin">
+                                    <p class="fn-originalNum">已匹配<span class="text-danger"></span>篇原创文章</p>
+                                    <origin-li></origin-li>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="fn-z-findyeshistorynews" ng-show="history.length!=0" class="list-group-item bg-light no-border" ng-click="showToggle('fn-z-findyeshistorynews','nh')"><i class="fa fa-caret-down"></i>&nbsp;历史</li>
+                        <li class="fn-z-findNewslist clearfix {{item.date}} sameid_{{item.same_id}}" data-id="{{item.articlesequenceid}}" ng-repeat="item in history" ng-click="findNewsDetails($event,item.articlesequenceid,item.updatetime)" when-repeated>
+                            <div class="fn-z-findNewsBlock">
+                                <h4 class="fn-z-findNewstitle">
+                                    <span ng-if="item.viocesize >= 1 && item.viocesize <= 9" class="label label-success fn-inlineBlock">原创</span>
+                                    <span ng-if="item.viocesize>=10 && item.viocesize<=50" class="label label-default fn-inlineBlock">转载</span>
+                                    <span>{{item.title}}</span>
+                                </h4>
+                                <div class="fn-z-findNewscontent">
+                                    <p class="fn-z-findNewssource text-info" title="事件来源">
+                                        <i ng-show="{{item.at=='website'}}" class="fa fa-newspaper-o fn-text-default">&nbsp;</i>
+                                        <i ng-show="{{item.at=='news'}}" class="iconfont icon-newspaper text-muted">&nbsp;</i>
+                                        <i ng-show="{{item.at=='weibo'}}" class="fa fa-weibo fa-lg text-danger">&nbsp;</i>
+                                        <i ng-show="{{item.at=='weixin'}}" class="wechat icon-weixin text-success">&nbsp;</i>
+                                        <i ng-show="{{item.at=='app'}}" class="fa fa-mobile fa-lg text-danger fn-z-fontsize-fif">&nbsp;</i>
+                                        <i ng-show="{{item.at=='bbs'}}" class="fa fa-group text-info">&nbsp;</i>
+                                        <span>{{item.papername}}</span>
+                                    </p>
+                                    <div class="fn-s-taOut fn-relative">
+                                        <span class="fn-z-findNewstimeago" mouse-enter-out hover="hover">{{item.timeago}}</span>
+                                        <div class="fn-z-findNewstime" ng-show="hover">
+                                            <p class="fn-newsPubTime"><i class="fa fa-clock-o"></i>原文发布:{{item.newcreatetime}}</p>
+                                            <p class="fn-newsFnTime"><i class="fa fa-clock-o"></i>入库:{{item.newupdatetime}}</p>
+                                        </div>
+                                    </div>
+                                    <span class="pull-right m-r fn-z-findNewscollection">
+                                        <i class="fa fa-lg fa-files-o m-r-small" titile="查看相似文章" ng-show="item.ishassame" ng-click="findSameNews(item.same_id,$event)"></i>
+                                        <i class="fa fa-copyright fa-lg m-r-small" titile="查看原创文章" ng-show="item.sameid3" ng-click="findOriginNews(item.sameid3,$event)"></i>
+                                        <i class="fa fa-star-o fa-lg" ng-click="CollectNews($event,item.articlesequenceid);"></i>
+                                    </span>
+                                </div>
+                                <div class="fn-z-totalsimilar">
+                                    <p class="fn-originalNum">已匹配<span class="text-danger"></span>篇相似文章</p>
+                                    <similar-li></similar-li>
+                                </div>
+                                <div class="fn-z-totalorigin">
+                                    <p class="fn-originalNum">已匹配<span class="text-danger"></span>篇原创文章</p>
+                                    <origin-li></origin-li>
+                                </div>
+                            </div>
+                        </li>-->
+                        <li class="fn-z-findNewslist clearfix {{item.date}} sameid_{{item.same_id}}" data-id="{{item.articlesequenceid}}" ng-repeat="item in foundData" ng-click="findNewsDetails($event,item.articlesequenceid,item.updatetime)" when-repeated>
+                            <div class="fn-z-findNewsBlock">
+                                <h4 class="fn-z-findNewstitle">
+                                    <span ng-if="item.viocesize >= 1 && item.viocesize <= 9" class="label label-success fn-inlineBlock">原创</span>
+                                    <span ng-if="item.viocesize>=10 && item.viocesize<=50" class="label label-default fn-inlineBlock">转载</span>
+                                    <span>{{item.title}}</span>
+                                </h4>
+                                <div class="fn-z-findNewscontent">
+                                    <p class="fn-z-findNewssource text-info" title="事件来源">
+                                        <i ng-show="{{item.at=='website'}}" class="fa fa-newspaper-o fn-text-default">&nbsp;</i>
+                                        <i ng-show="{{item.at=='news'}}" class="iconfont icon-newspaper text-muted">&nbsp;</i>
+                                        <i ng-show="{{item.at=='weibo'}}" class="fa fa-weibo fa-lg text-danger">&nbsp;</i>
+                                        <i ng-show="{{item.at=='weixin'}}" class="wechat icon-weixin text-success">&nbsp;</i>
+                                        <i ng-show="{{item.at=='app'}}" class="fa fa-mobile fa-lg text-danger fn-z-fontsize-fif">&nbsp;</i>
+                                        <i ng-show="{{item.at=='bbs'}}" class="fa fa-group text-info">&nbsp;</i>
+                                        <span>{{item.papername}}</span>
+                                    </p>
+                                    <div class="fn-s-taOut fn-relative">
+                                        <span class="fn-z-findNewstimeago" mouse-enter-out hover="hover">{{item.timeago}}</span>
+                                        <div class="fn-z-findNewstime" ng-show="hover">
+                                            <p class="fn-newsPubTime"><i class="fa fa-clock-o"></i>原文发布:{{item.newcreatetime}}</p>
+                                            <p class="fn-newsFnTime"><i class="fa fa-clock-o"></i>入库:{{item.newupdatetime}}</p>
+                                        </div>
+                                    </div>
+                                    <span class="pull-right m-r fn-z-findNewscollection">
+                                        <i class="fa fa-lg fa-files-o m-r-small" titile="查看相似文章" ng-show="item.ishassame" ng-click="findSameNews(item.same_id,item.articlesequenceid,$event)"></i>
+                                        <i class="fa fa-copyright fa-lg m-r-small" titile="查看原创文章" ng-show="item.sameid3" ng-click="findOriginNews(item.sameid3,item.articlesequenceid,$event)"></i>
+                                        <i class="fa fa-star-o fa-lg" ng-click="CollectNews($event,item.articlesequenceid);"></i>
+                                    </span>
+                                </div>
+                                <div class="fn-z-totalsimilar">
+                                    <p class="fn-originalNum">已匹配<span class="text-danger"></span>篇相似文章</p>
+                                    <similar-li></similar-li>
+                                </div>
+                                <div class="fn-z-totalorigin">
+                                    <p class="fn-originalNum">已匹配<span class="text-danger"></span>篇原创文章</p>
+                                    <origin-li></origin-li>
+                                </div>
+                            </div>
+                        </li>
+                        <li ng-show="findbusy" class="text-center m-t-mini">
+                            <img src="../v2/images/ajax-loader.gif" /></li>
+                        <li class="list-group-item bg-lighter text-center fn-z-clickmore" ng-show="showmore" ng-click="findNewsLoading()">点击更多</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="fn-z-findNewsdetails" style="height: 100%">
+            <header>
+                <span class="btn btn-white btn-xs fn-z-closeDetail" ng-click="turnBack()">
+                    <i class="glyphicon glyphicon-arrow-left "></i>
+                </span>
+                <a href="javascript: void(0);" class="btn btn-white pull-right m-l fn-z-findlink fn-innerContent-common" target="_blank" title="站内浏览"></a>
+                <a href="javascript: void(0);" class="btn btn-white pull-right m-l fn-z-findoriginal fn-innerContent-common" target="_blank" title="查看原文"></a>
+                <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare  pull-right m-l" data="{'url':'',text:''}">
+                    <span class="bds_more btn btn-white fn-z-bdshare">分享</span>
+                </div>
+                <div class="fn-z-loadPie pull-right" id="fn-z-loadPie"></div>
+            </header>
+            <div class="fn-z-findnewsdetails-content">
+                <div class="fn-z-findnewsdetails-contentmain">
+                    <h4 class="fn-z-leadTitle"></h4>
+                    <h3 class="fn-z-mtitle"></h3>
+                    <h4 class="fn-z-subTitle"></h4>
+                    <div class="fn-z-from">
+                        <span class="fn-z-channel"></span>
+                        <span class="fn-z-reported"></span>
+                    </div>
+                    <div class="fn-z-reporttime">
+                    </div>
+                    <div class="fn-z-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--点击发现按钮出现类似于消息的文章列表，而非模态框 by zheng end-->
+
+</aside>
+<section class="main bg-white" style="max-height: 1000px;">
+    <div id="splitter2" class="splitter" style="position: absolute; z-index: 2; width: 5px; height: 100%; background-color: transparent; filter: alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.3"></div>
+    <div id="news" class="bg-white" style="max-height: 1000px;">
+        
+        <iframe id="myframe" src="{{newsFrameSrc}}" class="scroll-y scrollbar" style="width: 100%; overflow: hidden; background-color: #ffffff;" scrolling="no" frameborder="no" border="0" allowtransparency="true"></iframe>
+    </div>
+</section>
+<div class="chartContainer">
+    <div id="container" style="min-width: 400px; height: 450px"></div>
+    <div class="close" ng-click="">关闭</div>
+</div>
+<script type="text/javascript">
+    $(".fn-overshow>a").click(function (event) {
+        fnTool.stopPropagation(event);
+        $(".fn-overshow>a").not(this).removeClass("active");
+        $(this).toggleClass("active");
+        var $next = $(this).next(".fn-overshow-menu");
+        $(".fn-newslist-selection-panel").hide();
+        $(".fn-newslist-selection-button").removeClass("fn-newslist-selection-button-active");
+        $(".fn-overshow-menu").not($next).hide();
+
+        $(this).next(".fn-overshow-menu").toggle();
+    });
+    $(".fn-newslist-selection-button").eq(0).children().click(function (event) {
+        stopPropagation(event);
+        $(".fn-overshow>a").removeClass("active");
+        $(this).parent().toggleClass("fn-newslist-selection-button-active ");
+        $(".fn-overshow-menu").hide();
+        $(this).siblings(".fn-newslist-selection-panel").toggle();
+    });
+    $(document).click(function () {
+        $(".fn-newslist-selection-button").removeClass("fn-newslist-selection-button-active");
+        $(".fn-newslist-selection-button .fa-cog").removeClass("active");
+        $(".fn-overshow>a").removeClass("active");
+        $(".fn-newslist-selection-panel").hide();
+        $(".fn-overshow-menu").hide();
+        $(".fn-z-findarrow").hide();
+        $(".fn-z-findNews").hide();
+        $(".fn-z-advsearcharearesult").hide();
+        $(".fn-areatag-left").hide();
+        $(".fn-result-mediablock").hide();
+        $(".fn-tag-left").hide();
+    });
+    $("#myframe").load(function () {
+        $(this).contents().delegate("html", "click", function () {
+            $(".fn-newslist-selection-button").removeClass("fn-newslist-selection-button-active");
+            $(".fn-newslist-selection-button .fa-cog").removeClass("active");
+            $(".fn-overshow>a").removeClass("active");
+            $(".fn-newslist-selection-panel").hide();
+            $(".fn-overshow-menu").hide();
+            $(".fn-z-findarrow").hide();
+            $(".fn-z-findNews").hide();
+            $(".fn-z-advsearcharearesult").hide();
+            $(".fn-areatag-left").hide();
+            $(".fn-result-mediablock").hide();
+            $(".fn-tag-left").hide();
+        })
+    });
+</script>

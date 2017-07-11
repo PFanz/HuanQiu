@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <style>
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #licensing {
+            fill: red;
+        }
+
+        #resolved {
+            fill: green;
+        }
+
+        .link {
+            fill: none;
+            stroke: #666;
+            stroke-width: 1.5px;
+        }
+
+        .link.licensing {
+            stroke: rgb(247, 68, 97);
+        }
+
+        .link.resolved {
+            stroke: rgb(3, 101, 100);
+        }
+
+        circle {
+            fill: #ccc;
+            stroke: #666;
+            stroke-width: 1.5px;
+        }
+
+        .cirle.licensing {
+            fill: rgb(247, 68, 97);
+            stroke: rgb(3, 101, 100);
+        }
+
+        .cirle.resolved {
+            fill: rgb(185, 227, 217);
+            stroke: rgba(111, 241, 55, 0.7);
+        }
+
+        text {
+            font: 10px sans-serif;
+            pointer-events: none;
+            text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            cursor: url('/images/openhand.cur'),pointer;
+        }
+
+        svg {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        #scalebox {
+            width: 24px;
+            height: 73px;
+            background: #fff;
+            padding: 0 2px;
+            position: absolute;
+            right: 10px;
+            bottom: 50px;
+            box-shadow: 0 2px 6px rgba(0,0,0,.3);
+        }
+        ul, li, ol {
+            margin: 0;
+            list-style: none;
+        }
+        #scalebox .zoom_map {
+            height: 16px;
+            padding: 10px 0;
+            background: url(/images/scale.png) no-repeat;
+            cursor: pointer;
+        }
+
+        #scalebox .zoom_map.zoom_out_map {
+            border-bottom: 1px #dfdfdf solid;
+            background-position: -3px 3px;
+        }
+
+        #scalebox .zoom_map.zoom_in_map {
+            border-bottom: 1px #dfdfdf solid;
+            background-position: -3px -156px;
+        }
+
+        .fn-s-svgLoad {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .fn-innerContent-headBox {
+            background-color: #FAFAFA;
+            height: 47px;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .fn-innerContent-headBox-label {
+            float: left;
+            margin-left: 30px;
+            line-height: 40px;
+            color: #a5b6c7;
+            font-size: 13px;
+            font-family: microsoft yahei;
+        }
+
+        .fn-innerContent-headBox-label > span {
+            font-size: 22px;
+            color: #60DFE5;
+        }
+        .fn-s-images {
+            width: 16px;
+            height: 16px;
+        }
+        .fn-s-tags {
+            float: right;
+            height: 100%;
+            position: relative;
+            color: #666;
+            line-height: 48px;
+        }
+        .fn-s-tags {
+            float: right;
+            height: 100%;
+            position: relative;
+            color: #666;
+            line-height: 48px;
+        }
+
+
+        .fn-s-header {
+            height: 100%;
+            display: block;
+            padding-right: 20px;
+            color: #a5b6c7;
+        }
+        .fn-s-header .fn-s-openH, .fn-s-header.open .fn-s-closeH {
+            display: none;
+        }
+        .fn-s-header.open .fn-s-openH{
+            display: block;
+        }
+        .fn-s-header .fn-s-closeH {
+            display: block;
+        }
+
+
+
+        .fn-s-body {
+            position: absolute;
+            top: 49px;
+            right: 0px;
+            list-style: none;
+            line-height: 30px;
+            background: #fff;
+            padding: 10px;
+            width: 140px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 0;
+            display: none;
+        }
+
+
+        .fn-s-body img {
+            width: 16px;
+            height: auto;
+            margin-right: 5px;
+            vertical-align: -2px;
+        }
+
+        .fn-s-body li {
+            height: 30px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .fn-s-body img.fn-s-mobile {
+            height: 16px;
+            width: auto;
+            margin-right: 10px;
+        }
+        .fn-s-body li:last-child {
+            border-bottom: 0;
+            margin-bottom: 0;
+        }
+        .fn-s-targetLists {
+            background: #eee;
+            border: 1px solid #ccc;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left:0;
+            font-size: 14px;
+        }
+        .node {
+            background: #fff;
+        }
+        .fn-s-innersvg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #fff;
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .hidden {
+            opacity: 0;
+        }
+        .link.extend {
+            stroke: #3dd0d1;
+        }
+        .fn-s-screen {
+            display: none;
+            border: none;
+            background: none;
+            cursor: pointer;
+            margin-top: 8px;
+            margin-left: 10px;
+        }
+        .fn-s-screen img {
+            width: 24px;
+        }
+        .fn-s-exitScreen {
+            display: none;
+        }     
+    </style>
+</head>
+<body>
+    <div class="fn-innerContent-headBox">
+        <div class="fn-innerContent-headBox-label">
+            转载文章数量<span>&nbsp;&nbsp;</span>篇
+        </div>
+        <div class="fn-innerContent-headBox-label">
+            转载媒体数量<span>&nbsp;&nbsp;</span>家
+        </div>
+        <button class="fn-s-screen" id="fn-s-screen" title="全屏查看传播图"><img src="/images/fullscreen.svg"/></button>
+        <button class="fn-s-screen fn-s-exitScreen" id="fn-s-exitScreen" title="关闭全屏查看"><img src="/images/fullscreen_exit.svg" /></button>
+        <div class="fn-s-tags">
+            <span class="fn-s-header"><span class="fn-s-closeH">显示图标标志</span><span class="fn-s-openH">隐藏图表标志</span></span>
+            <ul class="fn-s-body">
+                <li><img src="/images/global.svg" />网站</li>
+                <li><img src="/images/weibo.svg" />微博</li>
+                <li><img src="/images/wechat.svg" />微信</li>
+                <li><img src="/images/paper.svg" />报纸</li>
+                <li><img src="/images/mobile.svg" class="fn-s-mobile"/>移动客户端</li>
+                <!--<li><img src="/images/custom.svg" />自媒体</li>-->
+                <li><img src="/images/empty.svg" class="fn-s-null" />未知类型</li>
+                <li><img src="/images/question.svg" class="fn-s-unknown" />来源为空</li>
+            </ul>
+        </div>
+    </div>
+    <div class="fn-s-svgLoad">
+        <img src="/images/ajax-loader.gif" />
+    </div>
+    <div id="scalebox" class="zdeps-1 usel">
+        <div class="zoom_map zoom_out_map"></div>
+        <div class="zoom_map zoom_in_map"></div>
+    </div>
+    <script type="text/javascript" src="/libs/d3/d3.v3.min.js"></script>
+    <script type="text/javascript" src="/libs/jquery/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/js/chart.v2-min.js?v=123"></script>
+</body>
+</html>

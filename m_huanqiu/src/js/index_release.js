@@ -24,7 +24,7 @@
   let userID = Util.getCookie('userID')                     // 用户信息
   if (!userID) {
     userID = Util.getId()
-    Util.setCookie('userID', userID)
+    Util.setCookie('userID', userID, 365 * 10)
   }
 
   const App = {
@@ -89,27 +89,8 @@
     // 设置 导航位置
     setNavPos: function () {
       const $scrollNav = $('.nav-main')
-      let currLeft = $scrollNav.scrollLeft()
-      // nav位置
-      if (this.channel !== '') {
-        const $activeNav = $scrollNav.find('.active')
-        const $smallNav = $scrollNav.find('.small')
-        const activeIndex = $activeNav.index()
-        const smallNum = (($navs, activeIndex) => {
-          let i = 0
-          $navs.each((index, item) => {
-            if ($(item).index() < activeIndex) {
-              i++
-            }
-          })
-          return i
-        })($smallNav, activeIndex)
-        // 单个导航的宽度是1.75rem，small的宽度是3rem
-        const navLeft = (activeIndex - smallNum) * (FontSize * 1.75) + smallNum * (FontSize * 3)
-        $scrollNav.scrollLeft(navLeft)
-      } else {
-        $scrollNav.scrollLeft(0)
-      }
+      const $activeNav = $scrollNav.find('.active')
+      $scrollNav.scrollLeft($activeNav[0].offsetLeft)
     },
     // 初始化 添加主屏提示 是否可见
     initTip: function () {
@@ -131,6 +112,7 @@
     setChannel: function () {
       // 频道相关属性设置
       this.channel = Util.getHash().channel || ''
+      // Util.setCookie('channel', this.channel)
       this.homeFlag = !this.channel
       this.picChannelFlag = this.channel === 'picture'
       this.videoChannelFlag = this.channel === 'video'
@@ -144,6 +126,16 @@
         this.url = `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
         this.autoUrl = `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
       }
+
+      // var spanElem = document.createElement('span')
+      // spanElem.id = 'cnzz_stat_icon_' + '1262434722'
+      // var scriptElem = document.createElement('script')
+      // scriptElem.type = 'text/javascript'
+      // scriptElem.src = 'http://s95.cnzz.com/z_stat.php%3Fid%' + '1262434722'
+      // spanElem.appendChild(scriptElem)
+
+      // document.body.appendChild(spanElem)
+
       // 折叠更多频道显示、修改导航样式等等频道相关UI设置
       if ($('#nav-more').height() > 50) {
         $('#nav-more-btn').trigger('click')
@@ -238,6 +230,9 @@
     },
     // 设置 手工推荐位，包括 轮播图，今日要闻等
     setManual: function (data) {
+      if (!data || typeof data !== 'object') {
+        return
+      }
       this.swiperData = data.swiper
       this.positionData = data.position
       this.wechatData = data.wechat

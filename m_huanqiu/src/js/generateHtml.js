@@ -4,19 +4,19 @@ const Util = require('./Util.js')
 const Generate = {
   // ad string
   indexAdString: {
-    3: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41788" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41788");</script></section>',
-    8: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41789" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41789");</script></section>',
-    13: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41790" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41790");</script></section>',
-    18: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41791" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41791");</script></section>',
-    23: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41792" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41792");</script></section>',
-    28: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41793" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41793");</script></section>',
-    33: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41794" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41794");</script></section>',
-    38: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41795" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41795");</script></section>'
+    3: '<div class="mock-line"></div><section class="ad-content"><div id="AD_SURVEY_POSITION_SIMPLE_41788" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41788");</script></section>',
+    8: '<div class="mock-line"></div><section class="ad-content"><div id="AD_SURVEY_POSITION_SIMPLE_41789" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41789");</script></section>',
+    13: '<div class="mock-line"></div><section class="ad-content"><div id="AD_SURVEY_POSITION_SIMPLE_41790" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41790");</script></section>',
+    18: '<div class="mock-line"></div><section class="ad-content"><div id="AD_SURVEY_POSITION_SIMPLE_41791" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41791");</script></section>',
+    23: '<div class="mock-line"></div><section class="ad-content"><div id="AD_SURVEY_POSITION_SIMPLE_41792" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41792");</script></section>',
+    28: '<div class="mock-line"></div><section class="ad-content"><div id="AD_SURVEY_POSITION_SIMPLE_41793" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41793");</script></section>',
+    33: '<div class="mock-line"></div><section class="ad-content"><div id="AD_SURVEY_POSITION_SIMPLE_41794" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41794");</script></section>',
+    38: '<div class="mock-line"></div><section class="ad-content"><div id="AD_SURVEY_POSITION_SIMPLE_41795" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41795");</script></section>'
   },
   adString: {
-    3: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41559" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41559");</script></section>',
-    8: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41560" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41560");</script></section>',
-    13: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41561" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41561");</script></section>'
+    3: '<div class="mock-line"></div><section class="ad-content"><div id="AD_SURVEY_POSITION_SIMPLE_41559" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41559");</script></section>',
+    8: '<div class="mock-line"></div><section class="ad-content"><div id="AD_SURVEY_POSITION_SIMPLE_41560" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41560");</script></section>',
+    13: '<div class="mock-line"></div><section class="ad-content"><div id="AD_SURVEY_POSITION_SIMPLE_41561" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41561");</script></section>'
   },
   lunboAdString: {
     index: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41197" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41197");</script></section>',
@@ -64,7 +64,7 @@ const Generate = {
     `
     return str
   },
-  // return 单个新闻HTML字符串 针对公司接口
+  // return 单个新闻HTML字符串
   newsHtml: (data, imgDisable = false) => {
     let str = ''
     let title = Util.generateTitle(data.title, 28)
@@ -141,6 +141,25 @@ const Generate = {
             </a>
           </section>
         `
+      } else if (data.contentType === 'content_special') {
+        // 两会专题 临时
+        str += `
+          <section class="news-style-1">
+            <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
+              <div class="news-content">
+                <div class="news-title">${title}</div>
+                <div class="news-info">
+                  <span class="news-from">${data.source}</span>
+                  <span class="news-date">${date}</span>
+                  <span class="news-special">两会专题</span>
+                </div>
+              </div>
+              <div class="news-imgs">
+                  <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/one_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
+              </div>
+            </a>
+          </section>
+        `
       }
     } else if (data.mediaType === 'moreImg') {
       // 多图
@@ -164,7 +183,7 @@ const Generate = {
       // 广告
       str += `
         <div class="mock-line"></div>
-        <section>
+        <section class="ad-content">
           ${data.data}
         </section>
       `

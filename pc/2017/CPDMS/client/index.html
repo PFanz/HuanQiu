@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+    内容传播动态监测系统
+  </title>
+  <link rel="shortcut icon" href="http://himg2.huanqiu.com/statics/images/favicon1.ico">
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <script type="text/javascript">
+    // 检测登录
+    (function() {
+      // 得到cookie
+      function getCookie(key) {
+        if (document.cookie.length > 0) {
+          let cookieStart = document.cookie.indexOf(key + '=')
+          if (cookieStart !== -1) {
+            cookieStart = cookieStart + key.length + 1
+            let cookieEnd = document.cookie.indexOf(';', cookieStart)
+            if (cookieEnd === -1) {
+              cookieEnd = document.cookie.length
+            }
+            return unescape(document.cookie.substring(cookieStart, cookieEnd))
+          }
+        }
+        return ''
+      }
+
+      const isLogin = getCookie('isLogin')
+      if (isLogin !== '1') {
+        location.href = 'login.html'
+      }
+    })()
+  </script>
+  <link rel="stylesheet" type="text/css" href="libs/font-awesome/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/fnnews.common-min.css" />
+  <link rel="stylesheet" type="text/css" href="css/fnnews.style-min.css?v=17c77c3f" />
+  <script type="text/javascript" src="libs/jquery/jquery-1.10.2.min.js?v=628072e7"></script>
+</head>
+
+<body class="fn-bgBody" style="padding-top: 0;">
+
+  <header class="fn-s-header" style="margin-bottom: 20px; height: 90px; background: #343434;">
+    <div style="color: #ddd; font-size: 12px;">
+      <span style="display: inline-block; margin-left: 40px; height: 30px; line-height: 30px; ">
+        内容传播动态监测系统——V1.0
+      </span>
+      <div class="fn-fr fn-s-settings fn-s-dropdown fn-ss-dropdown" style="margin-right: 100px; height: auto;">
+        <a href="javascript:void(0);" class="dropdown-toggle fn-s-ddHead" data-toggle="dropdown">
+          <span class="hidden-xs-only" data-name="zhangyong0115@126.com" style="height: 35px; line-height: 35px;">新闻编辑中心1</span>
+          <span id="head1_thumbPhoto" class="thumb-small avatar inline" style="height: 35px; line-height: 35px;"></span><i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu fn-s-ddBody" style="display: none; top: 35px; width: 140px;">
+          <li><a target="_self" href="/userCenter.html">个人中心</a></li>
+          <li><a id="head1_hylinkLoginOut" href="/login.html">注销</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top: 5px; color: #eee; font-size: 14px; width: 100%;">
+      <img src="images/logo.png" style="float: left; margin-left: 20px;">
+      <ul class="fn-inlineBlock fn-s-nav fn-clearfix" id="fn-s-nav" style="margin-left: 100px;">
+        <li><a class="fn-s-active" href="/index.html">首页</a></li>
+        <li><a href="/fwrecommend.html" id="head1_a1">系统推荐</a></li>
+        <li><a href="/mediafocus.html">媒体关注</a></li>
+        <li><a href="/findhot.html">热点汇聚</a></li>
+        <li><a href="/eventhome.html">事件跟踪</a></li>
+        <li><a href="/newsreprinted.html">转载分析</a></li>
+        <li><a href="/leader.html">领导活动</a></li>
+      </ul>
+      <form action="/normalSearchResult.html" style="float: right; margin-right: 100px; width: 250px; height: 30px;" id="searchForm">
+        <div id="search-top" class="fn-s-schTop" style="width: 100%; padding: 5px 10px 10px 10px;">
+          <span class="fn-s-icon fn-s-search fa fa-search" style="background: #343434; color: #eee; text-align:center; line-height: 22px;"></span>
+          <input id="normalSearchKey" name="normalSearchKey" type="text" placeholder="搜索您要的新闻" autocomplete="off" class="input-sm form-control fn-s-searchIpt" style="background: #343434;">
+          <div class="AccordionPanel fn-s-sDateArea" style="background: #fff;">
+            <div class="AccordionPanelContent">
+              <div class="input-daterange fn-s-sTimes" id="searchDateRangePicker">
+                <input name="begin" type="text" id="begin" class="fn-s-timeInput" placeholder="开始日期" readonly="" value="2017-06-20">
+                <span class="input-group-addon">至</span>
+                <input name="end" type="text" id="end" class="fn-s-timeInput" placeholder="结束日期" readonly="" value="2017-06-23">
+              </div>
+            </div>
+          </div>
+          <div class="AccordionPanelContent fn-s-apc" style="overflow: hidden;">
+            <button type="submit" class="fn-fr fn-s-btnS fn-ss-btnS">
+                搜索
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </header>
+
+  <script type="text/javascript">
+    var today = new Date()
+    var year = today.getFullYear()
+    var month = today.getMonth() + 1
+    var day = today.getDate()
+
+    var begin = +new Date() - 3 * 24 * 60 * 60 * 1000
+    begin = new Date(begin)
+    var beginYear = begin.getFullYear()
+    var beginMonth = begin.getMonth() + 1
+    var beginDay = begin.getDate()
+
+    $('#begin').val(beginYear + '-' + beginMonth + '-' + beginDay)
+    $('#end').val(year + '-' + month + '-' + day)
+
+    var $searchForm = $('#searchForm')
+    var $searchInput = $('#normalSearchKey')
+    $searchInput.focus(function () {
+      $searchForm.addClass('focused')
+    })
+    $('body').click(function () {
+      $searchForm.removeClass('focused')
+    })
+
+  </script>
+
+  <!-- 阻止表单提交 -->
+  <form method="post" action="index.html" id="form1" onsubmit="return false;">
+    <div class="aspNetHidden">
+      <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE4MTYyMTE3OTIPZBYCAgMPZBYCAgEPZBYEAgEPFgIeCWlubmVyaHRtbAWYATxpbWcgc3JjPSJodHRwOi8vZndpbWFnZS5jbmZhbmV3cy5jb20vaHpmYW5ld3NVc2VySW1nL3poYW5neW9uZzAxMTVAMTI2LmNvbS5qcGciIGFsdD0iIiBjbGFzcz0iaW1nLWNpcmNsZSIgb25lcnJvcj0idGhpcy5zcmM9Jy92Mi9pbWFnZXMvYXZhdGFyLnBuZyciIC8+ZAICDw8WAh4LTmF2aWdhdGVVcmwFIy9Vc2VyTWFuYWdlL1VzZXJMb2dpbi9sb2dpbk91dC5hc3B4ZGRkaazOK6R+ZhR/AB/KrKWi+s1lJ0GMzquknQ98vYVL03o=" />
+    </div>
+    <div class="aspNetHidden">
+      <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="FD822E9B" />
+      <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAc8q7DMVCSpj8wkPLe5jZ1EH/IFrMsBtYrtquIAMI00wPFNuoHzJDOpctFH1epRf1EXlaKubEE6xOj6Y8iQdsH5WzbrJ//oQt7JsXYlqg99b5iOUwzcBzIVjkGPBBvD2PUN9ASAJSRYjPrY2l8+CFBO209ae+M2gIXW2TN/3m9LdKiYPUJ52AtFr3yB5ek6Dao=" />
+    </div>
+
+    <script src="js/fanews.v2-min.js?v=e3fd2217" type="text/javascript"></script>
+    <script type="text/javascript" src="libs/Highcharts/highcharts-min.js?v=34e26ca0"></script>
+    <script type="text/javascript" src="libs/My97DatePicker/WdatePicker.js?v=ca0fbbce"></script>
+    <script type="text/javascript" src="js/fnKitTool-min.js"></script>
+    <script type="text/javascript" src="libs/plugins/sq.plugin-min.js?v=b62b730e"></script>
+    <script type="text/javascript" src="js/fn-head-min.js?v=b6486e00"></script>
+    <!-- add by yzx start 2016-08-24-->
+    <script src="libs/artDialog4.1.6/artDialog.source.js?skin=green"></script>
+    <script src="libs/artDialog4.1.6/plugins/iframeTools.js"></script>
+    <!-- add by yzx end -->
+    <div class="fn-s-content fn-s-main">
+      <section class="fn-s-section fn-clearfix">
+        <div class="fn-s-focusImg fn-fl fn-ss-focusImg">
+          <ul class="fn-s-focusMain fn-s-bl fn-relative" id="fn-s-focusImg">
+          </ul>
+          <span class="fn-s-fIcon fn-s-fPrev" id="fn-s-fPrev"><i class="fa fa-chevron-left"></i></span>
+          <span class="fn-s-fIcon fn-s-fNext" id="fn-s-fNext"><i class="fa fa-chevron-right"></i></span>
+          <ol class="fn-s-focusNum fn-clearUl">
+            <li class="fn-s-active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+          </ol>
+        </div>
+        <div class="fn-s-tRight fn-fr">
+          <div class="fn-s-topLine fn-ss-tab" style="top: 0px;">
+            <!-- <span class="fn-s-tMore" id="fn-s-tMore" title="查看更多" style="color: #fff;">
+                            <span class="fa fa-ellipsis-h"></span>
+            </span> -->
+            <ul class="fn-s-tabHead fn-clearUl fn-ss-tabHead" id="fn-s-hlCtrl" style="background: #343434;">
+              <li class="fn-s-active" style="color: #fff; cursor: auto;">网媒头条</li>
+              <!-- <li id="fn-s-wxCtrl">微信头条</li> -->
+              <!-- <li id="fn-s-govCtrl">党报头条</li> -->
+            </ul>
+            <div class="fn-s-tabBody fn-s-sl" style="height: 390px;">
+              <ol class="fn-s-hlLists" id="fn-s-medHl">
+              </ol>
+              <ol class="fn-s-hlLists" id="fn-s-wxHl">
+              <!-- </ol> -->
+              <ol class="fn-s-hlLists" id="fn-s-govHl">
+              <!-- </ol> -->
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="fn-s-columns fn-clearfix">
+        <div class="fn-s-bColumn fn-fl">
+          <section class="fn-s-mediaFocus fn-ss-tab">
+            <div class="fn-s-colTitle fn-s-colTitleB fn-s-colTitleM" style="border-top-color: #343434;">
+              <h4 class="fn-s-ctH" style="color: #000;">
+                                <a href="/mediafocus.html" title="媒体关注" target="_blank">
+                                    媒体关注
+                                </a>
+                            </h4>
+              <div class="fn-hidden">
+                <input type="hidden" name="txtExKey" id="txtExKey" value="开奖,扫扫二维码新闻连连看,今日导读,简 讯,小盐藻 大健康,占道，占道,上接,标题,上接第一版,公告,司法拍卖公告,历史上的今天,责任编辑,体彩,招 标 公 告,福利彩票,遗失声明,分类信息,遗 失 声 明,国际新闻,一句话新闻,莱蒙城,路况,上市公司公告,年度报告,smart,电子相册,有色金属,今日最高气温,天气预报,季度报告,链家,价格查询,托管协议,转发微博,新华社快讯,分类广告,广告,壮阳,增粗,注销声明,声明,说明书,股东大会,公示,公 示,轻松时刻" />
+                <input type="hidden" name="txtExKeyContent" id="txtExKeyContent" value="网通社,网上车市,58同城" />
+              </div>
+              <div class="fn-s-dropdown fn-ss-dropdown">
+                <button type="button" class="fn-s-btn fn-fr fn-s-ddHead fa fa-cog"></button>
+                <ul class="fn-absolute fn-s-moveDd fn-s-ddBody">
+                  <li data-change="media">媒体关注</li>
+                  <li data-change="local">本地资讯</li>
+                  <li data-change="trace">事件跟踪</li>
+                  <li data-change="hot">热点汇聚</li>
+                </ul>
+              </div>
+              <button title="刷新" class="fn-s-refresh fn-s-reMedia"><span class="fa fa-refresh"></span></button>
+            </div>
+            <div class="fn-s-hotArea fn-s-tabBody">
+              <ul class="fn-s-hotLists fn-ss-fHotLists fn-s-bl">
+              </ul>
+            </div>
+          </section>
+          <section class="fn-s-localInfo">
+            <div class="fn-s-colTitle fn-s-colTitleB fn-s-colTitleL" style="border-top-color: #343434; color: #000;">
+              <h4 class="fn-s-ctH">
+                                <span>
+                                    <!--<span class="fn-s-icon fn-s-localIcon"></span>-->
+                                    本地资讯
+                    <span class="fn-s-icon fn-s-rArrow"></span>
+                                </span>
+                            </h4>
+              <!-- <div class="fn-s-selects">
+                <div class="fn-s-sHead">
+                  <h5 class="fn-s-curCity">
+                                        <span class="fn-s-curPro">浙江</span>
+                                        <span class="fn-s-div"></span>
+                                        <span class="fn-s-curTown">杭州</span>
+                                    </h5>
+                  <span class="fa fa-caret-down"></span>
+                </div>
+                <div class="fn-s-sBody">
+                  <ul class="fn-s-provinces fn-clearfix">
+                  </ul>
+                  <ul class="fn-s-towns fn-clearfix" id="fn-s-towns">
+                    <li class="fn-s-backFirst">返回上一级</li>
+                  </ul>
+                </div>
+              </div> -->
+              <div class="fn-s-dropdown fn-ss-dropdown">
+                <button type="button" class="fn-s-btn fn-fr fn-s-ddHead fa fa-cog"></button>
+                <ul class="fn-absolute fn-s-moveDd fn-s-ddBody">
+                  <li data-change="media">媒体关注</li>
+                  <li data-change="local">本地资讯</li>
+                  <li data-change="trace">事件跟踪</li>
+                  <li data-change="hot">热点汇聚</li>
+                </ul>
+              </div>
+              <button title="刷新" class="fn-s-refresh fn-s-reLocal"><span class="fa fa-refresh"></span></button>
+            </div>
+            <ul class="fn-s-localArea fn-s-localLists fn-clearfix fn-s-bl">
+            </ul>
+          </section>
+          <section class="fn-s-eventTrace">
+            <div class="fn-s-colTitle  fn-s-colTitleB fn-s-colTitleE" style="color: #343434; border-top-color: #343434;">
+              <h4 class="fn-s-ctH">
+                                <a href="/eventhome.html" target="_blank" title="事件跟踪">
+                                    <!--<span class="fn-s-icon fn-s-traceIcon"></span>-->
+                                    事件跟踪
+
+                                </a></h4>
+              <div class="fn-s-dropdown fn-ss-dropdown">
+                <button type="button" class="fn-s-btn fn-fr fn-s-ddHead fa fa-cog"></button>
+                <ul class="fn-absolute fn-s-moveDd fn-s-ddBody">
+                  <li data-change="media">媒体关注</li>
+                  <li data-change="local">本地资讯</li>
+                  <li data-change="trace">事件跟踪</li>
+                  <li data-change="hot">热点汇聚</li>
+                </ul>
+              </div>
+              <button title="刷新" class="fn-s-refresh fn-s-reTrace"><span class="fa fa-refresh"></span></button>
+            </div>
+            <div class="fn-s-traceArea" style="height: auto;">
+              <div class="fn-s-tCtl">
+                <span class="fn-s-icon fn-s-tPrev" title="上一条"></span>
+                <span class="fn-s-icon fn-s-tNext" title="下一条"></span>
+              </div>
+              <ul class="fn-s-traceLists fn-s-bl" style="height: auto;">
+              </ul>
+            </div>
+          </section>
+          <section class="fn-s-hotFocus">
+            <div class="fn-s-colTitle fn-s-colTitleB fn-s-colTitleH" style="color: #343434; border-top-color: #343434;">
+              <h4 class="fn-s-ctH">
+                                <a href="/findhot.html" target="_blank" title="热点汇聚">
+                                    <!--<span class="fa fa-life-ring"></span>-->
+                                    热点汇聚
+
+                                </a></h4>
+              <div class="fn-s-dropdown fn-ss-dropdown">
+                <button type="button" class="fn-s-btn fn-fr fn-s-ddHead fa fa-cog"></button>
+                <ul class="fn-absolute fn-s-moveDd fn-s-ddBody">
+                  <li data-change="media">媒体关注</li>
+                  <li data-change="local">本地资讯</li>
+                  <li data-change="trace">事件跟踪</li>
+                  <li data-change="hot">热点汇聚</li>
+                </ul>
+              </div>
+              <button title="刷新" class="fn-s-refresh fn-s-reHot"><span class="fa fa-refresh"></span></button>
+            </div>
+            <ul class="fn-s-hotCenter fn-s-bl">
+            </ul>
+          </section>
+        </div>
+        <div class="fn-s-sColumns fn-fr">
+          <section class="fn-s-myTrace">
+            <div class="fn-s-colTitle" style="background: #343434;">
+              <h4 class="fn-s-ctH">
+                                <span title="我的跟踪">我的跟踪
+                                </span>
+                            </h4>
+            </div>
+            <ul class="fn-s-mtArea fn-s-mtLists fn-s-sl">
+              <li class="fn-s-nMt">
+                <a href="/newmycategorylist.html" target="_blank" title="添加我的跟踪">
+                  <span class="fa fa-plus-circle"></span>
+                  <p class="fn-text-warning">您还没有添加跟踪，请点击添加。</p>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    
+    <div id="fn-s-detailModal" class="fn-s-modal">
+      <div class="fn-s-mdHead">
+        <h4 class="fn-s-mdTitle"></h4>
+        <span class="fn-s-mdClose"></span>
+      </div>
+      <div class="fn-s-mdBody">
+        <iframe id="fn-s-frame"></iframe>
+      </div>
+      <span class="fn-s-mArrow fn-s-maLeft"></span>
+      <span class="fn-s-mArrow fn-s-maRight"></span>
+    </div>
+    <div id="fn-s-foundModal" class="fn-s-modal">
+      <div class="fn-s-mdHead">
+        <h4 class="fn-s-mdTitle"></h4>
+        <span class="fn-s-mdClose"></span>
+      </div>
+      <div class="fn-s-mdBody">
+        <iframe id="fn-s-foundFrame"></iframe>
+      </div>
+      <span class="fn-s-mArrow fn-s-maLeft"></span>
+      <span class="fn-s-mArrow fn-s-maRight"></span>
+    </div>
+    <script type="text/javascript" src="libs/jsonsql/jsonsql-min.js?v=1cc81304"></script>
+    <!-- 数据请求 -->
+    <script type="text/javascript" src="js/fnnews.index-min.js?v=a3c39131"></script>
+  </form>
+</body>
+
+</html>

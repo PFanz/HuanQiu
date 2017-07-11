@@ -1,0 +1,14 @@
+<!--pics.wxml-->
+<template name="pics">
+  <view class="pics-block" bindtap="bindLink" data-id="{{id}}">
+    <image class="pics-img" src="{{img.src}}" alt="{{img.alt}}" mode="aspectFill" binderror="bindImgError" data-index="{{index}}"></image>
+    <text class="pics-num">{{count}}图</text>
+    <text class="pics-title" style="color: {{color}}">{{title}}</text>
+  </view>
+</template>
+
+<view class="pics-container">
+  <block wx:for="{{newsList}}" wx:item="item" wx:for-index="index" wx:key="{{item.id}}">
+    <template is="pics" data="{{id: item.id, title: item.title, img: item.thumb_list[0], color: visitedList[item.id] ? '#666' : '#000', index: index, count: item.thumb_count}}"></template>
+  </block>
+</view>

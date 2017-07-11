@@ -1,0 +1,26 @@
+<view class="pics-swiper-container">
+  <swiper bindchange="changePage">
+    <block wx:for="{{list}}" wx:for-item="item" wx:key="{{item.src}}">
+      <swiper-item>
+        <image class="pics-swiper-img" src="{{item.src}}" mode="widthFix"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="pics-swiper-content">
+  <view class="pics-title-container">
+    <text class="pics-title">{{title}}</text>
+    <view class="pics-indicator">
+      <text class="pics-index" id="pics-index">{{swiperCurr + 1}}</text>
+      <text class="pics-lens">/{{list.length}}</text>
+    </view>
+  </view>
+  <scroll-view class="pics-info" scroll-y="true">
+    {{alt}}
+  </scroll-view>
+  <!--<movable-area style="height: 100%;width: 100%;">
+    <movable-view style="height: 200px; width: 100%;" direction="vertical" inertia="true" out-of-bounds="true">
+      {{alt}}
+    </movable-view>
+  </movable-area>-->
+</view>

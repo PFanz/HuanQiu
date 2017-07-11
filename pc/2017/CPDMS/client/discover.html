@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>发现</title>
+    <link rel="icon" href="images/fw_logo.png?v=fe4cc1f2" type="image/png" />
+    <link rel="icon" href="http://himg2.huanqiu.com/statics/images/favicon1.ico" />
+    <link rel="shortcut icon" href="http://himg2.huanqiu.com/statics/images/favicon1.ico">
+    <link rel="BOOKMARK" href="http://himg2.huanqiu.com/statics/images/favicon1.ico" />
+    <meta name="description" content="科技 中国领先的新闻数据服务商 专注于新闻资讯的聚合服务" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="css/fanews.v2-min.css?v=a78bc3c3" type="text/css" />
+    <link rel="stylesheet" href="css/main.v2-min.css?v=882abd67" type="text/css" />
+    <!--[if lt IE 9]> <script src="js/ie/respond.min.js"></script> <script src="js/ie/html5.js"></script> <![endif]-->
+    <style>
+        html
+        {
+            overflow: hidden;
+        }
+        body
+        {
+            font-family: 微软雅黑 !important;
+            overflow: hidden;
+        }
+        
+        .splitter
+        {
+            filter: alpha(opacity=50);
+            -moz-opacity: 0.5;
+            -khtml-opacity: 0.5;
+            opacity: 0.5;
+        }
+        
+        .xline
+        {
+            height: 2px;
+            font-size: 0;
+            overflow: hidden;
+            border-width: 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body style="overflow: hidden;" onresize="AdjustPage()">
+    <form method="post" action="discover.aspx?key=%u5b69%u5b50%2c%u7efc%u5408%u5f81%2c%u5a74%u513f%2c%u51cc%u6668%2c%u6885%u96e8%2c%u51fa%u73b0%2c%u7236%u6bcd%2c%u5988%u5988" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJOTg2ODYxNjM4ZGTD9XZRwMnEObk3awjcQpsxi2uU4Za8B6cqNsbXKTmdFw==" />
+</div>
+
+<div class="aspNetHidden">
+
+  <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AC291DBF" />
+</div>
+    <section id="content" class="content-sidebar bg-white">
+                        <!-- .sidebar -->
+                        <aside class="sidebar sidebar-large">
+                            <div class="padder header-bar bg clearfix">
+                                
+                            <div class="btn-group m-t m-b">
+                                    <div id="channelinfo" style="font-size:12pt">
+                                        <b class="badge bg-danger">0</b>
+                                    </div>
+                            </div>
+                            </div>
+                            <div id="newslist" onscroll="LoadNewsList()" class="list-group list-normal m-t-n-xmini" style="font-family:微软雅黑;line-height:20px; overflow-y:auto; overflow-x:hidden;">
+                            </div>
+                            <div id="scrollTop" class="text-center" style="display:none;filter: alpha(opacity=30); -moz-opacity: 0.3;-khtml-opacity: 0.3;opacity: 0.5;background-color: #000000; position: relative;z-index: 3;bottom: 50px;margin-bottom: -30px;right: 10px;float: right;width: 30px;height: 30px; border-radius: 2px;cursor: pointer;"><i class="fa fa-lg fa-sort-up" style="margin-top: 12px;"></i></div>
+                        </aside>
+                        <!-- /.sidebar -->
+                        <!-- .main -->
+                        <section class="main bg-white" style="max-height: 1000px;">
+                            <div id="splitter1" class="splitter" style=" position:absolute; z-index:10000;  WIDTH: 5px; HEIGHT: 100%;background-color:transparent;filter:alpha(opacity=30); -moz-opacity:0.3; -khtml-opacity:0.3; opacity:0.3"></div>
+                            <div id="news" class="bg-white" style="max-height: 1000px;">
+                                
+                                <iframe id="myframe" src="" class="scroll-y scrollbar" style="width:100%;overflow:hidden; background-color:#ffffff;" scrolling="no" frameborder="no" border="0" allowtransparency="true">
+                                </iframe>
+                            </div>
+                        </section>
+                        <!-- /.main -->
+                    </section>
+    <!-- Bootstrap -->
+    <!-- app -->
+    <div id="mask" style="display: none; left: 0; top: 0; z-index: 9999; width: 100%;
+        height: 100%; position: absolute; background-color: #233445; filter: alpha(opacity=0);
+        -moz-opacity: 0.0; -khtml-opacity: 0.0; opacity: 0.0;">
+    </div>
+    <div class="text-center padder clearfix">
+        <div style="display: none;">
+            <input id="txt_nid" type="text" width="60px" value="" />
+            <input id="txt_rows" type="text" width="60px" value="0" />
+            <input id="txt_ctid" type="text" width="60px" value="5264" />
+        </div>
+    </form>
+    <script src="libs/jquery/jquery-1.10.2.min.js?v=628072e7" type="text/javascript"></script>
+    <script src="libs/handlebars-v3.0.0-min.js?v=8afb4ea3" type="text/javascript"></script>
+    <script src="js/fanews.v2-min.js?v=6c6f9ad8" type="text/javascript"></script>
+    <script src="libs/jquery-date-range-picker/moment.min.js?v=0e7067c4" type="text/javascript"></script>
+    <script src="js/fnPub-min.js?v=5f8037ea" type="text/javascript"></script>
+    <script src="js/fnMover-min.js?v=a2187102" type="text/javascript"></script>
+    <script src="js/fnHtml-min.js?v=6ec9d112" type="text/javascript"></script>
+    <script src="js/fnDate-min.js?v=0df8e6d7" type="text/javascript"></script>
+    <script src="js/main-min.js?v=0177ea02" type="text/javascript"></script>
+    <script id="tpl_newslist" type="text/x-handlebars-template">
+                    {{#list rows}} {{/list}}
+    </script>
+    <script type="text/javascript">
+        var ajaxrequest;
+        var pageSize = 10; //每次加载的文章数量
+        var toLoad = true; //是否继续加载 默认为加载
+        var lock = false; //滚动加载锁，防止重复加载数据
+        var selectIds = []; //选中的记录
+        var selectKeyIds = []; //选中的记录
+        var postUrl = "../api/dataJson";
+        var dataPostPageUrl = "../api/dataPost";
+        var dateTag = ""; //文章列表日期类型类别
+        var myDate = new Date();
+        var sameIds = new Array(10);
+        var startDate = "1900-01-01";
+        var endDate = "1900-01-01";
+        var keyword = "";
+
+        var searchObject = {}
+        var searchArr = location.search.substr(1).split('&')
+        searchArr.forEach((item, index) => {
+          var name = item.split('=')[0]
+          var value = item.split('=')[1]
+          if (name.length) {
+            searchObject[name] = value
+          }
+        })
+        keyword = decodeURIComponent(searchObject.key)
+
+        $(document).ready(function () {
+            var keyArry = new Array();
+            keyArry = keyword.split(",");
+            keyword = "";
+            for (var i = 0; i < keyArry.length; i++) {
+                keyword += keyArry[i] + " ";
+                if (i == 2)
+                    break;
+            }
+
+            LoadData(); //加载数据
+            AdjustPage(); //调整页面显示
+            TwoColumnsSplitter("splitter1"); //分栏条注册分栏事件
+            ScrollTop("#newslist", "#scrollTop");
+        });
+
+        //调整页面显示
+        function AdjustPage() {
+            $("#content").css("height", (document.documentElement.clientHeight + 1) + "px");
+            $("#newslist").css("height", (document.documentElement.clientHeight - 52) + "px");
+            $("#myframe").css("height", document.documentElement.clientHeight + "px");
+        }
+
+        //加载页面数据
+        function LoadData() {
+            $.when(InitNewsList(keyword, "0", pageSize)).done(function () {
+                GetNews($("#newslist a:eq(0)"), $("#newslist a:eq(0)").find("p").eq(0).html(), $("#txt_nid").val());
+                $("#newslist a:eq(0)").addClass("active_gray");
+            });
+        }
+
+        //二栏目分栏调整方法
+        function TwoColumnsSplitter(targetObj) {
+            var oBox = document.getElementById(targetObj);
+            var oDrag = new Drag(oBox, {
+                handle: oBox,
+                limit: false
+            });
+            var oldPosition = 0;
+            var newPosition = 0;
+            //开始拖拽时方法
+            oDrag.onStart = function () {
+                $("#" + targetObj).css("background-color", "#233445");
+                $("#mask").show();
+                oldPosition = $("#" + targetObj).offset().left;
+            };
+            //开始拖拽时方法
+            oDrag.onMove = function () { };
+            //开始拖拽时方法
+            oDrag.onStop = function () {
+                newPosition = this.drag.offsetLeft;
+                $("aside").eq(0).width($("aside").eq(0).width() + newPosition - oldPosition);
+                $("#mask").hide();
+                $("#" + targetObj).css("background-color", "transparent");
+            };
+            oDrag.lockY = !oDrag.lockY;
+        }
+
+        //获取文章列表事件
+        function LoadNewsList() {
+            // var vst = parseInt($('#newslist')[0].scrollTop);
+            // var vsh = parseInt($('#newslist')[0].scrollHeight);
+            // var vch = parseInt($('#newslist')[0].clientHeight);
+            // var len = $('#txt_rows').val();
+            // //如果下拉到底，判断是否要继续加载
+            // if ((vst + vch >= vsh - 30) && toLoad && !lock) { //距离50px，提前加载//-50
+            //     //这里可以异步取数据，根据返回结果判断是否继续加载
+            //     //                if (len >= 80) {
+            //     //                    toLoad = false;
+            //     //                }
+            //     GetNewsList(keyword, len, pageSize);
+            // }
+        }
+
+        //初始获取文章列表数据
+        function InitNewsList(key, sidx, count) {
+            var dtd = $.Deferred(); //在函数内部，新建一个Deferred对象
+            SysMonitor();
+
+
+            var hasTodayTag = false;
+            var hasYesterdayTag = false;
+            var hasHistoryTag = false;
+            var hasOtherTag = false;
+            var imgPath = "";
+            var tempImg = new Array();
+            lock = true;
+            // var url = postUrl + "?whatDo=FindHot&keywords=" + key;
+            var url = "/api/index.php?c=search&type=4&keyword=" + key;
+            $("#newslist").html("");
+            $("#newslist").append("<div id=\"loader\" class=\"center\" style=\"width:100px;margin-left: auto;margin-right: auto;margin-top:15px;\"><img src=\"images/ajax-loader.gif\" style=\"margin-left: auto;margin-right: auto;\" align=\"center\" /></div>"); //<span class=\"text-danger\">正在加载中</span>
+            $('#txt_rows').val("0");
+            //newslist区域模板加载
+            toLoad = true;
+            if (ajaxrequest) {
+                ajaxrequest.abort();
+            }
+            ajaxrequest = $.getJSON(url, function (viewdata) {
+                if (!viewdata || !viewdata.obj || !viewdata.obj.rows) {
+                    return
+                }
+                viewdata = viewdata.obj
+                if (viewdata.rows.length === 0) {
+                    return
+                }
+                $("#channelinfo").find(".badge").eq(0).html(viewdata.rows.length);
+                var source = $("#tpl_newslist").html();
+                var template = Handlebars.compile(source);
+                Handlebars.registerHelper('list', function (items, options) {
+                    $("#txt_nid").val(items[0].articlesequenceid);
+                    var out = "";
+                    var tempDate = "";
+                    sameIds.length = 0;
+                    for (var i = 0, l = items.length; i < l; i++) {
+                        $('#txt_rows').val($('#txt_rows').val() * 1 + 1);
+                        tempDate = items[i].updatetime.substr(0, 10).replace(/\-/g, "");
+                        //options.fn(items[i])
+                        if (items[i].same_id == null || ($("#same" + items[i].same_id).length == 0 && sameIds.indexOf(items[i].same_id) < 0)) {
+                            sameIds.push(items[i].same_id);
+                            if (myDate.Format("yyyyMMdd") < tempDate && !hasOtherTag) {
+                                hasOtherTag = true;
+                                dateTag = "ot";
+                                out = out + "<a href=\"#\" id=\"otherTag\" class=\"list-group-item bg-lighter no-border\" onclick=\"ShrinkNewsList('otherTag','" + dateTag + "')\"> <i class=\"fa fa-caret-down\"></i>&nbsp;待发布</a>";
+                            } else if (myDate.Format("yyyyMMdd") == tempDate && !hasTodayTag) {
+                                hasTodayTag = true;
+                                dateTag = "nt";
+                                out = out + "<a href=\"#\" id=\"todayTag\" class=\"list-group-item bg-light no-border\" onclick=\"ShrinkNewsList('todayTag','" + dateTag + "')\"> <i class=\"fa fa-caret-down\"></i>&nbsp;今天</a>";
+                            } else if ((myDate.Format("yyyyMMdd") - 1) == tempDate && !hasYesterdayTag) {
+                                hasYesterdayTag = true;
+                                dateTag = "ny";
+                                out = out + "<a href=\"#\" id=\"yesterdayTag\" class=\"list-group-item bg-lighter no-border\" onclick=\"ShrinkNewsList('yesterdayTag','" + dateTag + "')\"> <i class=\"fa fa-caret-down\"></i>&nbsp;昨天</a>";
+                            } else if ((myDate.Format("yyyyMMdd") - 1) > tempDate && !hasHistoryTag) {
+                                hasHistoryTag = true;
+                                dateTag = "nh";
+                                out = out + "<a href=\"#\" id=\"historyTag\" class=\"list-group-item bg-lighter no-border\" onclick=\"ShrinkNewsList('historyTag','" + dateTag + "')\"> <i class=\"fa fa-caret-down\"></i>&nbsp;历史</a>";
+                            }
+                            out = out + "<a id=\"nid_" + items[i].articlesequenceid + "\" href=\"javascript:;\" class=\"list-group-item " + dateTag + "\" onclick=\"GetNews(this,'" + escape(items[i].title) + "','" + items[i].articlesequenceid + "')\">";
+                            //                            if (items[i].viocesize >= 1 && items[i].viocesize <= 9)
+                            //                                out = out + "<div class=\"triangle-top-right-green\"><div class=\"triangle-text\">原</div></div>";
+                            //                            else if (items[i].viocesize >= 10 && items[i].viocesize <= 50)
+                            //                                out = out + "<div class=\"triangle-top-right-gray\"><div class=\"triangle-text\">转</div></div>";
+                            if (items[i].viocesize >= 1 && items[i].viocesize <= 9)
+                                out = out + "<span class=\"label label-success\">原创</span>&nbsp;";
+                            else if (items[i].viocesize >= 10 && items[i].viocesize <= 50)
+                                out = out + "<span class=\"label label-default\">转载</span>&nbsp;";
+                            if (items[i].imagesource != null && items[i].imagesource != "") //有图片
+                            {
+                                if (items[i].imagesource.toLowerCase().indexOf("http") == 0) { //直接读取
+                                    tempImg = items[i].imagesource.split("%D%W");  //第一张图片质量不高，取后面的
+                                    if (tempImg.length > 1 && tempImg[1] != "")
+                                        out = out + "<p class=\"first-letter-big\">" + items[i].title + "</p>" + (items[i].subtitle != "" && items[i].subtitle != null ? "<br>—&nbsp;<small>" + items[i].subtitle + "</small>" : "") + "<table><tr><td style=\"width:75%\"><small class=\"text-muted\">" + CleanHtmlTags(items[i].markinfo).replace(/[A-Za-z]/g, "").substr(0, 55) + "...</small></td><td style=\"width:25%\"><div style=\"width:80px; height:80px;overflow:hidden;display:table-cell;vertical-align:middle;text-align:center;\"><img style=\"max-width:80px;max-height:80px;_width:expression(this.width > this.height ? this.height : this.width);\" src=\"" + tempImg[1].split(",")[0] + "\"></div></td></tr></table>";
+                                    else
+                                        out = out + "<p class=\"first-letter-big\">" + items[i].title + "</p>" + (items[i].subtitle != "" && items[i].subtitle != null ? "<br>—&nbsp;<small>" + items[i].subtitle + "</small>" : "") + "<table><tr><td style=\"width:75%\"><small class=\"text-muted\">" + CleanHtmlTags(items[i].markinfo).replace(/[A-Za-z]/g, "").substr(0, 55) + "...</small></td><td style=\"width:25%\"><div style=\"width:80px; height:80px;overflow:hidden;display:table-cell;vertical-align:middle;text-align:center;\"><img style=\"max-width:80px;max-height:80px;_width:expression(this.width > this.height ? this.height : this.width);\" src=\"" + tempImg[0].split(",")[0] + "\"></div></td></tr></table>";
+                                }
+                                //<input type=\"checkbox\" onclick=\"SelectNewsList(this,'" + items[i].articlesequenceid + "')\" / >
+                                else {
+                                    imgPath = GetOssUrl(GetOssKey(3, items[i].paperid, tempDate, items[i].revision, items[i].imagesource.split(",", 1)));
+                                    out = out + "<p class=\"first-letter-big\">" + items[i].title + "</p>" + (items[i].subtitle != "" && items[i].subtitle != null ? "<br>—&nbsp;<small>" + items[i].subtitle + "</small>" : "") + "<table><tr><td style=\"width:75%\"><small class=\"text-muted\">" + CleanHtmlTags(items[i].markinfo).replace(/[A-Za-z]/g, "").substr(0, 55) + "...</small></td><td style=\"width:25%\"><div style=\"width:80px; height:80px;overflow:hidden;display:table-cell;vertical-align:middle;text-align:center;\"><img style=\"max-width:80px;max-height:80px;_width:expression(this.width > this.height ? this.height : this.width);\" src=\"" + imgPath + "\"></div></td></tr></table>";
+                                }
+                            } else
+                                out = out + "<p class=\"first-letter-big\">" + items[i].title + "</p>" + (items[i].subtitle != "" && items[i].subtitle != null ? "<br>—&nbsp;<small>" + items[i].subtitle + "</small>" : "") + "<table style=\"margin-top:10px;\"><tr><td><small class=\"text-muted\">" + CleanHtmlTags(items[i].markinfo).replace(/[A-Za-z]/g, "") + "...</small></td></tr></table>";
+                            if (ShowIconByArticleType(items[i].articletype, items[i].articlesequenceid) == "news") {
+                                out = out + "<div class=\"line line-dashed\"></div><table style=\"width:100%;\"><tbody><tr><td colspan=\"2\"><small class=\"text-info\"></small></td></tr><tr><td style=\"width:230px;\"><small class=\"text-info\">";
+                                out = out + "";
+                            }
+                            else {
+                                out = out + "<div class=\"line line-dashed\"></div><table style=\"width:100%;\"><tbody><tr><td colspan=\"2\"><small class=\"text-info\"></small></td></tr><tr><td style=\"width:230px;\"><small class=\"text-info\">";
+                                out = out + "";
+                            }
+                            out = out + "</small></td></tr>"; //</tbody></table></a>";
+                            out = out + "<tr><td><small class=\"text-info\"></small></td><td align=\"right\"></td></tr>"
+                            if (items[i].same_count != null && items[i].same_count > 1)
+                                out = out + "<tr onclick=\"GetSameIdNewsList(this,'" + items[i].articlesequenceid + "','" + items[i].same_id + "'," + (items[i].same_count - 1) + ")\"><td style=\"width:160px;padding-top:10px;\"><small class=\"text-info\"><i class=\"fa fa-copy\">&nbsp;已匹配&nbsp;<font class=\"text-danger\">多</font>&nbsp;篇相似文章</i>&nbsp;</small></td></tr></tbody></table><div style=\"border-left:3px solid #93CDB1;margin-left:-5px;padding-left:10px;\" class=\"sameNews\" id=\"same" + items[i].same_id + "\"></div></a>";
+                            else
+                                out = out + "</tbody></table></a>";
+                            //out = out + "<div class=\"line line-dashed\"></div><table style=\"width:100%;border-collapse:collapse;border:1px solid red;\"><tr align=\"right\"><td style=\"border:5px solid red;\"><i class=\"fa fa-star text-warning fa-lg\"></i></td></tr></table></a>";
+                        }
+                    }
+                    // if (sameIds.length < 10)
+                    //     out = out + "<a href=\"#\" id=\"morebtn\" class=\"list-group-item bg-lighter text-center\" onclick=\"LoadNewsList()\">点击更多</a>";
+                    return out;
+                });
+                $("#newslist #loader").remove();
+                $("#newslist").append(template(viewdata)); // + Math.random()
+                lock = false;
+                dtd.resolve(); // 改变Deferred对象的执行状态                    
+            });
+            return dtd.promise(); // 返回promise对象
+        }
+
+        //追加获取文章列表数据
+        function GetNewsList(key, sidx, count) {
+            // SysMonitor();
+
+
+            // var hasTodayTag = $("#todayTag").length > 0 ? true : false;
+            // var hasYesterdayTag = $("#yesterdayTag").length > 0 ? true : false;
+            // var hasHistoryTag = $("#historyTag").length > 0 ? true : false;
+            // var hasOtherTag = $("#otherTag").length > 0 ? true : false;
+            // var imgPath = "";
+            // var tempImg = new Array();
+            // var keypar = $("#txtRedKey").val();
+            // lock = true;
+            // var cityID = "";
+            // if (cityID == "") cityID = "0";
+            // var source = $('#ddlSource').val();
+            // var keyWords = $("#txtkeyWords").val();
+            // if (keyWords != "") { }
+
+            // var url = postUrl + "?whatDo=FindHot&keywords=" + key + "&start=" + sidx + "&limit=" + count + "&startDate=1900-01-01&endDate=1900-01-01&cheekedType=0&paperIDs=&paperIDsUN=&retType=2&orderby=updatetime desc";
+            // if ($("#morebtn").length > 0)
+            //     $("#morebtn").remove();
+            // $("#newslist #loader").remove();
+            // //$("#newslist").append("<span id=\"loading\" class=\"text-danger text-center\">文章列表加载中...</span>");
+            // $("#newslist").append("<div id=\"loader\" class=\"center\" style=\"width:100px;margin-left: auto;margin-right: auto;margin-top:15px;\"><img src=\"images/ajax-loader.gif\" style=\"margin-left: auto;margin-right: auto;\" align=\"center\" /></div>"); //<span class=\"text-danger\">正在加载中</span>
+            // //$("#txt_cid").val(cid);
+            // if (ajaxrequest) {
+            //     ajaxrequest.abort();
+            // }
+            // //newslist区域模板加载
+            // ajaxrequest = $.getJSON(url, function (viewdata) {
+            //     var source = $("#tpl_newslist").html();
+            //     var template = Handlebars.compile(source);
+            //     Handlebars.registerHelper('list', function (items, options) {
+            //         var out = "";
+            //         var tempDate = "";
+            //         if ($("#nid_" + items[0].articlesequenceid).length == 0 || ($("#nid_" + items[0].articlesequenceid).length != 0 && items.length == pageSize)) {
+            //             sameIds.length = 0;
+            //             for (var i = 0, l = items.length; i < l; i++) {
+            //                 $('#txt_rows').val($('#txt_rows').val() * 1 + 1);
+            //                 tempDate = items[i].updatetime.substr(0, 10).replace(/\-/g, "");
+            //                 //options.fn(items[i])
+            //                 if (items[i].same_id == null || ($("#same" + items[i].same_id).length == 0 && sameIds.indexOf(items[i].same_id) < 0)) {
+            //                     sameIds.push(items[i].same_id);
+            //                     if (myDate.Format("yyyyMMdd") < tempDate && !hasOtherTag) {
+            //                         hasOtherTag = true;
+            //                         dateTag = "ot";
+            //                         out = out + "<a href=\"#\" id=\"otherTag\" class=\"list-group-item bg-lighter no-border\" onclick=\"ShrinkNewsList('otherTag','" + dateTag + "')\"> <i class=\"fa fa-caret-down\"></i>&nbsp;待发布</a>";
+            //                     } else if (myDate.Format("yyyyMMdd") == tempDate && !hasTodayTag) {
+            //                         hasTodayTag = true;
+            //                         dateTag = "nt";
+            //                         out = out + "<a href=\"#\" id=\"todayTag\" class=\"list-group-item bg-lighter no-border\" onclick=\"ShrinkNewsList('todayTag','" + dateTag + "')\"> <i class=\"fa fa-caret-down\"></i>&nbsp;今天</a>";
+            //                     } else if ((myDate.Format("yyyyMMdd") - 1) == tempDate && !hasYesterdayTag) {
+            //                         hasYesterdayTag = true;
+            //                         dateTag = "ny";
+            //                         out = out + "<a href=\"#\" id=\"yesterdayTag\" class=\"list-group-item bg-lighter no-border\" onclick=\"ShrinkNewsList('yesterdayTag','" + dateTag + "')\"> <i class=\"fa fa-caret-down\"></i>&nbsp;昨天</a>";
+            //                     } else if ((myDate.Format("yyyyMMdd") - 1) > tempDate && !hasHistoryTag) {
+            //                         hasHistoryTag = true;
+            //                         dateTag = "nh";
+            //                         out = out + "<a href=\"#\" id=\"historyTag\" class=\"list-group-item bg-lighter no-border\" onclick=\"ShrinkNewsList('historyTag','" + dateTag + "')\"> <i class=\"fa fa-caret-down\"></i>&nbsp;历史</a>";
+            //                     }
+            //                     out = out + "<a id=\"nid_" + items[i].articlesequenceid + "\" href=\"javascript:;\" class=\"list-group-item " + dateTag + "\" onclick=\"GetNews(this,'" + escape(items[i].title) + "','" + items[i].articlesequenceid + "')\">";
+            //                     //                                if (items[i].viocesize >= 1 && items[i].viocesize <= 9)
+            //                     //                                    out = out + "<div class=\"triangle-top-right-green\"><div class=\"triangle-text\">原</div></div>";
+            //                     //                                else if (items[i].viocesize >= 10 && items[i].viocesize <= 50)
+            //                     //                                    out = out + "<div class=\"triangle-top-right-gray\"><div class=\"triangle-text\">转</div></div>";
+            //                     if (items[i].viocesize >= 1 && items[i].viocesize <= 9)
+            //                         out = out + "<span class=\"label label-success\">原创</span>&nbsp;";
+            //                     else if (items[i].viocesize >= 10 && items[i].viocesize <= 50)
+            //                         out = out + "<span class=\"label label-default\">转载</span>&nbsp;";
+            //                     if (items[i].imagesource != null && items[i].imagesource != "") //有图片
+            //                     {
+            //                         if (items[i].imagesource.toLowerCase().indexOf("http") == 0) { //直接读取
+            //                             tempImg = items[i].imagesource.split("%D%W");  //第一张图片质量不高，取后面的
+            //                             if (tempImg.length > 1 && tempImg[1] != "")
+            //                                 out = out + "<p class=\"first-letter-big\">" + items[i].title + "</p>" + (items[i].subtitle != "" && items[i].subtitle != null ? "<br>—&nbsp;<small>" + items[i].subtitle + "</small>" : "") + "<table><tr><td style=\"width:75%\"><small class=\"text-muted\">" + CleanHtmlTags(items[i].markinfo).replace(/[A-Za-z]/g, "").substr(0, 55) + "...</small></td><td style=\"width:25%\"><div style=\"width:80px; height:80px;overflow:hidden;display:table-cell;vertical-align:middle;text-align:center;\"><img style=\"max-width:80px;max-height:80px;_width:expression(this.width > this.height ? this.height : this.width);\" src=\"" + tempImg[1].split(",")[0] + "\"></div></td></tr></table>";
+            //                             else
+            //                                 out = out + "<p class=\"first-letter-big\">" + items[i].title + "</p>" + (items[i].subtitle != "" && items[i].subtitle != null ? "<br>—&nbsp;<small>" + items[i].subtitle + "</small>" : "") + "<table><tr><td style=\"width:75%\"><small class=\"text-muted\">" + CleanHtmlTags(items[i].markinfo).replace(/[A-Za-z]/g, "").substr(0, 55) + "...</small></td><td style=\"width:25%\"><div style=\"width:80px; height:80px;overflow:hidden;display:table-cell;vertical-align:middle;text-align:center;\"><img style=\"max-width:80px;max-height:80px;_width:expression(this.width > this.height ? this.height : this.width);\" src=\"" + tempImg[0].split(",")[0] + "\"></div></td></tr></table>";
+            //                         }
+            //                         else {
+            //                             imgPath = GetOssUrl(GetOssKey(3, items[i].paperid, tempDate, items[i].revision, items[i].imagesource.split(",", 1)));
+            //                             out = out + "<p class=\"first-letter-big\">" + items[i].title + "</p>" + (items[i].subtitle != "" && items[i].subtitle != null ? "<br>—&nbsp;<small>" + items[i].subtitle + "</small>" : "") + "<table><tr><td style=\"width:75%\"><small class=\"text-muted\">" + CleanHtmlTags(items[i].markinfo).replace(/[A-Za-z]/g, "").substr(0, 55) + "...</small></td><td style=\"width:25%\"><div style=\"width:80px; height:80px;overflow:hidden;display:table-cell;vertical-align:middle;text-align:center;\"><img style=\"max-width:80px;max-height:80px;_width:expression(this.width > this.height ? this.height : this.width);\" src=\"" + imgPath + "\"></div></td></tr></table>";
+            //                         }
+            //                     } else
+            //                         out = out + "<p class=\"first-letter-big\">" + items[i].title + "</p>" + (items[i].subtitle != "" && items[i].subtitle != null ? "<br>—&nbsp;<small>" + items[i].subtitle + "</small>" : "") + "<table style=\"margin-top:10px;\"><tr><td><small class=\"text-muted\">" + CleanHtmlTags(items[i].markinfo).replace(/[A-Za-z]/g, "") + "...</small></td></tr></table>";
+            //                     if (ShowIconByArticleType(items[i].articletype, items[i].articlesequenceid) == "news") {
+            //                         out = out + "<div class=\"line line-dashed\"></div><table style=\"width:100%;\"><tbody><tr><td colspan=\"2\"><small class=\"text-info\"></small></td></tr><tr><td style=\"width:230px;\"><small class=\"text-info\">";
+            //                         out = out + "";
+            //                     }
+            //                     else {
+            //                         out = out + "<div class=\"line line-dashed\"></div><table style=\"width:100%;\"><tbody><tr><td colspan=\"2\"><small class=\"text-info\"><i class=\"fa fa-file-text-o\">&nbsp;" + items[i].papername + (items[i].paperno != "" && items[i].paperno != null ? "&nbsp;/&nbsp;" + items[i].paperno : "") + "</i></small></td></tr><tr><td style=\"width:230px;\"><small class=\"text-info\">";
+            //                         out = out + "";
+            //                     }
+            //                     out = out + "</small></td></tr>"; //</tbody></table></a>";
+            //                     out = out + "<tr><td><small class=\"text-info\"></small></td><td align=\"right\"><i class=\"fa fa-star-o text-muted fa-lg\" onclick=\"top.fnTool.toggleCollect(this,'" + items[i].articlesequenceid + "', 1)\"></i></td></tr>"
+            //                     if (items[i].same_count != null && items[i].same_count > 1)
+            //                         out = out + "<tr onclick=\"GetSameIdNewsList(this,'" + items[i].articlesequenceid + "','" + items[i].same_id + "'," + (items[i].same_count - 1) + ")\"><td style=\"width:160px;padding-top:10px;\"><small class=\"text-info\"><i class=\"fa fa-copy\">&nbsp;已匹配&nbsp;<font class=\"text-danger\">多</font>&nbsp;篇相似文章</i>&nbsp;</small></td></tr></tbody></table><div style=\"border-left:3px solid #93CDB1;margin-left:-5px;padding-left:10px;\" class=\"sameNews\" id=\"same" + items[i].same_id + "\"></div></a>";
+            //                     else
+            //                         out = out + "</tbody></table></a>";
+            //                     //out = out + "<div class=\"line line-dashed\"></div><table style=\"width:100%;border-collapse:collapse;border:1px solid red;\"><tr align=\"right\"><td style=\"border:5px solid red;\"><i class=\"fa fa-star text-warning fa-lg\"></i></td></tr></table></a>";
+            //                 }
+            //             }
+            //             return out;
+            //         }
+            //     });
+            //     //把已经折叠的展开
+            //     if ($("#historyTag")[0]) {
+            //         if ($("#historyTag").find("i").is(".fa-caret-right"))
+            //             ShrinkNewsList("historyTag", "nh");
+            //     } else if ($("#yesterdayTag")[0]) {
+            //         if ($("#yesterdayTag").find("i").is(".fa-caret-right"))
+            //             ShrinkNewsList("yesterdayTag", "ny");
+            //     } else if ($("#todayTag")[0]) {
+            //         if ($("#todayTag").find("i").is(".fa-caret-right"))
+            //             ShrinkNewsList("todayTag", "nt");
+            //     }
+            //     $("#newslist #loader").remove();
+            //     $("#newslist").append(template(viewdata)); // + Math.random()
+            //     lock = false;
+            // });
+        }
+
+        function GetSameIdNewsList(obj, newsId, sameId, sameCount) {
+            StopEventBubble(obj);
+            SysMonitor();
+
+
+            if ($.trim($("#same" + sameId).html()) == "") {
+                var url = postUrl + "?whatDo=SearchArticeListBySameId&key=" + sameId;
+                //newslist区域模板加载
+                var viewHtml = "";
+                var realSameCount = 0;
+                $("#same" + sameId + " #loader").remove();
+                $("#same" + sameId).append("<div id=\"loader\" class=\"center\" style=\"width:100px;margin-left: auto;margin-right: auto;margin-top:15px;\"><img src=\"images/ajax-loader.gif\" style=\"margin-left: auto;margin-right: auto;\" align=\"center\" /></div>"); //<span class=\"text-danger\">正在加载中</span>
+
+                $.getJSON(url, function (data) {
+                    //                                for(var i = 0;i < sameCount + 1; i++) {  //加1为了防止显示当前这篇文章
+                    //                                    if(data.rows[i] != null && data.rows[i].articlesequenceid != newsId && realSameCount != sameCount) {
+                    $(obj).find(".text-danger").eq(0).addClass("h4");
+                    $(obj).find(".text-danger").eq(0).html(data.rows.length > 0 ? data.rows.length - 1 : 0);
+                    for (var i = 0; i < data.rows.length; i++) {  //加1为了防止显示当前这篇文章
+                        if (data.rows[i] != null && data.rows[i].articlesequenceid != newsId) {
+                            viewHtml += "<div class=\"line line-dashed\"></div><a href=\"javascript:void(0);\" onclick=\"GetNews(this,'" + escape(data.rows[i].title) + "','" + data.rows[i].articlesequenceid + "')\" style=\"display:block\">";
+                            //                            if (data.rows[i].viocesize >= 1 && data.rows[i].viocesize <= 9)
+                            //                                viewHtml += "<div class=\"triangle-top-right-green\"><div class=\"triangle-text\">原</div></div>";
+                            //                            else if (data.rows[i].viocesize >= 10 && data.rows[i].viocesize <= 50)
+                            //                                viewHtml += "<div class=\"triangle-top-right-gray\"><div class=\"triangle-text\">转</div></div>";
+                            if (data.rows[i].viocesize >= 1 && data.rows[i].viocesize <= 9)
+                                viewHtml = viewHtml + "<span class=\"label label-success\">原创</span>&nbsp;";
+                            else if (data.rows[i].viocesize >= 10 && data.rows[i].viocesize <= 50)
+                                viewHtml = viewHtml + "<span class=\"label label-default\">转载</span>&nbsp;";
+                            viewHtml += "<p>" + data.rows[i].title + "</p>";
+                            // viewHtml += "<table style=\"width:100%;\"><tbody>";
+                            // if (ShowIconByArticleType(data.rows[i].articletype, data.rows[i].articlesequenceid) == "news") {
+                            //     viewHtml += "<tr><td colspan=\"2\"><small class=\"text-info\"><i class=\"fa fa-file-text-o f_" + data.rows[i].articlesequenceid + "\">&nbsp;" + data.rows[i].papername + "<script>" + GetColumName(data.rows[i].articlesequenceid, data.rows[i].paperid, data.rows[i].page) + "<\/script>" + (data.rows[i].paperno != "" && data.rows[i].paperno != null ? "&nbsp;/&nbsp;" + data.rows[i].paperno : "") + "</i></small></td></tr>";
+                            //     viewHtml += "<tr><td style=\"width:230px;\"><small class=\"text-info\">"
+                            //     viewHtml += "<i class=\"fa fa-clock-o\">&nbsp;原文发布：" + data.rows[i].paperdate + "</i>";
+                            // }
+                            // else {
+                            //     viewHtml += "<tr><td colspan=\"2\"><small class=\"text-info\"><i class=\"fa fa-file-text-o\">&nbsp;" + data.rows[i].papername + (data.rows[i].paperno != "" && data.rows[i].paperno != null ? "&nbsp;/&nbsp;" + data.rows[i].paperno : "") + "</i></small></td></tr>";
+                            //     viewHtml += "<tr><td style=\"width:230px;\"><small class=\"text-info\">"
+                            //     viewHtml += "<i class=\"fa fa-clock-o\">&nbsp;原文发布：" + data.rows[i].updatetime.substr(0, 19) + "</i>";
+                            // }
+                            // viewHtml += "</small></td></tr>";
+                            // viewHtml += "<tr><td style=\"width:230px;\"><small class=\"text-info\"></small></td>";
+                            // viewHtml += "<td align=\"right\"><i class=\"fa fa-star-o text-muted fa-lg\" onclick=\"top.fnTool.toggleCollect(this,'" + data.rows[i].articlesequenceid + "', 1)\"></i></td></tr></tbody></table></a>"
+                            viewHtml += "</a>"
+                            //realSameCount++;
+                        }
+                    }
+                    $("#same" + sameId + " #loader").remove();
+                    $("#same" + sameId).html(viewHtml);
+                });
+            } else {
+                if ($("#same" + sameId).is(":hidden"))
+                    $("#same" + sameId).show();
+                else
+                    $("#same" + sameId).hide();
+            }
+        }
+
+        //获取文章信息
+        function GetNews(obj, title, nid) {
+            StopEventBubble(obj);
+            SysMonitor();
+
+
+            $("#newslist a").each(function (i) {
+                $(this).removeClass("active_gray");
+            });
+            $(obj).addClass("active_gray");
+
+            $("#txt_nid").val(nid);
+            $("#news h3[class='m-b']").html("&nbsp;");  //$("#news h3[class='m-b']").html(unescape(title));
+            linkurl = '/api/index.php?c=content&id=' + nid;
+            $("#news iframe").attr("src", linkurl); //更改iframe（文章）地址
+        }
+
+        function CollectNews(obj, aid) {
+            StopEventBubble(obj);
+            SysMonitor();
+
+
+            selectIds.splice(0, 1);
+            selectIds.push(aid);
+            //$('#divCollection').modal('show');
+            FavoritesFormList_new(obj);
+            //                    var msgJson = eval(result);
+            //                    if (!msgJson.Succeed) {
+            //                        return;
+            //                    }
+            //                    var ret = msgJson.Msg;
+            //                    var oksl = parseInt(ret.split(",")[0]);
+            //                    if (oksl != 0)
+            //                        $(obj).before("<i class=\"fa fa-check text-success\"></i>&nbsp");
+        }
+
+        //收藏
+        function FavoritesFormList_new(obj) {
+            var kidStr = "";
+            for (var i = 0; i < selectIds.length; i++) {
+                if (kidStr == "") {
+                    kidStr = selectIds[i];
+                } else kidStr += "," + selectIds[i];
+            }
+            if (kidStr == "") {
+                alert("请选择要收藏的信息!");
+                return;
+            } else { //添加
+                AddNewsCollection(obj, kidStr, $("#txt_ctid").val());
+                //addNewsCollection_new(kidStr, document.getElementById("iframeCollection").contentWindow.GetSelectValue());
+            }
+        }
+
+        function ShrinkNewsList(objId, dateType) {
+            if (!$("." + dateType).is(":hidden")) {
+                $("#" + objId).find("i").removeClass("fa-caret-down");
+                $("#" + objId).find("i").addClass("fa-caret-right");
+                $("." + dateType).hide();
+            } else {
+                $("#" + objId).find("i").removeClass("fa-caret-right");
+                $("#" + objId).find("i").addClass("fa-caret-down");
+                $("." + dateType).show();
+            }
+        }
+    </script>
+</body>
+</html>

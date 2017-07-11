@@ -1,0 +1,487 @@
+html,
+body,
+p,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+.clear {
+    zoom: 1;
+}
+
+.clear:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+html,
+body,
+.main,
+.page {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: '宋体','Microsoft Yahei';
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.main {
+  background: url(../images/bg.jpg) no-repeat;
+  background-size: cover;
+}
+
+// 第一页
+.img-container {
+  text-align: center;
+}
+
+.banner {
+  width: 84%;
+  opacity: 0;
+  animation: fadeIn .75s ease forwards;
+}
+
+.company {
+  position: absolute;
+  bottom: .5rem;
+  right: .5rem;
+  left: .5rem;
+  width: 99%;
+  opacity: 0;
+  animation: fadeIn .75s 1.5s ease forwards;
+}
+
+.title-container {
+  position: absolute;
+  top: 55%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  width: 75%;
+  opacity: 0;
+  animation: fadeIn 1s .5s ease forwards;
+}
+
+// 第二页
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .6);
+  z-index: 1111;
+}
+
+// 第三页
+#page-3 {
+  animation: shake .2s .9s;
+
+  .cover {
+    animation: fadeIn .2s 2s forwards;
+  }
+}
+
+.together {
+  margin-top: 40%;
+  width: 78%;
+}
+
+.together-text {
+  padding-top: 40%;
+  font-size: .75rem;
+  font-family: "MFShangYa_Noncommercial";
+  color: rgb(243, 201, 143);
+}
+
+.title-text {
+  padding-top: 5%;
+  line-height: .8rem;
+  font-size: .47rem;
+  color: #fff;
+  animation: zoomFallDown .1s .8s ease-in,fadeIn .1s .8s both;
+}
+
+.text {
+  margin-top: 10%;
+  width: 52%;
+}
+
+// 弹窗
+.modal {
+  margin: 50% auto 0;
+  width: 6.6rem;
+  height: 3.8rem;
+  background-image: linear-gradient( 58deg, rgba(30,11,1,0) 0%, rgba(30,11,1,0.07) 7%, rgb(79,49,10) 100%);
+}
+
+.modal-title {
+  padding-top: .8rem;
+  text-align: center;
+  font-size: .56rem;
+  color: rgb(243, 201, 143);
+}
+
+.btns-container {
+  margin: 0 auto;
+  width: 80%;
+  // overflow: hidden;
+}
+
+.btn {
+  margin-top: .66rem;
+  float: right;
+  // display: inline-block;
+  width: 2.15rem;
+  height: 1rem;
+  line-height: 1rem;
+  text-align: center;
+  font-size: .47rem;
+  color: #fff;
+  box-shadow: 1px -1px #f3c98f;
+  background-color: rgb(129, 81, 28);
+
+  &:first-child {
+    float: left;
+  }
+}
+
+// 榜单页
+.list-bg {
+  position: absolute;
+  top: 2rem;
+  left: .5rem;
+  bottom: 0;
+  right: .5rem;
+  background: url(../images/bg_list.png) top center no-repeat;
+  background-size: cover;
+  z-index: 11;
+}
+
+.people-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.people {
+  position: absolute;
+  top: -3rem;
+  left: .56rem;
+  width: 8.875rem;
+  height: 3rem;
+  background: url(../images/people.png);
+  background-size: cover;
+  z-index: 3;
+}
+
+.people-1 {
+  position: absolute;
+  top: -3.5rem;
+  left: 1.56rem;;
+  width: 6.87rem;
+  height: 2.87rem;
+  background: url(../images/people_1.png);
+  background-size: cover;
+  z-index: 2;
+  animation: fadeIn 5s 3s infinite alternate;
+}
+
+.people-2 {
+  position: absolute;
+  top: -3.5rem;
+  left: 2rem;;
+  width: 6rem;
+  height: 2rem;
+  background: url(../images/people_2.png);
+  background-size: cover;
+  z-index: 1;
+  animation: fadeIn 3s 2s infinite alternate;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 11;
+}
+
+.btn-handle-pre {
+  float: left;
+  padding: 0 .5rem;
+  height: 100%;
+}
+
+.btn-handle-next {
+  float: right;
+  padding: 0 .5rem;
+  height: 100%;
+}
+
+.btn-pre,
+.btn-next {
+  margin-top: 7rem;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: .4rem solid transparent;
+  border-bottom: .4rem solid transparent;
+}
+
+.btn-pre {
+  border-right: .4rem solid #f3c98f;
+}
+
+.btn-next {
+  border-left: .4rem solid #f3c98f;
+}
+
+.disabled {
+  .btn-pre {
+    border-right: .4rem solid #c7c7c7;
+  }
+  .btn-next {
+    border-left: .4rem solid #c7c7c7;
+  }
+}
+
+.dots-container {
+  margin-top: 13rem;
+  text-align: center;
+}
+
+.dot {
+  margin: 0 .02rem;
+  display: inline-block;
+  height: .18rem;
+  width: .18rem;
+  border: 1px solid rgb(243, 201, 143);
+  border-radius: 50%;
+
+  &.active {
+    background: rgb(243, 201, 143);
+  }
+}
+
+.slide-title {
+  margin-top: .3rem;
+  text-align: center;
+  line-height: 2rem;
+  font-size: .7rem;
+  color: rgb(243, 201, 143);
+}
+
+.list-title {
+  margin: .5rem 0 .2rem;
+  text-align: center;
+  font-size: .56rem;
+  color: rgb(243, 201, 143);
+}
+
+.list-item {
+  margin-left: 2rem;
+  padding: .15rem 0;
+  font-size: .44rem;
+  color: #fff;
+  opacity: 0;
+
+  &.item-show {
+    opacity: 1;
+  }
+}
+
+.list-order {
+  padding: 0 .3rem;
+  display: inline-block;
+  width: .7rem;
+  height: .65rem;
+  text-align: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+  }
+}
+
+@for $i from 1 to 11 {
+  .item-#{$i} {
+    animation: fadeIn .5s $i * 0.4s linear forwards;
+  }
+}
+
+// 分享页
+.share-title {
+  padding-top: 4rem;
+  font-size: .75rem;
+  color: rgb(243, 201, 143);
+  text-align: center;
+}
+
+.share-text {
+  padding-top: .4rem;
+  font-size: .47rem;
+  color: rgb(243, 201, 143);
+  text-align: center;
+}
+
+.share-btns {
+  margin: .66rem auto 0;
+  width: 5.8rem;
+}
+
+.more-container {
+  margin-top: .75rem;
+  text-align: center;
+}
+
+a.share-more {
+  font-size: .47rem;
+  color: #fff;
+  text-decoration: underline;
+}
+
+.heart {
+  width: .375rem;
+  height: .3125rem;
+}
+
+.up-container {
+  width: 80%;
+
+  .up-btn {
+    float: right;
+    padding: 0 .1rem;
+  }
+}
+
+// 分享
+#page-5 {
+  .cover {
+    display: none;
+  }
+}
+
+.to-share {
+  height: 3rem;
+  text-align: right;
+
+  img {
+    padding: .5rem;
+    height: 3rem;
+  }
+}
+
+// loading
+.loading {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+
+  img {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+// 音乐
+#musicBtn {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(../images/music.png) no-repeat center center;
+    background-size: cover;
+    position: fixed;
+    right: 0rem;
+    top: 0rem;
+    z-index: 10;
+    animation: circles 3s linear infinite;
+}
+
+#musicBtn.paused {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(../images/music-pause.png) no-repeat center center;
+    background-size: cover;
+    animation-play-state: paused;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomFallDown {
+  from {
+    transform: scale(3);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  20%, 60% {
+    transform: translate3d(-1px,-1px,0);
+  }
+  40%, 80% {
+    transform: translate3d(1px,1px,0);
+  }
+}
+
+@keyframes show {
+  from {
+    display: none;
+  }
+  to {
+    display: block;
+  }
+}
+
+@keyframes circles {
+  0% {
+   transform:rotate(0deg);
+  }
+  100%{
+  transform:rotate(360deg);
+  }
+}

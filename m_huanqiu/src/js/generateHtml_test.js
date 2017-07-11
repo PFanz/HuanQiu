@@ -72,7 +72,7 @@ const Generate = {
     `
     return str
   },
-  // return 单个新闻HTML字符串 针对公司接口
+  // return 单个新闻HTML字符串
   newsHtml: (data, imgDisable = false) => {
     let str = ''
     let title = Util.generateTitle(data.title, 28)
@@ -145,6 +145,25 @@ const Generate = {
               <div class="news-info">
                 <span class="news-from">${data.source}</span>
                 <span class="news-date">${date}</span>
+              </div>
+            </a>
+          </section>
+        `
+      } else if (data.contentType === 'content_special') {
+        // 两会专题 临时
+        str += `
+          <section class="news-style-1">
+            <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
+              <div class="news-content">
+                <div class="news-title">${title}</div>
+                <div class="news-info">
+                  <span class="news-from">${data.source}</span>
+                  <span class="news-date">${date}</span>
+                  <span class="news-special">两会专题</span>
+                </div>
+              </div>
+              <div class="news-imgs">
+                  <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/one_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
               </div>
             </a>
           </section>

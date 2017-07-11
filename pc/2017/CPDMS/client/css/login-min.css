@@ -1,0 +1,648 @@
+body,
+ul,
+li,
+p,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+dl,
+dd {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+img {
+    border: 0;
+}
+
+ul,
+li,
+ol {
+    list-style: none;
+}
+
+* {
+    line-height: 1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    text-shadow: none;
+    border: 0;
+}
+
+*:focus {
+    outline: none;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+}
+
+input[type="radio"],
+input[type='checkbox'] {
+    margin: 0;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.text-default {
+    color: #a5b6c7;
+}
+
+.fn-clearfix,
+.fn-clearUl {
+    overflow: hidden;
+}
+
+.fn-clearfix::after {
+    content: '';
+    visibility: hidden;
+    display: block;
+    clear: both;
+    height: 0;
+}
+
+.fn-fl {
+    float: left;
+}
+
+.fn-fr {
+    float: right;
+}
+
+.fn-inlineBlock {
+    display: inline-block;
+}
+
+.fn-clearUl li {
+    float: left;
+    height: 100%;
+}
+
+.fn-relative {
+    position: relative;
+}
+
+.fn-absolute {
+    position: absolute;
+}
+
+.fn-pf {
+    position: fixed;
+}
+
+.fn-hidden {
+    display: none;
+}
+
+.fn-s-icon {
+    display: inline-block;
+    background-image: url("../../image/icons.png");
+    background-repeat: no-repeat;
+}
+
+.fn-s-bellIcon {
+    width: 24px;
+    height: 24px;
+    background-position: -173px -8px;
+}
+
+.fn-s-label {
+    display: inline-block;
+    padding: 1px 2px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    font-family: 'Microsoft JhengHei';
+    color: #fff;
+}
+
+.fn-s-label.fn-s-labelS {
+    background: #6ec435;
+}
+
+.fn-s-label.fn-s-labelF {
+    background: #c5933b;
+}
+
+.fn-s-label.fn-s-labelD {
+    background: #c4c4c4;
+}
+
+.fn-s-btn {
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.fn-s-btnS {
+    color: #fff;
+    background: #41c391;
+    padding: 4px 10px;
+}
+
+.fn-s-hotIcon {
+    width: 16px;
+    height: 20px;
+    background-position: -107px -76px;
+}
+
+.fn-s-rArrow {
+    width: 8px;
+    height: 17px;
+    background-position: -132px -8px;
+}
+
+.fn-s-ellIcon {
+    width: 19px;
+    height: 19px;
+    background-position: -26px -8px;
+}
+
+.fn-s-localIcon {
+    width: 19px;
+    height: 19px;
+    background-position: -105px -50px;
+}
+
+.fn-s-dArrow {
+    width: 10px;
+    height: 10px;
+    background-position: -10px -8px;
+}
+
+.fn-s-traceIcon {
+    width: 19px;
+    height: 19px;
+    background-position: -132px -50px;
+}
+
+.fn-s-tPrev,
+.fn-s-tNext {
+    width: 15px;
+    height: 15px;
+}
+
+.fn-s-tPrev {
+    background-position: -158px -50px;
+}
+
+.fn-s-tNext {
+    background-position: -172px -50px;
+}
+
+.fn-s-search {
+    width: 23px;
+    height: 22px;
+    background-position: -63px -5px;
+}
+
+.fnSection {
+    border: 1px solid #e0e0e0;
+    background: #fff;
+}
+
+.fn-s-textBlue {
+    color: #61A1E1;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(196, 196, 196, 0.7);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: #c4c4c4;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.fn-s-main {
+    width: 68%;
+    min-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fa-s-website,
+.fa-s-group {
+    color: #31708f;
+}
+
+.fa-s-newspaper {
+    color: #919599;
+}
+
+.fa-s-weixin {
+    color: #6ec435;
+}
+
+.fa-s-weibo,
+.fa-s-mobile {
+    color: #ff5f5f;
+}
+
+body {
+    font-size: .16rem;
+    background: #ecf0f5;
+    font-family: 'microsoft yahei';
+}
+
+.fn-s-preLoad {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: 100;
+}
+
+@keyframes anOne {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes anTwo {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes anThree {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fn-s-lIOut {
+    width: 53px;
+    height: 40px;
+    margin: 200px auto;
+    text-align: center;
+}
+
+.fn-s-lIc {
+    width: 106px;
+    height: 56px;
+}
+
+.fn-s-lIc>* {
+    height: 100%;
+}
+
+.fn-s-lIc .fn-s-lIcL {
+    width: 28px;
+    border-radius: 4px;
+    background: #000;
+    opacity: 0;
+    -webkit-animation: anOne 1.5s infinite;
+    -o-animation: anOne 1.5s infinite;
+    animation: anOne 1.5s infinite;
+}
+
+.fn-s-lIc .fn-s-lIcLR {
+    opacity: 0;
+    width: 72px;
+    border-radius: 2px;
+    background: #9dd500;
+    -webkit-animation: anTwo 1.5s infinite;
+    -o-animation: anTwo 1.5s infinite;
+    animation: anTwo 1.5s infinite;
+}
+
+.fn-s-lIName {
+    opacity: 0;
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
+    -webkit-animation: anThree 1.5s infinite;
+    -o-animation: anThree 1.5s infinite;
+    animation: anThree 1.5s infinite;
+}
+
+.fn-s-block {
+    display: block;
+}
+
+.fn-s-lmain {
+    max-width: 1500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.fn-s-lContainer {
+    height: 7.5rem;
+    max-height: 750px;
+    min-width: 1024px;
+    overflow: hidden;
+}
+
+.fn-s-lContainer>div {
+    height: 100%;
+}
+
+.fn-s-lLeft {
+    max-width: 955px;
+    width: 9.55rem;
+    background: url("../images/bgl.png") no-repeat left top / 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.fn-s-lModal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    background: -webkit-gradient(linear, 0% 100%, 100% 100%, from(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0.1)));
+    background: -moz-linear-gradient(top left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.fn-s-fonts {
+    position: absolute;
+    background-position: left top;
+    background-repeat: no-repeat;
+    z-index: 2;
+    top: 2.8rem;
+    right: 2.3rem;
+    color: #fff;
+}
+
+@keyframes aniFour {
+    0% {
+        opacity: 0;
+        margin-left: 1rem;
+    }
+    100% {
+        opacity: 1;
+        margin-left: 0;
+    }
+}
+
+@keyframes aniFive {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+        margin-right: 1rem;
+    }
+    100% {
+        opacity: 1;
+        margin-right: 0;
+    }
+}
+
+.fn-s-font1 {
+    height: 39px;
+    white-space: nowrap;
+    letter-spacing: 3px;
+    font-size: .34rem;
+    margin-bottom: .4rem;
+}
+
+.fn-s-font1.start {
+    -webkit-animation: aniFour 2s 1 ease;
+    -o-animation: aniFour 2s 1 ease;
+    animation: aniFour 2s 1 ease;
+}
+
+.fn-s-font2 {
+    white-space: nowrap;
+    font-size: .2rem;
+    letter-spacing: 1px;
+    height: 20px;
+    font-family: arial, sans-serif;
+}
+
+.fn-s-font2.start {
+    -webkit-animation: aniFive 4s 1 ease;
+    -o-animation: aniFive 4s 1 ease;
+    animation: aniFive 4s 1 ease;
+}
+
+.fn-s-llIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: #fff;
+    background-image: url("../images/null.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: 2;
+    margin: .5rem auto .8rem;
+}
+
+.fn-s-lRight {
+    position: relative;
+    max-width: 545px;
+    background: #fff;
+    width: 5.45rem;
+    padding: 0 .6rem .20rem .6rem;
+}
+
+.fn-s-llMain {
+    z-index: 1;
+    width: 100%;
+    background: #fff;
+    padding: 0 .15rem .20rem;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: .4rem;
+}
+
+.fn-s-lName {
+    text-align: center;
+    color: #666;
+    font-size: .3rem;
+    margin-bottom: .2rem;
+}
+
+.fn-s-llmOut {
+    border-bottom: 1px solid #ddd;
+    padding-left: .64rem;
+    background: url("../images/usepwd.png") no-repeat, #fefefe;
+    background-size: .64rem 1.5rem;
+}
+
+.fn-s-lInput {
+    height: .8rem;
+    width: 100%;
+    color: #666;
+    background: #fefefe;
+    font-size: 16px;
+    position: relative;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+.fn-s-llUser {
+    background-position: -0.1rem -0.85rem;
+}
+
+.fn-s-llPwd {
+    background-position: -0.1rem .13rem;
+}
+
+.fn-s-forget {
+    margin: 20px 0 80px;
+    text-align: right;
+    color: #ce3b4d;
+    font-size: 14px;
+}
+
+.fn-s-lBtn {
+    width: 100%;
+    height: .66rem;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: #35444c;
+    cursor: pointer;
+}
+
+.fn-s-lFooter {
+    text-align: center;
+    font-size: .12rem;
+    color: #aaa;
+    position: absolute;
+    width: 100%;
+    bottom: .2rem;
+    left: 0;
+}
+
+.fn-s-lFooter>p {
+    margin-bottom: 8px;
+}
+
+.fn-s-lFooter a {
+    margin: 0 5px;
+}
+
+.fn-s-lFooter span {
+    margin-left: 20px;
+}
+
+.fn-s-error {
+    width: 100%;
+    text-align: center;
+}
+
+@media(max-width:1023px) {
+    html,
+    body {
+        height: 100%;
+    }
+    #form1 {
+        height: 100%;
+        background: #fff;
+        padding-top: .3rem;
+    }
+    .fn-s-lLeft {
+        display: none;
+    }
+    .fn-s-lContainer {
+        min-width: 100%;
+        height: 100%;
+        margin-top: 0!important;
+    }
+    .fn-s-lRight {
+        width: 100%;
+        max-width: 100%;
+    }
+}

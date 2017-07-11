@@ -1,0 +1,53 @@
+<div ng-show=" isLoading ==true " id="loader2" class="center" style="width: 100px; margin-left: auto; margin-right: auto; margin-top: 30%;">
+    <img src="../images/ajax-loader.gif?v=9ea03005" style="margin-left: auto; margin-right: auto;"
+        align="center" />
+</div>
+<div ng-show=" isLoading ==true " style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; background: #e0e0e0; opacity: 0.5">
+</div>
+<header  class="panel-heading fn-s-rightHeader" style="/*border-top: 3px solid #CB9FC9*/ background: #fff;">
+    
+
+<!--     <div class="btn-group pull-left sortbutton" >
+        <select name="account" class="form-control" style="float: left; width: 80px;" ng-model="selectd_type" ng-change="FilterNewsByType()">
+            <option ng-selected="true" ng-value="all">全部</option>
+            <option ng-value="website">网站</option>
+            <option ng-value="weibo">微博</option>
+            <option ng-value="weixin">微信</option>
+            <option ng-value="news">报纸</option>
+            <option ng-value="webapp">APP</option>
+        </select>
+        
+        <a href="javascript:void(0);" class="fn-x-reprintstatimerange" ng-click="showTimeSetting=!showTimeSetting">时间范围：0点 至 24点</a>
+        <div class="fn-x-time-setting" ng-show="showTimeSetting">
+            <input type="text" id="stime" placeholder="开始时间" data-required="true" value="0" class="input-sm inline form-control col-lg-6" style="width: 80px; top: 15px; margin-left: 10px;">
+            <input type="text" id="etime" placeholder="结束时间" data-required="true" value="24" class="input-sm inline form-control col-lg-6" style="width: 80px; top: 15px; margin-left: 10px;">
+            <button class="btn btn-sm btn-primary fn-s-timeBtn" type="button" ng-click="FilterNewsByTime()">确定</button>
+        </div>
+    </div> -->
+
+
+    <div class="pull-right">
+        <!-- <i ng-show="show_rte==true" class="fa fa-cloud-download text-default m-r" ng-click="ReprintToExcel()" style="font-size: 16px; vertical-align: text-bottom; cursor: pointer;"></i> -->
+        
+        <span class="text-default">转载文章数量&nbsp;</span><span class="h2" style="color: #f59595">{{mediaTotal}}</span><span class="text-default">&nbsp;篇次</span>&nbsp;&nbsp
+        <!-- <span class="text-default">转载媒体数量&nbsp;</span><span class="h2" style="color: #60DFE5">{{media.length}}</span><span class="text-default">&nbsp;家</span> -->
+    </div>
+    
+</header>
+<section id="reprintedNewsListContainer2" class="panel-body" style="overflow: auto;">
+    <div ng-repeat=" news in reprintedNewsList2">
+        <!--ng-if=" news.papername.indexOf(originalNewsName)<0 "-->
+        <article class="media">
+            <div ng-if=" news.imagesource!=''  " class="pull-left thumb-large">
+                <img style="max-width: 90px; max-height: 90px; _width: expression(this.width > this.height ? this.height : this.width);" ng-src="{{ImgUrl(news)}}">
+            </div>
+            <div class="media-body" style="font-family: 微软雅黑; line-height: 25px;">
+                <a href="javascript:void(0);" class="h4" style="font-family: 微软雅黑; color: #8a0417"><span ng-click="ShowNewsOverly(news.articlesequenceid)" ng-bind-html="news.title | trustHtml"></span></a>
+                <!-- <span class="pull-right"><span ng-bind-html="ShowArticleTypeIcon(news.articletype,news.articlesequenceid) | trustHtml"></span>&nbsp;<strong>{{news.papername}}</strong>&nbsp;</span> -->
+                <small class="block" style="color: #353535;">{{news.markinfo.substr(0,100)}}</small>
+                <span class="pull-right" style="color: #353535;">{{handleTime(news.updatetime)}}</span>
+            </div>
+        </article>
+        <div class="line pull-in"></div>
+    </div>
+</section>

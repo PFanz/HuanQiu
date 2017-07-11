@@ -1,0 +1,140 @@
+{
+  "index": {
+    "轮播图": {
+      "filename": "fnnews.index-min.js",
+      "line": 36,
+      "api": "/index.php?c=lists&catid=138&thumb=1&limit=6"
+    },
+    "网媒头条": {
+      "filename": "fnnews.index-min.js",
+      "line": 106,
+      "api": "/index.php?c=lists&a=toutiao&catid=127&thumb=1"
+    },
+    "媒体关注": {
+      "filename": "fnnews.index-min.js",
+      "line": 69,
+      "api": "/index.php?c=lists&a=media&catid=1259&limit=6"
+    },
+    "本地资讯": {
+      "filename": "fnnews.index-min.js",
+      "line": 108,
+      "api": "/index.php?c=lists&a=place&catid=86&limit=6"
+    },
+    "事件跟踪": {
+      "filename": "fnnews.index-min.js",
+      "line": 174,
+      "api": "/index.php?c=position&a=follow"
+    },
+    "热点汇聚": {
+      "filename": "fnnews.index-min.js",
+      "line": 201,
+      "api": "'/index.php?c=hit&begin=' + (+new Date() - (24*60*60*60) + '').substr(0, 10) + '&limit=9'"
+    },
+    "热点汇聚相关页列表": {
+      "filename": "discover.html",
+      "line": 221,
+      "api": "/index.php?c=search&type=4&keyword=",
+      "apiPs": "关键词搜索api"
+    },
+    "我的跟踪": {
+      "filename": "fnnews.index-min.js",
+      "line": 243,
+      "api": "/index.php?c=block&a=hot"
+    },
+  },
+  "fwrecommend": {
+    "频道列表": {
+      "filename": "fwrecommend-min.js",
+      "line": 71,
+      "api": ""
+    },
+    "频道新闻列表": {
+      "filename": "fnNewslist-min.js",
+      "line": 30,
+      "api": "/index.php?c=lists&a=index&catid=' + req.query.id + '&thumb=1&page=1&limit=5",
+      "catid": 568
+    }
+  },
+  "mediafocus": {
+    "媒体关注列表": {
+      "filename": "mediafocus-min.js",
+      "line": 4,
+      "api": "/index.php?c=lists&a=media&catid=1259&limit=6"
+    }
+  },
+  "findhot": {
+    "热点汇聚列表": {
+      "filename": "findhot.js",
+      "line": 124,
+      "api": "/index.php?c=hit&begin=' + (+new Date() - (24*60*60*60) + '').substr(0, 10) + '&limit=9'"
+    }
+  },
+  "eventhome": {
+    "事件跟踪列表": {
+      "filename": "eventhome-min.js",
+      "line": 744,
+      "api": "/index.php?c=position&a=follow"
+    },
+    "内容": {
+      "filename": "eventhome-min.js",
+      "line": 322,
+      "api": "/index.php?c=search&type=0&keyword=",
+      "apiPs": "搜索标题API"
+    },
+    "饼图": {
+      "filename": "eventhome-min.js",
+      "line": 157,
+      "api": "/index.php?c=position&a=pie&num=1"
+    }
+  },
+  "newsreprinted": {
+    "转载分析列表": {
+      "filename": "fanewsService.js",
+      "line": 368,
+      "api": "/index.php?c=search&a=copyright&keyword=%E7%8E%AF%E7%90%83"
+    },
+    "转载分析内容": {
+      "filename": "reprintedController.js",
+      "line": 525,
+      "api": "/index.php?c=search&type=4&keyword=",
+      "apiPs": "搜索关键词API"
+    }
+  },
+  "leader": {
+    "领导新闻列表": {
+      "filename": "leader.html",
+      "line": 702,
+      "api": "/index.php?c=search&type=4&keyword=",
+      "apiPs": "搜索关键词API"
+    },
+    "新闻详情页": {
+      "filename": "leader.js",
+      "line": 132,
+      "api": "/index.php?c=content&id="
+    }
+  },
+  "header中搜索": {
+    "filename": "normalSearchResult-min.js",
+    "line": 66,
+    "api": "/index.php?c=search&type=4&keyword=&begin=&end="
+  },
+  "新闻详情页": {
+    "api": "/index.php?c=content&id=",
+    "首页": {
+      "filename": "fnnews.index-min.js",
+      "line": 9
+    },
+    "热点汇聚相关内容页": {
+      "filename": "discover.html",
+      "line": 517,
+    },
+    "推荐": {
+      "filename": "fnKitTool-min.js",
+      "line": 794
+    },
+    "转载分析": {
+      "filename": "reprintedController.js",
+      "line": 244
+    }
+  }
+}

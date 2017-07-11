@@ -1,0 +1,128 @@
+html,
+body,
+p,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+.clear {
+    zoom: 1;
+}
+
+.clear:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+
+html,
+body,
+.main,
+.swiper-container,
+.swiper-slide,
+.page,
+.page-img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.swiper-container {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 200;
+  z-index: 0;
+}
+
+.swiper-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.page-title-bg {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+.page-title-container {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+.page-title-0 {
+  opacity: 0;
+  width: 45%;
+  transform: translateX(-15%);
+  animation: fadeIn 0.5s 1s ease-in forwards;
+}
+
+.page-title-1 {
+  opacity: 0;
+  width: 35%;
+  transform: translateX(40%) translateY(10%);
+  animation: fadeIn 0.5s 1.25s ease-in forwards;
+}
+
+.page-title {
+  position: absolute;
+  top: 8%;
+  left: 10%;
+  height: 8%;
+  opacity: 0;
+}
+
+.arrow-container {
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  animation: shakeUp 1s linear infinite alternate-reverse;
+  z-index: 1;
+}
+
+@keyframes shakeUp {
+  from {
+    transform: translateY(10%);
+  }
+  to {
+    transform: translateY(-10%);
+  }
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}

@@ -1,0 +1,95 @@
+<!-- 轮播图模板 -->
+<template name="swiper">
+  <view class="swiper-block" bindtap="bindLink" data-id="{{id}}" data-type="{{type}}">
+    <image class="swiper-img" src="{{img.src}}" alt="{{img.alt}}" binderror="bindSwiperImgError" data-index="{{index}}"></image>
+    <view class="title-container">
+      <text class="swiper-title">{{title}}</text>
+    </view>
+  </view>
+</template>
+<!-- /轮播图模板 -->
+
+<!-- 无图新闻模板 -->
+<template name="noImg">
+  <view class="news-block" bindtap="bindLink" data-id="{{id}}" data-type="{{type}}" hover-class="navigator-hover">
+    <text class="news-title" style="color: {{color}};">{{title}}</text>
+    <text class="news-info">{{info}}</text>
+  </view>
+</template>
+<!-- /无图新闻模板 -->
+
+<!-- 左标题右图模板 -->
+<template name="single">
+  <view class="news-block" bindtap="bindLink" data-id="{{id}}" data-type="{{type}}" hover-class="navigator-hover">
+    <view class="news-title-block">
+      <text class="news-title" style="color: {{color}};">{{title}}</text>
+      <text class="news-info">{{info}}</text>
+    </view>
+    <image class="single-news-img" src="{{img.src}}" alt="{{img.alt}}" binderror="{{bindImgError}}" data-index="{{index}}"></image>
+  </view>
+</template>
+<!-- /左标题右图模板 -->
+
+<!-- 上标题下图模板 -->
+<template name="mainImg">
+  <view class="news-block" bindtap="bindLink" data-id="{{id}}" data-type="{{type}}" hover-class="navigator-hover">
+    <text class="news-title" style="color: {{color}};">{{title}}</text>
+    <image class="mainImg-news-img" src="{{imgUrl}}" binderror="{{bindImgError}}" data-index="{{index}}"></image>
+    <text class="news-info">{{info}}</text>
+  </view>
+</template>
+<!-- /上标题下图模板 -->
+
+<!-- 视频频道 -->
+<template name="video">
+  <view class="news-block" bindtap="bindLink" data-id="{{id}}" data-type="{{type}}" hover-class="navigator-hover">
+    <text class="news-title" style="color: {{color}};">{{title}}</text>
+    <view class="video-block">
+      <image class="mainImg-news-img" src="{{img.src}}" alt="{{img.alt}}" binderror="{{bindImgError}}" data-index="{{index}}"></image>
+      <image class="video-news-btn" src="../../public/video_btn.svg"></image>
+    </view>
+    <text class="news-info">{{info}}</text>
+  </view>
+</template>
+<!-- /视频频道 -->
+
+<!-- 三图新闻模板 -->
+<template name="group">
+  <view class="news-block" bindtap="bindLink" data-id="{{id}}" data-type="{{type}}" hover-class="navigator-hover">
+    <text class="news-title" style="color: {{color}};">{{title}}</text>
+    <view class="imgs-container">
+      <image class="group-img" src="{{img[0].src}}" alt="{{img[0].alt}}" binderror="{{bindImgError}}" data-index="{{index}}"></image>
+      <image class="group-img" src="{{img[1].src}}" alt="{{img[1].alt}}" binderror="{{bindImgError}}" data-index="{{index}}"></image>
+      <image class="group-img" src="{{img[2].src}}" alt="{{img[2].alt}}" binderror="{{bindImgError}}" data-index="{{index}}"></image>
+    </view>
+    <text class="news-info">{{info}}</text>
+  </view>
+</template>
+<!-- /三图新闻模板 -->
+
+<swiper class="swiper-container" indicator-dots="true" indicator-color="#a7a7a7" indicator-active-color="#fff" autoplay="true" circular="true">
+  <block wx:for="{{swiper}}" wx:for-item="item" wx:for-index="index" wx:key="{{item.id}}">
+    <swiper-item>
+      <template is="swiper" data="{{id: item.id, img: item.thumb_list[0], title: item.title, type: item.view_type, color: visitedList[item.id] ? '#666' : '#000', index: index}}"></template>
+    </swiper-item>
+  </block>
+</swiper>
+
+<block wx:for="{{newsList}}" wx:for-item="item" wx:for-index="index" wx:key="{{item.id}}">
+  <!-- 无图 -->
+  <block wx:if="{{item.list_type === 1}}">
+    <template is="noImg" data="{{id: item.id, title: item.title, info: item.source, type: item.view_type, color: visitedList[item.id] ? '#666' : '#000', index: index}}"></template>
+  </block>
+  <!-- 一图 -->
+  <block wx:if="{{item.list_type === 2}}">
+    <template is="single" data="{{id: item.id, title: item.title, img: item.thumb_list[0], info: item.source, type: item.view_type, color: visitedList[item.id] ? '#666' : '#000', index: index}}"></template>
+  </block>
+  <!-- 三图 -->
+  <block wx:elif="{{item.list_type === 3}}">
+    <template is="group" data="{{id: item.id, title: item.title, img: item.thumb_list, info: item.source, type: item.view_type, color: visitedList[item.id] ? '#666' : '#000', index: index}}"></template>
+  </block>
+  <!-- 视频 -->
+  <block wx:elif="{{item.list_type === 5}}">
+    <template is="video" data="{{id: item.id, title: item.title, img: item.thumb_list[0], info: item.source, type: item.view_type, color: visitedList[item.id] ? '#666' : '#000', index: index}}"></template>
+  </block>
+</block>

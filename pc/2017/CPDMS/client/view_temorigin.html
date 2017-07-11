@@ -1,0 +1,32 @@
+<ul class="fn-z-findNewsoriginul">
+    <li class="fn-z-findNewslist clearfix" ng-repeat="itemchild in origindata[item.sameid3]" ng-click="findNewsDetails($event,item.articlesequenceid,item.updatetime)">
+        <div class="fn-z-findNewsBlock">
+            <h4 class="fn-z-findNewstitle">
+                <span ng-if="itemchild.viocesize >= 1 && itemchild.viocesize <= 9" class="label label-success fn-inlineBlock">原创</span>
+                <span ng-if="itemchild.viocesize>=10 && itemchild.viocesize<=50" class="label label-default fn-inlineBlock">转载</span>
+                <span>{{itemchild.title}}</span>
+            </h4>
+            <div class="fn-z-findNewscontent">
+                <p class="fn-z-findNewssource text-info" title="事件来源">
+                    <i ng-show="{{itemchild.at=='website'}}" class="fa fa-newspaper-o fn-text-default">&nbsp;</i>
+                    <i ng-show="{{itemchild.at=='news'}}" class="iconfont icon-newspaper text-muted">&nbsp;</i>
+                    <i ng-show="{{itemchild.at=='weibo'}}" class="fa fa-weibo fa-lg text-danger">&nbsp;</i>
+                    <i ng-show="{{itemchild.at=='weixin'}}" class="wechat icon-weixin text-success">&nbsp;</i>
+                    <i ng-show="{{itemchild.at=='app'}}" class="fa fa-mobile fa-lg text-danger fn-z-fontsize-fif">&nbsp;</i>
+                    <i ng-show="{{itemchild.at=='bbs'}}" class="fa fa-group text-info">&nbsp;</i>
+                    <span>{{itemchild.papername}}</span>
+                </p>
+                <div class="fn-s-taOut fn-relative">
+                    <span class="fn-z-findNewstimeago" mouse-enter-out hover="hover">{{item.timeago}}</span>
+                    <div class="fn-z-findNewstime" ng-show="hover">
+                        <p class="fn-newsPubTime"><i class="fa fa-clock-o"></i>原文发布:{{item.newcreatetime}}</p>
+                        <p class="fn-newsFnTime"><i class="fa fa-clock-o"></i>入库:{{item.newupdatetime}}</p>
+                    </div>
+                </div>
+                <span class="pull-right m-r fn-z-findNewscollection">
+                    <i class="fa fa-star-o fa-lg" ng-click="CollectNews($event,item.articlesequenceid);"></i>
+                </span>
+            </div>
+        </div>
+<li>
+</ul>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>
+    用户消息提醒配置
+  </title>
+  <link rel="stylesheet" href="css/fanews.v2-min.css?v=a78bc3c3" type="text/css" />
+  <link rel="stylesheet" href="css/main.v2-min.css?v=882abd67" type="text/css" />
+  <link rel="stylesheet" href="libs/font-awesome/font-awesome.min.css?v=346abc03" type="text/css" />
+  <style type="text/css">
+    html,
+    body {
+      background: #fff;
+    }
+    
+    h3,
+    h4,
+    label {
+      margin: 0;
+      font-family: 'Microsoft YaHei';
+      font-weight: normal;
+    }
+    
+    .gray .fn-sSlideInner {
+      background-color: #bac3cc;
+      right: 0;
+      left: auto;
+    }
+    
+    .fn-sFirstLevel {
+      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 20px;
+      padding: 6px 0px;
+      height: 34px;
+    }
+    
+    .fn-sFirstLevel label {
+      vertical-align: top;
+    }
+    
+    .fn-sFirstLevel .fa.fn-alertMsgCog {
+      font-size: 20px;
+      cursor: pointer;
+      float: right;
+    }
+    
+    .fn-sFirstLevel .fa-toggle-off {
+      color: #ff5f5f;
+    }
+    
+    .fn-sFirstLevel .fa-toggle-on,
+    .fn-simRadioGroup .fa.fa-dot-circle-o {
+      color: #3fcf7f;
+    }
+    
+    #container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .fn-simRadioGroup {
+      font-size: 14px;
+    }
+    
+    .fn-simRadioGroup .fa {}
+    
+    .fn-simRadioGroup label {
+      cursor: pointer;
+      vertical-align: -20%;
+      display: inline-block;
+    }
+    
+    .fn-simRadioGroup .fa {
+      font-size: 16px;
+      padding: 4px;
+      color: #ff5f5f;
+      position: relative;
+      top: 1px;
+    }
+    
+    dl {
+      margin: 0;
+    }
+    
+    .fn-s-setLoad {
+      display: none;
+      float: right;
+      margin-left: 10px;
+      margin-top: -1px;
+    }
+    
+    .fn-s-setLoad img {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <form method="post" action="userMsgCon.aspx" id="form1">
+    <div class="aspNetHidden">
+      <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTQyNjI2MTkwNmRkqQd89zvl1YGxCaBx9cQNK4jUaGDtAbkPPAEfPpKP50o=" />
+    </div>
+    <div class="aspNetHidden">
+      <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="83DD553F" />
+    </div>
+    <div id="container" class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="list-group" id="channelLists">
+            <h3 class="fn-sFirstLevel list-group-item row" data-id="10" data-type="0">
+                            <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3">事件跟踪</label>                            
+                            <div  class="col-lg-9 col-md-9 col-sm-9 col-xs-9"><span class="fn-s-setLoad"><img src="/images/loader.gif"/></span><i class="fa fa-toggle-on fn-alertMsgCog" title="设置是否提示新消息"></i></div>                         
+                        </h3>
+            <h3 class="fn-sFirstLevel list-group-item row" data-id="11" data-type="1">
+                            <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3">媒体关注</label>                            
+                            <div  class="col-lg-9 col-md-9 col-sm-9 col-xs-9"><span class="fn-s-setLoad"><img src="/images/loader.gif"/></span><i class="fa fa-toggle-on fn-alertMsgCog" title="设置是否提示新消息"></i></div>                            
+                        </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <script type="text/javascript" src="libs/jquery/jquery-1.10.2.min.js?v=628072e7"></script>
+  <script type="text/javascript">
+    // (function($) {
+    //   var url = "/api/message.ashx";
+    //   var $channelListsCon = $("#channelLists");
+    //   var openChannel = 0; //全局消息是否定时请求，不再动态的改变#messageOpen的val
+    //   $("#closeAlert").click(function() {
+    //     $(this).parent().remove();
+    //   });
+    //   //开启/关闭设置
+    //   $channelListsCon.delegate("i.fn-alertMsgCog", "click", function() {
+    //     var $this = $(this),
+    //       $pa = $this.parentsUntil(".fn-sFirstLevel").parent().eq(0);
+    //     var index = $pa.index();
+    //     $this.hide().siblings(".fn-s-setLoad").show();
+    //     var data = {
+    //       "whatDo": "UpdateUserChannelDistributionAlarmWindow"
+    //     };
+
+    //     function cback(data) {
+    //       if (data.Succeed) {
+    //         top.fnTool.alertCustom("设置成功", "success");
+    //         if ($this.hasClass("fa-toggle-off")) {
+    //           openChannel += 1;
+    //           $this.removeClass("fa-toggle-off").addClass("fa-toggle-on");
+    //         } else {
+    //           openChannel -= 1;
+    //           $this.removeClass("fa-toggle-on").addClass("fa-toggle-off");
+    //         }
+    //         if (openChannel > 0 && !top.Notice.timeClear) { //当有栏目开启时，如果定时器处于关闭状态
+    //           top.Notice.fixedGetNews();
+    //         } else if (openChannel <= 0 && top.Notice.timeClear) {
+    //           top.Notice.closeFixedGetNews();
+    //         }
+    //       } else {
+    //         top.fnTool.alertCustom("设置失败", "error");
+    //       }
+    //     }
+    //     if (index <= 1) { //媒体关注和事件跟踪
+    //       if ($this.hasClass("fa-toggle-off")) { //开启
+    //         data.whatDo = "insertUserMessageSetting";
+    //       } else { //关闭
+    //         data.whatDo = "deleteUserMessageSetting";
+    //       }
+    //       data.msgtype = $pa.attr("data-type");
+    //       top.fnTool.ajaxSimply("get", data, url, function(viewdata) {
+    //         $this.show().siblings(".fn-s-setLoad").hide();
+    //         cback(viewdata);
+    //       });
+    //     } else {
+    //       var innerData = {
+    //         "whatDo": "UpdateUserChannelDistributionIsGetMessage"
+    //       };
+    //       if ($this.hasClass("fa-toggle-off")) { //开启
+    //         data.alarmWindow = true;
+    //         innerData.isgetmessage = true;
+    //       } else { //关闭
+    //         data.alarmWindow = false;
+    //         innerData.isgetmessage = false;
+    //       }
+    //       data.channelDestributionUserID = $pa.attr("data-cid");
+    //       innerData.channelDestributionUserID = $pa.attr("data-cid");
+    //       top.fnTool.ajaxSimply("get", data, url, function(viewdata) { //配置提醒
+    //         $this.show().siblings(".fn-s-setLoad").hide();
+    //         if (viewdata.Succeed) { //设置成功                    
+    //           top.fnTool.ajaxSimply("get", innerData, url, function(viewinnerdata) {
+    //             cback(viewinnerdata);
+    //           });
+    //           //alertCustom("设置成功", "success");
+    //         } else { //设置失败
+    //           top.fnTool.alertCustom("设置失败", "error");
+    //         }
+    //       });
+    //     }
+
+    //   });
+    //   //频率设置
+    //   $channelListsCon.delegate(".fn-simRadioGroup label", "click", function() {
+    //     var self = $(this);
+    //     var data = {
+    //       "whatDo": "updateChannelFrequency",
+    //       "channelId": self.parent().parent().eq(0).attr("data-id")
+    //     };
+    //     var index = self.index();
+    //     switch (index) {
+    //       case 0:
+    //         data.frequency = "high";
+    //         break;
+    //       case 1:
+    //         data.frequency = "middle";
+    //         break;
+    //       case 2:
+    //         data.frequency = "low";
+    //         break;
+    //       default:
+    //         data.frequency = "low";
+
+    //     }
+    //     top.fnTool.ajaxSimply("get", data, url, function(viewdata) {
+    //       if (viewdata.Succeed) {
+    //         top.fnTool.alertCustom("设置频率成功", "success");
+    //         self.siblings().children(".fa").removeClass("fa-dot-circle-o").addClass("fa-circle-o");
+    //         self.children(".fa").removeClass("fa-circle-o").addClass("fa-dot-circle-o");
+    //       } else {
+    //         top.fnTool.alertCustom("设置频率失败", "error");
+    //       }
+    //     });
+
+    //   });
+    //   //获取全部的栏目
+    //   function getTotalChannel() { //
+    //     top.fnTool.ajaxSimply("get", {
+    //       "whatDo": "getUserMessageSettings"
+    //     }, url, function(viewdata) {
+    //       if (viewdata.Succeed) { //获取全部的栏目成功
+    //         var usermessagedata = viewdata.obj.otherDS.userMessageSetting,
+    //           usermessagelen = usermessagedata.length,
+    //           di = null,
+    //           channelData = viewdata.obj.otherDS.channelDestributionUserB,
+    //           channelLen = channelData.length;
+    //         var html = '';
+    //         //目前只有事件跟踪和媒体关注
+    //         var $focusTrend = $channelListsCon.children("h3").eq(0), //事件跟踪
+    //           $focusMedia = $channelListsCon.children("h3").eq(1); //媒体关注
+    //         //默认开始状态
+    //         if (usermessagelen === 0) {
+    //           $channelListsCon.find(".fn-alertMsgCog").removeClass("fa-toggle-on").addClass("fa-toggle-off");
+    //         } else if (usermessagelen === 1) {
+    //           if (usermessagedata[0].msgtype == 0) {
+    //             $focusMedia.find(".fn-alertMsgCog").removeClass("fa-toggle-on").addClass("fa-toggle-off");
+    //           } else if (usermessagedata[0].msgtype == 1) {
+    //             $focusTrend.find(".fn-alertMsgCog").removeClass("fa-toggle-on").addClass("fa-toggle-off");
+    //           }
+
+    //         }
+    //         openChannel = usermessagelen;
+    //         //我的栏目
+    //         for (var j = 0; j < channelLen; j++) {
+    //           di = channelData[j];
+    //           html += '<h3 class="fn-sFirstLevel list-group-item row" data-id="' + di.channelID + '" data-cid="' + di.channelDestributionUserID + '"><label class="col-lg-3 col-md-3 col-sm-3 col-xs-3">' + di.channelName + '</label><div class="fn-simRadioGroup col-lg-5 col-md-5 col-sm-5 col-xs-5">';
+    //           //频率默认值
+    //           if (di.frequencyInSecs) { //高
+    //             html += '<label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">高频：<i class="fa fa-dot-circle-o"></i></label><label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">中频：<i class="fa fa-circle-o"></i></label><label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">低频：<i class="fa fa-circle-o"></i></label>';
+    //           } else if (di.frequencyInMinutes) { //中
+    //             html += '<label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">高频：<i class="fa fa-circle-o"></i></label><label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">中频：<i class="fa fa-dot-circle-o"></i></label><label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">低频：<i class="fa fa-circle-o"></i></label>';
+    //           } else { //默认低频
+    //             html += '<label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">高频：<i class="fa fa-circle-o"></i></label><label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">中频：<i class="fa fa-circle-o"></i></label><label class="col-lg-4 col-md-4 col-sm-4 col-xs-4">低频：<i class="fa fa-dot-circle-o"></i></label>';
+
+    //           }
+    //           html += '</div><div  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><span class="fn-s-setLoad"><img src="/images/loader.gif"/></span>';
+    //           if (di.alarmWindow && di.isgetmessage) {
+    //             openChannel++;
+    //             html += '<i class="fa fa-toggle-on fn-alertMsgCog" title="设置是否提示新消息"></i></div></h3>';
+    //           } else {
+    //             html += '<i class="fa fa-toggle-off fn-alertMsgCog" title="设置是否提示新消息"></i></div></h3>';
+    //           }
+
+    //         }
+    //         $channelListsCon.append(html);
+    //       } else {
+    //         top.fnTool.alertCustom("获取列表失败，请稍后再试");
+    //       }
+    //     });
+    //   }
+    //   getTotalChannel();
+    // })(jQuery);
+  </script>
+</body>
+
+</html>

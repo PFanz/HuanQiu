@@ -1,0 +1,103 @@
+
+ul,
+li {
+  list-style: none;
+}
+
+.main {
+  margin: 0 auto;
+  padding: 30px 0;
+  width: 1000px;
+}
+
+.title {
+  text-align: center;
+}
+
+.info {
+  text-align: center;
+}
+
+.carousel {
+  position: relative;
+  margin-top: 30px;
+}
+
+.carousel-cover {
+  margin: 0 auto;
+  width: 750px;
+  overflow: hidden;
+}
+
+.carousel-container {
+  font-size: 0;
+  white-space: nowrap;
+}
+
+.carousel-item {
+  display: none;
+
+  &.active {
+    display: inline-block;
+  }
+}
+
+.carousel-img {
+  width: 750px;
+  height: 500px;
+}
+
+.carousel-title {
+  margin: 5px 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+.carousel-text {
+  margin-top: 20px;
+  font-size: 14px;
+  text-indent: 28px;
+  white-space: normal;
+}
+
+.pre-btn {
+  position: absolute;
+  top: 0;
+  left: 52.5px;
+  display: inline-block;
+  width: 40px;
+  height: 500px;
+  background: url(../images/pre_btn.png) no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.next-btn {
+  position: absolute;
+  top: 0;
+  right: 52.5px;
+  display: inline-block;
+  width: 40px;
+  height: 500px;
+  background: url(../images/next_btn.png) no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.dots-container {
+  text-align: center;
+}
+
+.dot {
+  cursor: pointer;
+
+  .num {
+    text-decoration: none;
+  }
+
+  &.active {
+    .num {
+      text-decoration: underline;
+    }
+  }
+}

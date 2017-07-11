@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>移动APP速览</title>
+  <link rel="icon" href="/fw_logo.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/fw_logo.ico" type="image/x-icon" />
+  <link rel="BOOKMARK" href="/fw_logo.ico" type="image/x-icon" />
+  <meta name="description" content="凡闻科技 中国领先的新闻数据服务商 专注于新闻资讯的聚合服务" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="css/fnnews.common-min.css?v=2f454140" type="text/css" />
+  <link rel="stylesheet" href="css/fanews.v2-min.css?v=a78bc3c3" type="text/css" />
+  <link rel="stylesheet" href="css/main.v2-min.css?v=c478cc4a" type="text/css" />
+  <link rel="stylesheet" href="js/jquery-date-range-picker/daterangepicker-min.css?v=f84769dd" type="text/css" />
+  <link rel="stylesheet" href="js/craftpip-jquery-confirm/jquery-confirm.min.css?v=4aaef226" type="text/css" />
+  <!-- [if lt IE 9]> <script src="js/ie/respond.min.js"></script> <script src="js/ie/html5.js"></script> <![endif] -->
+  <style>
+    html {
+      overflow: hidden;
+    }
+    
+    body {
+      font-family: 微软雅黑 !important;
+      overflow: hidden;
+    }
+    
+    .splitter {
+      filter: alpha(opacity=50);
+      -moz-opacity: 0.5;
+      -khtml-opacity: 0.5;
+      opacity: 0.5;
+    }
+    
+    .xline {
+      height: 2px;
+      font-size: 0;
+      overflow: hidden;
+      border-width: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .date-picker-wrapper {
+      border: 0px;
+      background-color: transparent;
+    }
+    
+    .fn-s-oCheckBox[type='checkbox'] {
+      display: none;
+    }
+    
+    .fn-s-fileLoad {
+      text-align: center;
+      margin-top: 5px;
+    }
+    
+    .fn-s-fileLoad img {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+
+<body style="overflow: hidden;" class="navbar-fixed">
+  <form method="post" action="newtopicapplist.html" id="form1">
+    <div class="aspNetHidden">
+      <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJLTUwMTQ0NTcwD2QWAgIBD2QWAmYPZBYEAgEPFgIeCWlubmVyaHRtbAWYATxpbWcgc3JjPSJodHRwOi8vZndpbWFnZS5jbmZhbmV3cy5jb20vaHpmYW5ld3NVc2VySW1nL3poYW5neW9uZzAxMTVAMTI2LmNvbS5qcGciIGFsdD0iIiBjbGFzcz0iaW1nLWNpcmNsZSIgb25lcnJvcj0idGhpcy5zcmM9Jy92Mi9pbWFnZXMvYXZhdGFyLnBuZyciIC8+ZAICDw8WAh4LTmF2aWdhdGVVcmwFIy9Vc2VyTWFuYWdlL1VzZXJMb2dpbi9sb2dpbk91dC5hc3B4ZGRkU7RQjFx3II/HsR2+zEwmdWmoIMplAtowDG6alsjvslA=" />
+    </div>
+    <div class="aspNetHidden">
+      <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="12199601" />
+      <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAbvFBphBZulJU/4kMZDddu+0u3SqsPzlyN/A/2GUhQu66JZGX5ob2RuRMi0i4m9oY8ZMlqfq4IljiScFYUkoIXPqDP8WGjVVxSgpSvrZTaz97aebDO/5O1SbBxnScFX/YDNDwRb+imYzt7/ZNkh8ukHFskH7ZHFKOJm9AWkhsSszA==" />
+    </div>
+    <!-- header -->
+    <header id="fn-header" class="fn-s-header fn-pf">
+      <div class="fn-s-headerInner">
+        <a class="fn-inlineBlock" href="javascript: void(0);"><span class="fn-s-fnIcon"></span></a>
+        <button class="fn-s-smallMenu" id="fn-s-smallMenu" type="button"><span class="fn-s-menus"></span></button>
+        <ul class="fn-inlineBlock fn-s-nav fn-clearfix" id="fn-s-nav">
+          <li><a class="fn-s-active" href="/default.html">首页</a></li>
+          <li>
+            <a href="/fwrecommend.html" id="headv2_a1">凡闻推荐</a>
+          </li>
+          <li class="fn-s-navDrop">
+            <a class="fn-s-navDropHead" href="javascript: void (0);">凡闻出品<span class="fa fa-caret-down"></span></a>
+            <ul class="fn-s-navDropBody">
+              <li><a target="_self" href="/mediafocus.html">媒体关注</a></li>
+              <li><a target="_self" href="/findhot.html">热点汇聚</a></li>
+              <li><a target="_self" href="/eventH/eventhome.html">事件跟踪</a></li>
+              <li><a target="_self" href="/reprinted/newsreprinted.html">转载分析</a></li>
+              <li><a target="_self" href="http://gov.hzfanews.com" target="_blank">领导活动</a></li>
+              <li><a href="/newsmap.html">周边新闻</a></li>
+              <li><a href="/newsrank.html">新闻点击</a></li>
+              <li><a href="/pushnews.html">Push新闻</a></li>
+              <li><a href="/fetching.html">微信抓取</a></li>
+            </ul>
+          </li>
+          <li class="fn-s-navDrop">
+            <a class="fn-s-navDropHead" href="javascript: void (0);">我是小编<span class="fa fa-caret-down"></span></a>
+            <ul class="fn-s-navDropBody">
+              <li><a target="_self" href="/myAlbum.html">我的栏目</a></li>
+              <li><a target="_self" href="/newnewsCollectionInex.html">我的收藏</a></li>
+              <li><a target="_self" href="/newmycategorylist.html">我的跟踪</a></li>
+            </ul>
+          </li>
+          <li class="fn-s-navDrop">
+            <a class="fn-s-navDropHead" href="javascript: void (0);">资源浏览<span class="fa fa-caret-down"></span></a>
+            <ul class="fn-s-navDropBody">
+              <li><a target="_self" href="/newtopicwebsitelist.html">网站速览</a></li>
+              <li><a target="_self" href="/newpaperList.html">报纸速览</a></li>
+              <li><a target="_self" href="/weibo.html">微博速览</a></li>
+              <li><a target="_self" href="/wechat.html">微信速览</a></li>
+              <li><a target="_self" href="/newtopicapplist.html">APP速览</a></li>
+              <li><a target="_self" href="/newtopicbbslist.html">论坛速览</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!--个人中心-->
+        <div class="fn-fr fn-s-settings fn-s-dropdown fn-ss-dropdown">
+          <a href="javascript:void(0);" class="dropdown-toggle fn-s-ddHead" data-toggle="dropdown">
+            <span class="hidden-xs-only" data-name="zhangyong0115@126.com">新闻编辑中心1</span>
+            <span id="headv2_thumbPhoto" class="thumb-small avatar inline"><img src="http://fwimage.cnfanews.com/hzfanewsUserImg/zhangyong0115@126.com.jpg" alt="" class="img-circle" onerror="this.src='/v2/images/avatar.png'" /></span><b class="fa fa-caret-down"></b></a>
+          <ul class="dropdown-menu fn-s-ddBody">
+            <li>
+              <a target="_self" href="/userCenter.html">个人中心</a>
+            </li>
+            <!--后台管理-->
+            <!--广告管理-->
+            <li class="divider"></li>
+            <li>
+              <a id="headv2_hylinkLoginOut" href="/UserManage/UserLogin/loginOut.html">注销</a>
+            </li>
+          </ul>
+        </div>
+        <!--消息提醒-->
+        <div id="fa-noticeLi" class="fa-noticeLi fn-fr">
+          <span class="fa-notice fa-relative" title="点击查看所有更新">
+                <span class="fa fa-bell"></span>
+          </span>
+          <b class="fa-noticeNum" data-num="0">0</b>
+        </div>
+        <section id="fa-newAlert" class="panel">
+          <header class="panel-heading bg">
+            已为您更新<b class="badge bg-warning" id="fn-alertTxt">10</b>条数据
+            <i class="fa fa-times fa-lg fr" id="fn-alertClose"></i>
+          </header>
+          <ul class="list-group fn-s-alertLists">
+          </ul>
+        </section>
+        <section id="fa-newNotice">
+          <div class="fa-noNotice">
+            <span class="fa fa-exclamation-circle"></span>
+            <p class="fa-nnText">暂无消息通知</p>
+            <div class="fa-checkReadedNotice fa-noticeFooter" data-dom="false">
+              <span class="fn-icon fn-message"></span> 查看已读更新
+            </div>
+          </div>
+          <div class="fa-hasNotice">
+            <div class="fa-unReadNews">
+              <div class="fn-noticeOp clearfix">
+                <span class="fn-tagReaded fr">全部标记为已读</span>
+              </div>
+              <ul class="fa-noticeLists"></ul>
+              <div class="fa-checkReadedNotice fa-noticeFooter" data-dom="true">
+                <span class="fn-icon fn-message"></span> 查看已读更新
+              </div>
+            </div>
+            <div class="fn-newsInnerAlert">已为您更新<span></span>条新闻</div>
+            <div class="fa-readedLists">
+              <header>
+                <span class="btn btn-white btn-xs fa-closeDetail">
+                            <span class="fa fa-arrow-left"></span>
+                </span>
+                <span class="text-muted fr fn-newsReadedTitle">已读列表</span>
+              </header>
+              <ul class="fa-readedListsUl"></ul>
+            </div>
+            <div class="fa-noticeDetail get-codes-bdshare">
+              <header>
+                <span class="btn btn-white btn-xs fa-closeDetail">
+                            <span class="fa fa-arrow-left "></span>
+                </span>
+                <a href="javascript: void(0);" class="btn btn-white fr fn-innerContent-common fn-articleResource" target="_blank" title="查看原文"></a>
+                <a href="javascript: void(0);" class="btn btn-white fr fn-innerContent-common fn-newsArticleResource" target="_blank" title="站内浏览"></a>
+                <div class="fn-newsPercentage fr" id="fn-newsPercentage"></div>
+              </header>
+              <div class="fn-detailContent">
+                <h4 class="fn-leadTitle fn-smlTitle"></h4>
+                <h3 class="fn-dTitle"></h3>
+                <h4 class="fn-smlTitle fn-subTitle"></h4>
+                <div class="fn-dSource">
+                  <span class="fn-mainS"></span>
+                  <span class="fn-reprintedS"></span>
+                </div>
+                <div class="fn-dTime">
+                </div>
+                <div class="fn-dContent">
+                </div>
+              </div>
+              <!-- <script type="text/javascript" id="bdshare_js" data="type=tools"></script> -->
+              <!-- <script type="text/javascript" id="bdshell_js"></script> -->
+              <!-- <script type="text/javascript">
+                document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000);
+              </script> -->
+            </div>
+          </div>
+        </section>
+        <!--使用原来的代码，单独修改样式，最终还是修改了部分布局-->
+        <div id="searchContainer" class="navbar-form fn-s-schArea fn-fr">
+          <div id="search-top" class="fn-s-schTop">
+            <span class="fn-s-icon fn-s-search"></span>
+            <input id="normalSearchKey" type="text" placeholder="搜索您要的新闻" autocomplete="off" class="input-sm form-control fn-s-searchIpt">
+          </div>
+          <div class="normal_search_option fn-s-schOp">
+            <div class="normal_search_option_div">
+              <!--媒体选择框-->
+              <div class="fn-mediablock fn-s-mediaSource">
+                <div class="fn-mediablock-miss" onclick="$('.fn-mediablock').hide()">
+                  <button type="button" class="close text-danger">×</button>
+                </div>
+                <div class="fn-s-sdSearchForm">
+                  <input type="text" class="fn-s-searchIpt fn-mediablock-inputsearch" id="fn-s-msTxt" placeholder="搜索您想要的媒体名称" />
+                  <span class="input-group-btn">
+                                <button class="fn-s-btn fn-s-btnS" id="fn-s-msBtn" type="button">
+                                    搜索
+                                </button>
+                            </span>
+                </div>
+                <div class="fn-meidiablock-main">
+                  <ul class="fn-choosedmedia" id="fn-s-cm">
+                  </ul>
+                </div>
+              </div>
+              <!--这个是地域弹出框选择代码-->
+              <div class="fn-z-searchareacontent">
+                <div class="fn-z-searcharearesult">
+                  <ul class="fn-z-searchprovince"></ul>
+                  <ul class="fn-z-searchcity">
+                    <button type="button" class="btn btn-default btn-xs fn-z-returnprovince">返回上一级</button>
+                  </ul>
+                  <div class="fn-z-searchareamiss">×</div>
+                </div>
+                <div class="fn-areatag-right"></div>
+              </div>
+              <!--搜索区域-->
+              <div id="Accordion1" class="Accordion" tabindex="0">
+                <!--普通类型-->
+                <div class="AccordionPanel fn-s-nsArea">
+                  <h4 class="AccordionPanelTab fn-s-nsTitle">结果匹配</h4>
+                  <div class="AccordionPanelContent fn-s-apc">
+                    <div class="option">
+                      <div class="fn-s-nsAccurate">
+                        <p class="fn-s-nsType">
+                          <input id="radio3" type="radio" name="radio2" value="0" checked="checked">&nbsp;<label for="radio3">精准检索</label>
+                        </p>
+                        <p class="text-default">以多个关键词（空格间隔）展开的全库搜索，精准匹配检索内容，适用于目的性较强，关键词明确的场景。</p>
+                      </div>
+                      <div class="fn-s-nsDim">
+                        <p class="fn-s-nsType">
+                          <input id="radio4" type="radio" name="radio2" value="100">&nbsp;<label for="radio4"><!--<span><span></span></span>-->模糊检索</label>
+                        </p>
+                        <p class="text-default">可用一句话叙述搜索，通过语义分析，智能匹配检索内容，适用于检索目标不是很明确的场景。</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--高级搜索区域-->
+                <div class="fn-s-supsArea">
+                  <div class="AccordionPanel">
+                    <div class="AccordionPanelContent fn-s-apc">
+                      <input id="anyKey" type="text" name="text" placeholder="包含任意关键词" class="fn-s-searchIpt" autocomplete="off" value="">
+                    </div>
+                  </div>
+                  <div class="AccordionPanel">
+                    <div class="AccordionPanelContent fn-s-apc">
+                      <input id="exceptKey" type="text" name="text" placeholder="不包含的关键词" class="fn-s-searchIpt" autocomplete="off" value="">
+                    </div>
+                  </div>
+                  <div class="AccordionPanel fn-clearfix">
+                    <label class="AccordionPanelTab fn-fl fn-s-sLabel">关键词位置：</label>
+                    <div class="AccordionPanelContent">
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="radio1" type="radio" name="radio" value="1" checked="checked">全文
+                                    </label>
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="radio2" type="radio" name="radio" value="2">标题</label>
+                    </div>
+                  </div>
+                  <div class="AccordionPanel fn-clearfix">
+                    <label class="AccordionPanelTab fn-fl fn-s-sLabel">匹配结果：</label>
+                    <div class="AccordionPanelContent">
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="radio5" type="radio" name="radio3" value="0"
+                                            checked="checked">精确</label>
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="radio6" type="radio" name="radio3"
+                                            value="100">模糊</label>
+                    </div>
+                  </div>
+                  <!--地域选择-->
+                  <div class="AccordionPanel">
+                    <div class="AccordionPanelTab pull-left m-t-mini">地域<span class="text-default" style="font-weight: 300">（默认全部地区）</span></div>
+                    <div class="AccordionPanelContent">
+                      <i class="fa fa-map-marker fa-lg m-l" aria-hidden="true"></i>
+                    </div>
+                    <div class="fn-z-areachoosedcontent">
+                      <div class="fn-z-addcity">点击选择城市</div>
+                      <ul class="fn-z-areachoosedresult"></ul>
+                    </div>
+                  </div>
+                  <div class="AccordionPanel fn-s-sdTitle">
+                    <div class="AccordionPanelTab" id="fn-choosedata">
+                      <label>媒体</label>
+                      <span class="text-default">（默认全部媒体）</span>
+                      <button type="button" class="fn-clear-choosemedia" id="fn-s-cCm">
+                                        清空
+                                    </button>
+                    </div>
+                    <div class="fn-s-sdLists">
+                      <ul class="fn-chooseresults" id="fn-s-cr"></ul>
+                      <div class="fn-s-sdPlacer text-default fn-addmediabutton">点击选择媒体</div>
+                    </div>
+                  </div>
+                  <div class="AccordionPanel">
+                    <label class="AccordionPanelTab fn-fl fn-s-sLabel">来源类型：</label>
+                    <div class="AccordionPanelContent">
+                      <label class="fn-s-siLabel fn-s-three" style="margin-bottom: 10px;">
+                                        <input id="rad_selall" type="radio" name="radio7" value="" checked="checked">不限
+                                    </label>
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_news" type="radio" name="radio7" value="news">报纸
+                                    </label>
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_website" type="radio" name="radio7" value="website">网站
+                                    </label>
+                      <label class="fn-s-siLabel fn-s-three" style="margin-bottom: 10px;">
+                                        <input id="rad_weibo" type="radio" name="radio7" value="weibo">微博
+                                    </label>
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_weixin" type="radio" name="radio7" value="weixin">微信
+                                    </label>
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_webbbs" type="radio" name="radio7" value="webbbs">论坛
+                                    </label>
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_webapp" type="radio" name="radio7" value="webapp">APP
+                                    </label>
+                    </div>
+                  </div>
+                  <div class="AccordionPanel">
+                    <label class="AccordionPanelTab fn-fl fn-s-sLabel">原创&nbsp;/&nbsp;转载：</label>
+                    <div class="AccordionPanelContent">
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_oriall" type="radio" name="radio4" value="2" checked="checked">不限
+                                    </label>
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_original" type="radio" name="radio4" value="1">原创
+                                    </label>
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_reprinted" type="radio" name="radio4" value="0">转载
+                                    </label>
+                    </div>
+                  </div>
+                  <div class="AccordionPanel">
+                    <label class="AccordionPanelTab fn-fl fn-s-sLabel">情感：</label>
+                    <div class="AccordionPanelContent">
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_emotionll" type="radio" name="radio5" value="-1"
+                                            checked="checked">不限
+                                    </label>
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_emotionp" type="radio" name="radio5" value="51">正面
+                                    </label>
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_emotionn" type="radio" name="radio5" value="1">负面
+                                    </label>
+                    </div>
+                  </div>
+                  <div class="AccordionPanel">
+                    <label class="AccordionPanelTab fn-fl fn-s-sLabel">是否含图片：</label>
+                    <div class="AccordionPanelContent">
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_picll" type="radio" name="radio6" value="-1" checked="checked">不限
+                                    </label>
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_pic" type="radio" name="radio6" value="1">包含
+                                    </label>
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="rad_nopic" type="radio" name="radio6" value="0">不包含
+                                    </label>
+                    </div>
+                  </div>
+                  <div class="AccordionPanel">
+                    <label class="AccordionPanelTab fn-fl fn-s-sLabel">文章字数：</label>
+                    <div class="AccordionPanelContent">
+                      <label class="fn-s-siLabel fn-s-three">
+                                        <input id="wnrall" type="radio" name="radio8" value="0" checked="checked">不限
+                                    </label><br>
+                      <label class="fn-s-siLabel fn-s-three" style="width: 35px;">
+                                        <input id="wnr" type="radio" name="radio8" value="1">从&nbsp;
+                                    </label>
+                      <input type="text" name="wordNumRangeStart" class="fn-x-word-num-box" />&nbsp;&nbsp;至&nbsp;
+                      <input type="text" name="wordNumRangeEnd" class="fn-x-word-num-box" />&nbsp;&nbsp;字
+                    </div>
+                  </div>
+                </div>
+                <!--日期区域-->
+                <div class="AccordionPanel fn-s-sDateArea">
+                  <div class="AccordionPanelTab fn-s-nsTitle">
+                    日期范围
+                    <span class="text-default">（默认最近三天）</span>&nbsp;
+                    <a class="text-default fn-z-week" href="javascript:void(0)">一周</a>&nbsp;
+                    <a class="text-default fn-z-month" href="javascript:void(0)">一月</a>&nbsp;
+                    <a class="text-default fn-z-year" href="javascript:void(0)">一年</a>&nbsp;
+                  </div>
+                  <div class="AccordionPanelContent">
+                    <div class="input-daterange fn-s-sTimes" id="searchDateRangePicker">
+                      <input name="headv2$start" type="text" id="headv2_start" class="fn-s-timeInput" placeholder="开始日期" readonly="" value="2017-05-09" />
+                      <span class="input-group-addon">至</span>
+                      <input name="headv2$end" type="text" id="headv2_end" class="fn-s-timeInput" placeholder="结束日期" readonly="" value="2017-05-12" />
+                    </div>
+                  </div>
+                </div>
+                <!--最近搜索-->
+                <div id="keyBox" class="fn-latest-key alert-info" style="padding: 6px 10px; display: none;">
+                  <button data-dismiss="alert" class="close fn-close-btn" onclick="RemoveKeyBox();" type="button">
+                                <i class="fa fa-times"></i>
+                            </button>
+                  <span class="pull-left fn-latest-key-head">最近搜索</span>
+                  <div id="keyBoxInner">
+                  </div>
+                </div>
+                <div class="AccordionPanel" style="display: none">
+                  <div class="AccordionPanelContent">
+                    <div style="margin-top: 5px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--普通搜索的控制面板-->
+            <div class="AccordionPanel fn-s-sCtrl fn-s-goSSearch">
+              <div class="AccordionPanelContent fn-s-apc">
+                <a class="fn-s-textBlue fn-s-toAdvSearch" href="javascript:void(0);" id="fn-s-toAdvSearch"><b>高级搜索</b></a>
+                <button type="button" class="fn-fr fn-s-btnS fn-ss-btnS">
+                            搜索
+                        </button>
+              </div>
+            </div>
+            <div class="AccordionPanel fn-s-sCtrl fn-s-goNSearch">
+              <div class="AccordionPanelContent fn-s-apc">
+                <a href="javascript:void(0);" class="fn-s-textBlue fn-s-toNorSearch" id="fn-s-toNorSearch"><b>普通搜索</b></a>
+                <button type="button" class="fn-fr fn-s-btnS fn-ss-btnS">搜索</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--跳转到高级搜索-->
+        <a href="/advancedsearch.html#/option" target="_blank" class="fn-s-goSupSearch fn-fr">高级搜索</a>
+      </div>
+      <div class="fn-hidden">
+        <input name="headv2$messageOpen" type="hidden" id="headv2_messageOpen" />
+        <input name="headv2$messageReprint" type="hidden" id="headv2_messageReprint" />
+      </div>
+      <audio id="newsMus">
+        <source src="/v2/audio/9.mp3" />
+    </audio>
+    </header>
+    <!-- <script type="text/javascript" src="/v2/js/jquery-1.10.2.min.js?v=628072e7"></script> -->
+    <!-- <script src="/v2/js/fanews.v2-min.js?v=e3fd2217" type="text/javascript"></script> -->
+    <!-- <script type="text/javascript" src="/v2/js/Highcharts/highcharts-min.js?v=34e26ca0"></script> -->
+    <!-- <script type="text/javascript" src="/v2/js/My97DatePicker/WdatePicker.js?v=ca0fbbce"></script> -->
+    <!-- <script type="text/javascript" src="/v2/js/v2s/fnKitTool-min.js"></script> -->
+    <!-- <script type="text/javascript" src="/v2/js/plugins/sq.plugin-min.js?v=b62b730e"></script> -->
+    <!-- <script type="text/javascript" src="/v2/js/fn-head-min.js?v=b6486e00"></script> -->
+    <!-- add by yzx start 2016-08-24-->
+    <!-- <script src="/js/artDialog4.1.6/artDialog.source.js?skin=green"></script> -->
+    <!-- <script src="/js/artDialog4.1.6/plugins/iframeTools.js"></script> -->
+    <!-- add by yzx end -->
+    <!-- / header -->
+    <section id="content" class="content-sidebar bg-white">
+      <!-- .sidebar -->
+      <aside class="sidebar bg-lighter clearfix">
+        <div id="leftnav">
+          <div>
+            <h5>
+                            <strong><i class="fa fa-caret-down">&nbsp;<b style="font-family: 微软雅黑;">移动APP速览</b></i></strong>
+                            
+                        </h5>
+          </div>
+          <div class="line"></div>
+          <input id="txt_searchchannel" type="text" class="input-sm form-control" placeholder="栏目搜索" />
+          <div id="fntree" class="list-group list-normal no-border m-b-none text-nowrap" style="overflow: auto; margin-right: -15px;">
+            <span class="text-default text-center" style="width: 100%;">数据加载中...</span>
+          </div>
+        </div>
+        <div id="splitter1" class="splitter" style="position: absolute; z-index: 2; width: 5px; height: 100%; background-color: transparent; filter: alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.3; top: 0px; left: 218px;"></div>
+      </aside>
+      <!-- /.sidebar -->
+      <!-- .sidebar -->
+      <aside class="sidebar sidebar-large">
+        <div class="header-bar bg clearfix">
+          <div class="btn-group  fn-stats">
+            <div id="channelinfo" class="input-group padder fn-newslist-selection-navbar">
+              <i class="fa fa-file-text text-info"></i><b class="text-info fn-s-channelName"></b> <b class="badge bg-danger fn-s-channelNum">…</b>
+              <!--这里是文章排序 start-->
+              <ul class="dropdown-menu" aria-labelledby="showDropdown" id="modeSwitch">
+                <li><a href="javascript:void(0);">列表</a></li>
+                <li><a href="javascript:void(0);">摘要</a></li>
+              </ul>
+              <!--  For Scrolling Find Current News By Atul Starts -->
+              <div class="fn-select-news-contain" id="fnShowSelectNews">
+                <a>
+                  <img id="SelectImageZoom" src="images/selectIcon.png?v=dcbb563b" style="margin: 0 auto;" border="0" /></a>
+              </div>
+              <!--  For Scrolling Find Current News By Atul End -->
+              <div class="pull-right m-t-mini m-b-mini fn-newslist-selection-button">
+                <i class="fa fa-cog text-default m-r m-l"></i>
+                <div class="fn-newslist-selection-panel" style="height: 285px;">
+                  <ul style="height: 98%;">
+                    <li>
+                      <strong style="font-size: 14px;">文章分类</strong>
+                    </li>
+                    <li>
+                      <div class="fn-article-classify-option">
+                        <input id="rad_1_1" type="radio" name="rad_1" value="all" checked="checked">&nbsp;<label for="rad_1_1"><span><span></span></span>全部</label>
+                        <input id="rad_1_2" type="radio" name="rad_1" value="社会">&nbsp;<label for="rad_1_2"><span><span></span></span>社会</label>
+                        <input id="rad_1_3" type="radio" name="rad_1" value="教育">&nbsp;<label for="rad_1_3"><span><span></span></span>教育</label>
+                        <input id="rad_1_4" type="radio" name="rad_1" value="时政">&nbsp;<label for="rad_1_4"><span><span></span></span>时政</label>
+                        <input id="rad_1_5" type="radio" name="rad_1" value="经济">&nbsp;<label for="rad_1_5"><span><span></span></span>经济</label>
+                        <input id="rad_1_6" type="radio" name="rad_1" value="军事">&nbsp;<label for="rad_1_6"><span><span></span></span>军事</label><br>
+                        <input id="rad_1_7" type="radio" name="rad_1" value="科技">&nbsp;<label for="rad_1_7"><span><span></span></span>科技</label>
+                        <input id="rad_1_8" type="radio" name="rad_1" value="体育">&nbsp;<label for="rad_1_8"><span><span></span></span>体育</label>
+                        <input id="rad_1_9" type="radio" name="rad_1" value="艺术">&nbsp;<label for="rad_1_9"><span><span></span></span>艺术</label>
+                        <input id="rad_1_10" type="radio" name="rad_1" value="交通">&nbsp;<label for="rad_1_10"><span><span></span></span>交通</label>
+                        <input id="rad_1_11" type="radio" name="rad_1" value="娱乐">&nbsp;<label for="rad_1_11"><span><span></span></span>娱乐</label>
+                        <input id="rad_1_12" type="radio" name="rad_1" value="汽车">&nbsp;<label for="rad_1_12"><span><span></span></span>汽车</label><br>
+                        <input id="rad_1_13" type="radio" name="rad_1" value="房产">&nbsp;<label for="rad_1_13"><span><span></span></span>房产</label>
+                        <input id="rad_1_14" type="radio" name="rad_1" value="天气">&nbsp;<label for="rad_1_14"><span><span></span></span>天气</label>
+                        <input id="rad_1_15" type="radio" name="rad_1" value="旅游">&nbsp;<label for="rad_1_15"><span><span></span></span>旅游</label>
+                        <input id="rad_1_16" type="radio" name="rad_1" value="美食">&nbsp;<label for="rad_1_16"><span><span></span></span>美食</label>
+                      </div>
+                    </li>
+                    <li class="line line-dashed"></li>
+                    <li>
+                      <strong style="font-size: 14px;">原创/转载</strong>
+                    </li>
+                    <li>
+                      <div class="fn-article-original-option">
+                        <input id="rad_3_1" type="radio" name="rad_3" value="2" checked="checked">&nbsp;<label for="rad_3_1"><span><span></span></span>不限</label>
+                        <input id="rad_3_2" type="radio" name="rad_3" value="1">&nbsp;<label for="rad_3_2"><span><span></span></span>原创</label>
+                        <input id="rad_3_3" type="radio" name="rad_3" value="0">&nbsp;<label for="rad_3_3"><span><span></span></span>转载</label>
+                      </div>
+                    </li>
+                    <li class="line line-dashed"></li>
+                    <li>
+                      <strong style="font-size: 14px;">情感</strong>
+                    </li>
+                    <li>
+                      <div class="fn-article-emotion-option">
+                        <input id="rad_4_1" type="radio" name="rad_4" value="-1" checked="checked">&nbsp;<label for="rad_4_1"><span><span></span></span>不限</label>
+                        <input id="rad_4_2" type="radio" name="rad_4" value="51">&nbsp;<label for="rad_4_2"><span><span></span></span>正面</label>
+                        <input id="rad_4_3" type="radio" name="rad_4" value="1">&nbsp;<label for="rad_4_3"><span><span></span></span>负面</label>
+                      </div>
+                    </li>
+                    <li class="line line-dashed"></li>
+                    <li>
+                      <strong style="font-size: 14px;">是否包含图片</strong>
+                    </li>
+                    <li>
+                      <div class="fn-article-showpic-option">
+                        <input id="rad_5_1" type="radio" name="rad_5" value="-1" checked="checked">&nbsp;<label for="rad_5_1"><span><span></span></span>不限</label>
+                        <input id="rad_5_2" type="radio" name="rad_5" value="1">&nbsp;<label for="rad_5_2"><span><span></span></span>含图</label>
+                        <input id="rad_5_3" type="radio" name="rad_5" value="0">&nbsp;<label for="rad_5_3"><span><span></span></span>不含图</label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="fn-newslist-selection-panel-bg"></div>
+              </div>
+              <div class="pull-right m-t-mini m-b-mini fn-newslist-selection-button"><i class="fa fa-search text-default m-r m-l"></i></div>
+              <div class="input-group fn-search-news">
+                <input id="txtKeyWord" type="text" placeholder="栏目文章搜索" class="input-sm form-control">
+                <button type="button" class="close">
+                                    <i class="fa fa-times text-danger"></i>
+                                </button>
+              </div>
+            </div>
+            <div class="input-group fn-newslist-selection-toolbar">
+              <ul>
+                <li id="dataRangeButton" class="fn-overshow  pull-left">
+                  <input class="fn-s-dateTxt fn-overshow-head" type="text" readonly value="" />
+                  <ul class="fn-overshow-menu">
+                  </ul>
+                </li>
+                <li id="fn-s-viewModel" class="pull-right fn-s-dropdown fn-overshow">
+                  <a class="fn-overshow-head" href="javascript: void(0);">摘要查看</a>
+                  <ul class="fn-overshow-menu">
+                    <li class="viewM fn-nlAbsModel fn-overshow-menu-active" id="fn-nlAbsModel"><a href="javascript:void(0);"><i class="fa fa-lg fa-th"></i>&nbsp;&nbsp;摘要查看</a></li>
+                    <li class="viewM fn-nlLiModel noline" id="fn-nlLiModel"><a href="javascript:void(0);"><i class="fa fa-lg fa-bars"></i>&nbsp;&nbsp;列表查看</a></li>
+                    <li class="viewM fn-nlTitle noline" id="fn-nlTitleModel"><a href="javascript:void(0);"><i class="fa fa-lg fa-list"></i>&nbsp;&nbsp;标题查看</a></li>
+                  </ul>
+                </li>
+                <li id="dateSortButton" class="fn-overshow pull-right">
+                  <a href="javascript:void(0);" class="fn-overshow-head">排序▼</a>
+                  <ul class="fn-overshow-menu">
+                    <li data-order="updatetime desc" class="fn-overshow-menu-active"><a href="javascript:void(0);">时间从先到后排序</a></li>
+                    <li data-order="updatetime asc"><a href="javascript:void(0);">时间从后到先排序</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="input-group fn-newslist-selection-infobar">
+              <div class="fn-newslist-selection-infobar-panel">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="newslist" class="list-group list-normal /*m-t-n-xmini*/">
+          <div id="loader" class="center">
+            <img src="images/ajax-loader.gif?v=9ea03005" />
+          </div>
+        </div>
+        <!--  点击发现按钮出现类似于消息的文章列表，而非模态框 by zheng start-->
+        <div class="fn-z-findNews">
+          <div class="fn-z-alertprompt alert alert-success">已加载<span></span>篇文章，其中<span></span>篇为相似文章，已合并！</div>
+          <div id="fn-z-findscrolltop"><i class="fa fa-lg fa-sort-up"></i></div>
+          <div class="fn-z-hasNews">
+            <div class="fn-z-findNewstop">
+              <span>发现新闻：<a href="javascript:void(0)"></a></span>
+              <span><b class="badge bg-danger"></b></span>
+              <div class="fn-z-findNewslists">
+                <ul id="fn-z-findNewsul"></ul>
+              </div>
+            </div>
+          </div>
+          <div id="fn-z-findNewsdetails" style="height: 100%">
+            <header>
+              <span class="btn btn-white btn-xs fn-z-closeDetail">
+                                <i class="glyphicon glyphicon-arrow-left "></i>
+                            </span>
+              <a href="javascript: void(0);" class="btn btn-white pull-right m-l fn-z-findlink fn-innerContent-common" target="_blank" title="站内浏览"></a>
+              <a href="javascript: void(0);" class="btn btn-white pull-right m-l fn-z-findoriginal fn-innerContent-common" target="_blank" title="查看原文"></a>
+              <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare  pull-right m-l" data="{'url':'',text:''}">
+                <span class="bds_more btn btn-white fn-z-bdshare">分享</span>
+              </div>
+              <div class="fn-z-loadPie pull-right" id="fn-z-loadPie"></div>
+            </header>
+            <div class="fn-z-findnewsdetails-content">
+              <div class="fn-z-findnewsdetails-contentmain">
+                <h4 class="fn-z-leadTitle"></h4>
+                <h3 class="fn-z-mtitle"></h3>
+                <h4 class="fn-z-subTitle"></h4>
+                <div class="fn-z-from">
+                  <span class="fn-z-channel"></span>
+                  <span class="fn-z-reported"></span>
+                </div>
+                <div class="fn-z-reporttime">
+                </div>
+                <div class="fn-z-content">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--点击发现按钮出现类似于消息的文章列表，而非模态框 by zheng end-->
+        <div id="scrollTop" class="text-center" style="display: none; filter: alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.5; background-color: #000000; position: relative; z-index: 3; bottom: 50px; margin-bottom: -30px; right: 10px; float: right; width: 30px; height: 30px; border-radius: 2px; cursor: pointer;"><i class="fa fa-lg fa-sort-up" style="margin-top: 12px;"></i></div>
+      </aside>
+      <!-- /.sidebar -->
+      <!-- .main -->
+      <section class="main bg-white" style="max-height: 1000px;">
+        <div id="splitter2" class="splitter" style="position: absolute; z-index: 2; width: 5px; height: 100%; background-color: transparent; filter: alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.3"></div>
+        <div id="news" class="bg-white" style="max-height: 1000px;">
+          <iframe id="myframe" src="" class="scroll-y scrollbar" style="width: 100%; overflow: hidden; background-color: #ffffff;" scrolling="no" frameborder="no" border="0" allowtransparency="true"></iframe>
+        </div>
+      </section>
+      <!-- /.main -->
+    </section>
+    <!-- footer -->
+    <footer id="footer">
+      <div class="text-center padder clearfix">
+        <div style="display: none;">
+          <input id="txt_rid" type="text" width="60px" value="23061" />
+          <input id="txt_cid" type="text" width="60px" value="" />
+          <input id="txt_cname" type="text" width="60px" value="" />
+          <input id="txt_nid" type="text" width="60px" value="" />
+          <input id="txt_ctid" type="text" width="60px" value="5264" />
+          <textarea name="txtRedKey" rows="4" cols="20" id="txtRedKey">
+</textarea>
+          <input id="fnShowSelectNewsHidden" type="hidden" />
+        </div>
+        <p>
+          <small>&copy;2012-2016&nbsp;<a href="http://www.hzfanwen.com/" target="_blank">杭州凡闻科技有限公司</a>版权所有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浙ICP备12039594-2号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="disclaimer.html">免责声明</a></small>
+        </p>
+      </div>
+    </footer>
+    <!-- / footer -->
+    <!-- Bootstrap -->
+    <!-- app -->
+    <!-- Sparkline Chart -->
+    <!-- Easy Pie Chart -->
+    <div class="modal fade" id="divCollection" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            ×
+                        </button>
+            <h4 class="modal-title" id="myModalLabel">收藏类别选择</h4>
+          </div>
+          <div class="modal-body">
+            <iframe id="iframeCollection" src="../MyInformation/newsCollectionTypeSelect.html?ran=asdf" style="width: 100%; height: 300px; border-style: groove; border-width: 0px;" frameborder="0"></iframe>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+                            取消
+                        </button>
+            <button type="button" class="btn btn-primary" onclick="FavoritesFormList_new()">
+                            确定
+                        </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="divDiscover" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            ×
+                        </button>
+            <h4 class="modal-title" id="H1">发现新闻：</h4>
+          </div>
+          <div class="modal-body" style="padding: 0px;">
+            <iframe id="iframeDiscover" src="" style="width: 100%; height: 450px; border-style: groove; border-width: 0px;" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="mask" style="display: none; left: 0; top: 0; z-index: 9999; width: 100%; height: 100%; position: absolute; background-color: #233445; filter: alpha(opacity=0); -moz-opacity: 0.0; -khtml-opacity: 0.0; opacity: 0.0;">
+    </div>
+  </form>
+  <!-- <script src="lib/handlebars-v3.0.0-min.js?v=8afb4ea3" type="text/javascript"></script> -->
+  <!-- <script src="js/craftpip-jquery-confirm/jquery-confirm.min.js?v=aa16ecaf" type="text/javascript"></script> -->
+  <!-- <script src="js/jquery-date-range-picker/moment.min.js?v=0e7067c4" type="text/javascript"></script> -->
+  <!-- <script src="js/jquery-date-range-picker/jquery.daterangepicker-min.js?v=1712281f" type="text/javascript"></script> -->
+  <!-- <script src="js/fnMover-min.js?v=a2187102" type="text/javascript"></script> -->
+  <!-- <script type="text/javascript" src="js/v2s/fnNewslist-min.js?v=c969c7c4"></script> -->
+  <!-- <script id="tpl_tree" type="text/x-handlebars-template">
+    {{#list nav}} {{text}}{{id}} {{/list}}
+  </script> -->
+  <!-- <script id="tpl_newslist" type="text/x-handlebars-template">
+    {{#list rows}} {{/list}}
+  </script> -->
+  <!-- <script type="text/javascript" src="js/v2s/newtopicapplist-min.js?v=e3c9e2bc"></script> -->
+</body>
+
+</html>

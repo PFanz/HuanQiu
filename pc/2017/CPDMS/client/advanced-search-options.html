@@ -1,0 +1,297 @@
+<style>
+    @media (min-width: 768px) {
+        .content-sidebar {
+            display: block;
+        }
+    }
+</style>
+<section class="main" style="height: 100%">
+    
+    <section style="height: 100%">
+        <div class="panel-body" style="height: 100%; padding: 0">
+            <div class="row" style="height: 100%">
+                <div id="searchitems" class="col-sm-12">
+                    <div class="form-horizontal" style="height: 100%">
+                        <div class="form-group">
+                            <label class="col-lg-3 col-lg-offset-1 control-label h4 text-default">
+                                <i class="fa fa-search"></i>&nbsp;<strong style="font-family: 微软雅黑">使用以下条件来搜索新闻</strong>
+                            </label>
+                        </div>
+                        <div class="fn-searchconditions">
+                            <div class="fn-searchconditionsblock">
+                                <div class="form-group m-t-small">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info">包含全部关键词</label>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="txtAllKey" class="form-control" ng-model="searchOptionItem.allKey" required />
+                                        <!--<span class="error" ng-show="formSearch.txtAllKey.$error.required">不能为空！</span>-->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info">包含任意关键词</label>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="txtAnyKey" class="form-control" ng-model="searchOptionItem.anyKey" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info">不包含的关键词</label>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="txtExceptKey" class="form-control" ng-model="searchOptionItem.exceptKey" />
+                                        <div class="line line-dashed m-t-large"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info">原发布来源</label>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="txtOriginSource" class="form-control" ng-model="searchOptionItem.originSource" />
+                                    </div>
+                                </div>
+
+                                <!--地域选择-->
+                                <div class="form-group" style="position: relative">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info">地域选择：</label>
+                                    <div class="col-lg-4 fn-option-areablock" ng-click="showProvinceConten($event)">
+                                        <div class="fn-option-addcity">点击选择城市</div>
+                                        <ul class="fn-option-areachoosedresult">
+                                            <li data-provincename="{{item.provincename}}" data-cityid="{{item.cityid}}" ng-repeat="item in optioncitychoosed">
+                                                <div class="btn btn-default btn-xs">
+                                                    <span>{{item.cityname}}</span>&nbsp;
+                                                        <span class="fn-option-reducecity" ng-click="reducecity($event)" data-cityname="{{item.cityname}}" data-provincename="{{item.provincename}}">x</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!--弹出框-->
+                                        <div class="fn-option-searchareacontent" ng-click="stopBubbling($event)">
+                                            <div class="fn-option-searcharearesult">
+                                                <ul class="fn-option-searchprovince">
+                                                    <li class="municipalities" ng-show="item.municipalities==1" ng-repeat="item in optionprovince" ng-click="addCity($event)">
+                                                        <a href="javascript:void(0)" data-cityid="{{item.cityID}}" data-provincename="{{item.name}}">{{item.name}}</a>
+                                                    </li>
+                                                    <li class="fn-option-advprovincename" ng-show="item.municipalities==0" ng-repeat="item in optionprovince" data-provinceid="{{item.provinces}}" ng-click="showCity($event)">
+                                                        <a href="javascript:void(0)" data-provincename="{{item.name}}">{{item.name}}</a>
+                                                    </li>
+                                                </ul>
+                                                <ul class="fn-option-searchcity">
+                                                    <li class="fn-option-cityname" ng-repeat="item in optioncitydata" when-repeated="renderFinish()" ng-click="addCity($event)">
+                                                        <a href="javascript:void(0)" data-cityname="{{item.city}}" data-cityid="{{item.cityID}}" data-provincename="{{item.provincename}}">{{item.city}}</a>
+                                                    </li>
+                                                    <button type="button" class="btn btn-default btn-xs fn-option-returnprovince" ng-click="returnprovince()">返回上一级</button>
+                                                </ul>
+                                                <div class="fn-option-searchareamiss" ng-click="searchAreaClose()">×</div>
+                                            </div>
+                                            <div class="fn-option-areatag"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info" style="margin-top: -5px; margin-top: 110px">媒体</label>
+                                    <div class="col-lg-4" style="position: relative" id="displaymodal">
+                                        <label class="text-info" style="cursor: pointer">
+                                            <span class="text-default" style="font-weight: 300">默认全部媒体</span>
+                                        </label>
+                                        <button type="button" class="btn btn-default btn-xs fn-clear-choosemedia" onclick="ClearMedia('.fn-option-chooseresults','.fn-option-choosedmedia')">清空选项</button>
+                                        <div class="m-t-mini fn-clickmediablock" onclick="ShowMediaBlock('.fn-option-mediablock')">
+                                            <ul class="fn-option-chooseresults">
+                                            </ul>
+                                            <div class="text-default text-center fn-addmediabutton">
+                                                <div style="font-size: 18px">点击选择媒体</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="fn-option-mediablock">
+                                            <div class="fn-option-mediablock-miss" onclick="$('.fn-option-mediablock').hide()">
+                                                <button type="button" class="close text-danger" data-dismiss="modal" aria-hidden="true">×</button>
+                                            </div>
+                                            <div class="input-group input-group-sm">
+                                                <input type="text" class="form-control fn-option-mediablock-inputsearch" placeholder="搜索您想要的媒体名称" onkeydown="getMediaListWhenGlobalSearch(event,$('.fn-option-mediablock-inputsearch').val(),'.fn-option-chooseresults','.fn-option-choosedmedia')">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button"
+                                                        onclick="advAllMediaResults($('.fn-option-mediablock-inputsearch').val(),'.fn-option-chooseresults','.fn-option-choosedmedia')">
+                                                        搜索
+                                                    </button>
+                                                </span>
+                                            </div>
+                                            <div class="fn-meidiablock-main">
+                                                <ul class="fn-option-choosedmedia">
+                                                </ul>
+                                            </div>
+                                            <div class="fn-option-tag-left"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info">日期范围</label>
+                                    <div class="col-lg-4">
+                                        <div style="padding-top: 5px">
+                                            <span id="daterange" class="label bg-default" style="cursor: pointer;" date-range-picker="">2017-05-15 至 2017-05-18&nbsp;&nbsp;<i class="fa fa-times-circle fa-lg text-info" ng-click="$event.stopPropagation()" default-date-range></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info">关键词位置</label>
+                                    <div class="col-lg-4">
+                                        <div style="padding-top: 5px">
+                                            <input type="radio" id="ra" name="a" ng-model="searchOptionItem.searchRange" value="1" checked="checked" />&nbsp;
+                                                            <label for="ra">
+                                                                <span><span></span></span>全文
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="rb" name="a" ng-model="searchOptionItem.searchRange" value="2" />&nbsp;
+                                                            <label for="rb">
+                                                                <span><span></span></span>标题
+                                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info">结果匹配</label>
+                                    <div class="col-lg-4">
+                                        <div style="padding-top: 5px">
+                                            <input type="radio" id="rs1" name="b" ng-model="searchOptionItem.searchResultType" value="0" checked="checked" />&nbsp;
+                                                            <label for="rs1">
+                                                                <span><span></span></span>精准检索
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="rs2" name="b" ng-model="searchOptionItem.searchResultType" value="100" />&nbsp;
+                                                            <label for="rs2">
+                                                                <span><span></span></span>模糊检索
+                                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info">来源类型</label>
+                                    <div class="col-lg-5">
+                                        <div style="padding-top: 5px">
+                                            <input type="radio" id="ryzall" name="c" ng-model="searchOptionItem.searchType" value="" checked="checked" />&nbsp;
+                                                            <label for="rlyall" style="margin-bottom: 10px;">
+                                                                <span><span></span></span>全部
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="lynews" name="c" ng-model="searchOptionItem.searchType" value="news" />&nbsp;
+                                                            <label for="lynews">
+                                                                <span><span></span></span>报纸
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="lyweb" name="c" ng-model="searchOptionItem.searchType" value="website" />&nbsp;
+                                                            <label for="lyweb">
+                                                                <span><span></span></span>网站
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="lyweibo" name="c" ng-model="searchOptionItem.searchType" value="weibo" />&nbsp;
+                                                            <label for="lyweibo">
+                                                                <span><span></span></span>微博
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="lyweixin" name="c" ng-model="searchOptionItem.searchType" value="weixin" />&nbsp;
+                                                            <label for="lyweixin">
+                                                                <span><span></span></span>微信
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="lybbs" name="c" ng-model="searchOptionItem.searchType" value="webbbs" />&nbsp;
+                                                            <label for="lybbs">
+                                                                <span><span></span></span>论坛
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="lyapp" name="c" ng-model="searchOptionItem.searchType" value="webapp" />&nbsp;
+                                                            <label for="lyapp">
+                                                                <span><span></span></span>APP
+                                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info">原创&nbsp;/&nbsp;转载</label>
+                                    <div class="col-lg-4">
+                                        <div style="padding-top: 5px">
+                                            <input type="radio" id="ryzall" name="d" ng-model="searchOptionItem.original" value="2" checked="checked" />&nbsp;
+                                                            <label for="ryzall">
+                                                                <span><span></span></span>全部
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="ryc" name="d" ng-model="searchOptionItem.original" value="1" />&nbsp;
+                                                            <label for="ryc">
+                                                                <span><span></span></span>原创
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="rzz" name="d" ng-model="searchOptionItem.original" value="0" />&nbsp;
+                                                            <label for="rzz">
+                                                                <span><span></span></span>转载
+                                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info">情感</label>
+                                    <div class="col-lg-4">
+                                        <div style="padding-top: 5px">
+                                            <input type="radio" id="rqgall" name="e" ng-model="searchOptionItem.emotion" value="-1" checked="checked" />&nbsp;
+                                                            <label for="rqgall">
+                                                                <span><span></span></span>全部
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="rqgzm" name="e" ng-model="searchOptionItem.emotion" value="51" />&nbsp;
+                                                            <label for="rqgzm">
+                                                                <span><span></span></span>正面
+                                                            </label>
+                                            <a class="fa fa-filter text-default popover-normal filter1" title="正面值设置" data-toggle="popover" data-html="true" data-placement="top" data-content="<div id=&quot;mySlider1&quot; class=&quot;slider&quot; style=&quot;width:214px&quot;></div><input id=&quot;slider-value1&quot; style=&quot;width:30px;border:1px solid #eee;border-radius:2px;&quot; value=&quot;&quot;>"></a>&nbsp;&nbsp;
+                                                                <input type="radio" id="rqgfm" name="e" ng-model="searchOptionItem.emotion" value="1" />&nbsp;
+                                                            <label for="rqgfm">
+                                                                <span><span></span></span>负面
+                                                            </label>
+                                            <a class="fa fa-filter text-default popover-normal filter2" title="负面值设置" data-toggle="popover" data-html="true" data-placement="top" data-content="<div id=&quot;mySlider2&quot; class=&quot;slider&quot; style=&quot;width:214px&quot;></div><input id=&quot;slider-value2&quot; style=&quot;width:30px;border:1px solid #eee;border-radius:2px;&quot; value=&quot;&quot;>"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info">是否含图片</label>
+                                    <div class="col-lg-4">
+                                        <div style="padding-top: 5px">
+                                            <input type="radio" id="rtpall" name="f" ng-model="searchOptionItem.haveImage" value="-1" checked="checked" />&nbsp;
+                                                            <label for="rtpall">
+                                                                <span><span></span></span>全部
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="rtpbh" name="f" ng-model="searchOptionItem.haveImage" value="1" />&nbsp;
+                                                            <label for="rtpbh">
+                                                                <span><span></span></span>包含
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="rtpbbh" name="f" ng-model="searchOptionItem.haveImage" value="0" />&nbsp;
+                                                            <label for="rtpbbh">
+                                                                <span><span></span></span>不包含
+                                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 col-lg-offset-2 control-label text-info">文章字数</label>
+                                    <div class="col-lg-4">
+                                        <div style="padding-top: 5px">
+                                            <input type="radio" id="wnrall" name="g" ng-model="searchOptionItem.wordNumFilter" value="0" checked="checked" />&nbsp;
+                                                            <label for="wnrall">
+                                                                <span><span></span></span>不限字数
+                                                            </label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input type="radio" id="wnr" name="g" ng-model="searchOptionItem.wordNumFilter" value="1" />&nbsp;
+                                                            <label for="wnr">
+                                                                <span><span></span></span>从&nbsp;
+                                                            </label>
+                                            <input type="text" name="wordNumRangeStart" class="wordNumRangeBox" ng-model="searchOptionItem.wordNumRangeStart" />&nbsp;&nbsp;至&nbsp;
+                                                            <input type="text" name="wordNumRangeEnd" class="wordNumRangeBox" ng-model="searchOptionItem.wordNumRangeEnd" />&nbsp;&nbsp;字
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group " style="margin-bottom: 0">
+                                <div class="col-lg-3 col-lg-offset-5 m-t-mini m-b-mini text-right">
+                                    <button type="button" class="btn btn-primary" ng-click="AdvancedSearch()">高级搜索</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

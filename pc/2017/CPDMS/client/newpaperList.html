@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>报纸阅览</title>
+  <link rel="icon" href="http://himg2.huanqiu.com/statics/images/favicon1.ico" />
+  <link rel="shortcut icon" href="http://himg2.huanqiu.com/statics/images/favicon1.ico">
+  <link rel="BOOKMARK" href="http://himg2.huanqiu.com/statics/images/favicon1.ico" />
+  <meta name="description" content="科技 中国领先的新闻数据服务商 专注于新闻资讯的聚合服务" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="css/fnnews.common-min.css?v=2f454140" type="text/css" />
+  <link rel="stylesheet" href="css/fanews.v2-min.css?v=a78bc3c3" type="text/css" />
+  <link rel="stylesheet" href="css/main.v2-min.css?v=c478cc4a" type="text/css" />
+  <link rel="stylesheet" href="js/mricode.pagination/mricode.pagination.min.css?v=24415801" type="text/css" />
+  <!-- [if lt IE 9]> <script src="js/ie/respond.min.js"></script> <script src="js/ie/html5.js"></script> <![endif] -->
+  <style type="text/css">
+    html {
+      overflow: hidden;
+    }
+    
+    .xline {
+      height: 2px;
+      font-size: 0;
+      overflow: hidden;
+      border-width: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    body {
+      font-family: 微软雅黑;
+    }
+    
+    .nav-tabs {
+      border-bottom: 0px;
+    }
+    
+    .panel-heading {
+      padding: 10px 15px 0px 15px;
+    }
+    
+    .tab-content {
+      height: 100%;
+    }
+    
+    .tab-pane {
+      height: 100%;
+      margin-right: -15px;
+    }
+    
+    .tab-pane iframe {
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body style="overflow: hidden;" class="navbar-fixed">
+  <form method="post" action="newpaperList.html" id="form1">
+    <div class="aspNetHidden">
+      <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJLTUwMTQ0NTcwD2QWAgIBD2QWAmYPZBYEAgEPFgIeCWlubmVyaHRtbAWYATxpbWcgc3JjPSJodHRwOi8vZndpbWFnZS5jbmZhbmV3cy5jb20vaHpmYW5ld3NVc2VySW1nL3poYW5neW9uZzAxMTVAMTI2LmNvbS5qcGciIGFsdD0iIiBjbGFzcz0iaW1nLWNpcmNsZSIgb25lcnJvcj0idGhpcy5zcmM9Jy92Mi9pbWFnZXMvYXZhdGFyLnBuZyciIC8+ZAICDw8WAh4LTmF2aWdhdGVVcmwFIy9Vc2VyTWFuYWdlL1VzZXJMb2dpbi9sb2dpbk91dC5hc3B4ZGRkBGzXzgaeti9/QqT1seSLEt6PENhKKjes8/vvtFJkNz4=" />
+    </div>
+    <div class="aspNetHidden">
+      <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="8A0C5CC7" />
+      <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAWe6tsDPJUvJKpLCQyv8WOa0u3SqsPzlyN/A/2GUhQu66JZGX5ob2RuRMi0i4m9oY8ZMlqfq4IljiScFYUkoIXPqDP8WGjVVxSgpSvrZTaz91Z+7jG3MY5CJ3++JRCTlNM1tquQJB035LYqF2b3zScB" />
+    </div>
+    <!-- header -->
+    
+          
+    
+    <!-- <script type="text/javascript" src="/v2/js/jquery-1.10.2.min.js?v=628072e7"></script> -->
+    <!-- <script src="/v2/js/fanews.v2-min.js?v=e3fd2217" type="text/javascript"></script> -->
+    <!-- <script type="text/javascript" src="/v2/js/Highcharts/highcharts-min.js?v=34e26ca0"></script> -->
+    <!-- <script type="text/javascript" src="/v2/js/My97DatePicker/WdatePicker.js?v=ca0fbbce"></script> -->
+    <!-- <script type="text/javascript" src="/v2/js/v2s/fnKitTool-min.js"></script> -->
+    <!-- <script type="text/javascript" src="/v2/js/plugins/sq.plugin-min.js?v=b62b730e"></script> -->
+    <!-- <script type="text/javascript" src="/v2/js/fn-head-min.js?v=b6486e00"></script> -->
+    <!-- add by yzx start 2016-08-24-->
+    <!-- <script src="/js/artDialog4.1.6/artDialog.source.js?skin=green"></script> -->
+    <!-- <script src="/js/artDialog4.1.6/plugins/iframeTools.js"></script> -->
+    <!-- add by yzx end -->
+    <!-- / header -->
+    <section id="content" class="content-sidebar">
+      <!-- .main -->
+      <section class="main padder">
+        <div class="clearfix" id="fn-s-innerHeight">
+          <h4 style="font-family: 微软雅黑"><i class="iconfont icon-newspaper"></i>&nbsp;报纸阅览</h4>
+        </div>
+        <section class="panel" id="fn-panel">
+          <header class="panel-heading">
+            <ul class="nav nav-tabs pull-left">
+              <li class="active"><a href="#allnewspaper" data-toggle="tab" onclick="TabSwitch('na')">全部报纸</a>
+              </li>
+              <li><a href="#newspapertype" data-toggle="tab" onclick="TabSwitch('nt')">按报纸类型</a>
+              </li>
+              <li><a href="#newspaperprovince" data-toggle="tab" onclick="TabSwitch('nr')">按报纸区域</a>
+              </li>
+            </ul>
+            <span class="hidden-sm">&nbsp;</span>
+            <div class="input-group pull-right" style="width: 400px; top: -5px;">
+              <input name="txtKey" type="text" id="txtKey" class="input-sm form-control" placeholder="请输入报纸名称">
+              <span class="input-group-btn">
+                                <input type="button" name="BtSearch" value="查 询" id="BtSearch" class="btn btn-sm btn-white" title="根据输入的关键词查询报纸"></span>
+            </div>
+          </header>
+          <div class="panel-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="allnewspaper">
+                <iframe id="na" name="na" src="newallPaperEmbed.html" width="100%" frameborder="no" border="0"></iframe>
+              </div>
+              <div class="tab-pane" id="newspapertype">
+                <!--paper type region begin-->
+                <iframe id="nt" name="nt" src="" width="100%" frameborder="no" border="0"></iframe>
+                <!--paper type region end-->
+              </div>
+              <div class="tab-pane" id="newspaperprovince">
+                <iframe id="nr" name="nr" src="" width="100%" frameborder="no" border="0"></iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+      <!-- /.main -->
+    </section>
+    <!-- footer -->
+    <footer id="footer">
+      <div class="text-center padder clearfix">
+        <div style="display: none;">
+          <input id="txt_rid" type="text" width="60px" value="" />
+          <input id="txt_cid" type="text" width="60px" value="" />
+          <input id="txt_cname" type="text" width="60px" value="" />
+          <input id="txt_nid" type="text" width="60px" value="" />
+          <input id="txt_ctid" type="text" width="60px" value="5264" />
+        </div>
+        <p>
+          <small>&copy;2012-2016&nbsp;<a href="http://www.hzfanwen.com/" target="_blank">杭州科技有限公司</a>版权所有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浙ICP备12039594-2号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="disclaimer.html">免责声明</a></small>
+        </p>
+      </div>
+    </footer>
+    <!-- / footer -->
+    <!-- Bootstrap -->
+    <!-- app -->
+    <!-- Sparkline Chart -->
+    <!-- Easy Pie Chart -->
+    <div class="modal fade" id="divCollection" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            ×
+                        </button>
+            <h4 class="modal-title" id="myModalLabel">收藏类别选择</h4>
+          </div>
+          <div class="modal-body">
+            <iframe id="iframeCollection" src="../MyInformation/newsCollectionTypeSelect.html?ran=asdf" style="width: 100%; height: 300px; border-style: groove; border-width: 0px;" frameborder="0"></iframe>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+                            取消
+                        </button>
+            <button type="button" class="btn btn-primary" onclick="FavoritesFormList_new()">
+                            确定
+                        </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="mask" style="display: none; left: 0; top: 0; z-index: 9999; width: 100%; height: 100%; position: absolute; background-color: #233445; filter: alpha(opacity=0); -moz-opacity: 0.0; -khtml-opacity: 0.0; opacity: 0.0;">
+    </div>
+  </form>
+  <!-- <script type="text/javascript">
+    $(document).ready(function() {
+
+      //手机浏览器判定
+      if ((navigator.userAgent.match(/(iPhone|iPod|Android)/i)))
+        window.location.href = "../mobile/home.html";
+
+      AdjustPage(); //调整页面显示
+      window.onresize = function() {
+        AdjustPage();
+      };
+      //TouchFrameClose();
+
+      $("#BtSearch").click(function() {
+        na.window.GetNewsPaperList($.trim($("#txtKey").val()), 0, 18);
+      });
+    });
+
+    function TabSwitch(objId) {
+      $("#BtSearch").unbind();
+      $("#txtKey").val("");
+      switch (objId) {
+        case "nt":
+          $("#" + objId).attr("src", "newtypePaperEmbed.html");
+          $("#BtSearch").click(function() {
+            nt.window.GetNewsPaperList($("#nt").contents().find('.fns-topbar-options > .active').attr("data-id"), 0, 18, $.trim($("#txtKey").val()));
+          });
+          break;
+        case "nr":
+          $("#" + objId).attr("src", "newProvincePaperEmbed.html");
+          $("#BtSearch").click(function() {
+            nr.window.GetNewsPaperList($("#nr").contents().find('.fns-topbar-options > .active').attr("data-id"), 0, 18, $.trim($("#txtKey").val()));
+          });
+          break;
+        case "na":
+          $("#" + objId).attr("src", "newallPaperEmbed.html");
+          $("#BtSearch").click(function() {
+            na.window.GetNewsPaperList($.trim($("#txtKey").val()), 0, 18);
+          });
+          break;
+      }
+    }
+
+    //调整页面显示
+    function AdjustPage() {
+      var wh = $(window).outerHeight(),
+        initFooterHeight = 50,
+        hh = $("#fn-header").outerHeight(),
+        innerHeight = $("#fn-s-innerHeight").outerHeight(),
+        conHeadH = $("#fn-panel .panel-heading").outerHeight();
+      $("#fn-panel .panel-body").css("height", wh - initFooterHeight - innerHeight - conHeadH - hh - 15);
+    }
+  </script> -->
+</body>
+
+</html>

@@ -228,9 +228,15 @@ a.news-title {
 .nav {
   height: 55px;
   background: #f8f8f8; }
+  .nav p {
+    height: 27.5px;
+    line-height: 27.5px;
+    font-size: 14px;
+    color: #ccc;
+    overflow: hidden; }
   .nav .complaint {
     float: right;
-    margin-top: 17.5px; }
+    margin-top: 5px; }
 
 .nav-main {
   float: left;
@@ -250,7 +256,8 @@ a.news-title {
     position: absolute;
     padding: 8px 0;
     border: 1px solid #f3f3f3;
-    background: #fff; }
+    background: #fff;
+    z-index: 999; }
   .nav-main li a {
     display: inline-block;
     *display: inline;

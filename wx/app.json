@@ -1,0 +1,28 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/pics/pics",
+    "pages/baseNews/baseNews",
+    "pages/picsNews/picsNews"
+  ],
+  "window":{
+    "backgroundColor": "#eee",
+    "navigationBarBackgroundColor": "#dd2314",
+    "navigationBarTitleText": "环球网",
+    "navigationBarTextStyle":"white",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "selectedColor": "#dd2314",
+    "borderStyle": "white",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/pics/pics",
+      "text": "图集"
+    }],
+    "position": "top"
+  }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="height: 100%;">
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>内容传播动态监测系统-登录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="内容传播动态监测系统" />
+  <link rel="icon" href="http://himg2.huanqiu.com/statics/images/favicon1.ico" />
+  <link rel="stylesheet" type="text/css" href="css/login-min.css">
+</head>
+
+<body style="height: 100%; background: rgba(0, 0, 0, 0.5) url(./images/bg.jpg) no-repeat; background-size: 100% 100%;">
+  <!-- <form method="post" action="Login.aspx?url=http%3a%2f%2fwww.hzfanews.com%2fv2%2fdefault.aspx" id="form1"> -->
+  <form method="get" action="index.html" id="form1" style="height: 100%;">
+    <div class="aspNetHidden">
+      <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTQxMTk5NDY1Mg9kFgICAQ9kFgYCBQ8PFgIeB1Zpc2libGVoZGQCCA8PFgIfAGhkZAIJDw8WAh8AaGRkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYBBQtjYkF1dG9Mb2dpbnC/vzyg00ojG4kpW116NhYWq2ugqexmEwvrMVBOExkA" />
+    </div>
+    <div class="aspNetHidden">
+      <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="7CC4C2D7" />
+      <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAbaMFnsg2yxXFFCZrU3UoF3C4hhczWVPoSf9og8ygHHxD40AZ9v3xd7rnq+UnqBeXIUYeK/1s/EKvTm3kM6/MLvop4oRunf14dz2Zt2+QKDEGPYzO/l/QY1cdeD/doR69nNz/ob+wnCk4rDOTpJEldA63FG0ZnD/MBOB/8YQyNE3w==" />
+    </div>
+    <div class="fn-s-lContainer fn-s-lmain fn-clearfix" id="fn-s-Container" style="height: 100%; max-height: none; background-color: rgba(0, 0, 0, 0.5);">
+<!--       <div class="fn-s-lLeft fn-fl">
+        <div class="fn-s-lModal"></div>
+        <div class="fn-s-fonts">
+          <div class="fn-s-font1"></div>
+          <div class="fn-s-font2">FOCUS ON NEWS DATA ANALYSIS & RESEARCH</div>
+        </div>
+      </div> -->
+      <div class="fn-s-lRight" style="padding-top: .5rem; height: 425px; width: 385px; margin: auto; top: 50%; transform: translateY(-50%);">
+        <div class="fn-s-llMain">
+          <!-- <div class="fn-s-llIcon" id="fnSLlIcon">
+          </div> -->
+          <h2 class="fn-s-lName" style="font-size: 20px; margin-bottom: .3rem;">内容传播动态监测系统</h2>
+          <div class="fn-s-llmInputs">
+            <div class="fn-s-llmOut fn-s-llUser">
+              <input name="tbUserID" type="text" id="tbUserID" class="fn-s-lInput fn-s-username fn-s-block" placeholder="用户名" autocomplete="off" />
+            </div>
+            <div class="fn-s-llmOut fn-s-llPwd">
+              <input name="tbPwd" type="password" id="tbPwd" class="fn-s-lInput fn-s-pwd fn-s-block" autocomplete="off" placeholder="密码" />
+            </div>
+          </div>
+          <div class="fn-s-forget" style="margin-bottom: 50px;">
+            <label style="margin: 0px; padding: 0; float: left; display: none;">
+                            <input id="cbAutoLogin" type="checkbox" name="cbAutoLogin" checked="checked" /><label for="cbAutoLogin">自动登录</label>
+            </label>
+            <span id="lbMsg" class="fn-s-error fn-fr"></span>
+            <a class="" href="user_resetpwd.aspx" target="_blank" style="display: none;">忘记密码？</a>
+          </div>
+          <input type="submit" name="btnLogin" value="登录" id="btnLogin" class="fn-s-lBtn fn-s-block" style="height: .5rem;" />
+        </div>
+      </div>
+    </div>
+    <!-- <div style="display: none;">
+      <input name="txtIPIsInner" type="text" value="116.90.80.201" id="txtIPIsInner" />
+    </div> -->
+  </form>
+  <script type="text/javascript" src="js/login-min.js"></script>
+  <!-- 改 -->
+  <script type="text/javascript">
+    function setCookie(key, value, expiredays) {
+      var exdate = new Date()
+      exdate.setDate(exdate.getDate() + expiredays)
+      document.cookie = key + '=' + escape(value) +
+      ((expiredays == null) ? '' : ';expires=' + exdate.toGMTString())
+    }
+
+    function getCookie(key) {
+      if (document.cookie.length > 0) {
+        let cookieStart = document.cookie.indexOf(key + '=')
+        if (cookieStart !== -1) {
+          cookieStart = cookieStart + key.length + 1
+          let cookieEnd = document.cookie.indexOf(';', cookieStart)
+          if (cookieEnd === -1) {
+            cookieEnd = document.cookie.length
+          }
+          return unescape(document.cookie.substring(cookieStart, cookieEnd))
+        }
+      }
+      return ''
+    }
+
+    setCookie('isLogin', 0, 1)
+
+    document.getElementById('form1').onsubmit = function () {
+      
+      if (document.getElementById('tbUserID').value === 'admin' && 
+        document.getElementById('tbPwd').value === '123456') {
+        setCookie('isLogin', 1, 1)
+        this.action = 'index.html'
+      } else {
+        console.log(this.action)
+        this.action = 'login.html'
+      }
+    }
+  </script>
+</body>
+
+</html>

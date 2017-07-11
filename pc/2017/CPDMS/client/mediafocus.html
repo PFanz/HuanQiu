@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="utf-8" />
+  <title>媒体关注</title>
+  <link rel="icon" href="http://himg2.huanqiu.com/statics/images/favicon1.ico" />
+  <link rel="shortcut icon" href="http://himg2.huanqiu.com/statics/images/favicon1.ico">
+  <link rel="BOOKMARK" href="http://himg2.huanqiu.com/statics/images/favicon1.ico" />
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta http-equiv="expires" content="0">
+  <meta name="description" content="中国领先的新闻数据服务商，专注于新闻资讯的聚合服务。" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" type="text/css" href="/css/fnnews.common-min.css?v=bb521c57" />
+  <link rel="stylesheet" href="/css/fanews.v2-min.css?v=a78bc3c3" type="text/css" />
+  <link rel="stylesheet" href="/css/main.v2-min.css?v=c478cc4a" type="text/css" />
+  <link rel="stylesheet" href="/libs/jquery-date-range-picker/daterangepicker-min.css?v=f84769dd" type="text/css" />
+  <link rel="stylesheet" href="/libs/craftpip-jquery-confirm/jquery-confirm.min.css?v=4aaef226" type="text/css" />
+  <!-- [if lt IE 9]> <script src="js/ie/respond.min.js"></script> <script src="js/ie/html5.js"></script> <![endif] -->
+  <style type="text/css">
+    html {
+      overflow: hidden;
+    }
+    
+    body {
+      font-family: 微软雅黑 !important;
+      overflow: hidden;
+    }
+    
+    .splitter {
+      filter: alpha(opacity=50);
+      -moz-opacity: 0.5;
+      -khtml-opacity: 0.5;
+      opacity: 0.5;
+    }
+    
+    .fn-z-header-searchclose {
+      margin-left: 0;
+      padding-left: 3px;
+      position: absolute;
+      top: 8px;
+      margin-left: 2px;
+    }
+    
+    .fn-z-mediafocus-infobar {
+      height: 40px;
+      font-size: 12px;
+      line-height: 1;
+      background-color: #FFFBE6;
+      border-top: 1px solid #e0e0e0;
+      margin-top: 35px;
+      display: none;
+    }
+    
+    .fn-z-mediafocus-infobar li {
+      background-color: green;
+      border-radius: 6px;
+      line-height: 25px;
+      padding: 0px 8px;
+      margin: 3px 5px;
+    }
+    
+    .date-picker-wrapper {
+      background: #FCF9F0;
+      padding: 20px 10px 20px 10px !important;
+    }
+    
+    .fn-s-oCheckBox[type='checkbox'] {
+      display: none;
+    }
+    
+    .fn-x-bar-label {
+      width: 45px;
+      margin-top: 0px;
+      margin-left: -10px;
+    }
+    
+    .header-bar .btn-group {
+      margin-top: 0;
+    }
+    
+    .fn-s-mediaKey {
+      color: #b0b0b0;
+      font-size: 12px;
+    }
+    
+    .fn-s-chartOut {
+      position: relative;
+    }
+    
+    .fn-newspaper-source {
+      color: #b0b0b0;
+      font-size: 12px;
+    }
+    
+    .fn-newspaper-source:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    .fn-s-mediaLoad {
+      display: none;
+    }
+    
+    .MediaFocusStatisticsLine {
+      width: 75px;
+      height: 16px;
+      white-space: nowrap;
+      font-size: 0;
+    }
+    
+    .MediaFocusStatisticsLine > div {
+      margin-top: 4px;
+    }
+    
+    .MediaFocusStatisticsLine>div > * {
+      font-size: 12px;
+      vertical-align: top;
+    }
+    
+    .fn-s-mediaLoad,
+    .fa-line-chart {
+      width: 16px;
+      height: 16px;
+      float: right;
+    }
+    
+    .fn-news-pic {
+      background-color: white;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .fn-s-per {
+      width: 50px;
+      padding: 5px 5px 3px 5px;
+      background: #faad1d;
+      margin-left: 10px;
+    }
+  </style>
+  <script type="text/javascript" src="/libs/jquery/jquery-1.10.2.min.js?v=628072e7"></script>
+</head>
+
+<body class="navbar-fixed">
+<header class="fn-s-header" style="margin-bottom: 20px; height: 90px; background: #343434;">
+    <div style="color: #ddd; font-size: 12px;">
+      <span style="display: inline-block; margin-left: 40px; height: 30px; line-height: 30px; ">
+        内容传播动态监测系统——V1.0
+      </span>
+      <div class="fn-fr fn-s-settings fn-s-dropdown fn-ss-dropdown" style="margin-right: 100px; height: auto;">
+        <a href="javascript:void(0);" class="dropdown-toggle fn-s-ddHead" data-toggle="dropdown">
+          <span class="hidden-xs-only" data-name="zhangyong0115@126.com" style="height: 35px; line-height: 35px;">新闻编辑中心1</span>
+          <span id="head1_thumbPhoto" class="thumb-small avatar inline" style="height: 35px; line-height: 35px;"></span><i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu fn-s-ddBody" style="display: none; top: 35px; width: 140px;">
+          <li><a target="_self" href="/userCenter.html">个人中心</a></li>
+          <li><a id="head1_hylinkLoginOut" href="/login.html">注销</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top: 5px; color: #eee; font-size: 14px; width: 100%;">
+      <img src="images/logo.png" style="float: left; margin-left: 20px;">
+      <ul class="fn-inlineBlock fn-s-nav fn-clearfix" id="fn-s-nav" style="margin-left: 100px;">
+        <li><a class="fn-s-active" href="/index.html">首页</a></li>
+        <li><a href="/fwrecommend.html" id="head1_a1">系统推荐</a></li>
+        <li><a href="/mediafocus.html">媒体关注</a></li>
+        <li><a href="/findhot.html">热点汇聚</a></li>
+        <li><a href="/eventhome.html">事件跟踪</a></li>
+        <li><a href="/newsreprinted.html">转载分析</a></li>
+        <li><a href="/leader.html">领导活动</a></li>
+      </ul>
+      <form action="/normalSearchResult.html" style="float: right; margin-right: 100px; width: 250px; height: 30px; overflow: visible;" id="searchForm">
+        <div id="search-top" class="fn-s-schTop" style="width: 100%; padding: 5px 10px 10px 10px;">
+          <span class="fn-s-icon fn-s-search fa fa-search" style="background: #343434; color: #eee; text-align:center; line-height: 22px;"></span>
+          <input id="normalSearchKey" name="normalSearchKey" type="text" placeholder="搜索您要的新闻" autocomplete="off" class="input-sm form-control fn-s-searchIpt" style="background: #343434;">
+          <div class="AccordionPanel fn-s-sDateArea" style="background: #fff;">
+            <div class="AccordionPanelContent">
+              <div class="input-daterange fn-s-sTimes" id="searchDateRangePicker">
+                <input name="begin" type="text" id="begin" class="fn-s-timeInput" placeholder="开始日期" readonly="" value="2017-06-20">
+                <span class="input-group-addon">至</span>
+                <input name="end" type="text" id="end" class="fn-s-timeInput" placeholder="结束日期" readonly="" value="2017-06-23">
+              </div>
+            </div>
+          </div>
+          <div class="AccordionPanelContent fn-s-apc" style="overflow: hidden;">
+            <button type="submit" class="fn-fr fn-s-btnS fn-ss-btnS">
+                搜索
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </header>
+
+  <script type="text/javascript">
+    var today = new Date()
+    var year = today.getFullYear()
+    var month = today.getMonth() + 1
+    var day = today.getDate()
+
+    var begin = +new Date() - 3 * 24 * 60 * 60 * 1000
+    begin = new Date(begin)
+    var beginYear = begin.getFullYear()
+    var beginMonth = begin.getMonth() + 1
+    var beginDay = begin.getDate()
+
+    $('#begin').val(beginYear + '-' + beginMonth + '-' + beginDay)
+    $('#end').val(year + '-' + month + '-' + day)
+
+    var $searchForm = $('#searchForm')
+    var $searchInput = $('#normalSearchKey')
+    $searchInput.focus(function () {
+      $searchForm.addClass('focused')
+    })
+    $('body').click(function () {
+      $searchForm.removeClass('focused')
+    })
+
+  </script>
+  <form method="post" action="mediafocus.html" id="form1">
+    <div class="aspNetHidden">
+      <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTk5NTc5NDU4Ng9kFgICAQ9kFgJmD2QWBAIBDxYCHglpbm5lcmh0bWwFmAE8aW1nIHNyYz0iaHR0cDovL2Z3aW1hZ2UuY25mYW5ld3MuY29tL2h6ZmFuZXdzVXNlckltZy96aGFuZ3lvbmcwMTE1QDEyNi5jb20uanBnIiBhbHQ9IiIgY2xhc3M9ImltZy1jaXJjbGUiIG9uZXJyb3I9InRoaXMuc3JjPScvdjIvaW1hZ2VzL2F2YXRhci5wbmcnIiAvPmQCAg8PFgIeC05hdmlnYXRlVXJsBSMvVXNlck1hbmFnZS9Vc2VyTG9naW4vbG9naW5PdXQuYXNweGRkZIuDC4pB+MYlJ5xEhmUJIzauyi3WYBdGvelRX/6Oqn07" />
+    </div>
+    <div class="aspNetHidden">
+      <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="DB23ADA2" />
+      <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAo6pYPpaTM1EVlrPswgU7rYH/IFrMsBtYrtquIAMI00wPFNuoHzJDOpctFH1epRf1EXlaKubEE6xOj6Y8iQdsH5WzbrJ//oQt7JsXYlqg99bwHEZTLizZ/1v7aQamK6A2aeFPzYVi2JgH5Guemjermutp5sM7/k7VJsHGdJwVf9gJiOUwzcBzIVjkGPBBvD2PUN9ASAJSRYjPrY2l8+CFBOJDEkWl256WBkU2TE+vPjTqkSc4UfKmzFFKRw8RdWCSw=" />
+    </div>
+    <!-- header -->
+    
+          
+    
+    <script src="/js/fanews.v2-min.js?v=e3fd2217" type="text/javascript"></script>
+    <script type="text/javascript" src="/libs/Highcharts/highcharts-min.js?v=34e26ca0"></script>
+    <script type="text/javascript" src="/libs/My97DatePicker/WdatePicker.js?v=ca0fbbce"></script>
+    <script type="text/javascript" src="/js/fnKitTool-min.js"></script>
+    <script type="text/javascript" src="/libs/plugins/sq.plugin-min.js?v=b62b730e"></script>
+    <script type="text/javascript" src="/js/fn-head-min.js?v=b6486e00"></script>
+    <!-- add by yzx start 2016-08-24-->
+    <script src="/libs/artDialog4.1.6/artDialog.source.js?skin=green"></script>
+    <script src="/libs/artDialog4.1.6/plugins/iframeTools.js"></script>
+    <!-- add by yzx end -->
+    <!-- / header -->
+    <section id="content" class="content-sidebar bg-white fn-z-mediafocus">
+      <!-- .sidebar -->
+      <aside class="sidebar sidebar-large">
+        <div class="header-bar bg clearfix">
+          <div class="btn-group m-t-mini" style="width: 100%">
+            <div id="channelinfo" class="input-group fn-newslist-selection-navbar" style="background: #fff;">
+              <i class="fa fa-file-text text-info"></i>
+              <b class="text-info fn-s-channelName">媒体关注</b>
+              <b class="badge bg-danger fn-s-channelNum">…</b>
+              <!-- <div class="pull-right m-t-mini m-b-mini fn-newslist-selection-button">
+                <i class="fa fa-cog text-default m-r m-l"></i>
+                <div class="fn-newslist-selection-panel" style="height: 130px;">
+                  <ul style="height: 98%;">
+                    <li>
+                      <strong style="font-size: 14px;">文章分类</strong>
+                    </li>
+                    <li>
+                      <div class="fn-article-classify-option">
+                        <input id="rad_1_1" type="radio" name="rad_1" value="" checked="checked">&nbsp;<label for="rad_1_1"><span><span></span></span>全部</label>
+                        <input id="rad_1_2" type="radio" name="rad_1" value="社会">&nbsp;<label for="rad_1_2"><span><span></span></span>社会</label>
+                        <input id="rad_1_3" type="radio" name="rad_1" value="教育">&nbsp;<label for="rad_1_3"><span><span></span></span>教育</label>
+                        <input id="rad_1_4" type="radio" name="rad_1" value="时政">&nbsp;<label for="rad_1_4"><span><span></span></span>时政</label>
+                        <input id="rad_1_5" type="radio" name="rad_1" value="经济">&nbsp;<label for="rad_1_5"><span><span></span></span>经济</label>
+                        <input id="rad_1_6" type="radio" name="rad_1" value="军事">&nbsp;<label for="rad_1_6"><span><span></span></span>军事</label><br>
+                        <input id="rad_1_7" type="radio" name="rad_1" value="科技">&nbsp;<label for="rad_1_7"><span><span></span></span>科技</label>
+                        <input id="rad_1_8" type="radio" name="rad_1" value="体育">&nbsp;<label for="rad_1_8"><span><span></span></span>体育</label>
+                        <input id="rad_1_9" type="radio" name="rad_1" value="艺术">&nbsp;<label for="rad_1_9"><span><span></span></span>艺术</label>
+                        <input id="rad_1_10" type="radio" name="rad_1" value="交通">&nbsp;<label for="rad_1_10"><span><span></span></span>交通</label>
+                        <input id="rad_1_11" type="radio" name="rad_1" value="娱乐">&nbsp;<label for="rad_1_11"><span><span></span></span>娱乐</label>
+                        <input id="rad_1_12" type="radio" name="rad_1" value="汽车">&nbsp;<label for="rad_1_12"><span><span></span></span>汽车</label><br>
+                        <input id="rad_1_13" type="radio" name="rad_1" value="房产">&nbsp;<label for="rad_1_13"><span><span></span></span>房产</label>
+                        <input id="rad_1_14" type="radio" name="rad_1" value="天气">&nbsp;<label for="rad_1_14"><span><span></span></span>天气</label>
+                        <input id="rad_1_15" type="radio" name="rad_1" value="旅游">&nbsp;<label for="rad_1_15"><span><span></span></span>旅游</label>
+                        <input id="rad_1_16" type="radio" name="rad_1" value="美食">&nbsp;<label for="rad_1_16"><span><span></span></span>美食</label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="fn-newslist-selection-panel-bg"></div>
+              </div> -->
+              <!-- <div class="pull-right fn-newslist-selection-button"><i class="fa fa-search text-default m-r m-l-mini m-t-mini"></i></div> -->
+              <div class="input-group fn-search-news">
+                <input id="txtKeyWord" type="text" placeholder="热点搜索" class="input-sm form-control" />
+                <button type="button" class="close">
+                                    <i class="fa fa-times text-danger"></i>
+                                </button>
+              </div>
+            </div>
+            <div class="input-group fn-newslist-selection-toolbar">
+              &nbsp;
+              <select id="ddlSource" class="input-sm inline" onchange="SearchNews()" style="width: 75px; display: none;">
+                                            <option value="0">全部</option>
+                                            <option value="1">报纸</option>
+                                            <option value="2">网站</option>
+                                            <option value="9">原创</option>
+                                            <option value="10">转载</option>
+                                            
+                                        </select>
+              <div class="btn-group pull-right yzbutton" data-toggle="buttons" style="top: -7px; display: none;">
+                <label class="btn btn-xs btn-white yzbtnoption active">
+                                    原创
+                                    <input type="radio" name="options_yz" id="option1_yz" value="9"></label>
+                <label class="btn btn-xs btn-white yzbtnoption">
+                                    转载
+                                    <input type="radio" name="options_yz" id="option2_yz" value="10"></label>
+              </div>
+              <ul style="position: absolute; top: 0px;">
+                <span style="padding-left: 15px;">最近24小时滚动热点</span>
+                <li id="dataRangeButton" class="fn-overshow  pull-left hidden">
+                  <input class="fn-s-dateTxt fn-overshow-head" type="text" readonly value="" />
+                  <ul class="fn-overshow-menu hidden">
+                  </ul>
+                </li>
+                <li id="fn-s-viewModel" class="pull-right fn-s-dropdown fn-overshow">
+                  <a class="fn-overshow-head" href="javascript: void(0);">摘要查看</a>
+                  <ul class="fn-overshow-menu">
+                    <li class="viewM fn-nlAbsModel fn-overshow-menu-active" id="fn-nlAbsModel"><a href="javascript:void(0);"><i class="fa fa-lg fa-th"></i>&nbsp;摘要查看</a></li>
+                    <li class="viewM fn-nlLiModel noline" id="fn-nlLiModel"><a href="javascript:void(0);"><i class="fa fa-lg fa-bars"></i>&nbsp;列表查看</a></li>
+                    <li class="viewM fn-nlTitle noline" id="fn-nlTitleModel"><a href="javascript:void(0);"><i class="fa fa-lg fa-list"></i>&nbsp;标题查看</a></li>
+                  </ul>
+                </li>
+                <!-- <li id="dateSortButton" class="fn-overshow pull-right"><a href="javascript:void(0);" class="fn-overshow-head">排序▼</a>
+                  <ul class="fn-overshow-menu">
+                    <li data-order="createindex_time desc"><a href="javascript:void(0);">时间从先到后排序</a></li>
+                    <li data-order="createindex_time asc"><a href="javascript:void(0);">时间从后到先排序</a></li>
+                    <li data-order="samecount desc"><a href="javascript:void(0);">按热度排序</a></li>
+                  </ul>
+                </li> -->
+              </ul>
+              <!--  For Scrolling Find Current News By Atul Starts -->
+              <div class="fn-select-news-contain" id="fnShowSelectNews">
+                <a>
+                  <img id="SelectImageZoom" src="images/selectIcon.png?v=dcbb563b" style="margin: 0 auto;" border="0" /></a>
+              </div>
+              <!--  For Scrolling Find Current News By Atul End -->
+            </div>
+            <div class="input-group fn-newslist-selection-infobar">
+              <div class="fn-newslist-selection-infobar-panel">
+              </div>
+            </div>
+            <div class="input-group fn-z-mediafocus-infobar">
+              <div class="fn-newslist-selection-infobar-panel">
+                <li class="text-white pull-left info-searchkey">&nbsp;&nbsp;<span class="fn-tag-v-line"></span><i class="fa fa-times m-l-small fn-z-infobarclose" style="cursor: pointer"></i></li>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel bg-danger no-border text-center noticetip" style="display: none; cursor: pointer;">
+          <p style="margin-top: 5px;"><i class="fa fa-rocket"></i>&nbsp;为您更新<span id="ucl">0</span>条新闻</p>
+        </div>
+        <section id="newslist" class="panel" style="border: 0px;">
+          <div id="loader" class="center">
+            <img src="images/ajax-loader.gif?v=9ea03005" />
+          </div>
+        </section>
+        <div id="scrollTop" class="text-center" style="display: none; filter: alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.5; background-color: #000000; position: relative; z-index: 3; bottom: 50px; margin-bottom: -30px; right: 10px; float: right; width: 30px; height: 30px; border-radius: 2px; cursor: pointer;"><i class="fa fa-lg fa-sort-up" style="margin-top: 12px;"></i></div>
+        <!--  点击发现按钮出现类似于消息的文章列表，而非模态框 by zheng start-->
+        <div class="fn-z-findNews">
+          <div class="fn-z-alertprompt alert alert-success">已加载<span></span>篇文章，其中<span></span>篇为相似文章，已合并！</div>
+          <div id="fn-z-findscrolltop"><i class="fa fa-lg fa-sort-up"></i></div>
+          <div class="fn-z-hasNews">
+            <div class="fn-z-findNewstop">
+              <span>发现新闻：<a href="javascript:void(0)"></a></span>
+              <span><b class="badge bg-danger"></b></span>
+              <div class="fn-z-findNewslists">
+                <ul id="fn-z-findNewsul"></ul>
+              </div>
+            </div>
+          </div>
+          <div id="fn-z-findNewsdetails" style="height: 100%">
+            <header>
+              <span class="btn btn-white btn-xs fn-z-closeDetail">
+                                <i class="glyphicon glyphicon-arrow-left "></i>
+                            </span>
+              <a href="javascript: void(0);" class="btn btn-white pull-right m-l fn-z-findlink fn-innerContent-common" target="_blank" title="站内浏览"></a>
+              <a href="javascript: void(0);" class="btn btn-white pull-right m-l fn-z-findoriginal fn-innerContent-common" target="_blank" title="查看原文"></a>
+              <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare  pull-right m-l" data="{'url':'',text:''}">
+                <span class="bds_more btn btn-white fn-z-bdshare">分享</span>
+              </div>
+              <div class="fn-z-loadPie pull-right" id="fn-z-loadPie"></div>
+            </header>
+            <div class="fn-z-findnewsdetails-content">
+              <div class="fn-z-findnewsdetails-contentmain">
+                <h4 class="fn-z-leadTitle"></h4>
+                <h3 class="fn-z-mtitle"></h3>
+                <h4 class="fn-z-subTitle"></h4>
+                <div class="fn-z-from">
+                  <span class="fn-z-channel"></span>
+                  <span class="fn-z-reported"></span>
+                </div>
+                <div class="fn-z-reporttime">
+                </div>
+                <div class="fn-z-content">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--点击发现按钮出现类似于消息的文章列表，而非模态框 by zheng end-->
+      </aside>
+      <!-- /.sidebar -->
+      <!-- .main -->
+      <section class="main bg-white" style="max-height: 1000px;">
+        <div id="splitter1" class="splitter" style="position: absolute; z-index: 10; width: 5px; height: 100%; background-color: transparent; filter: alpha(opacity=30); -moz-opacity: 0.3; -khtml-opacity: 0.3; opacity: 0.3"></div>
+        <div id="news" class="bg-white" style="max-height: 1000px;">
+          <iframe id="myframe" src="" class="scroll-y scrollbar" style="width: 100%; overflow: hidden; background-color: #ffffff;" scrolling="no" frameborder="no" border="0" allowtransparency="true"></iframe>
+        </div>
+      </section>
+      <!-- /.main -->
+    </section>
+    <!-- footer -->
+<!--     <footer id="footer">
+      <div class="text-center padder clearfix">
+        <div style="display: none;">
+          <input id="txt_rid" type="text" width="60px" value="21" />
+          <input id="txt_cid" type="text" width="60px" value="" />
+          <input id="txt_cname" type="text" width="60px" value="" />
+          <input id="txt_nid" type="text" width="60px" value="" />
+          <input id="txt_ctid" type="text" width="60px" value="5264" />
+          <input id="txt_scid" type="text" width="60px" value="" />
+          <input id="txt_rows" type="text" width="60px" value="0" />
+          <input name="txt_recent_update_date" type="text" id="txt_recent_update_date" width="60px" value="2017-05-12 10:53:56" />
+          <input id="txt_sort_type" type="text" width="60px" value="updatetiem desc" />
+          <input id="txt_flag_type" type="text" width="60px" value="" />
+          <input id="txt_classify" type="text" width="60px" value="" />
+          <textarea name="txtSearchCommand" rows="4" cols="20" id="txtSearchCommand" style="width:600px;">
+</textarea>
+          <textarea name="txtRedKey" rows="4" cols="20" id="txtRedKey">
+</textarea>
+          <textarea name="txtExKey" rows="4" cols="20" id="txtExKey">
+开奖,扫扫二维码新闻连连看,今日导读,简 讯,小盐藻 大健康,占道，占道,上接,标题,上接第一版,公告,司法拍卖公告,历史上的今天,责任编辑,体彩,招 标 公 告,福利彩票,遗失声明,分类信息,遗 失 声 明,国际新闻,一句话新闻,莱蒙城,路况,上市公司公告,年度报告,smart,电子相册,有色金属,今日最高气温,天气预报,季度报告,链家,价格查询,托管协议,转发微博,新华社快讯,分类广告,广告,壮阳,增粗,注销声明,声明,说明书,股东大会,公示,公 示,轻松时刻</textarea>
+          <textarea name="txtExKeyContent" rows="4" cols="20" id="txtExKeyContent">
+网通社,网上车市,58同城</textarea>
+          <input id="fnShowSelectNewsHidden" type="hidden" />
+        </div>
+        <p>
+          <small>&copy;2012-2016&nbsp;<a href="http://www.hzfanwen.com/" target="_blank">杭州科技有限公司</a>版权所有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浙ICP备12039594-2号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="disclaimer.html">免责声明</a></small>
+        </p>
+      </div>
+    </footer> -->
+    <!-- / footer -->
+    <!-- Bootstrap -->
+    <!-- Modal -->
+    <div class="modal fade" id="divCollection" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            ×
+                        </button>
+            <h4 class="modal-title" id="myModalLabel">定制您的栏目</h4>
+          </div>
+          <div class="modal-body">
+            <iframe id="iframeSearch" src="searchSource.html" style="width: 100%; height: 450px; border-style: groove; border-width: 0px;" frameborder="0"></iframe>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+                            取消
+                        </button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="MakeMyAlbum()">
+                            确定
+                        </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="mask" style="display: none; left: 0; top: 0; z-index: 9999; width: 100%; height: 100%; position: absolute; background-color: #233445; filter: alpha(opacity=0); -moz-opacity: 0.0; -khtml-opacity: 0.0; opacity: 0.0;">
+    </div>
+    <div>
+    </div>
+    <div id="fn-s-detailModal" class="fn-s-modal">
+      <div class="fn-s-mdHead">
+        <h4 class="fn-s-mdTitle"></h4>
+        <span class="fn-s-mdClose"></span>
+      </div>
+      <div class="fn-s-mdBody">
+        <iframe id="fn-s-frame"></iframe>
+      </div>
+      <span class="fn-s-mArrow fn-s-maLeft"></span>
+      <span class="fn-s-mArrow fn-s-maRight"></span>
+    </div>
+  </form>
+  <script src="/libs/handlebars-v3.0.0-min.js?v=8afb4ea3" type="text/javascript"></script>
+  <script src="/libs/craftpip-jquery-confirm/jquery-confirm.min.js?v=aa16ecaf" type="text/javascript"></script>
+  <script src="/libs/jquery-date-range-picker/moment.min.js?v=0e7067c4" type="text/javascript"></script>
+  <script src="/libs/jquery-date-range-picker/jquery.daterangepicker-min.js?v=1712281f" type="text/javascript"></script>
+  <script src="js/fnMover-min.js?v=a2187102" type="text/javascript"></script>
+  <script id="tpl_citylist" type="text/x-handlebars-template">
+    {{#list city}} {{/list}}
+  </script>
+  <script id="tpl_captionlist" type="text/x-handlebars-template">
+    <div id="cnode_0" class="panel" style="cursor: pointer;">
+      <div class="panel-heading" onclick="ChangeChannel(this,'媒体关注','0','','','1')">
+        <a href="javascript:void(0);" style="font-size: 14px">&nbsp;<strong><b>媒体关注</b></strong>&nbsp;<strong class="text-danger" style="font-family: Comic Sans MS">HOT</strong></a>
+      </div>
+      <div id="pnl_0" class="panel-collapse collapse">
+        <div class="panel-body text-small" style="text-indent: 2em;">媒体关注，从媒体角度出发，寻求以内容本身为热点的新闻资讯。撇开话题性带来的干扰，用理性、专业、严谨的笔触去记录国内外发生的各类事件。</div>
+      </div>
+    </div>
+  </script>
+  <script id="tpl_newslist" type="text/x-handlebars-template">
+    {{#list rows}} {{/list}}
+  </script>
+  <script type="text/javascript" src="/js/fnNewslist-min.js?v=c969c7c4"></script>
+  <script type="text/javascript" src="/js/mediafocus-min.js?v=5225df2c"></script>
+</body>
+
+</html>

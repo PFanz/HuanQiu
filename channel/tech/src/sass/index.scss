@@ -1,0 +1,188 @@
+.ad,
+.adDt {
+  background-color: #ccc;
+}
+
+ul.iconBoxT14 {
+  margin: 0;
+}
+
+.navNewsMain li span a {
+  font-size: 16px;
+}
+
+.newsFir {
+  height: 385px;
+  width: 308px;
+
+  li.first {
+    margin-bottom: 10px;
+    height: auto;
+    line-height: 28px;
+    font-size: 18px;
+    font-weight: bold;
+    list-style: none;
+
+    a {
+      height: auto;
+    }
+  }
+
+  li {
+    height: 28px;
+    line-height: 28px;
+    white-space: normal;
+  }
+
+  .icon-dot {
+    margin-right: 10px;
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+    vertical-align: middle;
+    background: #e4e4e4;
+  }
+}
+
+.leader {
+  height: auto;
+  h4 {
+    white-space: normal;
+  }
+  h5 {
+    line-height: 20px;
+  }
+  img {
+    width: 97px;
+    height: 73px;
+  }
+}
+
+.iconBoxT14 {
+
+  li {
+    white-space: normal;
+  }
+
+  a {
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    overflow: hidden;
+  }
+}
+
+.techLibrary {
+  h2 {
+    height: 45px;
+    background: url(../images/title_1.jpg) no-repeat;
+  }
+}
+
+.box-minus {
+  margin-top: -20px;
+  margin-left: -35px;
+}
+
+.leftSmall {
+  margin-top: 20px;
+  margin-left: 35px;
+  width: 310px;
+  overflow: visible;
+
+  .iconBoxT14 {
+    width: 318px;
+  }
+}
+
+.rightBox-container {
+  font-size: 0;
+  margin-top: 22px;
+  // overflow: hidden;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.right-title {
+  height: 36px;
+  line-height: 36px;
+  font-size: 18px;
+  background: url(../images/tech2015.png) no-repeat;
+  background-position: -160px -71px;
+  font-family: Microsoft YaHei,SimSun;
+  color: #444;
+}
+
+.more {
+  float: right;
+  font-size: 14px;
+  color: rgb(187, 187, 187);
+  font-weight: normal;
+}
+
+.rightBox-content {
+
+  .rightBox-title {
+    width: 308px;
+    margin-bottom: 0;
+    display: inline-block;
+    height: 47px;
+    line-height: 47px;
+    font-size: 14px;
+    overflow: hidden;
+  }
+
+  a.rightBox-link {
+    line-height: 47px;
+    color: rgb(68, 68, 68)!important;
+  }
+}
+
+.techLibrary {
+  position: relative;
+
+  .more {
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-indent: 0;
+  }
+}
+
+.explore {
+  position: relative;
+  .more {
+    position: absolute;
+    right: 0;
+    top: -4px;
+    text-indent: 0;
+  }
+}
+
+.imgArea .txt {
+  width: 318px;
+  white-space: normal;
+}
+
+.boxCon {
+  overflow: visible;
+}
+
+.clear {
+  clear: both;
+}
+
+.explore h2 strong {
+  display: block;
+  width: 125px;
+  height: 50px;
+  margin: 0 auto;
+
+  a {
+    display: block;
+    width: 125px;
+    height: 50px;
+  }
+}

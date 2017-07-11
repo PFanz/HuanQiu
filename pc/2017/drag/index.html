@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>环球Time客户端后台管理</title>
+  <!-- Bootstrap Core CSS -->
+  <!-- <link href="http://api.hqtime.huanqiu.com/static/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="./dist/css/bootstrap.min.css">
+  <!-- MetisMenu CSS -->
+  <link href="http://api.hqtime.huanqiu.com/static/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+  <!-- Timeline CSS -->
+  <link href="http://api.hqtime.huanqiu.com/static/dist/css/timeline.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="http://api.hqtime.huanqiu.com/static/dist/css/sb-admin-2.css" rel="stylesheet">
+  <!-- Morris Charts CSS -->
+  <link href="http://api.hqtime.huanqiu.com/static/bower_components/morrisjs/morris.css" rel="stylesheet">
+  <!-- Custom Fonts -->
+  <link href="http://api.hqtime.huanqiu.com/static/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- <link rel="stylesheet" type="text/css" href="./dist/css/font-awesome.min.css"> -->
+  <!-- <link href="http://api.hqtime.huanqiu.com/static/bower_components/bootstrap-fileinput/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" /> -->
+  <link rel="stylesheet" type="text/css" href="./dist/css/fileinput.min.css">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="http://api.hqtime.huanqiu.com/static/dist/js/html5shiv.js"></script>
+    <script src="http://api.hqtime.huanqiu.com/static/dist/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://api.hqtime.huanqiu.com/admin">环球Time客户端后台管理</a>
+      </div>
+      <!-- /.navbar-header -->
+      <ul class="nav navbar-top-links navbar-right">
+        <!-- /.dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-user">
+            <li><a href="http://api.hqtime.huanqiu.com/logout"><i class="fa fa-sign-out fa-fw"></i> 注销</a>
+            </li>
+          </ul>
+          <!-- /.dropdown-user -->
+        </li>
+        <!-- /.dropdown -->
+      </ul>
+      <!-- /.navbar-top-links -->
+      <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+          <ul class="nav" id="side-menu">
+            <li>
+              <a href="http://api.hqtime.huanqiu.com/admin/content"><i class="fa fa-file-text-o fa-fw"></i> 内容管理</a>
+            </li>
+            <li>
+              <a href="http://api.hqtime.huanqiu.com/admin/topic"><i class="fa fa-bookmark fa-fw"></i> 专题管理</a>
+            </li>
+            <li>
+              <a href="http://api.hqtime.huanqiu.com/admin/foreign_media"><i class="fa fa-bullhorn fa-fw"></i> 外媒管理</a>
+            </li>
+          </ul>
+        </div>
+        <!-- /.sidebar-collapse -->
+      </div>
+      <!-- /.navbar-static-side -->
+    </nav>
+    <div id="page-wrapper" style="min-height: 411px;">
+      <div class="row sub-content">
+        <form action="http://localhost:3000" method="post" id="update-news" enctype="multipart/form-data">
+          <div class="row">
+            <input type="hidden" name="id" value="2414">
+            <input type="hidden" name="_token" value="Z9fdYzYXNYTyV16t7726QIesADGZ09OkiDyfonCS">
+            <input type="hidden" name="refer" value="http://api.hqtime.huanqiu.com/admin/content">
+            <div class="form-group input-group col-lg-12 col-md-12 col-sm-12" style="float: left;">
+              <span class="input-group-addon">标题</span>
+              <input type="text" name="title" id="title-input" class="form-control" value="社评：&ldquo;航母假去朝鲜&rdquo;有损特朗普威严">
+            </div>
+            <span style="color: #7d878a;float: right;font-size: x-small">您已经输入<strong><span style="color: #a94442;" id="title-len"></span></strong>个字</span>
+            <div class="form-group input-group col-lg-12 col-md-12 col-sm-12">
+              <span class="input-group-addon">权重</span>
+              <input type="number" name="row_num" id="row-input" class="form-control" value="151">
+            </div>
+           <!--  <div class="row" id="thumbs-container">
+              <div class="col-sm-6 col-md-4 col-lg-4" id="thumb-0">
+                <div class="thumbnail">
+                  <img src="http://a1.huanqiu.cn/time/images/news/20170419172154/2ab010d66bb6352b4dd819a98c8dbaeb.jpg">
+                  <div class="caption">
+                    <input type="hidden" name="old_thumb[]" value="http://a1.huanqiu.cn/time/images/news/20170419172154/2ab010d66bb6352b4dd819a98c8dbaeb.jpg">
+                    <p><a href="#" class="btn btn-danger del-thumb btn-block" data-key="thumb-0" role="button"><i class="fa fa-trash-o"></i> 删除</a></p>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <div class="form-group">
+              <label for="file-thumb">
+                <p>* 请点击上传 <i class="glyphicon glyphicon-upload text-info"></i> ，再进行排序保存功能。</p>
+              </label>
+              <input id="file-thumb" class="file" name="thumb[]" type="file" multiple value="">
+            </div>
+            <div class="form-group">
+              <input type="hidden" name="filesList" id="filesList" value="http://a1.huanqiu.cn/time/images/news/20170420080410/5fa8538be03995a61d35c824c830a0ef.jpg">
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-block" value="保存">
+              <a href="http://api.hqtime.huanqiu.com/admin/content" type="button" class="btn btn-default btn-block">取消</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- /#page-wrapper -->
+  </div>
+  <!-- /#wrapper -->
+  <!-- jQuery -->
+  <script src="http://api.hqtime.huanqiu.com/static/bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="http://api.hqtime.huanqiu.com/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- Metis Menu Plugin JavaScript -->
+  <script src="http://api.hqtime.huanqiu.com/static/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+  <!-- Morris Charts JavaScript -->
+  <script src="http://api.hqtime.huanqiu.com/static/bower_components/raphael/raphael-min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script src="http://api.hqtime.huanqiu.com/static/dist/js/sb-admin-2.js"></script>
+  <script src="http://api.hqtime.huanqiu.com/static/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+  <script src="http://api.hqtime.huanqiu.com/static/bower_components/bootstrap-fileinput/js/plugins/sortable.min.js" type="text/javascript"></script>
+  <!-- <script type="text/javascript" src="./dist/libs/plugins/sortable.min.js"></script> -->
+  <!-- <script src="http://api.hqtime.huanqiu.com/static/bower_components/bootstrap-fileinput/js/fileinput.min.js" type="text/javascript"></script> -->
+  <script type="text/javascript" src="./dist/libs/fileinput.min.js"></script>
+  <script src="http://api.hqtime.huanqiu.com/static/bower_components/bootstrap-fileinput/js/locales/zh.js" type="text/javascript"></script>
+  <script src="http://api.hqtime.huanqiu.com/static/dist/js/Countable.js"></script>
+  <script type="text/javascript" src="./dist/js/index.js"></script>
+  <!-- <script src="http://api.hqtime.huanqiu.com/static/js/thumb.js"></script> -->
+  <script>
+    // 保存提示
+    $('#update-news').on('submit', function () {
+
+      return false
+    })
+    // title长度限制
+    var title = document.getElementById('title-input');
+    var title_len = title.value.length;
+    $('#title-len').text(title_len);
+    Countable.live(title, function(counter) {
+      var realLen = counter.all;
+      $('#title-len').text(realLen);
+    })
+  </script>
+</body>
+
+</html>

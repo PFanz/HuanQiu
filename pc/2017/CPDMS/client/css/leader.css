@@ -1,0 +1,1263 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 微软雅黑 !important;
+    font-size: 12px;
+    height: 100%;
+    background:#faf2e2
+}
+a:focus{
+      outline: none; 
+     outline-offset: 0; 
+}
+.leader-namefont {
+    line-height: 24px;
+    font-family:微软雅黑;
+    font-size:12px;
+    font-weight:700;
+}
+a{
+    text-decoration:none;
+}
+.blackcolor{
+    color:#1b1a1a
+}
+.graycolor{
+    color:#989797
+}
+.footcolor{
+    color:#798194
+}
+.leader-radio{
+    font:14px/1.5 微软雅黑;
+}
+.leader-miss{
+    display:none
+}
+.leader-badge{
+    position:absolute;
+    top:5px;
+    right:5px;
+    color:white;
+    background-color:black;
+    opacity:0.5;
+    width:15px;
+    height:15px;
+    border-radius:10px;
+    display:none;
+    line-height:15px;
+    text-align:center;
+    cursor:pointer
+}
+.leader-family {
+    font-family: 微软雅黑;
+    color:#383838
+}
+.modal-body{
+    height: 600px;
+    padding-top:5px;
+    background:#f5f5f5
+}
+/*这个是第一个页面*/
+/*头部导航*/
+.leader-topnav {
+    position: fixed;
+    height: 40px;
+    width: 100%;
+    background-color: #ac0303;
+}
+.leader-topnav a{
+    color:white;
+    line-height:40px;
+    font-size:16px;
+    text-shadow:0 0 5px #610101;
+    font-weight:700
+}
+/*正文导航*/
+.leader-content {
+    height: 100%;
+    /*margin-top: -50px;*/
+    padding-top: 100px;
+    box-sizing: border-box;
+    background:white;
+}
+/*这个是最新文章*/
+.fa-volume-down{
+    font-size:18px !important
+}
+.leader-scrollnews {
+    height: 50px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    position:relative
+}
+.leader-scrollnews-title {
+    margin-top: 0px;
+    font-size:14px;
+    line-height:50px;
+    margin-left:5px;
+    display:inline-block;
+    vertical-align: 10px;
+}
+.leader-scrollnews-ul {
+   position:absolute;
+    left:200px;
+    right:100px;
+    top:0;
+    list-style-type:none;
+    margin-bottom:0;
+    height:50px;
+    padding-top:10px
+}
+.scrollnewsli{
+    display:none;
+    color: #9dd500;
+    font-size: 12px;
+    float:left;
+    line-height:30px;
+    width:100%
+}
+.scrollnewsli>a:first-child{
+    color:#0f0e0e;
+}
+.scrollnewsli>a+a{
+    margin-left:40px;
+    font-size:12px;
+    color:#cacac7;
+}
+.leader-line{
+    border:1px solid #ac0303 ;
+    margin-left:15px;
+    margin-right:15px
+}
+.fn-more{
+    position:absolute;
+    font-size:14px;
+    font-family:微软雅黑;
+    right:10px;
+    top:10px;
+    line-height:30px;
+    margin-right:20px;
+    color:#706e6c
+}
+.fn-more:hover{
+    text-decoration: underline;
+    font-weight:700
+}
+/*这是我的关注里面的内容*/
+.leader-myfocus {
+    overflow: hidden;
+    margin-top: -50px;
+    height: 100%;
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+.leader-myfocus-content {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px 0 10px;
+    position:relative
+}
+/*这个是我的关注里面左侧栏的样式*/
+.leader-myfocus-leftnav {
+    width: 350px;
+    height: 100%;
+    float: left;
+}
+
+.myfocus-title {
+    font: 14px 微软雅黑;
+    margin-top: 10px;
+    color: #626767;
+    margin-left:5px;
+    position:relative
+}
+
+.myfocus-title>span{
+    font-size:14px;
+    font-family:微软雅黑;
+    font-weight:500;
+    color:#383838
+}
+
+.myfocus-content {
+    width: 350px;
+    height: 100%;
+    padding-top: 40px;
+    margin-top: -40px;
+    box-sizing: border-box;
+    position: relative;
+    border-bottom:1px solid #ddd
+}
+/*这是我的关注里面左侧样式里面的头部*/
+.myfocus-contentheader {
+    width: 100%;
+    height: 40px;
+    box-shadow:0 0 5px #ccc
+}
+.leader-addleader{
+    line-height: 15px;
+    text-align: center;
+    color: #ab0200;
+   cursor:pointer;
+   margin-top:-2px;
+   padding:5px;
+   border:1px solid #feefcf;
+   position:absolute;
+   right:0;
+   top:0;
+   z-index:1000
+}
+.leader-addleader>i{
+    color:#ab0200;
+}
+.leader-addleader>a{
+    color:#ab0200;
+    font-weight:500
+}
+.leaderperson {
+    float: left;
+    width: 50%;
+    line-height: 40px;
+    text-align: center;
+    cursor:pointer;
+    color:black;
+    background:#dedede;
+}
+.leaderevent {
+    float:left;
+    width: 50%;
+    line-height: 40px;
+    text-align: center;
+   cursor:pointer;
+   color:black;
+   background:#dedede
+}
+.focusheaderactive{
+    color:white;
+    background:#ab0200
+}
+/*领导人物样式*/
+.myfocus-content-leadercontent {
+    width: 350px;
+    position: absolute;
+    left: 0;
+    top: 80px;
+    bottom: 0;
+    padding: 10px 10px 5px 10px;
+    background-color: white;
+    margin-bottom: 0;
+    display: block;
+    border: 1px solid #dbdbdb;
+    box-shadow:0 0 5px #ccc
+}
+.conditionsoption{
+    height:30px
+}
+.conditionsoption label{
+    margin-right:15px
+}
+.conditionsoption input{
+    vertical-align: -2px;
+}
+.leaderperson-ul{
+    list-style-type: none;
+    overflow-y: auto;
+    overflow-x:hidden;
+    height:calc(100% - 30px);
+    border-radius:2px;
+    margin-bottom:0;
+}
+.leaderperson-li {
+    background-color: #f1f1f1;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom:10px
+}
+.leaderperson-li-name {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.leadername {
+    font: 700 14px 微软雅黑;
+    color: #798194;
+}
+.cancelfocus {
+    font: 12px 微软雅黑;
+    color: #A4A5A4;
+}
+.leader-introduce {
+    display:inline-block;
+    font: 200 12px/1.83 微软雅黑;
+    color: #798194;
+    max-width: 225px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.leader-active{
+    background-color: #fff;
+    border: 1px solid #cfcfcf;
+    box-shadow: 0 0 10px #888;
+}
+.leader-color-active{
+    color:#212838;
+}
+.noleader{
+    text-align:center;
+    margin-top:40%
+}
+.noleader img{
+    cursor:pointer
+}
+/*领导人物里面模态框 start*/
+.leader-search-content {
+    height: 100%;
+    display: block;
+}
+.conditions-content{
+    padding:0 10px 5px 10px;
+    border:1px dashed #ccc;
+    position:relative;
+    margin-bottom:5px;
+    background:white
+}
+.conditions-content>div:first-child{
+    width:100%
+}
+.conditions-content>div>div{
+    display:inline-block;
+    width:60%;
+    margin-top:10px
+}
+#distpicker span{
+    vertical-align:middle !important;
+    display:inline-block
+}
+.city-picker-span{
+    display: inline-block;
+    vertical-align: -2px !important;
+    height:33px !important;
+    line-height:33px !important;
+    width:auto !important;
+    min-width:150px;
+    margin-right:10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#choosecity{
+    position: relative;
+    display:inline-block;
+    vertical-align:3px
+}
+.whetherfocus{
+    margin-top:15px;
+    color: #1b1a1a;
+}
+.whetherfocus>span{
+    margin-right:-2px;
+}
+.whetherfocus input{
+    vertical-align:-2px
+}
+.whetherfocus label{
+    color:#989797;
+    margin-right:10px
+}
+.searchname {
+    padding:2px 5px;
+    margin-bottom:-7px !important;
+    padding-left:10px;
+    border:1px solid #ebebeb
+}
+.searchname:focus{
+        border:1px solid #aaaaaa
+}
+.leader-search-results{
+    height: 100%;
+    padding-top: 120px;
+    width: 100%;
+    margin-top:-120px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.leader-search-resultscontent {
+    margin-left:-25px;
+    margin-right:-25px;
+    background-color:#f1f2ed;
+    padding-top:10px;
+    height: 100%;
+    overflow: auto;
+}
+.searchresults{
+    margin-left:25px;
+    margin-right:25px;
+    overflow:hidden;
+}
+.searchresultli{
+    float:left;
+    width:32%;
+    margin-left:1%;
+    border-radius:5px;
+    border:1px solid #ccc;
+    border-bottom:none;
+   background:white;
+   margin-bottom:10px;
+   height:90px;
+   cursor:pointer;
+}
+.searchresultli a{
+    color:#656565
+}
+.cancelattentionleader,.addattentionleader{
+    background: #ededed;
+    text-align: center;
+    height: 30px;
+    line-height: 25px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.leader-searchresultli-content > p {
+   font: 500 14px/1.8 微软雅黑;
+    margin: 0;
+    margin-top: 5px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+}
+.leader-searchresultli-content>div:first-child>div{
+    font-size:20px;
+    font-family:微软雅黑;
+    color:#1a1b1d
+}
+.leader-searchresultli-content a:hover{
+    color:#9ed700
+}
+.leader-duty{
+    list-style-type:none;
+    display:inline-block;
+    vertical-align:bottom;
+    margin-bottom:0;
+    margin-bottom:-5px;
+    margin-left:-5px
+}
+.leader-duty label{
+    vertical-align:-3px
+}
+#reast{
+    text-decoration:underline;
+}
+.searchleaderbutton{
+    position:absolute;
+    right:5px;
+    bottom:2px
+}
+/*领导人物里面模态框 end*/
+
+/*这里开始是词频的样式 start*/
+.leader-wordfrequencymain{
+    position:absolute;
+    left:340px;
+    width:700px;
+    height:400px;
+    background:white;
+    z-index:1000;
+    box-shadow: 0 0 10px #888888;
+    border: 1px solid #ccc;
+    border-radius:5px;
+    display:none; 
+    padding:20px;
+}
+.wordfrequency-title{
+    margin-bottom:45px;
+}
+.wordfrequency-title>span{
+    color: black;
+    font-weight: 900;
+    font-size: 18px;
+    font-family:微软雅黑;
+}
+#daterange{
+   display: inline-block;
+    background: #F1F1F1;
+    font-size: 14px;
+    margin-left: 10px;
+    line-height: 23px;
+    font-family: 微软雅黑;
+    font-weight: 500;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width:200px
+}
+#container{
+    width:100%;
+    height:300px
+}
+.leader-arrowright{
+    position: relative;
+    margin: auto;
+    bottom: 34px;
+    left: 298px;
+    z-index: 1001;
+    display:none
+}
+.leader-arrowright::before,.leader-arrowright::after{
+    content: "";
+    display: block;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid #ccc;
+    position: absolute;
+    bottom: -35px;
+    left: -3px;
+    font-size: 0;
+    line-height: 0;
+}
+.leader-arrowright::after{
+    left: 1px;
+    border-right-color: white;
+}
+.lead-nofind{
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    margin-left: -110px;
+    font-family:微软雅黑;
+    font-size:14px;
+}
+.date-picker-wrapper{
+   margin-left: 263px;
+}
+.date-picker-wrapper{
+    z-index:1002 !important
+}
+/*这里开始是词频的样式 end*/
+
+
+/*这个是右侧的样式 start*/
+.leader-myfocus-rightnav {
+    margin-left: 380px;
+    height: 100%;
+    box-sizing: border-box;
+}
+    /*这个是左侧为领导人物时候 start*/
+.leader-leftleader {
+    display: block;
+    height: 100%;
+    padding-top: 40px;
+    margin-top:-3px
+}
+.leader-newslist {
+    overflow: hidden;
+    height: 100%;
+    position:relative;
+}
+.leader-img{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom:2px;
+    z-index: 1000;
+    background: white;
+}
+.leader-img>img,event-img>img{
+    margin-top:20%;
+}
+        /*这个是左边为领导人物时候右侧活动专辑样式 start*/
+.leader-newslist-event {
+    list-style-type: none;
+    float: left;
+    max-width: 80px;
+    height: 100%;
+    margin-bottom: 0;
+    background-color: white;
+}
+.leader-event-label {
+    border-right: none;
+    position: relative;
+    height:30px
+}
+
+.leader-border-active {
+    background-color: #ab0200;
+    border: 1px solid #d3e79d;
+    color: white !important;
+}
+.leader-event-label > a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 76px;
+    white-space: nowrap;
+    font: 200 12px 微软雅黑;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color:#484747
+}
+        /*这个是左边为领导人物时候右侧活动专辑样式 end*/
+.leader-newslist-content {
+    padding: 0 0 10px 0;
+    background-color: white;
+    height: 100%;
+   margin-left: 80px;
+   padding-bottom:30px;
+   position:relative
+}
+
+.leader-newslist-content>div:first-child{
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    height:30px;
+    z-index:100
+}
+
+.leader-newslist-content>div:first-child>div:first-child{
+    width:75%;
+    float:left;
+    text-align: center;
+    line-height: 30px;
+    background: #ab0200;
+    color:white;
+    border-right:1px solid white
+}
+
+.leader-newslist-content>div:first-child>div+div{
+    width:25%;
+    float:left;
+    text-align: center;
+    line-height: 30px;
+    background: #ab0200;
+    color:white
+}
+
+.leader-newslist-content>div+div{
+    overflow:auto;
+    width:100%;
+    height:100%;
+}
+#searchTable{
+    width: 100%; 
+    table-layout: fixed;
+     margin-right:0;
+    margin-bottom:0;
+}
+#searchTable_pt_outTab{
+    width:100% !important;
+}
+.fn-leader-choose{
+    position:absolute;
+    left:0px;
+    right:0;
+    bottom:0;
+}
+    /*这个是左侧为领导人物时候 end*/
+
+    /*这个是左侧为活动专辑时候右侧表格样式 start*/
+.leader-leftevent {
+    display: none;
+    padding-top: 40px;
+    height: 100%;
+    margin-top:-3px
+}
+.event-newslist{
+    overflow: hidden;
+    background-color: #f2f3f0;
+    height: 100%;
+   background-color: white;
+   position:relative;
+}
+
+.event-img{
+    position:absolute;
+    top:0px;
+    bottom:2px;
+    left:0px;
+    right:0px;
+    background:white;
+    display:none;
+    z-index:200;
+}
+
+.event-newslist-content {
+    height: 100%;
+    margin:0 0 0 20px;
+    position:relative
+}
+.event-newslist-content>div:first-child{
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    height:30px;
+    z-index:100;
+}
+.event-newslist-content>div:first-child>div{
+    width:75%;
+    float:left;
+    text-align: center;
+    line-height: 30px;
+    background: #ab0200;
+    color:white;
+    border-right:1px solid white
+}
+.event-newslist-content>div:first-child>div+div{
+     width:25%;
+     float:left;
+     text-align: center;
+     line-height: 30px;
+     background: #ab0200;
+     color:white
+}
+.event-newslist-content>div+div{
+    height:100%;
+    overflow:auto
+}
+#eventTable{
+    width: 100%; 
+    table-layout: fixed;
+    margin-right:0;
+    margin-bottom:0;
+    border-top:1px solid #ccc
+}
+#eventTable th,#searchTable th{
+    table-layout: fixed
+}
+#eventTable_pt_outTab
+{
+    min-width:auto !important;
+    width:100% !important;
+}
+    /*这个是左侧为活动专辑时候 end*/
+
+/*这个是右侧的样式 start*/
+
+
+/*这个是活动专辑的样式start*/
+.myfocus-content-eventcontent{
+     width: 350px;
+    position: absolute;
+    left: 0px;
+    top: 80px;
+    bottom: 0px;
+    background-color: white;
+    margin-bottom: 0;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    padding: 10px 10px 0 10px;
+    display: none;
+    box-shadow:0 0 5px #ccc;
+}
+.myfocus-content-eventcontent>div>div{
+    position:relative;
+    background-color: #dcdcda; 
+    font: 700 14px 微软雅黑; 
+    margin-bottom: 0; 
+    height: 40px; 
+    line-height: 40px; 
+    color: black; 
+    padding-left: 15px;
+    width:100%;
+    cursor:pointer;
+    border:1px solid #ccc
+}
+.activeevent-content{
+    max-height:100%;
+}
+.activeeventlist,.customeventlist {
+    list-style-type: none;
+    overflow-y: auto;
+    margin-bottom:0;
+    width:100%
+}
+.leader-eventli-header:hover{
+   background-color:rgb(232, 235, 230)
+}
+.leader-eventli-header, .leader-customli-header,.noactiveevent{
+    border: 1px solid #ddd;
+    background: #F1F2ED;
+    padding-left: 15px;
+    height: 40px;
+    color: #202937;
+    font: 500 14px 微软雅黑;
+    cursor: pointer;
+}
+.leader-eventli-header-label,.leader-customli-header-label {
+    line-height: 40px !important;
+    margin-right: 10px;
+    color: #BCBCBC;
+    font-size: 16px;
+}
+.openactivemodal{
+    line-height:40px !important
+}
+
+.leader-eventli-header-table,.eventname-table {
+    background-color: #F7F7F7;
+    border: 1px solid #ddd;
+    display: none;
+    padding: 5px 25px 5px 20px;
+    width:100%
+}
+.leader-eventli-header-table>tbody,.eventname-table>tbody{
+    width:100%;
+    display:block
+}
+.eventlist-leader:hover{
+    background-color:#ddd
+}
+.leader-eventli-header-span,.eventname {
+    line-height: 40px;
+}
+.eventlist-leader,.eventname-table-tr {
+    width: 100%;
+    display:block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font: 200 13px 微软雅黑;
+    border-bottom:1px solid #ddd;
+    padding-bottom:2px;
+    padding-top:10px
+}
+.deleteevent>i:first-child{
+    line-height:40px;
+    margin-right:10px
+}
+.eventlist-leader>td{
+    width:200px;
+    padding-left:20px 
+}
+..eventlist-leader>td+td{
+    text-align:right
+}
+.eventlist-leader >td:first-child..eventname-table-tr >td:first-child{
+    width:180px;
+}
+.eventlist-leader >td+td,.eventname-table-tr >td+td{
+    text-align:right;
+    width:80px
+}
+.leader-noactive,.leader-noselfactive{
+    border: 1px solid #ddd;
+    background: #F1F2ED;
+    padding-left: 15px;
+    height: 40px;
+    color: #202937;
+    font: 500 14px 微软雅黑;
+    cursor: pointer;
+    line-height:40px;
+}
+/*这个是活动专辑的样式end*/
+
+/*这个是活动专辑的弹出框 start*/
+.fn-eventblock-pop{
+    position:absolute;
+    left:337px;
+    top:-100px;
+    width:350px;
+    height:430px;
+    background-color:white;    
+    box-shadow: 0 0 10px #888888;
+    border: 1px solid #ccc;
+    display:none;
+    z-index:1000
+}
+.hasfocusevent>div:first-child{
+    font: 700 14px/2 微软雅黑; 
+    overflow: hidden;
+}
+.hasfocusevent-main{
+    padding-top: 30px; 
+    max-height: 250px; 
+    margin-top: -30px;
+}
+.hasfocuseventul,.unfocuseventul{
+    overflow: auto; 
+    padding-left: 10px; 
+    list-style-type: none; 
+    margin-bottom: 0; 
+     max-height:50%;
+}
+.hasfocuseventul>li,.unfocuseventul>li{
+    float: left; 
+    width: 25%; 
+    padding-right: 10px; 
+    position: relative;
+}
+.hasfocuseventul>li>button,.unfocuseventul>li>button{
+    width:100%;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+.unfocusevent>div:first-child{
+    font: 700 14px/2 微软雅黑; 
+    overflow: hidden;
+}
+.unfocusevent-main{
+    padding-top: 30px; 
+    max-height: 250px; 
+    margin-top: -30px;
+}
+.fn-tag-left {
+     position: relative;
+    margin: auto;
+    bottom: 40px;
+    left: 305px;
+    z-index: 1000;
+    display:none
+}
+.fn-tag-left:after,.fn-tag-left:before {
+    content: "";
+    display: block;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid #ccc;
+    position: absolute;
+    bottom: -35px;
+    right:295px;
+    font-size: 0;
+    line-height: 0;
+}
+.fn-tag-left:after {
+    left: 4px;
+    border-right-color:white
+}
+/*这个是活动专辑的弹出框 end*/
+.eventactive{
+    background:rgb(232, 235, 230);
+}
+.eventpersonactive{
+    font-weight:700;
+    font-size:15px
+}
+/*这个是我的专辑的弹出框 start*/
+.fn-myeventblock-pop{
+    width:400px;
+    background:white;
+    height:400px;
+    left:335px;
+    top:-20px;
+    position:absolute;
+    box-shadow: 0 0 10px #888888;
+    border: 1px solid #ccc;
+    z-index:1000;
+    display:none
+}
+.customeventheader{
+    position:relative;
+}
+.openeventsearch{
+    line-height:40px !important;
+    color:black;
+}
+.openeventsearch-main{
+    padding:20px 20px 0 20px;
+    border: 1px solid #ddd;
+    background-color: #F1F2ED;
+}
+#myeventsearchinput{
+    font-weight:500;
+}
+#eventhasexist{
+    position:absolute;
+    top:90px;
+    width:100px;
+    right:-20px;
+    height:40px;
+    background:black;
+    opacity:0.7;
+    display:none;
+    border-radius:5px;
+    z-index:101
+}
+#eventhasexist>span{
+    color:white;
+    font-size:12px;
+    margin-left:7px
+}
+.leader-trun-top{
+    position: relative;
+    margin: auto;
+   bottom: 72px;
+    left: 256px;
+    z-index: 100;
+}
+.leader-trun-top:before {
+    content: "";
+    display: block;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid black;
+    position: absolute;
+    bottom: -35px;
+    right:295px;
+    font-size: 0;
+    line-height: 0;
+}
+.fn-myeventdismiss{
+    position: absolute;
+    right: 10px;
+    top: -7px;
+    color: #d1c4c4;
+}
+.fn-myeventdismiss:hover{
+    color:#3a5a7a
+}
+.fn-eventblock-close{
+    position:absolute;
+    right:10px;
+    top:0;
+    color:#ccc
+}
+.fn-eventblock-close:hover{
+    color:#3a5a7a
+}
+/*搜素的文章列表*/
+.fn-myeventsearch{
+    background:white;
+    border:1px solid #ccc;
+    border-top:none;
+    height:300px;
+    padding:15px;
+    overflow:auto;
+    border-bottom:none
+}
+.fn-myeventtag-left{
+     position: relative;
+    margin: auto;
+    display:none;
+    bottom: 40px;
+    left: 305px;
+    z-index: 1000;
+}
+.fn-myeventtag-left:after,.fn-myeventtag-left:before {
+    content: "";
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid #ccc;
+    position: absolute;
+    bottom: -35px;
+    right:295px;
+    font-size: 0;
+    line-height: 0;
+}
+.fn-myeventtag-left:after {
+    left: 4px;
+    border-right-color:#F1F2ED
+}
+.list-group-item{
+    line-height:1.4
+}
+.list-group-item>table{
+    margin-top:5px;
+    text-align:justify
+}
+.list-group-item tr{
+    max-height:85px
+}
+.fn-page-main>small,.fn-width-quartersfour>small{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:500
+}
+.fn-newslist-rightcontent{
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat
+}
+.fn-newslist-time-big i{
+    margin-top:2px
+}
+/*这个是我的专辑的弹出框 end*/
+
+/*这个是底部样式 start*/
+.leader-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    height: 50px;
+    background:white
+}
+.lead-iconimg{
+    display:inline-block;
+    width:20px;
+    height:15px;
+    background:url(../images/fanews.png);
+    background-size:cover;
+    vertical-align:top
+}
+/*这个是底部样式 end*/
+
+/*文章详情的样式 strart*/
+#iframedetail {
+    width:100%;
+}
+/*文章详情的样式 end*/
+
+/*这个是第二个页面*/
+.leader-second-content{
+    height: 100%;
+    margin-top: -60px;
+    padding-top: 120px;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+}
+.leader-second-leftnav{
+    width: 350px;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    float:left;
+}
+.leader-second-leftnav-title{
+    text-align:center;
+    width: 100%;
+    height: 40px;
+    background-color: #242f42;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+.leader-second-leftnav-main{
+    width: 350px;
+    position: absolute;
+    left: 0;
+    top: 40px;
+    bottom: 0;
+    padding: 10px 10px 0 10px;
+    background-color: white;
+    margin-bottom: 0;
+    display: block;
+    border: 1px solid #efefef;
+    overflow:auto
+}
+.leader-second-right{
+    padding-right:350px;
+    height:100%;
+}
+.leader-second-right>iframe{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #d3e79d;
+}
+.leader-second-leftnav-main>a{
+    background-color:#f9faf7 !important;
+}
+/*这个是第三个页面*/
+.leader-third-leftnav-main{
+   height:100%;
+   overflow:auto
+}
+.leader-third-right{
+    padding-left: 350px;
+    height: 100%;
+}
+.leader-third-content{
+    height: 100%;
+    margin-top: -50px;
+    padding-top: 120px;
+    box-sizing: border-box;
+}
+.leader-third-leftnav{
+    width: 350px;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    float:left;
+}
+.leader-third-leftnav-title{
+   height:80px;
+   width:100%;
+   background-color: #F1F2ED;
+   font-size:14px;
+   border:1px solid #ddd;
+   padding:10px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+.leader-third-leftnav-title>button{
+    margin-right:10px;
+    margin-top:8px
+}
+.leader-third-right>iframe{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #dbdbdb;
+}
+.leader-third-leftnav-title-search{
+    font:14px 微软雅黑;
+    margin-top:10px;
+    margin-left:5px;
+    width:100%
+}
+.leader-third-leftnav-title-search>button{
+    margin-top:-3px;
+}
+.fn-detail{
+    color:#333 !important;
+}
+.fn-detail:hover{
+    text-decoration:underline;
+    color:blue
+}
+.fn-leaderblock{
+     width: 350px;
+    position: absolute;
+    left: 0;
+    top: 80px;
+    bottom: 0;
+    padding: 10px 10px 10px 10px;
+    background-color: white;
+    margin-bottom: 0;
+    display: block;
+    border: 1px solid #efefef;
+}
+.returntop{
+    display: none;
+    position: absolute;
+    bottom: 30px;
+    right: 35px;
+    z-index: 200;
+    background: black;
+    opacity: 0.4;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding-top: 10px;
+}
+.list-group-item:hover{
+     background-color:#eefcf4 !important;
+}
+.active_gray{
+    background-color:#eefcf4 !important;
+}
+.pull-left{
+    float:left
+}
+
+/* 改 */
+.leader-search-results {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+#normalSearchKey:focus {
+    background: #fff;
+}
