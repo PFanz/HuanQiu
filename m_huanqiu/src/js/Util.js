@@ -33,7 +33,7 @@ const Util = {
     } else if (diffDate <= 604800000) {
       return ~~(diffDate / 86400000) + '天前'
     }
-    return ((new Date(date)).getMonth() + 1) + '月' + (new Date(date)).getDate() + '月'
+    return ((new Date(date)).getMonth() + 1) + '月' + (new Date(date)).getDate() + '日'
   },
   // return search对象
   getSearch: () => {
