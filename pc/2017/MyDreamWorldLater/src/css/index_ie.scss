@@ -1,0 +1,39 @@
+.m1,
+.m2,
+.m3,
+.m4,
+.m5,
+.m6,
+.m7,
+.m8,
+.m9,
+.m10 {
+    width: 184px;
+    text-align: center;
+
+    &:before {
+        display: none;
+    }
+
+    &:after {
+        display: none;
+    }
+
+    h4 {
+        padding: 5px!important;
+        width: 174px!important;
+        margin-left: 0!important;
+        margin-right: 0!important;
+    }
+}
+
+.m2,
+.m3,
+.m4,
+.m5,
+.m7,
+.m8,
+.m9,
+.m10 {
+    margin-left: 5px;
+}

@@ -4,11 +4,8 @@ const Util = require('./Util.js')
 const Generate = {
   // ad string
   indexAdString: {
-    // 3: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41788" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41788");</script></section>',
     3: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_15307" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("15307");</script></section>',
-    // 8: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41789" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41789");</script></section>',
     8: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_15308" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("15308");</script></section>',
-    // 13: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41790" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41790");</script></section>',
     13: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_15309" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("15309");</script></section>',
     18: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41791" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41791");</script></section>',
     23: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41792" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41792");</script></section>',
@@ -17,17 +14,12 @@ const Generate = {
     38: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41795" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41795");</script></section>'
   },
   adString: {
-    // 3: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41559" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41559");</script></section>',
     3: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_40396" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("40396");</script></section>',
-    // 8: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41560" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41560");</script></section>',
     8: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_40397" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("40397");</script></section>',
-    // 13: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_41561" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41561");</script></section>'
     13: '<div class="mock-line"></div><section><div id="AD_SURVEY_POSITION_SIMPLE_40398" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("40398");</script></section>'
   },
   lunboAdString: {
-    // index: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41197" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41197");</script></section>',
     index: '<section><div id="AD_SURVEY_POSITION_SIMPLE_15296" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("15296");</script></section>',
-    // channels: '<section><div id="AD_SURVEY_POSITION_SIMPLE_41562" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("41562");</script></section>'
     channels: '<section><div id="AD_SURVEY_POSITION_SIMPLE_15856" style="display:none;"></div><script type="text/javascript">window.AD_SURVEY_Add_AdPos_Simple && AD_SURVEY_Add_AdPos_Simple("15856");</script></section>'
   },
   // return 轮播图
@@ -38,7 +30,7 @@ const Generate = {
       str += `
         <li class="lunbo-page">
           <a href="${data[item].url}">
-            <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/lunbo_image.png';" src="${data[item].pic}" alt="">
+            <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/lunbo_image.png';" src="${data[item].pic}" alt="">
             <div class="lunbo-title-bg">
               <p class="lunbo-title">${data[item].title}</p>
             </div>
@@ -109,7 +101,7 @@ const Generate = {
                 </div>
               </div>
               <div class="news-imgs">
-                  <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/one_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
+                  <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/one_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
               </div>
             </a>
           </section>
@@ -120,7 +112,7 @@ const Generate = {
             <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
               <p class="news-title">${title}</p>
               <div class="video-img">
-                <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
+                <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
                 <div class="video-btn">
                   <svg>
                     <use xlink:href="#video-icon" />
@@ -140,7 +132,7 @@ const Generate = {
             <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
               <p class="news-title">${title}</p>
               <div class="video-img">
-                <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
+                <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
               </div>
               <div class="news-info">
                 <span class="news-from">${data.source}</span>
@@ -163,7 +155,7 @@ const Generate = {
                 </div>
               </div>
               <div class="news-imgs">
-                  <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/one_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
+                  <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/one_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
               </div>
             </a>
           </section>
@@ -176,9 +168,9 @@ const Generate = {
           <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
             <p class="news-title">${title}</p>
             <div class="news-imgs">
-              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
-              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[1] : 'src="' + data.pic[1]}" alt="">
-              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[2] : 'src="' + data.pic[2]}" alt="">
+              <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
+              <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[1] : 'src="' + data.pic[1]}" alt="">
+              <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[2] : 'src="' + data.pic[2]}" alt="">
             </div>
           </a>
           <div class="news-info">
@@ -244,7 +236,7 @@ const Generate = {
     let str = `
       <section class="pic-block">
         <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
-          <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}"" alt="" />
+          <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}"" alt="" />
           <p class="pic-title">${data.title}</p>
         </a>
       </section>
@@ -257,7 +249,7 @@ const Generate = {
       <section class="pic-block">
         <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
           <div class="video-img">
-            <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
+            <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
             <div class="video-btn">
               <svg>
                 <use xlink:href="#video-icon" />

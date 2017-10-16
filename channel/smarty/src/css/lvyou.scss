@@ -1,0 +1,279 @@
+body,h4 {
+    font-size: 12px
+}
+
+.nav_tabs,sub,sup {
+    position: relative
+}
+
+
+.equalTxt_list li,.lumpNews_list li,.m_l,.m_r,.media .media_l,.mod-focus .focus_list li,.mod-footer .f_products li,.nav_tabs .tab_bd .tbody,.nav_tabs .tab_hd .tab_hd_btns li,.pic_list li,.pic_list.pic_list-mixin .p_img {
+    float: left;
+    display: inline
+}
+
+.ad-box:after,.ad-box:before,.bd:after,.bd:before,.equalTxt_list:after,.equalTxt_list:before,.lumpNews_list:after,.lumpNews_list:before,.main:after,.main:before,.media:after,.media:before,.nav_tabs .tab_bd:after,.nav_tabs .tab_bd:before,.nav_tabs .tab_hd .tab_hd_btns:after,.nav_tabs .tab_hd .tab_hd_btns:before,.pic_list:after,.pic_list:before,.row:after,.row:before {
+    content: "";
+    display: table
+}
+
+.ad-box:after,.bd:after,.equalTxt_list:after,.lumpNews_list:after,.main:after,.media:after,.nav_tabs .tab_bd:after,.nav_tabs .tab_hd .tab_hd_btns:after,.pic_list:after,.row:after {
+    clear: both
+}
+
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
+    display: block
+}
+
+audio,canvas,progress,video {
+    display: inline-block;
+    vertical-align: baseline
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0
+}
+
+
+.accordion_list .link,.lumpNews_list .link,.pic_list li .link {
+    display: block
+}
+
+a {
+    background: 0 0;
+    text-decoration: none;
+    color: #707070
+}
+
+a:active,a:hover {
+    outline: 0
+}
+
+
+
+.hd strong,.icon,.iconGo,.mod-editorial .accordion_list p,.mod-hqGuest .pic_list .media .p_tle *,img {
+    vertical-align: middle
+}
+
+sup {
+    top: -.5em
+}
+
+sub {
+    bottom: -.25em
+}
+
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic
+}
+
+svg:not(:root) {
+    overflow: hidden
+}
+
+
+
+button,input,optgroup,select,textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0
+}
+
+.line,h1,h2,h3 {
+    font-weight: 400
+}
+
+button {
+    overflow: visible
+}
+
+button,select {
+    text-transform: none
+}
+
+button,html input[type=button],input[type=reset],input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer
+}
+
+button[disabled],html input[disabled] {
+    cursor: default
+}
+
+button::-moz-focus-inner,input::-moz-focus-inner {
+    border: 0;
+    padding: 0
+}
+
+input {
+    line-height: normal
+}
+
+input[type=checkbox],input[type=radio] {
+    box-sizing: border-box;
+    padding: 0
+}
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+td,th {
+    padding: 0
+}
+
+q {
+    quotes: none
+}
+
+button,html,input,select,textarea {
+    font-family: Arial,SimSun,Helvetica,Tahoma,sans-serif
+}
+
+blockquote,figure,form,h1,h2,h3,h4,h5,h6,p {
+    margin: 0
+}
+
+dd,dl,li,ol,ul {
+    margin: 0;
+    padding: 0
+}
+
+ol,ul {
+    list-style: none
+}
+
+h1,h2,h3 {
+    line-height: 2
+}
+
+h1 {
+    font-size: 18px
+}
+
+h2 {
+    font-size: 15.6px
+}
+
+h3 {
+    font-size: 14.04px
+}
+
+h5,h6 {
+    font-size: 10.2px;
+    text-transform: uppercase
+}
+
+input:-moz-placeholder,textarea:-moz-placeholder {
+    color: #ccc
+}
+
+input::-moz-placeholder,textarea::-moz-placeholder {
+    color: #ccc
+}
+
+input:-ms-input-placeholder,textarea:-ms-input-placeholder {
+    color: #ccc
+}
+
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
+    color: #ccc
+}
+
+body {
+    margin: 0;
+    color: #333;
+    line-height: 1.5;
+    font-family: "Microsoft Yahei"
+}
+
+.ad-box,.row {
+    margin-bottom: 30px
+}
+
+
+
+.pic_list {
+    font-size: 14px;
+    margin: -10px -10px 0 0
+}
+
+.pic_list li {
+    margin: 10px 10px 0 0
+}
+
+.pic_list li .link {
+    position: relative;
+    color: #fff;
+    overflow: hidden
+}
+
+.pic_list .cover,.pic_list li .mask {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0
+}
+
+
+
+.pic_list li img {
+    width: 100%;
+    height: 100%
+}
+
+.pic_list li.picC_large .link {
+    width: 490px!important;
+    height: 370px!important
+}
+
+
+
+.mod-focus {
+    position: relative;
+    margin-bottom: 20px;
+    overflow: hidden
+}
+
+.mod-focus .focus_list {
+    height: 394px
+}
+
+
+
+body {
+    min-width: 1020px;
+    background-color: #eee
+}
+
+.iconGo,.mod-editorial .accordion_list p {
+    text-indent: -999em;
+    width: 20px;
+    height: 20px;
+    background-image: url(http://himg2.huanqiu.com/statics/www/hqnet/dist/channel/lvyou/images//go_icon.png);
+    background-repeat: no-repeat
+}
+
+
+
+.mod-focus {
+    height: 394px
+}
+
+.mod-information {
+    width: 740px;
+    height: 476px;
+    overflow: hidden
+}

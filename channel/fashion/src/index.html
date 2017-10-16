@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <title></title>
+  <link rel="shortcut icon"  href="http://himg2.huanqiu.com/statics/images/favicon1.ico"/>
+  <link rel="stylesheet" type="text/css" href="./css/index.css">
+  <!-- 公共底部css -->
+  <link href="http://himg2.huanqiu.com/statics/hq2015/css/pubFooter/pubFooter150429.css" rel="stylesheet" type="text/css">
+  <!-- /公共底部css -->
+  <script type="text/javascript" src="http://himg2.huanqiu.com/statics/hq2013/js/lib/jquery1.9.1.js"></script>
+</head>
+<body>
+  <!-- 公共头 -->
+  <script type="text/javascript" src="http://himg2.huanqiu.com/statics/hq2015/js/pubHeader20150902.js" slogan=""></script>
+  <!-- /公共头 -->
+
+  <!-- 频道导航 -->
+  <div class="nav">
+    <div class="nav-main">
+      <!-- 频道logo -->
+      <a href="http://fashion.huanqiu.com" class="nav-channel-logo" title="环球时尚" target="_blank">
+        <h1 class="nav-channel-name">环球时尚</h1>
+      </a>
+      <!-- /end 频道logo -->
+      <!-- 导航菜单 -->
+      <ul class="nav-list">
+        <li class="nav-list-item"><a href="#" target="_blank">时尚</a></li>
+        <li class="nav-list-item curr"><a href="#" target="_blank">品鉴</a></li>
+        <li class="nav-list-item"><a href="#" target="_blank">女人</a></li>
+        <li class="nav-list-item"><a href="#" target="_blank">美容</a></li>
+        <li class="nav-list-item"><a href="#" target="_blank">星座</a></li>
+        <li class="nav-list-item"><a href="#" target="_blank">娱乐</a></li>
+      </ul>
+      <!-- /end 导航菜单 -->
+      <!-- 搜索 -->
+      <div class="search">
+        <form action="http://s.huanqiu.com/s/" method="get" id="ui-topSearch">
+            <input name="q" type="text" id="ui-topSearchKeyWord" class="searchBox"/>
+            <input id="ui-topSearchBtn" name="" type="submit" class="searchBtn" value=" "/>
+        </form>
+      </div>
+      <!-- /end 搜索 -->
+    </div>
+  </div>
+  <!-- /频道导航 -->
+
+  <!-- 焦点图 -->
+  <div class="focus">
+    <div class="focus-box">
+      <div class="focus-container">
+        <ul class="focus-list" id="focus" style="width: 5000px;">
+          <li class="focus-list-item">
+            <a href="#" target="_blank" class="link">
+              <img src="http://himg2.huanqiu.com/saronscms/uploadfile/2014/0606/20140606100629963.jpg" alt="迪拜">
+              <div class="focus-title-container">
+                <h2 class="focus-title">1让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉</h2>
+              </div>
+            </a>
+          </li>
+          <li class="focus-list-item">
+            <a href="#" target="_blank" class="link">
+              <img src="http://himg2.huanqiu.com/saronscms/uploadfile/2014/0605/20140605032351323.jpg" alt="马尔代夫">
+              <div class="focus-title-container">
+                <h2 class="focus-title">2让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉</h2>
+              </div>
+            </a>
+          </li>
+          <li class="focus-list-item">
+            <a href="#" target="_blank" class="link">
+              <img src="http://himg2.huanqiu.com/saronscms/uploadfile/2015/0820/20150820050237766.jpg" alt="澳大利亚：山海画卷大洋路">
+              <div class="focus-title-container">
+                <h2 class="focus-title">3让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉</h2>
+              </div>
+            </a>
+          </li>
+          <li class="focus-list-item">
+            <a href="#" target="_blank" class="link">
+              <img src="http://himg2.huanqiu.com/saronscms/uploadfile/2014/0320/20140320043808131.jpg" alt="澳大利亚黄金海岸">
+              <div class="focus-title-container">
+                <h2 class="focus-title">4让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉让夏天充满清凉</h2>
+              </div>
+            </a>
+          </li>
+          <!-- <li class="focus-list-item">
+            <a href="#" target="_blank" class="link">
+              <img src="http://himg2.huanqiu.com/saronscms/uploadfile/2014/0606/20140606103955963.jpg" alt="圣托里尼">
+              <div class="focus-title-container">
+                <h2 class="focus-title">让夏天充满清凉</h2>
+              </div>
+            </a>
+          </li> -->
+        </ul>
+        <div class="focus-cover left"></div>
+        <div class="focus-cover right"></div>
+      </div>
+      <div class="focus-arrow">
+        <a href="javascript:void(0);" class="focus-arrow-pre" title="向左滚动" id="focus-pre-btn"></a>
+        <a href="javascript:void(0);" class="focus-arrow-next" title="向右滚动" id="focus-next-btn"></a>
+      </div>
+      <div id="focus-dots" class="focus-dots"></div>
+    </div>
+  </div>
+  <!-- /焦点图 -->
+
+  <div class="content block-1">
+    <div class="clear">
+      <!-- 闻 -->
+      <div class="wen">
+        <div class="wen-title-cont">
+          <ul class="wen-tabs">
+            <li class="wen-tab active" data-for="wen-news-1">人物</li>
+            <li class="wen-tab" data-for="wen-news-2">范儿</li>
+            <li class="wen-tab" data-for="wen-news-3">单品</li>
+            <li class="wen-tab" data-for="wen-news-4">视频</li>
+          </ul>
+          <div class="wen-title">
+            <span class="wen-title-icon"></span>
+          </div>
+        </div>
+        <ul class="wen-news-list">
+          <li class="wen-news-item active" id="wen-news-1">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="wen-news-img">
+              <p class="wen-news-title">1惊鸿少年王俊凯 专属他的毕业季之旅</p>
+              <p class="wen-news-summary">1999年出生的王俊凯拥有清新俊逸的外貌,剑眉高鼻桃花眼,精致又不失英气。</p>
+            </a>
+          </li>
+          <li class="wen-news-item" id="wen-news-2">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="wen-news-img">
+              <p class="wen-news-title">2惊鸿少年王俊凯 专属他的毕业季之旅</p>
+              <p class="wen-news-summary">1999年出生的王俊凯拥有清新俊逸的外貌,剑眉高鼻桃花眼,精致又不失英气。</p>
+            </a>
+          </li>
+          <li class="wen-news-item" id="wen-news-3">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="wen-news-img">
+              <p class="wen-news-title">3惊鸿少年王俊凯 专属他的毕业季之旅</p>
+              <p class="wen-news-summary">1999年出生的王俊凯拥有清新俊逸的外貌,剑眉高鼻桃花眼,精致又不失英气。</p>
+            </a>
+          </li>
+          <li class="wen-news-item" id="wen-news-4">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="wen-news-img">
+              <p class="wen-news-title">4惊鸿少年王俊凯 专属他的毕业季之旅</p>
+              <p class="wen-news-summary">1999年出生的王俊凯拥有清新俊逸的外貌,剑眉高鼻桃花眼,精致又不失英气。</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- /闻 -->
+      <!-- 头条 -->
+      <div class="first">
+        <div>
+          <span class="first-title-icon"></span>
+        </div>
+        <div class="first-cont">
+          <p><a href="#" class="first-news-title">两大豪门联姻，连Lady Gaga都来献唱～</a></p>
+          <p><a href="#" class="first-news-title">两大豪门联姻，连Lady Gaga都来献唱～</a></p>
+          <p><a href="#" class="first-news-title">两大豪门联姻，连Lady Gaga都来献唱～</a></p>
+          <p><a href="#" class="first-news-title">两大豪门联姻，连Lady Gaga都来献唱～</a></p>
+          <p><a href="#" class="first-news-title">两大豪门联姻，连Lady Gaga都来献唱～</a></p>
+        </div>
+      </div>
+      <!-- /头条 -->
+    </div>
+    <!-- 装 -->
+    <div class="fashion clear">
+      <div class="fashion-header clear">
+        <div class="fashion-title">
+          <span class="fashion-title-icon"></span>
+          <a href="http://fashion.huanqiu.com/news/" class="more"></a>
+        </div>
+        <ul class="fashion-tabs">
+          <li class="fashion-tab active" data-for="fashion-list-1">服饰</li>
+          <li class="fashion-tab" data-for="fashion-list-2">单品</li>
+          <li class="fashion-tab" data-for="fashion-list-3">秀场</li>
+          <li class="fashion-tab" data-for="fashion-list-4">明星</li>
+        </ul>
+      </div>
+      <ul class="fashion-news-lists">
+        <li class="fashion-list-item active" id="fashion-list-1">
+          <div class="fashion-news">
+            <a href="#" target="_blank">
+              <div class="fashion-img-cont">
+                <img src="./images/pic-1.png" alt="" class="fashion-news-img">
+                <i class="fashion-img-border"></i>
+              </div>
+              <p class="fashion-news-title">1开启无限可能开启无限可能</p>
+              <p class="fashion-news-summary">在北大举行的"寻找未知的自己"活动中在北大</p>
+              <p class="fashion-news-detail">[详细]</p>
+            </a>
+          </div>
+          <div class="fashion-news">
+            <a href="#" target="_blank">
+              <div class="fashion-img-cont">
+                <img src="./images/pic-1.png" alt="" class="fashion-news-img">
+                <i class="fashion-img-border"></i>
+              </div>
+              <p class="fashion-news-title">开启无限可能开启无限可能</p>
+              <p class="fashion-news-summary">在北大举行的"寻找未知的自己"活动中在北大</p>
+              <p class="fashion-news-detail">[详细]</p>
+            </a>
+          </div>
+          <div class="fashion-news">
+            <a href="#" target="_blank">
+              <div class="fashion-img-cont">
+                <img src="./images/pic-1.png" alt="" class="fashion-news-img">
+                <i class="fashion-img-border"></i>
+              </div>
+              <p class="fashion-news-title">开启无限可能开启无限可能</p>
+              <p class="fashion-news-summary">在北大举行的"寻找未知的自己"活动中在北大两行三行</p>
+              <p class="fashion-news-detail">[详细]</p>
+            </a>
+          </div>
+        </li>
+        <li class="fashion-list-item" id="fashion-list-2">
+          <div class="fashion-news">
+            <a href="#" target="_blank">
+              <div class="fashion-img-cont">
+                <img src="./images/pic-1.png" alt="" class="fashion-news-img">
+                <i class="fashion-img-border"></i>
+              </div>
+              <p class="fashion-news-title">2开启无限可能开启无限可能</p>
+              <p class="fashion-news-summary">在北大举行的"寻找未知的自己"活动中在北大</p>
+              <p class="fashion-news-detail">[详细]</p>
+            </a>
+          </div>
+          <div class="fashion-news">
+            <a href="#" target="_blank">
+              <div class="fashion-img-cont">
+                <img src="./images/pic-1.png" alt="" class="fashion-news-img">
+                <i class="fashion-img-border"></i>
+              </div>
+              <p class="fashion-news-title">开启无限可能开启无限可能</p>
+              <p class="fashion-news-summary">在北大举行的"寻找未知的自己"活动中在北大</p>
+              <p class="fashion-news-detail">[详细]</p>
+            </a>
+          </div>
+          <div class="fashion-news">
+            <a href="#" target="_blank">
+              <div class="fashion-img-cont">
+                <img src="./images/pic-1.png" alt="" class="fashion-news-img">
+                <i class="fashion-img-border"></i>
+              </div>
+              <p class="fashion-news-title">开启无限可能开启无限可能</p>
+              <p class="fashion-news-summary">在北大举行的"寻找未知的自己"活动中在北大两行三行</p>
+              <p class="fashion-news-detail">[详细]</p>
+            </a>
+          </div>
+        </li>
+        <li class="fashion-list-item" id="fashion-list-3">
+          <div class="fashion-news">
+            <a href="#" target="_blank">
+              <div class="fashion-img-cont">
+                <img src="./images/pic-1.png" alt="" class="fashion-news-img">
+                <i class="fashion-img-border"></i>
+              </div>
+              <p class="fashion-news-title">3开启无限可能开启无限可能</p>
+              <p class="fashion-news-summary">在北大举行的"寻找未知的自己"活动中在北大</p>
+              <p class="fashion-news-detail">[详细]</p>
+            </a>
+          </div>
+          <div class="fashion-news">
+            <a href="#" target="_blank">
+              <div class="fashion-img-cont">
+                <img src="./images/pic-1.png" alt="" class="fashion-news-img">
+                <i class="fashion-img-border"></i>
+              </div>
+              <p class="fashion-news-title">开启无限可能开启无限可能</p>
+              <p class="fashion-news-summary">在北大举行的"寻找未知的自己"活动中在北大</p>
+              <p class="fashion-news-detail">[详细]</p>
+            </a>
+          </div>
+          <div class="fashion-news">
+            <a href="#" target="_blank">
+              <div class="fashion-img-cont">
+                <img src="./images/pic-1.png" alt="" class="fashion-news-img">
+                <i class="fashion-img-border"></i>
+              </div>
+              <p class="fashion-news-title">开启无限可能开启无限可能</p>
+              <p class="fashion-news-summary">在北大举行的"寻找未知的自己"活动中在北大两行三行</p>
+              <p class="fashion-news-detail">[详细]</p>
+            </a>
+          </div>
+        </li>
+        <li class="fashion-list-item" id="fashion-list-4">
+          <div class="fashion-news">
+            <a href="#" target="_blank">
+              <div class="fashion-img-cont">
+                <img src="./images/pic-1.png" alt="" class="fashion-news-img">
+                <i class="fashion-img-border"></i>
+              </div>
+              <p class="fashion-news-title">4开启无限可能开启无限可能</p>
+              <p class="fashion-news-summary">在北大举行的"寻找未知的自己"活动中在北大</p>
+              <p class="fashion-news-detail">[详细]</p>
+            </a>
+          </div>
+          <div class="fashion-news">
+            <a href="#" target="_blank">
+              <div class="fashion-img-cont">
+                <img src="./images/pic-1.png" alt="" class="fashion-news-img">
+                <i class="fashion-img-border"></i>
+              </div>
+              <p class="fashion-news-title">开启无限可能开启无限可能</p>
+              <p class="fashion-news-summary">在北大举行的"寻找未知的自己"活动中在北大</p>
+              <p class="fashion-news-detail">[详细]</p>
+            </a>
+          </div>
+          <div class="fashion-news">
+            <a href="#" target="_blank">
+              <div class="fashion-img-cont">
+                <img src="./images/pic-1.png" alt="" class="fashion-news-img">
+                <i class="fashion-img-border"></i>
+              </div>
+              <p class="fashion-news-title">开启无限可能开启无限可能</p>
+              <p class="fashion-news-summary">在北大举行的"寻找未知的自己"活动中在北大两行三行</p>
+              <p class="fashion-news-detail">[详细]</p>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- /装 -->
+    <!-- 妆 -->
+    <div class="beauty clear">
+      <div class="column">
+        <div class="beauty-title clear">
+          <span class="beauty-title-icon"></span>
+          <a href="http://fashion.huanqiu.com/beauty/" target="_blank" class="more"></a>
+        </div>
+        <div class="beauty-style-2">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="beauty-news-img">
+            <p class="beauty-img-title-bg"><span class="beauty-img-title">开启无限可能开启无限可能无限可能</span></p>
+          </a>
+        </div>
+        <div class="beauty-style-1">
+          <a href="#" target="_blank">
+            <p class="beauty-news-title">开启无限可能开启无</p>
+            <p class="beauty-news-summary">在北大举行的"寻找未知的自己"活动中在北大举行的"寻找未知的自己"活动中</p>
+            <p class="beauty-news-icon"></p>
+          </a>
+        </div>
+      </div>
+      <div class="column">
+        <div class="beauty-style-2">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="beauty-news-img">
+            <p class="beauty-img-title-bg"><span class="beauty-img-title">开启无限可能开启无限可能无限可能</span></p>
+          </a>
+        </div>
+        <div class="beauty-style-1">
+          <a href="#" target="_blank">
+            <p class="beauty-news-title">开启无限可能开启无</p>
+            <p class="beauty-news-summary">在北大举行的"寻找未知的自己"活动中在北大举行的"寻找未知的自己"活动中</p>
+            <p class="beauty-news-icon"></p>
+          </a>
+        </div>
+        <div class="beauty-style-1">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="beauty-news-img">
+            <p class="beauty-img-title-bg"><span class="beauty-img-title">开启无限可能开启无限可能无限可能</span></p>
+          </a>
+        </div>
+      </div>
+      <div class="column">
+        <div class="beauty-style-1">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="beauty-news-img">
+            <p class="beauty-img-title-bg"><span class="beauty-img-title">开启无限可能开启无限可能无限可能</span></p>
+          </a>
+        </div>
+        <div class="beauty-style-1">
+          <a href="#" target="_blank">
+            <p class="beauty-news-title">开启无限可能开启无</p>
+            <p class="beauty-news-summary">在北大举行的"寻找未知的自己"活动中在北大举行的"寻找未知的自己"活动中</p>
+            <p class="beauty-news-icon"></p>
+          </a>
+        </div>
+        <div class="beauty-style-2">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="beauty-news-img">
+            <p class="beauty-img-title-bg"><span class="beauty-img-title">开启无限可能开启无限可能无限可能</span></p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- /妆 -->
+  </div>
+
+  <!-- 乐 -->
+  <div class="le-bg">
+    <div class="le content">
+      <div class="le-title-cont clear">
+        <span class="le-title-icon"></span>
+        <i class="le-line"></i>
+        <a href="http://fashion.huanqiu.com/nxfs/" class="more" target="_blank"></a>
+      </div>
+      <ul class="le-news-lists clear">
+        <li class="le-lists-item active" id="le-list-1">
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">1开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+        </li>
+        <li class="le-lists-item" id="le-list-2">
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">1开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+        </li>
+        <li class="le-lists-item" id="le-list-3">
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">1开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+        </li>
+        <li class="le-lists-item" id="le-list-4">
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">1开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+        </li>
+        <li class="le-lists-item" id="le-list-5">
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">1开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+          <div class="le-news">
+            <a href="#" target="_blank">
+              <img src="./images/pic-0.png" alt="" class="le-news-img">
+              <p class="le-news-title">开启无限可能开启无限可</p>
+              <p class="le-news-summary">在北大举行的"寻找未知的自己"活动中在北大的"寻找未知的自己"活动中</p>
+              <p class="le-news-detail">[详情]</p>
+            </a>
+          </div>
+        </li>
+      </ul>
+      <ul class="le-tabs">
+        <li class="le-tab active" data-for="le-list-1">乐活</li>
+        <li class="le-tab" data-for="le-list-2">玩物</li>
+        <li class="le-tab" data-for="le-list-3">食宿</li>
+        <li class="le-tab" data-for="le-list-4">星座</li>
+        <li class="le-tab" data-for="le-list-5">BODY</li>
+      </ul>
+    </div>
+  </div>
+  <!-- /乐 -->
+
+  <div class="content">
+    <!-- 友 -->
+    <div class="you clear">
+      <div class="you-title-cont">
+        <span class="you-title-icon"></span>
+      </div>
+      <ul class="you-peaple-list">
+        <li class="you-peaple-item">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="you-peaple-img">
+            <div class="you-peaple-cover">
+              <p><span class="you-peaple-name">马未都</span></p>
+              <p><span class="you-peaple-title">收藏家，专栏作家</span></p>
+            </div>
+          </a>
+        </li>
+        <li class="you-peaple-item">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="you-peaple-img">
+            <div class="you-peaple-cover">
+              <p><span class="you-peaple-name">马未都</span></p>
+              <p><span class="you-peaple-title">收藏家，专栏作家</span></p>
+            </div>
+          </a>
+        </li>
+        <li class="you-peaple-item">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="you-peaple-img">
+            <div class="you-peaple-cover">
+              <p><span class="you-peaple-name">马未都</span></p>
+              <p><span class="you-peaple-title">收藏家，专栏作家</span></p>
+            </div>
+          </a>
+        </li>
+        <li class="you-peaple-item">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="you-peaple-img">
+            <div class="you-peaple-cover">
+              <p><span class="you-peaple-name">马未都</span></p>
+              <p><span class="you-peaple-title">收藏家，专栏作家</span></p>
+            </div>
+          </a>
+        </li>
+        <li class="you-peaple-item">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="you-peaple-img">
+            <div class="you-peaple-cover">
+              <p><span class="you-peaple-name">马未都</span></p>
+              <p><span class="you-peaple-title">收藏家，专栏作家</span></p>
+            </div>
+          </a>
+        </li>
+        <li class="you-peaple-item">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="you-peaple-img">
+            <div class="you-peaple-cover">
+              <p><span class="you-peaple-name">马未都</span></p>
+              <p><span class="you-peaple-title">收藏家，专栏作家</span></p>
+            </div>
+          </a>
+        </li>
+        <li class="you-peaple-item">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="you-peaple-img">
+            <div class="you-peaple-cover">
+              <p><span class="you-peaple-name">马未都</span></p>
+              <p><span class="you-peaple-title">收藏家，专栏作家</span></p>
+            </div>
+          </a>
+        </li>
+        <li class="you-peaple-item">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="you-peaple-img">
+            <div class="you-peaple-cover">
+              <p><span class="you-peaple-name">马未都</span></p>
+              <p><span class="you-peaple-title">收藏家，专栏作家</span></p>
+            </div>
+          </a>
+        </li>
+        <li class="you-peaple-item">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="you-peaple-img">
+            <div class="you-peaple-cover">
+              <p><span class="you-peaple-name">马未都</span></p>
+              <p><span class="you-peaple-title">收藏家，专栏作家</span></p>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <ul class="you-news-list">
+        <li class="you-news-item">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="you-news-img">
+            <p class="you-news-title">南海争议岛屿外国驻军</p>
+            <p class="you-news-summary">日大选日凌晨揭晓安倍能否确保确强体制日大选日凌晨揭晓安倍能否确保确强体制</p>
+            <p class="you-news-detail">[详细]</p>
+          </a>
+        </li>
+        <li class="you-news-item">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="you-news-img">
+            <p class="you-news-title">南海争议岛屿外国驻军</p>
+            <p class="you-news-summary">日大选日凌晨揭晓安倍能否确保确强体制日大选日凌晨揭晓安倍能否确保确强体制</p>
+            <p class="you-news-detail">[详细]</p>
+          </a>
+        </li>
+        <li class="you-news-item">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="you-news-img">
+            <p class="you-news-title">南海争议岛屿外国驻军</p>
+            <p class="you-news-summary">日大选日凌晨揭晓安倍能否确保确强体制日大选日凌晨揭晓安倍能否确保确强体制</p>
+            <p class="you-news-detail">[详细]</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- /友 -->
+    <!-- 图集 -->
+    <div class="pics">
+      <div class="pics-block clear scene-1">
+        <div class="pics-news img-1">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="pics-news-img">
+            <p class="pics-title-bg"><span class="pics-news-title">1开启无限可能开启无限可能</span></p>
+          </a>
+        </div>
+        <div class="pics-news img-2">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="pics-news-img">
+            <p class="pics-title-bg"><span class="pics-news-title">2开启无限可能开启无限可能</span></p>
+          </a>
+        </div>
+        <div class="pics-news img-3">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="pics-news-img">
+            <p class="pics-title-bg"><span class="pics-news-title">3开启无限可能开启无限可能</span></p>
+          </a>
+        </div>
+      </div>
+      <div class="pics-block clear scene-2">
+        <div class="pics-news img-1">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="pics-news-img">
+            <p class="pics-title-bg"><span class="pics-news-title">开启无限可能开启无限可能</span></p>
+          </a>
+        </div>
+        <div class="pics-news img-2">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="pics-news-img">
+            <p class="pics-title-bg"><span class="pics-news-title">开启无限可能开启无限可能</span></p>
+          </a>
+        </div>
+        <div class="pics-news img-3">
+          <a href="#" target="_blank">
+            <img src="./images/pic-0.png" alt="" class="pics-news-img">
+            <p class="pics-title-bg"><span class="pics-news-title">开启无限可能开启无限可能</span></p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- /图集 -->
+  </div>
+
+  <!-- 合作媒体 -->
+  <div class="company-bg">
+    <div class="company content">
+      <div class="company-logo"></div>
+      <i class="company-line"></i>
+      <div class="company-list">
+        <p class="company-list-title">合作媒体</p>
+        <p class="company-list-row">
+          <a href="#" class="company-list-item" target="_blank">环球网</a>
+          <a href="#" class="company-list-item" target="_blank">广东卫视</a>
+          <a href="#" class="company-list-item" target="_blank">深圳广播电影电视集团</a>
+          <a href="#" class="company-list-item" target="_blank">南方都市报</a>
+          <a href="#" class="company-list-item" target="_blank">yy直播</a>
+          <a href="#" class="company-list-item" target="_blank">网易网</a>
+        </p>
+        <p class="company-list-row">
+          <a href="#" class="company-list-item" target="_blank">环球网</a>
+          <a href="#" class="company-list-item" target="_blank">广东卫视</a>
+          <a href="#" class="company-list-item" target="_blank">深圳广播电影电视集团</a>
+          <a href="#" class="company-list-item" target="_blank">南方都市报</a>
+          <a href="#" class="company-list-item" target="_blank">yy直播</a>
+          <a href="#" class="company-list-item" target="_blank">网易网</a>
+        </p>
+        <p class="company-list-row">
+          <a href="#" class="company-list-item" target="_blank">美拍网</a>
+          <a href="#" class="company-list-item" target="_blank">搜狐体育</a>
+          <a href="#" class="company-list-item" target="_blank">凤凰体育</a>
+          <a href="#" class="company-list-item" target="_blank">新浪体育</a>
+          <a href="#" class="company-list-item" target="_blank">腾讯视频</a>
+          <a href="#" class="company-list-item" target="_blank">pptv聚力</a>
+        </p>
+      </div>
+      <i class="company-line"></i>
+      <div class="code-cont">
+        <img src="./images/code.png" alt="时尚频道二维码" class="code-img">
+        <p class="code-title">环球网时尚官方微信</p>
+        <p class="code-info">扫一扫立即关注</p>
+      </div>
+    </div>
+  </div>
+  <!-- /合作媒体 -->
+
+  <!-- 公共底部 -->
+  <div class="footOutNew m_hide">
+    <!-- 其他 begin -->
+    <div class="fotherNew">
+      <ul>
+        <li class="fir">
+          <h3>环球无线</h3>
+          <div class="iconList">
+            <a href="http://mobile.huanqiu.com/#paperBox" target="_blank">环球时报客户端</a>
+            <a href="http://mobile.huanqiu.com/#mobileBox" target="_blank">手机环球网</a>
+          </div>
+        </li>
+        <li class="sec">
+          <h3>推荐服务</h3>
+          <div class="iconList">
+            <a href="http://www.huanqiu.com/weibo.html" target="_blank">环球网-官方微博</a>
+            <a href="http://rss.huanqiu.com/" target="_blank">RSS订阅</a>
+            <a href="http://dl.baofeng.com/BFVCenter/kb-huanqiu-0125.exe" target="_blank">环球网-桌面版</a>
+            <a href="http://rank.huanqiu.com/" target="_blank">资讯排行</a>
+          </div>
+        </li>
+        <li class="last">
+          <h3>环球时报系产品</h3>
+          <div class="iconList">
+            <a href="http://data.huanqiu.com/" target="_blank">环球时报版权数据库</a>
+            <a href="http://www.lifetimes.cn/" class="footTxtLife" target="_blank">生命时报</a>
+            <a href="http://hd.globaltimes.cn/" target="_blank">品牌活动</a>
+            <a href="http://www.globaltraveler.com.cn/" target="_blank">环球旅游周刊</a>
+            <a href="http://www.gtfoundation.cn/" target="_blank">环球时报公益基金会</a>
+            <a href="http://humor.huanqiu.com/" class="footTxtLife" target="_blank">讽刺与幽默</a>
+            <a href="http://www.globalsurvey.com.cn/" target="_blank">舆情中心</a>
+            <a href="http://www.globaltimes.cn/" target="_blank">GlobalTimes</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- 其他 end -->
+  </div>
+  <div class="fLinkNew m_hide">
+    <div class="flinkMainNew marWidMain">
+      <a href="http://corp.huanqiu.com/about/" target="_blank">环球网简介</a><em>|</em>
+      <a href="http://corp.huanqiu.com/aboutus/" target="_blank">About huanqiu.com</a><em>|</em>
+      <a href="http://www.huanqiu.com/sitemap.html" target="_blank">网站地图</a><em>|</em>
+      <a href="http://www.huanqiu.com/weibo.html" target="_blank">官方微博</a><em>|</em>
+      <a href="http://corp.huanqiu.com/jobs/" target="_blank">诚聘英才</a><em>|</em>
+      <a href="http://corp.huanqiu.com/advertising_services/" target="_blank">广告服务</a><em>|</em>
+      <a href="http://corp.huanqiu.com/contactus/" target="_blank">联系方式</a><em>|</em>
+      <a href="http://corp.huanqiu.com/privacy_policy/" target="_blank">隐私政策</a><em>|</em>
+      <a href="http://corp.huanqiu.com/terms/" target="_blank">服务条款</a><em>|</em>
+      <a href="mailto:jubao@huanqiu.com" target="_blank">意见反馈</a>
+    </div>
+  </div>
+  <!-- /公共底部 -->
+
+  <!-- <script type="text/javascript" src="http://himg2.huanqiu.com/statics/www/hqnet/dist/js/lib/jquery/jquery.carouFredSel-5.6.2-min.js"></script> -->
+  <script type="text/javascript" src="./libs/carouFredSel-6.2.1.js"></script>
+  <script type="text/javascript" src="./js/index.js"></script>
+</body>
+</html>

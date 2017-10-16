@@ -4,8 +4,8 @@ const webpack = require('webpack')
 module.exports = {
   // entry: './src/js/index_release.js',
   entry: {
-    index: './src/js/index_test.js',
-    analytics: './src/js/analytics.js'
+    index: './src/js/index_release.js'
+    // analytics: './src/js/analytics.js'
   },
   output: {
     path: path.join(__dirname, '/dist/js/'),

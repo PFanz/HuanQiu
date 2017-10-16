@@ -3,48 +3,138 @@
 // 依赖zepto
 (function () {
   // 依赖
-  const Lunbo = require('./mLunbo.js')                      // 轮播图
-  const RefreshControl = require('./mRefreshControl.js')    // 下拉刷新
-  const RefreshScroll = require('./RefreshScroll.js')       // 滚动条自动列表
-  const Util = require('./Util.js')                         // 多种工具
-  const Generate = require('./generateHtml.js')             // 用于生成html代码
-  const Insert = require('./insertHtml.js')                 // 页面中插入html 用于插入广告
+  const Lunbo = require('./mLunbo.js') // 轮播图
+  const RefreshControl = require('./mRefreshControl.js') // 下拉刷新
+  const RefreshScroll = require('./RefreshScroll.js') // 滚动条自动列表
+  const Util = require('./Util.js') // 多种工具
+  const Generate = require('./generateHtml.js') // 用于生成html代码
+  const Insert = require('./insertHtml.js') // 页面中插入html 用于插入广告
   // 配置项
-  const lunboBlockID = 'lunbo'                              // 轮播图ID
-  const todayBlockID = 'first-news'                         // 今日要闻区块ID
-  const autoBlockID = 'interesting-news'                    // 兴趣推荐区块ID
-  const wechatIndex = 41                                    // 微信热点位置
+  const lunboBlockID = 'lunbo' // 轮播图ID
+  const todayBlockID = 'first-news' // 今日要闻区块ID
+  const autoBlockID = 'interesting-news' // 兴趣推荐区块ID
+  const wechatIndex = 41 // 微信热点位置
   // 全局变量
-  const $content = $('#content')                            // app content
-  const FontSize = parseFloat($('html').css('font-size'))   // 1rem = FontSize px
-  const $refresh = $('#refresh-control')                    // 下拉刷新
-  const $refreshIcon = $('#transform-icon')                 // 下拉动画
+  const $content = $('#content') // app content
+  const FontSize = parseFloat($('html').css('font-size')) // 1rem = FontSize px
+  const $refresh = $('#refresh-control') // 下拉刷新
+  const $refreshIcon = $('#transform-icon') // 下拉动画
 
-  const tipEnable = !Util.getCookie('tipDisable')           // 是否显示tip
-  let userID = Util.getCookie('userID')                     // 用户信息
+  const tipEnable = !Util.getCookie('tipDisable') // 是否显示tip
+  let userID = Util.getCookie('userID') // 用户信息
   if (!userID) {
     userID = Util.getId()
     Util.setCookie('userID', userID, 365 * 10)
   }
 
+  const Channels = {
+    'all': {
+      name: '全站', 'cnzzId': '1257582039'
+    },
+    'index': {
+      name: '首页', 'cnzzId': '1257822579'
+    },
+    'world': {
+      name: '国际', 'cnzzId': '1262434260'
+    },
+    'taihai': {
+      name: '台海', 'cnzzId': '1262434298'
+    },
+    'society': {
+      name: '社会', 'cnzzId': '1262434313'
+    },
+    'mil': {
+      name: '军事', 'cnzzId': '1262434136'
+    },
+    'editorial': {
+      name: '社评', 'cnzzId': '1262434337'
+    },
+    'inland': {
+      name: '国内', 'cnzzId': '1262434373'
+    },
+    'comment': {
+      name: '评论', 'cnzzId': '1262434392'
+    },
+    'oversea': {
+      name: '海外看中国', 'cnzzId': '1262434429'
+    },
+    'bolan': {
+      name: '博览', 'cnzzId': '1262434444'
+    },
+    'picture': {
+      name: '图片', 'cnzzId': '1262434462'
+    },
+    'video': {
+      name: '视频', 'cnzzId': '1262434473'
+    },
+    'finance': {
+      name: '财经', 'cnzzId': '1262434499'
+    },
+    'auto': {
+      name: '汽车', 'cnzzId': '1262434511'
+    },
+    'tech': {
+      name: '科技', 'cnzzId': '1262434523'
+    },
+    'smart': {
+      name: '智能', 'cnzzId': '1262434529'
+    },
+    'shanrenping': {
+      name: '单仁平', 'cnzzId': '1262434542'
+    },
+    'uav': {
+      name: '无人机', 'cnzzId': '1262434565'
+    },
+    'travel': {
+      name: '旅行', 'cnzzId': '1262434574'
+    },
+    'health': {
+      name: '健康', 'cnzzId': '1262434596'
+    },
+    'ent': {
+      name: '娱乐', 'cnzzId': '1262434603'
+    },
+    'fashion': {
+      name: '时尚', 'cnzzId': '1262434611'
+    },
+    'women': {
+      name: '女人', 'cnzzId': '1262434654'
+    },
+    'sports': {
+      name: '体育', 'cnzzId': '1262434664'
+    },
+    'ski': {
+      name: '滑雪', 'cnzzId': '1262434670'
+    },
+    'liuxue': {
+      name: '留学', 'cnzzId': '1262434698'
+    },
+    'hope': {
+      name: '公益', 'cnzzId': '1262434712'
+    },
+    'city': {
+      name: '城市', 'cnzzId': '1262434722'
+    }
+  }
+
   const App = {
-    channel: '',                                              // 当前频道
-    homeFlag: true,                                           // 是否首页
-    picChannelFlag: false,                                    // 是否图集页样式
-    videoChannelFlag: false,                                  // 是否视频频道
-    times: 0,                                                 // 请求次数
-    date: '',                                                 // 最后一条新闻时间
-    url: 'http://w.huanqiu.com/apps/huanqiu/mindex.php', // 首页接口
-    autoUrl: `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`, // 首页自动接口
-    loading: false,                                           // 是否正在加载
-    lazyFlag: false,                                          // 简易懒加载标志
+    channel: '', // 当前频道
+    homeFlag: true, // 是否首页
+    picChannelFlag: false, // 是否图集页样式
+    videoChannelFlag: false, // 是否视频频道
+    times: 0, // 请求次数
+    date: '', // 最后一条新闻时间
+    url: '//w.huanqiu.com/apps/huanqiu/mindex.php', // 首页接口
+    autoUrl: `//uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`, // 首页自动接口
+    loading: false, // 是否正在加载
+    lazyFlag: false, // 简易懒加载标志
     // apiFlag: false,                                           // true: 公司接口  false: 优路接口
-    apiCount: 0,                                              // api出错计数，>=3: 使用公司接口
-    swiperData: '',                                           // 轮播图数据
-    positionData: '',                                         // 人工推荐数据
-    wechatData: '',                                           // 微信热点数据
-    autoData: '',                                             // 自动推荐数据
-    count: 0,                                                 // 自动列表新闻数量统计
+    apiCount: 0, // api出错计数，>=3: 使用公司接口
+    swiperData: '', // 轮播图数据
+    positionData: '', // 人工推荐数据
+    wechatData: '', // 微信热点数据
+    autoData: '', // 自动推荐数据
+    count: 0, // 自动列表新闻数量统计
     manualAjax: null,
     autoAjax: null,
     // 初始化 导航点击事件、导航更多功能
@@ -111,8 +201,8 @@
     // 设置 当前频道，调用 设置导航位置方法
     setChannel: function () {
       // 频道相关属性设置
+      $('#footer-text').css('display', 'block')
       this.channel = Util.getHash().channel || ''
-      // Util.setCookie('channel', this.channel)
       this.homeFlag = !this.channel
       this.picChannelFlag = this.channel === 'picture'
       this.videoChannelFlag = this.channel === 'video'
@@ -120,22 +210,12 @@
       this.date = ''
       this.count = 0
       if (this.homeFlag) {
-        this.url = 'http://w.huanqiu.com/apps/huanqiu/mindex.php'
-        this.autoUrl = `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`
+        this.url = '//w.huanqiu.com/apps/huanqiu/mindex.php'
+        this.autoUrl = `//uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`
       } else {
-        this.url = `http://w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
-        this.autoUrl = `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
+        this.url = `//w.huanqiu.com/apps/huanqiu/category.php?cname=${this.channel}`
+        this.autoUrl = `//w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
       }
-
-      // var spanElem = document.createElement('span')
-      // spanElem.id = 'cnzz_stat_icon_' + '1262434722'
-      // var scriptElem = document.createElement('script')
-      // scriptElem.type = 'text/javascript'
-      // scriptElem.src = 'http://s95.cnzz.com/z_stat.php%3Fid%' + '1262434722'
-      // spanElem.appendChild(scriptElem)
-
-      // document.body.appendChild(spanElem)
-
       // 折叠更多频道显示、修改导航样式等等频道相关UI设置
       if ($('#nav-more').height() > 50) {
         $('#nav-more-btn').trigger('click')
@@ -181,14 +261,14 @@
           if ($trigger.parents('#interesting-news').length > 0) {
             $.ajax({
               type: 'GET',
-              url: `http://w.huanqiu.com/apps/huanqiu/addhit.php?chan=index`
+              url: `//w.huanqiu.com/apps/huanqiu/addhit.php?chan=index`
             })
           }
           return
         }
         $.ajax({
           type: 'GET',
-          url: `http://uluai.com.cn/rcmd/rec/falls/click?siteId=5011&recId=${id}&parameter=${parameter}&cki=${userID}`,
+          url: `//uluai.com.cn/rcmd/rec/falls/click?siteId=5011&recId=${id}&parameter=${parameter}&cki=${userID}`,
           dataType: 'jsonp'
         })
       })
@@ -347,12 +427,12 @@
     // 获得 自动推荐数据
     getAuto: function () {
       if (this.homeFlag) {
-        this.autoUrl = this.apiCount >= 3 ? `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=index&times=${this.times}&date=${this.date}`
-                                        : `http://uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`
-         // _czc.push(['_trackPageview',`/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`, '//uluai.com.cn/rcmd/'])
+        this.autoUrl = this.apiCount >= 3 ? `//w.huanqiu.com/apps/huanqiu/autolist.php?chan=index&times=${this.times}&date=${this.date}`
+          : `//uluai.com.cn/rcmd/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`
+        // _czc.push(['_trackPageview',`/falls/getRtCmd?siteId=5011&cki=${userID}&num=20&chan=`, '//uluai.com.cn/rcmd/'])
       } else {
-        this.autoUrl = `http://w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
-         // _czc.push(['_trackPageview',`/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`, '//w.huanqiu.com/apps/'])
+        this.autoUrl = `//w.huanqiu.com/apps/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`
+        // _czc.push(['_trackPageview',`/huanqiu/autolist.php?chan=${this.channel}&times=${this.times}&date=${this.date}`, '//w.huanqiu.com/apps/'])
       }
       this.autoData = []
       if (!this.loading) {
@@ -370,26 +450,31 @@
               if (typeof data.data !== 'undefined') {
                 data = data.data
               }
+              if (data === '' || !data.length) {
+                $('#footer-text').css('display', 'none')
+                return
+              }
               // 存储缓存
               let storage = sessionStorage.getItem(this.channel + 'autoData')
               if ('' + storage === 'null') {
                 sessionStorage.setItem(this.channel + 'autoData', JSON.stringify(data))
               } else {
-                sessionStorage.setItem(this.channel + 'autoData', storage.slice(0, -1) + ',' + JSON.stringify(data).substr(1))
+                sessionStorage.setItem(this.channel + 'autoData', storage.slice(0, -1) + ', ' + JSON.stringify(data).substr(1))
               }
               this.times++
               this.date = data[data.length - 1].date
             } catch (err) {
               if (this.homeFlag) {
-                this.apiCount ++
+                this.apiCount++
               }
+              console.error(err)
             } finally {
               this.loading = false
             }
           })
           .fail(() => {
             if (this.homeFlag) {
-              this.apiCount ++
+              this.apiCount++
             }
             this.loading = false
             console.error('加载数据出错，将重试~')
@@ -451,6 +536,36 @@
         }
       }
     },
+    postStatistical: function () {
+      var cnzzImg = document.getElementById('cnzzquest')
+      var cnzzAllImg = document.getElementById('cnzzall')
+
+      if (!cnzzAllImg) {
+        cnzzAllImg = document.createElement('img')
+        cnzzAllImg.id = 'cnzzall'
+        cnzzAllImg.width = '0'
+        cnzzAllImg.height = '0'
+        cnzzAllImg.style.display = 'none'
+        document.body.appendChild(cnzzAllImg)
+      }
+      cnzzAllImg.src = '//c.cnzz.com/wapstat.php?siteid=' + Channels.all.cnzzId + '&r=&rnd=' + Math.floor(Math.random() * 1e10)
+
+      if (Channels[this.channel || 'index']) {
+        var cnzzUrl = '//c.cnzz.com/wapstat.php?siteid=' + Channels[this.channel || 'index'].cnzzId + '&r=&rnd=' + Math.floor(Math.random() * 1e10)
+        if (cnzzImg) {
+          cnzzImg.src = cnzzUrl
+        } else {
+          cnzzImg = document.createElement('img')
+          cnzzImg.id = 'cnzzquest'
+          cnzzImg.src = cnzzUrl
+          cnzzImg.width = '0'
+          cnzzImg.height = '0'
+          cnzzImg.style.display = 'none'
+          document.body.appendChild(cnzzImg)
+          // cnzzImg.style = 'display: none'
+        }
+      }
+    },
     // 初始化
     init: function () {
       this.setChannel()
@@ -474,6 +589,7 @@
           sessionStorage.clear()
           this.getManual()
             .done((data, status, xhr) => {
+              this.postStatistical()
               this.setManual(data)
               this.getAuto()
                 .done(data => {
@@ -485,6 +601,7 @@
         sessionStorage.clear()
         this.getManual()
           .done((data, status, xhr) => {
+            this.postStatistical()
             this.setManual(data)
             this.getAuto()
               .done(data => {
@@ -508,13 +625,14 @@
         this.setChannel()
         this.setNavPos()
         this.getManual()
-        .done((data, status, xhr) => {
-          this.setManual(data)
-          this.getAuto()
-            .done(data => {
-              this.setAuto(data)
-            })
-        })
+          .done((data, status, xhr) => {
+            this.postStatistical()
+            this.setManual(data)
+            this.getAuto()
+              .done(data => {
+                this.setAuto(data)
+              })
+          })
       }
     }
   }

@@ -5,7 +5,7 @@ if (typeof Array.prototype.forEach != "function") {
         fn.call(context, this[k], k, this);
       }
     }
-  };
+  }
 }
 
 if (!document.getElementsByClassName) {
@@ -329,7 +329,7 @@ Carousel.prototype.initBtn = function () {
         // 暂停自动播放
         this.config.auto && clearInterval(this.autoFlag)
         this.play(1)
-          // 开启
+        // 开启
         if (this.config.auto) {
           this.autoFlag = this.autoPlay()
         }

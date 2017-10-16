@@ -30,7 +30,7 @@ const Generate = {
       str += `
         <li class="lunbo-page">
           <a href="${data[item].url}">
-            <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/lunbo_image.png';" src="${data[item].pic}" alt="">
+            <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/lunbo_image.png';" src="${data[item].pic}" alt="">
             <div class="lunbo-title-bg">
               <p class="lunbo-title">${data[item].title}</p>
             </div>
@@ -101,7 +101,7 @@ const Generate = {
                 </div>
               </div>
               <div class="news-imgs">
-                  <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/one_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
+                  <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/one_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
               </div>
             </a>
           </section>
@@ -112,7 +112,7 @@ const Generate = {
             <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
               <p class="news-title">${title}</p>
               <div class="video-img">
-                <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
+                <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
                 <div class="video-btn">
                   <svg>
                     <use xlink:href="#video-icon" />
@@ -132,7 +132,7 @@ const Generate = {
             <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
               <p class="news-title">${title}</p>
               <div class="video-img">
-                <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
+                <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
               </div>
               <div class="news-info">
                 <span class="news-from">${data.source}</span>
@@ -155,7 +155,7 @@ const Generate = {
                 </div>
               </div>
               <div class="news-imgs">
-                  <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/one_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
+                  <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/one_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
               </div>
             </a>
           </section>
@@ -168,9 +168,9 @@ const Generate = {
           <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
             <p class="news-title">${title}</p>
             <div class="news-imgs">
-              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
-              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[1] : 'src="' + data.pic[1]}" alt="">
-              <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[2] : 'src="' + data.pic[2]}" alt="">
+              <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[0] : 'src="' + data.pic[0]}" alt="">
+              <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[1] : 'src="' + data.pic[1]}" alt="">
+              <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/more_image.png';" class="news-pic" ${imgDisable ? 'src="" data-imgUrl="' + data.pic[2] : 'src="' + data.pic[2]}" alt="">
             </div>
           </a>
           <div class="news-info">
@@ -236,7 +236,7 @@ const Generate = {
     let str = `
       <section class="pic-block">
         <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
-          <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}"" alt="" />
+          <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}"" alt="" />
           <p class="pic-title">${data.title}</p>
         </a>
       </section>
@@ -249,7 +249,7 @@ const Generate = {
       <section class="pic-block">
         <a href="${data.url}" data-id="${data.id}" data-parameter="${data.parameter}" class="link-flag">
           <div class="video-img">
-            <img onError="this.onerror=null;this.src='http://himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
+            <img onError="this.onerror=null;this.src='//himg2.huanqiu.com/statics/www/hq_m/dist/m_huanqiu/images/video_image.png';" src="${data.pic[0]}" alt="">
             <div class="video-btn">
               <svg>
                 <use xlink:href="#video-icon" />

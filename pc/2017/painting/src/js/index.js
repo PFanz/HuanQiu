@@ -55,6 +55,9 @@ $(function () {
     }
     for (var i = 0; i < json.answers.length; i++) {
       var sn = json.answers[i].text.indexOf('|') > -1 ? json.answers[i].text.split('|') : []
+      if (sn.length === 0) {
+        sn = json.answers[i].text.indexOf('｜') > -1 ? json.answers[i].text.split('｜') : []
+      }
       if (i === 0) {
         html += `<li class="imgs-page">`
       } else if (i % 12 === 0) {
